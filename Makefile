@@ -6,14 +6,13 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/04 12:34:55 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/11 01:39:49 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #==========COLOURS=============================================================#
 
 # Basic Colors
-
 BLACK       = \033[0;30m
 RED         = \033[0;31m
 GREEN       = \033[0;32m
@@ -24,7 +23,6 @@ CYAN        = \033[0;36m
 WHITE       = \033[0;37m
 
 # Bright Colors
-
 BOLD_BLACK  = \033[1;30m
 BOLD_RED    = \033[1;31m
 BOLD_GREEN  = \033[1;32m
@@ -58,7 +56,8 @@ MOVE_UP     = \033[1A
 
 #==========NAMES===============================================================#
 
-BONUS	:= philo_bonus
+NAME		:= memtrack.a
+EXEC		:= exec
 
 #==========DIRECTORIES=======================================================#
 
@@ -66,83 +65,64 @@ INC 			:= inc/
 SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
 
-ACTIONS_DIR		:= actions/
-CHILD_DIR		:= child/
-DATA_DIR		:= data/
-PHILO 		 	:= philo/
-SIGNALS 		:= signals/
-STATE_DIR		:= state/
-SYNC_DIR		:= sync/
-THREAD_DIR		:= thread/
-UTILS_DIR		:= utils/
+ALLOC_DIR		:= alloc/
+DEALLOC_DIR		:= dealloc/
+MEMTRACK_DIR	:= memtrack/
 
 #==========COMMANDS============================================================#
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -pthread -fsanitize=address -g3
+CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
 RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(INC) -I$(SRC_DIR)$(ACTIONS_DIR) -I$(SRC_DIR)$(CHILD_DIR) -I$(SRC_DIR)$(DATA_DIR) -I$(SRC_DIR)$(PHILO) -I$(SRC_DIR)$(SIGNALS) -I$(SRC_DIR)$(STATE_DIR) -I$(SRC_DIR)$(SYNC_DIR) -I$(SRC_DIR)$(THREAD_DIR) -I$(SRC_DIR)$(UTILS_DIR)
+IFLAGS		:= -I$(INC)
+LFLAGS		:= -L.
 
-#==========SOURCES=BONUS============================================================#
+#==========SOURCES============================================================#
 
-ACTIONS_FILES := actions_bonus actions_utils_bonus
-CHILD_FILES := child_bonus child_utils_bonus
-DATA_FILES := clean_bonus init_bonus
-PHILO_FILES := check_bonus
-SIGNALS_FILES := handle_signals_bonus signals_utils_bonus
-STATE_FILES := 
-SYNC_FILES := 
-THREAD_FILES := thread_bonus
-UTILS_FILES := parse_bonus utils_bonus
-MAIN_FILES := main_bonus
+ALLOC_FILES		:= #mt_calloc mt_malloc mt_realloc mt_strdup mt_strndup
+DEALLOC_FILES	:= #mt_free mt_free_all mt_free_node mt_free_list
+MEMTRACK_FILES	:= ft_mtnew
 
 #==========FILES==============================================================#
 
-SRC_FILES_BONUS+=$(addprefix $(ACTIONS_DIR), $(ACTIONS_FILES))
-SRC_FILES_BONUS+=$(addprefix $(BONUS_DIR), $(BONUS_FILES))
-SRC_FILES_BONUS+=$(addprefix $(CHILD_DIR), $(CHILD_FILES))
-SRC_FILES_BONUS+=$(addprefix $(DATA_DIR), $(DATA_FILES))
-SRC_FILES_BONUS+=$(addprefix $(PHILO), $(PHILO_FILES))
-SRC_FILES_BONUS+=$(addprefix $(SIGNALS), $(SIGNALS_FILES))
-SRC_FILES_BONUS+=$(addprefix $(STATE_DIR), $(STATE_FILES))
-SRC_FILES_BONUS+=$(addprefix $(SYNC_DIR), $(SYNC_FILES))
-SRC_FILES_BONUS+=$(addprefix $(THREAD_DIR), $(THREAD_FILES))
-SRC_FILES_BONUS+=$(addprefix $(UTILS_DIR), $(UTILS_FILES))
-SRC_FILES_BONUS+=$(MAIN_FILES)
+SRC_FILES+=$(addprefix $(MEMTRACK_DIR), $(MEMTRACK_FILES))
 
-SRCS_BONUS := $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES_BONUS)))
-OBJS_BONUS := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES_BONUS)))
-DEPS_BONUS := $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES_BONUS)))
+SRCS := $(addsuffix .c, $(SRC_FILES))
+OBJS := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+DEPS := $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 #==========RULES==============================================================#
 
-all: bonus
+all: $(NAME)
+-include $(DEPS)
 
-bonus: $(BONUS)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
+$(OBJ_DIR)%.o: %.c Makefile
 	@$(MKDIR) $(dir $@)	
 	@$(CC) $(CFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
 
-$(BONUS): $(OBJS_BONUS)
-	@$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(BONUS)
-	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(BONUS)$(DEF_COLOR)$(BOLD_BLUE)]$(BOLD_BLUE) compiled!$(DEF_COLOR)"
+$(NAME): $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@$(LIB) $(NAME)
+	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
+	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
+
+exe: $(NAME)
+	@$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -o exec main.c $(NAME)
+	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(EXEC)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 
 clean:
-	@$(RM) -rf $(OBJ_DIR)
-	@echo "$(CYAN)[$(BONUS)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"
+	@$(RM) -rf $(OBJ_DIR) $(DEPS)
+	@echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"
 
 fclean: clean
-	@$(RM) -rf $(BONUS)
-	@echo "$(CYAN)[$(BONUS)]:\texec. files $(GREEN) => Cleaned!$(DEF_COLOR)"
+	@$(RM) -rf $(NAME) $(EXEC)
+	@echo "$(CYAN)[$(NAME)]:\texec. files $(GREEN) => Cleaned!$(DEF_COLOR)"
 
 re: fclean all
-
--include $(DEPS) $(DEPS_BONUS)
 
 .SILENT: all clean fclean
 .PHONY: all clean fclean re bonus

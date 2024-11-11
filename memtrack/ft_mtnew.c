@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 17:23:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/10/22 20:11:32 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/11 01:20:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+# include "memtrack.h"
 
-# include "actions.h"
-# include "utils.h"
+t_mt	*ft_mtnew(void *data)
+{
+	t_mt	*new;
 
-void	monitor_philos(t_memory *mem);
-
-#endif // MAIN_H
+	new = (t_mt *)malloc(sizeof(t_mt));
+	if (!new)
+		return (NULL);
+	new->data = data;
+	new->next = NULL;
+	return (new);
+}

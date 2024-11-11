@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   child_bonus.h                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 08:27:03 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/04 13:25:42 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/11 01:39:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHILD_BONUS_H
-# define CHILD_BONUS_H
+# include "memtrack.h"
 
-// Add any necessary includes here
-# include "actions_bonus.h"
-# include "colors_bonus.h"
-# include "config_bonus.h"
-# include "signals_bonus.h"
-# include "structs_bonus.h"
-# include "thread_bonus.h"
+int main(void)
+{
+	t_mt	*list;
 
-// Declare any functions or classes here
-// child process
-int	init_processes(t_memory *memory);
-int	wait_processes(t_memory *mem);
-
-#endif // CHILD_BONUS_H
+	list = ft_mtnew("Hello, World!");
+	printf("%s\n", (char *)list->data);
+	free(list);
+	return (0);
+}
