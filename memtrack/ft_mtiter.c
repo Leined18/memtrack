@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtnew.c                                         :+:      :+:    :+:   */
+/*   ft_mtiter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:23:33 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/12 10:12:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "memtrack.h"
 
-t_mt	*ft_mtnew(void **data)
+void	ft_mtiter(t_mt *lst, void (*f)(void *))
 {
-	t_mt	*new;
-
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+    while (lst)
+    {
+        f(lst->data);
+        lst = lst->next;
+    }
 }

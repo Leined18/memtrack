@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtnew.c                                         :+:      :+:    :+:   */
+/*   ft_mtsize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:23:33 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 10:15:43 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/12 10:15:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "memtrack.h"
+#include "memtrack.h"
 
-t_mt	*ft_mtnew(void **data)
+int	ft_mtsize(t_mt *lst)
 {
-	t_mt	*new;
+    int	size;
 
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+    size = 0;
+    while (lst)
+    {
+        size++;
+        lst = lst->next;
+    }
+    return (size);
 }

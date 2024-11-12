@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtnew.c                                         :+:      :+:    :+:   */
+/*   ft_mtremove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:23:33 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/12 11:08:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "memtrack.h"
+#include "memtrack.h"
 
-t_mt	*ft_mtnew(void **data)
+void	ft_mtremove(t_mt **lst, t_mt *remove)
 {
-	t_mt	*new;
+    t_mt	*tmp;
 
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+    if (*lst == remove)
+    {
+        tmp = (*lst)->next;
+        free(*lst);
+        *lst = tmp;
+        return ;
+    }
+    tmp = *lst;
+    while (tmp->next != remove)
+        tmp = tmp->next;
+    tmp->next = remove->next;
+    ft_mtdel_data(remove->data);
+    free(remove);
 }
