@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:23:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:04:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_mt	*ft_mtnew(void **data)
 	if (!new)
 		return (NULL);
 	new->data = data;
+    new->size = 0;
 	new->next = NULL;
 	return (new);
 }

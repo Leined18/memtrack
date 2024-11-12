@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pop_at.c                                        :+:      :+:    :+:   */
+/*   ft_mtpop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:04:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:02:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_mtpop(t_mt **lst, t_mt *remove)
     if (*lst == remove)
     {
         *lst = remove->next;
-        ft_mtdel_data(remove->data);
+        ft_mtdel_data(remove->data, remove->size);
         free(remove);
         return ;
     }
@@ -29,6 +29,6 @@ void	ft_mtpop(t_mt **lst, t_mt *remove)
     while (tmp->next != remove)
         tmp = tmp->next;
     tmp->next = remove->next;
-    ft_mtdel_data(remove->data);
+    ft_mtdel_data(remove->data, remove->size);
     free(remove);
 }

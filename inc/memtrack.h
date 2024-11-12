@@ -10,6 +10,7 @@
 typedef struct s_mt
 {
 	void		**data;
+	size_t		size;
 	struct s_mt	*next;
 }				t_mt;
 
@@ -26,7 +27,7 @@ void			ft_mtadd_front(t_mt **lst, t_mt *new);
 int				ft_mtsize(t_mt *lst);
 
 void			ft_mtpop(t_mt **lst, t_mt *remove);
-void			ft_mtclear(t_mt **lst, void (*del_func)(void **));
-void			ft_mtdel_data(void **data);
+void			ft_mtclear(t_mt **lst, void (*del_func)());
+void			ft_mtdel_data(void **data, size_t size);
 
 #endif // LIST_H

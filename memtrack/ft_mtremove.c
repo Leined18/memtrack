@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 11:08:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:02:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	ft_mtremove(t_mt **lst, t_mt *remove)
     while (tmp->next != remove)
         tmp = tmp->next;
     tmp->next = remove->next;
-    ft_mtdel_data(remove->data);
+    ft_mtdel_data(remove->data, remove->size);
     free(remove);
 }
