@@ -6,7 +6,11 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2024/11/13 10:25:01 by danpalac         ###   ########.fr        #
+=======
+#    Updated: 2024/11/13 11:36:08 by danpalac         ###   ########.fr        #
+>>>>>>> 56a64e2 (mejoras)
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,8 +120,10 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(LIB) $(NAME)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-	@$(MKDIR) obj/inc/
-	@cp -R $(INCLUDES) obj/inc/
+	@$(MKDIR) ../inc/
+	@$(MKDIR) ../lib/
+	@cp -R $(INCLUDES) ../inc/
+	cp $(NAME) ../lib/
 
 $(EXE): main.c $(NAME)
 	@$(CC) $(CFLAGS) $(LFLAGS) -L. $(IFLAGS) main.c $(NAME) -lft -o $(EXE)
