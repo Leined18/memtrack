@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtremove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/13 14:12:23 by danpalac         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/13 11:18:22 by danpalac         ###   ########.fr       */
->>>>>>> refs/remotes/origin/main
+/*   Updated: 2024/11/13 15:39:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
