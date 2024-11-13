@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 10:04:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 18:25:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ static size_t	ft_countword(char const *s, char c)
 
 char	**ft_splitmt(char const *s, char c)
 {
-	char **lst;
-	size_t word_len;
-	int i;
+	char	**lst;
+	size_t	word_len;
+	int		i;
 
-	lst = (char **)chaosmatrix((ft_countword(s, c) + 1) ,sizeof(char *), 0);
+	if (!s)
+		return (0);
+	lst = (char **)chaosmatrix((ft_countword(s, c) + 1), sizeof(char *), 0);
 	if (!s || !lst)
 		return (0);
 	i = 0;
@@ -55,6 +57,5 @@ char	**ft_splitmt(char const *s, char c)
 			s += word_len;
 		}
 	}
-	lst[i] = NULL;
-	return (lst);
+	return (lst[i] = NULL, lst);
 }

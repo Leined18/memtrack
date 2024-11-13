@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/danpalac/sgoinfre/memtrack",
-      "program": "/home/danpalac/sgoinfre/memtrack/exe",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -19,7 +19,7 @@
           "ignoreFailures": true
         }
       ],
-        "preLaunchTask": "make"
+        "preLaunchTask": "make",
         "postDebugTask": "make clean"
     },
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chaosmatrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 13:21:17 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 18:27:20 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 void	*chaosmatrix(int count, size_t size, int flag)
 {
-	void *ptr;
-	t_mt *tmp;
-	static t_mt *list = NULL;
+	void		*ptr;
+	t_mt		*tmp;
+	static t_mt	*list = NULL;
 
 	if (flag == -1)
-	{
-		ft_mtclear(&list, ft_mtdel_data);
-		return (NULL);
-	}
+		return (ft_mtclear(&list, ft_mtdel_data), NULL);
 	if (flag)
 		return (list);
 	ptr = NULL;
