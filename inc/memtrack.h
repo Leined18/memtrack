@@ -1,5 +1,5 @@
-#ifndef NODE_H
-# define NODE_H
+#ifndef MEMTRACK_H
+# define MEMTRACK_H
 
 # include "libft.h"
 # include <stdio.h>
@@ -9,14 +9,13 @@
 
 typedef struct s_mt
 {
-	void		**addr;
 	void		*data;
 	size_t		size;
 	int			count;
 	struct s_mt	*next;
 }				t_mt;
 
-t_mt			*ft_mtnew(void **data);
+t_mt			*ft_mtnew(void *data);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);
 
 void			ft_mtremove(t_mt **lst, t_mt *remove);

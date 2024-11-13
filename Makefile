@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/13 10:25:01 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/13 13:03:10 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ MOVE_UP     = \033[1A
 
 #==========NAMES===============================================================#
 
-NAME		:= memtrack.a
+NAME		:= libmemtrack.a
 EXE			:= exe
 
 #==========DIRECTORIES=======================================================#
@@ -65,6 +65,7 @@ INC 			:= inc/
 SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
 LIBFT_DIR		:= ../libft/
+LIB_DIR			:= ../lib/
 
 MEMTRACK_DIR	:= memtrack/
 MTLIB_DIR		:= mtlib/
@@ -72,7 +73,7 @@ MTLIB_DIR		:= mtlib/
 
 LIBFT			:= $(LIBFT_DIR)libft.a
 INC_LIBFT		:= $(LIBFT_DIR)$(INC)
-INCLUDES		:= $(INC)*.h $(INC_LIBFT)*.h
+INCLUDES		:= $(INC)*.h
 
 #==========COMMANDS============================================================#
 
@@ -82,7 +83,7 @@ RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(INC) -I$(INC_LIBFT)
+IFLAGS		:= -I$(INC) -I$(LIB_DIR) -I$(LIBFT_DIR)
 LFLAGS		:= -L$(LIBFT_DIR)
 
 #==========SOURCES============================================================#
@@ -116,11 +117,11 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(LIB) $(NAME)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-	@$(MKDIR) obj/inc/
-	@cp -R $(INCLUDES) obj/inc/
+	@$(MKDIR) $(LIB_DIR)
+	@cp -R $(INCLUDES) $(NAME) $(LIB_DIR)
 
 $(EXE): main.c $(NAME)
-	@$(CC) $(CFLAGS) $(LFLAGS) -L. $(IFLAGS) main.c $(NAME) -lft -o $(EXE)
+	@$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -L. main.c $(NAME) -lft -o $(EXE)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(EXE)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 
@@ -128,7 +129,7 @@ $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 	
 clean:
-	@$(RM) -rf $(OBJ_DIR) $(DEPS)
+	@$(RM) -rf $(OBJ_DIR) $(DEPS) $(LIB_DIR)
 	@make clean -sC $(LIBFT_DIR)
 	@echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"
 

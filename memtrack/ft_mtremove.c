@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 09:11:59 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:12:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_mtremove(t_mt **lst, t_mt *remove)
 	if (*lst == remove)
 	{
 		tmp = (*lst)->next;
-		free(*lst);
+		ft_mtdel_data(&*lst);
 		*lst = tmp;
 		return ;
 	}

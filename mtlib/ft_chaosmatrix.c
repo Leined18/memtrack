@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 09:32:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:21:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*chaosmatrix(int count, size_t size, int flag)
 	if (ptr)
 	{
 		ft_memset(ptr, 0, count * size);
-		tmp = ft_mtnew(&ptr);
+		tmp = ft_mtnew(ptr);
 		tmp->size = size;
 		tmp->count = count;
 		ft_mtadd_front(&list, tmp);
