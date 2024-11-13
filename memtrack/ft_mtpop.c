@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 15:02:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:12:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft_mtpop(t_mt **lst, t_mt *remove)
 {
-    t_mt	*tmp;
+	t_mt	*tmp;
 
-    if (!lst || !remove)
-        return ;
-    if (*lst == remove)
-    {
-        *lst = remove->next;
-        ft_mtdel_data(remove->data, remove->size);
-        free(remove);
-        return ;
-    }
-    tmp = *lst;
-    while (tmp->next != remove)
-        tmp = tmp->next;
-    tmp->next = remove->next;
-    ft_mtdel_data(remove->data, remove->size);
-    free(remove);
+	if (!lst || !remove)
+		return ;
+	if (*lst == remove)
+	{
+		*lst = remove->next;
+		ft_mtdel_data(&remove);
+		free(remove);
+		return ;
+	}
+	tmp = *lst;
+	while (tmp->next != remove)
+		tmp = tmp->next;
+	tmp->next = remove->next;
+	ft_mtdel_data(&remove);
+	free(remove);
 }

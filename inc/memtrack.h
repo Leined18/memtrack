@@ -9,8 +9,10 @@
 
 typedef struct s_mt
 {
-	void		**data;
+	void		**addr;
+	void		*data;
 	size_t		size;
+	int			count;
 	struct s_mt	*next;
 }				t_mt;
 
@@ -28,6 +30,6 @@ int				ft_mtsize(t_mt *lst);
 
 void			ft_mtpop(t_mt **lst, t_mt *remove);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
-void			ft_mtdel_data(void **data, size_t size);
+void			ft_mtdel_data(t_mt **list);
 
 #endif // LIST_H

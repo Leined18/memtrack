@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/12 17:30:43 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:18:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	*chaosmatrix(int count, size_t size, int flag)
 		ft_memset(ptr, 0, count * size);
 		tmp = ft_mtnew(&ptr);
 		tmp->size = size;
+		tmp->count = count;
 		ft_mtadd_front(&list, tmp);
 		return (ptr);
 	}
@@ -63,13 +64,17 @@ void	*chaosmatrix(int count, size_t size, int flag)
 
 int	main(void)
 {
-	char	*array;
-    t_mt   *list;
+	char	**array;
+	char	*str;
+	t_mt	*list;
 
 	array = chaosmatrix(1, sizeof(char *), 0);
-    (void)array;
-    list = chaosmatrix(1, sizeof(t_mt), 0);
-    (void)list;
+	str = chaosmatrix(7, sizeof(char), 0);
+	array[0] = ft_strdup("Hello");
+	(void)list;
+	(void)array;
+	(void)str;
 	chaosmatrix(0, 0, -1);
+    printf("SUCCESS\n");
 	return (0);
 }
