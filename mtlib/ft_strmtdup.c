@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmtdup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 10:05:33 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/13 09:34:48 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/13 09:48:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-int	main(void)
+char	*ft_strmtdup(const char *s1)
 {
-	char	*str;
-	char	*sub;
+	char	*ptr;
+	int		i;
 
-	str = ft_strmtdup("Hello WOSFAJSKFJAKS");
-	printf("str: %s\n", str);
-	sub = ft_submtstr(str, 6, 5);
-    printf("sub: %s\n", sub);
-	chaosmatrix(0, 0, -1);
-	printf("SUCCESS\n");
-	return (0);
+	ptr = chaosmatrix(ft_strlen(s1) + 1, sizeof(char), 0);
+	if (!ptr)
+		return (chaosmatrix(0, 0, -1));
+    i = 0;
+	while (s1[i])
+    {
+        ptr[i] = s1[i];
+        i++;
+    }
+    ptr[i] = '\0';
+	return (ptr);
 }

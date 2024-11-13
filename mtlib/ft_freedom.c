@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_freedom.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 10:05:33 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/13 09:31:49 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/13 09:31:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-int	main(void)
+void	freedom(void **data, t_mt **list)
 {
-	char	*str;
-	char	*sub;
-
-	str = ft_strmtdup("Hello WOSFAJSKFJAKS");
-	printf("str: %s\n", str);
-	sub = ft_submtstr(str, 6, 5);
-    printf("sub: %s\n", sub);
-	chaosmatrix(0, 0, -1);
-	printf("SUCCESS\n");
-	return (0);
+	if (list && *list && data && *data)
+		ft_mtremove(list, ft_mtfind_data(*list, *data));
+	if (data && *data)
+	{
+		free(*data);
+		*data = NULL;
+	}
 }

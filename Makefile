@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/12 11:05:24 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/13 10:02:43 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ OBJ_DIR 		:= obj/
 LIBFT_DIR		:= ../libft/
 
 MEMTRACK_DIR	:= memtrack/
+MTLIB_DIR		:= mtlib/
 
 
 LIBFT			:= $(LIBFT_DIR)libft.a
@@ -90,9 +91,12 @@ MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
 				ft_mtiter ft_mtlast ft_mtprint ft_mtremove ft_mtsize \
 				ft_mtadd_front ft_mtfind_data ft_mtpop #ft_pop_back ft_pop_front ft_pop_at
 
+MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
+
 #==========FILES==============================================================#
 
 SRC_FILES+=$(addprefix $(MEMTRACK_DIR), $(MEMTRACK_FILES))
+SRC_FILES+=$(addprefix $(MTLIB_DIR), $(MTLIB_FILES))
 
 SRCS := $(addsuffix .c, $(SRC_FILES))
 OBJS := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

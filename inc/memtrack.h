@@ -32,4 +32,11 @@ void			ft_mtpop(t_mt **lst, t_mt *remove);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mtdel_data(t_mt **list);
 
+// mtlib
+void			*chaosmatrix(int count, size_t size, int flag);
+void			freedom(void **data, t_mt **list);
+char			*ft_strmtdup(const char *s1);
+char			*ft_submtstr(char const *s, unsigned int start, size_t len);
+char			**ft_splitmt(char const *s, char c);
+
 #endif // LIST_H
