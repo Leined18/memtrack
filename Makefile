@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/13 10:02:43 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/13 10:25:01 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
 IFLAGS		:= -I$(INC) -I$(INC_LIBFT)
-LFLAGS		:= -L$(LIBFT_DIR) -L.
+LFLAGS		:= -L$(LIBFT_DIR)
 
 #==========SOURCES============================================================#
 
@@ -120,7 +120,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@cp -R $(INCLUDES) obj/inc/
 
 $(EXE): main.c $(NAME)
-	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) main.c $(NAME) -lft -o $(EXE)
+	@$(CC) $(CFLAGS) $(LFLAGS) -L. $(IFLAGS) main.c $(NAME) -lft -o $(EXE)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(EXE)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 
