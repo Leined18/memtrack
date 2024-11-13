@@ -6,7 +6,15 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2024/11/13 13:03:10 by danpalac         ###   ########.fr        #
+=======
+<<<<<<< HEAD
+#    Updated: 2024/11/13 10:25:01 by danpalac         ###   ########.fr        #
+=======
+#    Updated: 2024/11/13 11:36:08 by danpalac         ###   ########.fr        #
+>>>>>>> 56a64e2 (mejoras)
+>>>>>>> refs/remotes/origin/main
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,8 +125,15 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(LIB) $(NAME)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
+<<<<<<< HEAD
 	@$(MKDIR) $(LIB_DIR)
 	@cp -R $(INCLUDES) $(NAME) $(LIB_DIR)
+=======
+	@$(MKDIR) ../inc/
+	@$(MKDIR) ../lib/
+	@cp -R $(INCLUDES) ../inc/
+	cp $(NAME) ../lib/
+>>>>>>> refs/remotes/origin/main
 
 $(EXE): main.c $(NAME)
 	@$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -L. main.c $(NAME) -lft -o $(EXE)
