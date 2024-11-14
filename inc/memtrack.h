@@ -32,9 +32,10 @@ void			ft_mtadd_front(t_mt **lst, t_mt *new);
 int				ft_mtsize(t_mt *lst);
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
 
-void			ft_mtpop(t_mt **lst, t_mt *remove);
+void			ft_mtpop(t_mt **lst);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mtdel_data(t_mt **list);
+void			ft_mtreplace(t_mt **lst, t_mt **replace);
 
 // operations
 void			ft_mtmigrate(t_mt **src, t_mt **dest);

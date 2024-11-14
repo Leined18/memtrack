@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 15:13:19 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:53:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_mtpush_data(t_mt **lst, void *data)
 {
-	t_mt *new;
+	t_mt	*new;
 
 	if (!data || !lst)
 		return ;
