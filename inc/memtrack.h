@@ -19,6 +19,7 @@ typedef struct s_mt
 t_mt			*ft_mtnew(void *data);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);
 void			ft_mtpush_data(t_mt **lst, void *data);
+void			ft_mtpush_data_back(t_mt **lst, void *data);
 
 void			ft_mtremove(t_mt **lst, t_mt *remove);
 t_mt			*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)());
