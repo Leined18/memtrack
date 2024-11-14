@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/14 08:53:06 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/14 10:02:30 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,9 @@ MOVE_UP     = \033[1A
 
 #==========NAMES===============================================================#
 
-NAME		:= libmemtrack.a
+NAME		:= libmt.a
 EXE			:= exe
+LIBFT		:= libft.a
 
 #==========DIRECTORIES=======================================================#
 
@@ -71,7 +72,6 @@ MEMTRACK_DIR	:= memtrack/
 MTLIB_DIR		:= mtlib/
 
 
-LIBFT			:= $(LIBFT_DIR)libft.a
 INC_LIBFT		:= $(LIBFT_DIR)$(INC)
 INCLUDES		:= $(INC)*.h
 
