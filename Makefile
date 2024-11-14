@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
+#    By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2024/11/14 18:02:52 by danpalac         ###   ########.fr        #
+=======
+#    Updated: 2024/11/14 18:24:54 by mvidal-h         ###   ########.fr        #
+>>>>>>> 3a79f5d (añadida nueva función para malloquear un nodo de la lista que tenga que ser liberado por chaos)
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +97,7 @@ MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
 				ft_mtadd_front ft_mtfind_data ft_mtpop ft_mtpush_data ft_mtpush_data_back\
 				ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 				ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtreplace \
+				ft_mtnew_chaos \
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
 

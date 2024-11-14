@@ -17,6 +17,7 @@ typedef struct s_mt
 }				t_mt;
 
 t_mt			*ft_mtnew(void *data);
+t_mt			*ft_mtnew_chaos(void *data);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);
 void			ft_mtpush_data(t_mt **lst, void *data);
 void			ft_mtpush_data_back(t_mt **lst, void *data);
