@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtprint.c                                       :+:      :+:    :+:   */
+/*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 08:28:26 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/14 08:53:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-void	ft_mtprint(t_mt *lst, int b)
+void	ft_mtpush_data(t_mt **lst, void *data)
 {
-    while (lst && b)
-    {
-        printf("%p\n", (void *)lst->data);
-        lst = lst->next;
-    }
-	while (lst && !b)
-	{
-		printf("%s\n", (char *)lst->data);
-		lst = lst->next;
-	}
+	t_mt *new;
+
+	new = chaosmatrix(1, sizeof(t_mt), 0);
+	new->data = data;
+	new->size = sizeof(t_mt);
+	new->count = 1;
+	ft_mtadd_back(lst, new);
 }

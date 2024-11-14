@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 18:33:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:56:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,17 @@ int	ft_addresscmp(void *data, void *data2)
 
 int	main(void)
 {
-	char	**str;
+	t_mt	*str;
 	char	*str2;
 
-	str = chaosmatrix(2, sizeof(char *), 0);
-	str[0] = ft_strdup("pancho");
-	str[1] = ft_strdup("pancho");
-	str2 = ft_strmtdup("pancho");
-	printf("str2: %s\n", str2);
-	printf("str[0]: %s\n", str[0]);
-	printf("str[1]: %s\n", str[1]);
-	//chaosmatrix(0, 0, -1);
-	if (ft_mtfind_cmp(chaosmatrix(0, 0, 1), str2, ft_strcmp))
-		printf("Found\n");
-	else
-		printf("Not found\n");
+	str = NULL;
+	str2 = ft_strmtdup("Hola");
+	ft_mtpush_data(&str, ft_split("Hola que tal", ' '));
+	ft_mtpush_data(&str, ft_strdup("Que tal"));
+	ft_mtpush_data(&str, ft_strdup("Miau"));
+	ft_mtprint(chaosmatrix(0, 0, 1), 1);
+	ft_mtprint(str, 0);
+	(void)str;
+	(void)str2;
 	return (0);
 }

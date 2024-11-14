@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/13 18:20:24 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/14 08:53:06 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ LFLAGS		:= -L$(LIBFT_DIR)
 
 MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
 				ft_mtiter ft_mtlast ft_mtprint ft_mtremove ft_mtsize \
-				ft_mtadd_front ft_mtfind_data ft_mtpop #ft_pop_back ft_pop_front ft_pop_at
+				ft_mtadd_front ft_mtfind_data ft_mtpop ft_mtpush_data#ft_pop_back ft_pop_front ft_pop_at
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
 
