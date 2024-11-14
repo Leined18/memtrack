@@ -12,6 +12,7 @@ typedef struct s_mt
 	void		*data;
 	size_t		size;
 	int			count;
+	int			n;
 	struct s_mt	*next;
 }				t_mt;
 
@@ -27,10 +28,20 @@ t_mt			*ft_mtlast(t_mt *lst);
 void			ft_mtprint(t_mt *lst, int b, char *c);
 void			ft_mtadd_front(t_mt **lst, t_mt *new);
 int				ft_mtsize(t_mt *lst);
+void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
 
 void			ft_mtpop(t_mt **lst, t_mt *remove);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mtdel_data(t_mt **list);
+
+// operations
+void			ft_mtmigrate(t_mt **src, t_mt **dest);
+void			ft_mtpush(t_mt **src, t_mt **dest);
+void			ft_mtpush_back(t_mt **src, t_mt **dest);
+void			ft_mtrotate(t_mt **list);
+void			ft_mtreverse_rotate(t_mt **list);
+void			ft_mtswap(t_mt **list);
+void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
 
 // mtlib
 void			*chaosmatrix(int count, size_t size, int flag);

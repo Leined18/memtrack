@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtnew.c                                         :+:      :+:    :+:   */
+/*   ft_mtrotate_reverse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 13:56:07 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/14 13:55:14 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/14 13:55:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-t_mt	*ft_mtnew(void *data)
+void	ft_mtreverse_rotate(t_mt **list)
 {
-	t_mt	*new;
+	t_mt *prev;
+	t_mt *last;
 
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->size = 0;
-    new->count = 0;
-	new->n = 0;
-	new->next = NULL;
-	return (new);
+	if (!list || !*list || !(*list)->next)
+		return ;
+	prev = NULL;
+	last = *list;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *list;
+	*list = last;
 }

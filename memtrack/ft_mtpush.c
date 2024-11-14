@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtnew.c                                         :+:      :+:    :+:   */
+/*   ft_mtpush.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 13:56:07 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/14 13:54:06 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/14 13:54:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-t_mt	*ft_mtnew(void *data)
+void	ft_mtpush(t_mt **src, t_mt **dest)
 {
-	t_mt	*new;
+	t_mt *node_to_move;
 
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->size = 0;
-    new->count = 0;
-	new->n = 0;
-	new->next = NULL;
-	return (new);
+	if (!src || !*src)
+		return ;
+	node_to_move = *src;
+	*src = (*src)->next;
+	node_to_move->next = *dest;
+	*dest = node_to_move;
 }

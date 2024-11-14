@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtprint.c                                       :+:      :+:    :+:   */
+/*   ft_mtinsert_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 13:51:34 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/14 14:34:46 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/14 14:37:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-void	ft_mtprint(t_mt *lst, int b, char *c)
+void	ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos)
 {
-	if (!lst)
+	t_mt	*current;
+	t_mt	*mem;
+
+	if (!list || !new_node || pos < 0)
+		return ;
+	current = *list;
+	if (pos == 0)
 	{
-		ft_printf("(NULL)\n");
+		ft_mtadd_front(list, new_node);
+		mem = chaosmatrix(0, 0, 1);
+		ft_mtadd_back(&mem, *list);
+			// se añade a la matrix para liberar la memoria
 		return ;
 	}
-	while (lst && b)
+	while (pos > 1 && current)
 	{
-		ft_printf("%s%s", (char *)lst->data, c);
-		lst = lst->next;
+		current = current->next;
+		pos--;
 	}
-	if (b)
-		ft_printf("\n");
-	while (lst && !b)
+	if (current)
 	{
-		ft_printf("%p%s", lst->data, c);
-		lst = lst->next;
+		new_node->next = current->next;
+		current->next = new_node;
 	}
 }
