@@ -27,6 +27,7 @@ t_mt			*ft_mtfind_data(t_mt *lst, void *data);
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
 t_mt			*ft_mtlast(t_mt *lst);
 void			ft_mtprint(t_mt *lst, int b, char *c);
+void			ft_mtprint_n(t_mt *lst, int b, char *c);
 void			ft_mtadd_front(t_mt **lst, t_mt *new);
 int				ft_mtsize(t_mt *lst);
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
@@ -42,6 +43,7 @@ void			ft_mtpush_back(t_mt **src, t_mt **dest);
 void			ft_mtrotate(t_mt **list);
 void			ft_mtreverse_rotate(t_mt **list);
 void			ft_mtswap(t_mt **list);
+void			ft_mtswap_nodes(t_mt *node1, t_mt *node2);
 void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
 
 // mtlib
