@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/14 10:02:30 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/14 11:26:35 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ MOVE_UP     = \033[1A
 
 NAME		:= libmt.a
 EXE			:= exe
-LIBFT		:= libft.a
+LIBFT_LIB	:= libft.a
 
 #==========DIRECTORIES=======================================================#
 
@@ -71,7 +71,7 @@ LIB_DIR			:= ../lib/
 MEMTRACK_DIR	:= memtrack/
 MTLIB_DIR		:= mtlib/
 
-
+LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
 INC_LIBFT		:= $(LIBFT_DIR)$(INC)
 INCLUDES		:= $(INC)*.h
 
@@ -105,8 +105,8 @@ DEPS := $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 #==========RULES==============================================================#
 
-all: $(NAME)
 -include $(DEPS)
+all: $(NAME)
 
 $(OBJ_DIR)%.o: %.c Makefile
 	@$(MKDIR) $(dir $@)	
@@ -114,11 +114,11 @@ $(OBJ_DIR)%.o: %.c Makefile
 
 $(NAME): $(LIBFT) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@$(LIB) $(NAME)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-	@$(MKDIR) $(LIB_DIR)
-	@cp -R $(INCLUDES) $(NAME) $(LIB_DIR)
+	@mkdir -p $(LIB_DIR)
+	@$(MKDIR) $(LIB_DIR) 
+	@cp $(NAME) $(INCLUDES) $(LIB_DIR)
 
 $(EXE): main.c $(NAME)
 	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS)  -lft -o $(EXE)
@@ -129,14 +129,13 @@ $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 	
 clean:
-	@$(RM) -rf $(OBJ_DIR) $(DEPS) $(LIB_DIR)
+	@$(RM) -rf $(OBJ_DIR) $(LIB_DIR)
 	@make clean -sC $(LIBFT_DIR)
-	@echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"
 
 fclean: clean
 	@$(RM) -rf $(NAME) $(EXE)
 	@make fclean -sC $(LIBFT_DIR)
-	@echo "$(CYAN)[$(NAME)]:\texe. files $(GREEN) => Cleaned!$(DEF_COLOR)"
+	@echo "$(CYAN)[$(NAME)]:\tfiles $(GREEN) => Cleaned!$(DEF_COLOR)"
 
 re: fclean all
 
