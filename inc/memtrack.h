@@ -24,7 +24,7 @@ t_mt			*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)());
 t_mt			*ft_mtfind_data(t_mt *lst, void *data);
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
 t_mt			*ft_mtlast(t_mt *lst);
-void			ft_mtprint(t_mt *lst, int b);
+void			ft_mtprint(t_mt *lst, int b, char *c);
 void			ft_mtadd_front(t_mt **lst, t_mt *new);
 int				ft_mtsize(t_mt *lst);
 
