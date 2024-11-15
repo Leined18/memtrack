@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 19:19:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:51:41 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 int	main(void)
 {
 	t_mt	*stacka;
-	t_mt	*stackb;
 	t_mt	*tmp;
 
 	stacka = NULL;
-	stackb = NULL;
 	tmp = chaosmatrix(0, 0, 1);
 	ft_mtprint(tmp, 0, " ");
 	ft_mtpush_data(&stacka, "miau");
 	ft_mtpush_data(&stacka, "guau");
+	ft_mtpush_data(&stacka, "mu");
+	ft_mtpush_data(&stacka, "le");
+	ft_mtpush_data(&stacka, "asd");
+	ft_mtpush_data(&stacka, "ñe");
+	ft_mtpush_data(&stacka, "sa");
+	ft_mtprint(stacka, 1, " -> ");
 	tmp = chaosmatrix(0, 0, 1);
 	ft_mtprint(tmp, 0, " ");
+	chaosmatrix(-1, 0, 0);
 	ft_mterase(&stacka);
-	tmp = chaosmatrix(0, 0, 1);
-	ft_mtprint(tmp, 0, " ");
-	(void)stackb;
-	ft_mtmigrate(&stacka, &stackb);
-	ft_mtprint(stackb, 1, " -> ");
-	tmp = (t_mt *)chaosmatrix(0, 0, 1);
-	ft_mtprint(tmp, 0, " ");
-	chaosmatrix(0, 0, -1);
+	ft_mtprint(stacka, 1, " -> ");
 	tmp = chaosmatrix(0, 0, 1);
 	ft_mtprint(tmp, 0, " ");
 	return (0);

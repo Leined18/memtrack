@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 19:18:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:50:42 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*chaosmatrix(int count, size_t size, int flag)
 	static t_mt	*lst = NULL;
 	static t_mt	*gc = NULL;
 
-	if (flag == -1)
+	if (flag == -1 || count == -1)
 	{
 		if (lst)
 			ft_mtmigrate_back(&lst, &gc);
