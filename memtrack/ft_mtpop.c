@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 17:47:28 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:17:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_mtpop(t_mt **lst)
 	tmp = *lst;
 	*lst = (*lst)->next;
 	mem = chaosmatrix(0, 0, 1);
-	ft_mtpush_data_back(&mem, tmp->data);
+	ft_mtadd_back(&mem, ft_mtnew(tmp->data));
 	free(tmp);
 	tmp = NULL;
 }

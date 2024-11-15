@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2024/11/14 18:02:52 by danpalac         ###   ########.fr        #
-=======
-#    Updated: 2024/11/14 18:24:54 by mvidal-h         ###   ########.fr        #
->>>>>>> 3a79f5d (añadida nueva función para malloquear un nodo de la lista que tenga que ser liberado por chaos)
+#    Updated: 2024/11/15 07:15:34 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

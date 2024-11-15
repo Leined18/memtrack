@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 20:32:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:16:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,8 @@ int	main(void)
 	ft_mtprint(stacka, 1, " ");
 	ft_printf("\n");
 	ft_mtprint(stackb, 1, " ");
+	ft_mterase(&stacka);
+	ft_mtprint(stacka, 1, " ");
+	ft_mtprint(chaosmatrix(0, 0, 1), 0, "\n");
 	return (0);
 }

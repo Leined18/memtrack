@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 18:28:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:15:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@ void	ft_mtclear(t_mt **lst, void (*del_func)())
 		if (del_func)
 			del_func(&(*lst));
 		free(*lst);
-        (*lst) = NULL;
+		(*lst) = NULL;
 		*lst = tmp;
 	}
+	*lst = NULL;
+}
+void	ft_mterase(t_mt **lst)
+{
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
+		ft_mtpop(lst);
 	*lst = NULL;
 }
