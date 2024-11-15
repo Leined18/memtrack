@@ -16,17 +16,17 @@ typedef struct s_mt
 	struct s_mt	*next;
 }				t_mt;
 
+t_mt			**ft_mtfind_cmp_ref(t_mt **lst, void *data, int (*cmp)(),
+					size_t n);
+t_mt			*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)(), size_t n);
+t_mt			*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n);
 t_mt			*ft_mtnew(void *data);
 t_mt			*ft_mtnew_chaos(void *data);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);
 void			ft_mtpush_data(t_mt **lst, void *data);
 void			ft_mtpush_data_back(t_mt **lst, void *data);
 
-void			ft_mtremove_by_string(t_mt **lst, char *remove);
-void			ft_remove_by_number(t_mt **lst, int remove);
-void			ft_remove_by_data(t_mt **lst, void *remove);
-t_mt			*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)());
-t_mt			*ft_mtfind_data(t_mt *lst, void *data);
+void			ft_mtremove(t_mt **lst, void *data, int *(cmp)(), size_t n);
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
 t_mt			*ft_mtlast(t_mt *lst);
 void			ft_mtprint(t_mt *lst, int b, char *c);
@@ -36,12 +36,10 @@ int				ft_mtsize(t_mt *lst);
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
 
 void			ft_mtpop(t_mt **lst);
-void			ft_mtpop_string(t_mt **lst, char *remove);
-void			ft_mtpop_number(t_mt **lst, int remove);
-void			ft_mtpop_data(t_mt **lst, void *remove);
+void			ft_mtpop_cmp(t_mt **lst, void *remove, int (*cmp)(), size_t n);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mterase(t_mt **lst);
-void			ft_mtdel_data(t_mt **list);
+void			ft_mtdel_data(void **data);
 void			ft_mtreplace(t_mt **lst, t_mt **replace);
 
 // operations

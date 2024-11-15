@@ -3,73 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 07:57:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:24:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
-
-void	ft_mtdelete(t_mt **list, int (*match)(t_mt *))
-{
-	t_mt	*current;
-	t_mt	*prev;
-
-	current = *list;
-	prev = NULL;
-	while (current)
-	{
-		if (match(current))
-		{
-			if (prev)
-				prev->next = current->next;
-			else
-				*list = current->next;
-			free(current);
-			return ;
-		}
-		prev = current;
-		current = current->next;
-	}
-}
-
-t_mt	*ft_mtsearch(t_mt *list, int (*match)(t_mt *))
-// Busca el primer nodo que cumpla la condición
-{
-	while (list)
-	{
-		if (match(list))
-			return (list);
-		list = list->next;
-	}
-	return (NULL);
-}
-
-int	ft_addresscmp(void *data, void *data2)
-{
-	if (data == data2)
-		return (0);
-	return (1);
-}
 
 int	main(void)
 {
 	t_mt	*stacka;
 	t_mt	*stackb;
 
-	ft_mtpush_data(&stacka, "miau");
-	ft_mtpush_data(&stacka, "guau");
-	ft_mtpush_data(&stacka, "mu");
-	ft_mtpush_data(&stacka, "le");
-	ft_mtpush_data(&stacka, "pi");
-	ft_mtpush_data(&stacka, "ñe");
-	ft_mtpush_data(&stacka, "sa");
-	ft_mtpush_data(&stackb, "ta");
-	ft_mtpush(&stackb, &stacka);
-	ft_mtpop_string(&stacka, "pi");
+	stacka = NULL;
+	stackb = NULL;
+	ft_mtpush_data_back(&stacka, "miau");
+	ft_mtpush_data_back(&stacka, "guau");
+	ft_mtpush_data_back(&stacka, "mu");
+	ft_mtpush_data_back(&stacka, "le");
+	ft_mtpush_data_back(&stacka, "asd");
+	ft_mtpush_data_back(&stacka, "ñe");
+	ft_mtpush_data_back(&stacka, "sa");
+	ft_mtpush_data_back(&stackb, "pi");
+	ft_mtmigrate_back(ft_mtfind_cmp_ref(&stacka, "le", ft_strncmp, 2), &stackb);
+	printf("stacka: %p\n", stacka);
 	ft_mtprint(stacka, 1, "\n");
+	printf("stackb: %p\n", stackb);
 	ft_mtprint(stackb, 1, "\n");
 	ft_mtprint(chaosmatrix(0, 0, 1), 0, " ");
 	return (0);

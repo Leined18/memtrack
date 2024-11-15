@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtclear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 07:15:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:46:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_mtclear(t_mt **lst, void (*del_func)())
 	{
 		tmp = (*lst)->next;
 		if (del_func)
-			del_func(&(*lst));
+			del_func(&(*lst)->data);
 		free(*lst);
 		(*lst) = NULL;
 		*lst = tmp;
