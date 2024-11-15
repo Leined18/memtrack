@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 10:17:00 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:19:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,7 @@ void	ft_mtpush_data(t_mt **lst, void *data)
     new->next = NULL;
 	ft_mtadd_front(lst, new);
 }
+
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtpush_data(&stacka, ["pi"]);
+// stacka = ["pi"] -> "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

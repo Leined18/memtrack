@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:54:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 10:27:26 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:23:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// Moves the first element of the list to the last position.
 void	ft_mtrotate(t_mt **list)
 {
 	t_mt *first;
@@ -28,3 +29,6 @@ void	ft_mtrotate(t_mt **list)
 	last->next = first; // Coloca el primer nodo al final
 }
 
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtrotate(&stacka);
+// stacka = "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa" -> "miau"

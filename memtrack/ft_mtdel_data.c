@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:10:19 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 11:03:42 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:58:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	del_array(char **data, size_t size)
 		data = NULL;
 	}
 }
-
+// Deletes the data of the element of the list.
 void	ft_mtdel_data(void **data)
 {
     t_mt *gc;
@@ -41,3 +41,9 @@ void	ft_mtdel_data(void **data)
         *data = NULL;
     }
 }
+
+/* mt->data = ft_strdup("miau");
+
+ft_mtdel_data(&data);
+mt->data == NULL;
+mt->data = ft_strdup("guau"); */

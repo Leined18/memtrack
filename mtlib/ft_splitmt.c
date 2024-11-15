@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 18:25:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:27:31 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// Splits the string 's' using the character 'c' as separator.
 static size_t	ft_countword(char const *s, char c)
 {
 	size_t	count;
@@ -30,7 +31,6 @@ static size_t	ft_countword(char const *s, char c)
 	}
 	return (count);
 }
-
 char	**ft_splitmt(char const *s, char c)
 {
 	char	**lst;

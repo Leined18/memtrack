@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:51:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 10:52:51 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:05:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// devuelve un nodo que busque en la lista y lo aisla de la lista original. lo saca de la lista.
 t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n)
 {
 	t_mt	*prev;
@@ -37,3 +38,8 @@ t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n)
 	}
 	return (NULL);
 }
+// path = ft_strdup("HOME/../../");
+// lista1 = "miau" -> "guau" -> "mu" -> ["HOME/../../"] -> "asd" -> "ñe" -> "sa"
+// lista2 = ft_mtget_cmp(&lista1, path, ft_strcmp, ft_strlen(path));
+// lista2 = ["HOME/../../"];
+// lista1 = "miau" -> "guau" -> "mu" -> "asd" -> "ñe" -> "sa"

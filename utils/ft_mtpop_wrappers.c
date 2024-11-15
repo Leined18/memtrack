@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:54:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 10:02:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:27:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	ft_mtpop_number(t_mt **lst, int remove)
 
 void	ft_mtpop_data(t_mt **lst, const void *remove, size_t size)
 {
-	ft_mtpop_cmp(lst, remove, (int (*)(const void *, const void *))ft_memncmp, size);
+	ft_mtpop_cmp(lst, remove, (int (*)(const void *, const void *))ft_memcmp, size);
 }

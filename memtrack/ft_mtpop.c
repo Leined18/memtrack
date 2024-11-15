@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 10:19:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:14:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// Deletes the first element of the list.
 void	ft_mtpop(t_mt **lst)
 {
 	t_mt	*tmp;
@@ -22,11 +23,12 @@ void	ft_mtpop(t_mt **lst)
 	tmp = *lst;
 	*lst = (*lst)->next;
 	mem = chaosmatrix(0, 0, 1);
-	ft_mtadd_back(&mem, ft_mtnew(tmp->data));
-	free(tmp);
-	tmp = NULL;
+	ft_mtadd_back(&mem, ft_mtnew(tmp->data)); // añade data al cubo de basura
+	free(tmp); // se libera el nodo
+	tmp = NULL; // se pone a NULL
 }
 
+// Deletes the first element of the list that matches the data with the function cmp.
 void	ft_mtpop_cmp(t_mt **lst, void *remove, int (*cmp)(const void *,
 			const void *, size_t), size_t n)
 {
@@ -52,3 +54,12 @@ void	ft_mtpop_cmp(t_mt **lst, void *remove, int (*cmp)(const void *,
 		current = current->next;
 	}
 }
+
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtpop(&stacka);
+
+// stacka = "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+
+// stacka = "guau" -> "mu" -> ["le"] -> "asd" -> "ñe" -> "sa"
+// ft_mtpop_cmp(&stacka, "le", ft_strncmp, 2);
+// stacka = "guau" -> "mu" -> "asd" -> "ñe" -> "sa"

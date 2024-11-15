@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 11:04:32 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:20:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// busca el nodo que buscas en la lista y elimina la data no el nodo.
 void	ft_mtremove(t_mt **lst, void *data, int *(cmp)(), size_t n)
 {
 	t_mt	*current;
@@ -34,3 +35,7 @@ void	ft_mtremove(t_mt **lst, void *data, int *(cmp)(), size_t n)
 		current = current->next;
 	}
 }
+
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtremove(&stacka, "le", ft_strncmp, 2);
+// stacka = "miau" -> "guau" -> "mu" -> (NULL) -> "asd" -> "ñe" -> "sa"

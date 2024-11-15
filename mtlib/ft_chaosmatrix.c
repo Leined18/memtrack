@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chaosmatrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 18:27:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:26:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// chaosmatrix == cubo de basura
 void	*chaosmatrix(int count, size_t size, int flag)
 {
 	void		*ptr;

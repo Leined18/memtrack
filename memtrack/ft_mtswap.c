@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtswap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:53:43 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 17:07:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:25:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,13 @@ void	ft_mtswap(t_mt **list)
 	tmp = (*list)->next;
 	ft_mtswap_nodes(*list, tmp);
 }
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtswap(&stacka);
+// stacka = ["guau"] -> ("miau") -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+
+// stacka = ["miau"] -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// stackb = ["pi"]
+
+// ft_mtswap_nodes(*stacka, *stackb);
+// stacka = ["pi"] -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// stackb = ["miau"]

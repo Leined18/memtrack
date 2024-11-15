@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 20:31:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:11:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
+// Creates a new node for a list.
 t_mt	*ft_mtnew(void *data)
 {
 	t_mt	*new;
