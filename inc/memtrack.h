@@ -22,7 +22,9 @@ void			ft_mtadd_back(t_mt **lst, t_mt *new);
 void			ft_mtpush_data(t_mt **lst, void *data);
 void			ft_mtpush_data_back(t_mt **lst, void *data);
 
-void			ft_mtremove(t_mt **lst, t_mt *remove);
+void			ft_mtremove_by_string(t_mt **lst, char *remove);
+void			ft_remove_by_number(t_mt **lst, int remove);
+void			ft_remove_by_data(t_mt **lst, void *remove);
 t_mt			*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)());
 t_mt			*ft_mtfind_data(t_mt *lst, void *data);
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
@@ -34,6 +36,9 @@ int				ft_mtsize(t_mt *lst);
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
 
 void			ft_mtpop(t_mt **lst);
+void			ft_mtpop_string(t_mt **lst, char *remove);
+void			ft_mtpop_number(t_mt **lst, int remove);
+void			ft_mtpop_data(t_mt **lst, void *remove);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mterase(t_mt **lst);
 void			ft_mtdel_data(t_mt **list);

@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtremove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 15:39:43 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:58:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-void	ft_mtremove(t_mt **lst, t_mt *remove)
+void	ft_mtremove(t_mt **lst, void *data, void (*cmp)())
 {
-	t_mt	*tmp;
+	t_mt	*current;
+	t_mt	*prev;
 
-	if (*lst == remove)
+	current = *lst;
+	prev = NULL;
+	while (current)
 	{
-		tmp = (*lst)->next;
-		ft_mtdel_data(&*lst);
-		*lst = tmp;
-		return ;
+		if (!cmp(current->data, data))
+		{
+			if (prev)
+				prev->next = current->next;
+			else
+				*lst = current->next;
+			ft_mtdel_data(&current->data);
+			return ;
+		}
+		prev = current;
+		current = current->next;
 	}
-	tmp = *lst;
-	while (tmp->next != remove)
-		tmp = tmp->next;
-	tmp->next = remove->next;
-	ft_mtdel_data(&remove);
-	free(remove);
 }

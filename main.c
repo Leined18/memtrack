@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 07:16:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:57:08 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,18 @@ int	main(void)
 	t_mt	*stacka;
 	t_mt	*stackb;
 
-	ft_mtpush_data(&stacka, "1");
-	ft_mtpush_data(&stackb, "2");
-	ft_mtpush_data(&stacka, "3");
-	ft_mtpush_data(&stackb, "4");
-	ft_mtpush_data(&stacka, "5");
-	ft_mtpush_data(&stackb, "6");
-	ft_mtpush_data(&stacka, "7");
-	ft_mtpush_data(&stackb, "8");
-	ft_mtreplace(&stacka, &stackb);
-	ft_mtprint(stacka, 1, " ");
-	ft_printf("\n");
-	ft_mtprint(stackb, 1, " ");
-	ft_mterase(&stacka);
-	ft_mtprint(stacka, 1, " ");
-	ft_mtprint(chaosmatrix(0, 0, 1), 0, "\n");
+	ft_mtpush_data(&stacka, "miau");
+	ft_mtpush_data(&stacka, "guau");
+	ft_mtpush_data(&stacka, "mu");
+	ft_mtpush_data(&stacka, "le");
+	ft_mtpush_data(&stacka, "pi");
+	ft_mtpush_data(&stacka, "ñe");
+	ft_mtpush_data(&stacka, "sa");
+	ft_mtpush_data(&stackb, "ta");
+	ft_mtpush(&stackb, &stacka);
+	ft_mtpop_string(&stacka, "pi");
+	ft_mtprint(stacka, 1, "\n");
+	ft_mtprint(stackb, 1, "\n");
+	ft_mtprint(chaosmatrix(0, 0, 1), 0, " ");
 	return (0);
 }
