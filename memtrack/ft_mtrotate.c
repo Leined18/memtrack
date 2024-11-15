@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtrotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:54:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/14 13:54:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:27:26 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ void	ft_mtrotate(t_mt **list)
 	first->next = NULL;
 	last->next = first; // Coloca el primer nodo al final
 }
+

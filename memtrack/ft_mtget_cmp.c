@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtfind_data.c                                   :+:      :+:    :+:   */
+/*   ft_mtget_cmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:57:38 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 11:13:02 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/15 10:51:05 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/15 10:52:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-t_mt	*ft_mtfind_data(t_mt *lst, void *data)
+t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n)
 {
-	while (lst)
+	t_mt	*prev;
+	t_mt	*current;
+
+	prev = NULL;
+	if (!lst || !*lst || !cmp || !n)
+		return (NULL);
+	current = *lst;
+	while (current)
 	{
-		if ((void *)lst->data == (void *)data)
-			return (lst);
-		lst = lst->next;
+		if (cmp(current->data, data, n) == 0)
+		{
+			if (prev)
+				prev->next = current->next;
+			else
+				*lst = current->next;
+			current->next = NULL;
+			return (current);
+		}
+		prev = current;
+		current = current->next;
 	}
 	return (NULL);
 }

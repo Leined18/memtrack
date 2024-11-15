@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_freedom.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:31:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/13 15:37:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/11/15 07:55:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	freedom(void **data, t_mt **list)
 {
 	if (list && *list && data && *data)
 	{
-		ft_mtremove(list, ft_mtfind_data(*list, *data));
+		free(*data);
+		*data = NULL;
+		ft_mtpop(list);
 		return ;
 	}
 	if (data && *data)
