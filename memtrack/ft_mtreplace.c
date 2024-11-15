@@ -3,29 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtreplace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 18:01:42 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:22:35 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/15 17:07:31 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/15 17:25:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-// Replaces the list 'lst' with the list 'replace'.
-void	ft_mtreplace(t_mt **lst, t_mt **replace)
-{
-	t_mt *tmp;
+// Replaces the data 'to_replace' with 'new_data' in the list 'list'.
 
-	tmp = *replace;
-	while (*lst)
-		ft_mtpop(lst);
-	*lst = tmp;
-	*replace = NULL;
+void	ft_mtreplace(t_mt *list, void *to_replace, void *new_data, int (*cmp)(),
+		size_t n)
+{
+	t_mt	*current;
+
+	if (!list || !cmp)
+		return ;
+	current = list;
+	while (current)
+	{
+		if (cmp(current->data, to_replace, n) == 0)
+		{
+			ft_mtdel_data(&current->data);
+			current->data = new_data;
+		}
+		current = current->next;
+	}
 }
 
-// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
-// stackb = "pi"
-// ft_mtreplace(&stacka, &stackb); // reemplaza stacka por stackb
-// stacka = "pi"
-// stackb = NULL
+// stacka = "miau" -> "guau" -> ["mu"] -> "le" -> ["mu"] -> "ñe" -> "sa"
+// ft_mtreplace(stacka, "mu", "pi", ft_memcmp, 2); // reemplaza "mu" por "pi"
+// stacka = "miau" -> "guau" -> ["pi"] -> "le" -> ["pi"] -> "ñe" -> "sa"

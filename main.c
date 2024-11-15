@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:33:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:24:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@ int	main(void)
 	stacka = NULL;
 	stackb = NULL;
 	ft_mtpush_data_back(&stacka, "miau");
-	ft_mtpush_data_back(&stacka, "guau");
+	ft_mtpush_data_back(&stacka, "pi");
 	ft_mtpush_data_back(&stacka, "mu");
 	ft_mtpush_data_back(&stacka, "le");
 	ft_mtpush_data_back(&stacka, "asd");
-	ft_mtpush_data_back(&stacka, "ñe");
-	ft_mtpush_data_back(&stacka, "sa");
+	ft_mtpush_data_back(&stacka, "pi");
 	ft_mtpush_data_back(&stackb, "pi");
-	ft_mtmigrate_back(ft_mtfind_cmp_ref(&stacka, "le", ft_strncmp, 2), &stackb);
-	printf("stacka: %p\n", stacka);
-	ft_mtprint(stacka, 1, "\n");
-	printf("stackb: %p\n", stackb);
-	ft_mtprint(stackb, 1, "\n");
-	ft_mtprint(chaosmatrix(0, 0, 1), 0, " ");
+	ft_mtpush_data_back(&stackb, "po");
+	ft_mtprint(stacka, 1, " ");
+	ft_mtprint(stackb, 1, " ");
+	ft_mtreplace(stacka, "pi", "po", ft_memcmp, 2);
+	ft_mtprint(stacka, 1, " ");
+	ft_mtprint(stackb, 1, " ");
+	ft_mtreplace_all(&stacka, &stackb);
+	ft_mtprint(stacka, 1, " ");
+	ft_mtprint(stackb, 1, " ");
 	return (0);
 }

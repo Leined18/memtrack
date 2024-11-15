@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/15 10:53:39 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/15 17:10:26 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
 				ft_mtiter ft_mtlast ft_mtprint ft_mtremove ft_mtsize \
 				ft_mtadd_front ft_mtpop ft_mtpush_data ft_mtpush_data_back\
 				ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
-				ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtreplace \
+				ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtreplace ft_mtreplace_all \
 				ft_mtnew_chaos ft_mtget_cmp \
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr

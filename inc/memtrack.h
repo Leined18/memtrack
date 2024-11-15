@@ -40,9 +40,11 @@ void			ft_mtpop_cmp(t_mt **lst, void *remove, int (*cmp)(), size_t n);
 void			ft_mtclear(t_mt **lst, void (*del_func)());
 void			ft_mterase(t_mt **lst);
 void			ft_mtdel_data(void **data);
-void			ft_mtreplace(t_mt **lst, t_mt **replace);
+void			ft_mtreplace_all(t_mt **lst, t_mt **replace);
 
 // operations
+void			ft_mtreplace(t_mt *list, void *to_replace, void *new_data,
+					int (*cmp)(), size_t n);
 void			ft_mtmigrate(t_mt **src, t_mt **dest);
 void			ft_mtpush(t_mt **src, t_mt **dest);
 void			ft_mtpush_back(t_mt **src, t_mt **dest);
