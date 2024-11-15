@@ -14,7 +14,15 @@ typedef struct s_mt
 	int			count;
 	int			n;
 	struct s_mt	*next;
+	struct s_mt	*prev;
 }				t_mt;
+
+typedef struct s_stack
+{
+	t_mt		*head;
+	t_mt		*tail;
+	int			size;
+}				t_stack;
 
 t_mt			**ft_mtfind_cmp_ref(t_mt **lst, void *data, int (*cmp)(),
 					size_t n);
