@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtmigrate_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:01:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:09:27 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:45:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

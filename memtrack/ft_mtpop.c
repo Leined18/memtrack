@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:14:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:05:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 void	ft_mtpop(t_mt **lst)
 {
 	t_mt	*tmp;
-	t_mt	*mem;
+	t_mt	*gc;
 
 	if (!*lst)
 		return ;
 	tmp = *lst;
 	*lst = (*lst)->next;
-	mem = chaosmatrix(0, 0, 1);
-	ft_mtadd_back(&mem, ft_mtnew(tmp->data)); // añade data al cubo de basura
-	free(tmp); // se libera el nodo
-	tmp = NULL; // se pone a NULL
+	gc = chaosmatrix(0, 0, 1);
+	ft_mtpush_back(&tmp, &gc); // guarda el nodo en el cubo de basura.
 }
 
 // Deletes the first element of the list that matches the data with the function cmp.
