@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/16 11:24:16 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/16 12:37:08 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,8 +73,7 @@ MTLIB_DIR		:= mtlib/
 STACK_DIR		:= stack/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
-INC_LIBFT		:= $(LIBFT_DIR)$(INC)
-INCLUDES		:= $(INC)*.h $(MEMTRACK_DIR)*.h $(MTLIB_DIR)*.h #$(STACK_DIR)*.h
+INCLUDES		:= $(MEMTRACK_DIR)*.h $(MTLIB_DIR)*.h  $(INC)*.h #$(STACK_DIR)*.h
 
 #==========COMMANDS============================================================#
 

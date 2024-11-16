@@ -5,120 +5,141 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:05:48 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/16 15:22:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memtrack.h"
 
-t_stack	*ft_stknew(void)
+// Funciones auxiliares para mostrar gráficos
+void	print_title(const char *title)
 {
-	t_stack	*stack;
-
-	stack = (t_stack *)chaosmatrix(1, sizeof(t_stack), 0);
-	if (!stack)
-		return (NULL);
-	stack->head = NULL;
-	stack->tail = NULL;
-	stack->size = 0;
-	return (stack);
+	printf("\n%s\n", "==========================");
+	printf("   %s\n", title);
+	printf("%s\n\n", "==========================");
 }
 
-t_mt	*ft_stkhead(t_stack *stack)
+void	print_list(t_mt *list)
 {
-	if (stack && stack->head)
-		return (stack->head);
-	return (NULL);
-}
-
-t_mt	*ft_stktail(t_stack *stack)
-{
-	if (stack && stack->tail)
-		return (stack->tail);
-	return (NULL);
-}
-
-t_mt	*ft_stkprev(t_mt *node)
-{
-	if (node)
-		return (node->prev);
-	return (NULL);
-}
-
-void	ft_stkadd_back(t_stack *stack, t_mt *new)
-{
-	if (!stack || !new)
-		return ;
-	if (!stack->head)
+	if (!list)
 	{
-		stack->head = new;
-		stack->tail = new;
+		printf("(NULL)\n");
 		return ;
 	}
-	stack->tail->next = new;
-	new->prev = stack->tail;
-	stack->tail = new;
-}
-
-void	ft_stkadd_front(t_stack *stack, t_mt *new)
-{
-	if (!stack || !new)
-		return ;
-	if (!stack->head)
+	while (list)
 	{
-		stack->head = new;
-		stack->tail = new;
-		return ;
+		printf("%d", *(int *)(list->data));
+		if (list->next)
+			printf(" -> ");
+		list = list->next;
 	}
-	stack->head->prev = new;
-	new->next = stack->head;
-	stack->head = new;
+	printf("\n");
 }
 
-void	ft_stkrmmt(t_stack *stack, t_mt *node)
+// Función de comparación para enteros
+int	cmp_int(void *a, void *b, size_t n)
 {
-	if (!node || !stack)
-		return ;
-	if (node->prev)
-		node->prev->next = node->next;
-	if (node->next)
-		node->next->prev = node->prev;
-	if (node == stack->head)
-		stack->head = node->next;
-	if (node == stack->tail)
-		stack->tail = node->prev;
-	free(node);
-	stack->size--;
+	(void)n; // Evitar advertencias por parámetro no utilizado
+	return (*(int *)a - *(int *)b);
 }
-
-void	ft_stkclear(t_stack *stack)
+void	print_node(void *data)
 {
-	ft_mterase(&stack->head);
+	printf("Node value: %d\n", *(int *)data);
 }
-
+// Main para probar todas las funciones
+// Main para pruebas
 int	main(void)
 {
-	t_mt	*stacka;
-	t_mt	*tmp;
+	t_mt *list = NULL;
+	t_mt *migrated_list = NULL;
+	t_mt *node;
+	int values[] = {42, 56, 30, 20, 10};
 
-	stacka = NULL;
-	tmp = chaosmatrix(0, 0, 1);
-	ft_mtprint(tmp, 0, " ");
-	ft_mtpush_data(&stacka, "miau");
-	ft_mtpush_data(&stacka, "guau");
-	ft_mtpush_data(&stacka, "mu");
-	ft_mtpush_data(&stacka, "le");
-	ft_mtpush_data(&stacka, "asd");
-	ft_mtpush_data(&stacka, "ñe");
-	ft_mtpush_data(&stacka, "sa");
-	ft_mtprint(stacka, 1, " -> ");
-	tmp = chaosmatrix(0, 0, 1);
-	ft_mtprint(tmp, 0, " ");
-	chaosmatrix(-1, 0, 0);
-	ft_mterase(&stacka);
-	ft_mtprint(stacka, 1, " -> ");
-	tmp = chaosmatrix(0, 0, 1);
-	ft_mtprint(tmp, 0, " ");
+	print_title("Test ft_mtnew");
+	node = ft_mtnew_chaos(&values[0]);
+	printf("Node created with value: %d\n", *(int *)(node->data));
+	ft_mtadd_back(&list, node);
+	print_list(list);
+
+	print_title("Test ft_mtadd_back");
+	ft_mtadd_back(&list, ft_mtnew(&values[1]));
+	printf("List after adding node: ");
+	print_list(list);
+
+	print_title("Test ft_mtpush_data");
+	ft_mtpush_data(&list, &values[2]);
+	printf("List after pushing data: ");
+	print_list(list);
+
+	print_title("Test ft_mtremove");
+	ft_mtremove(&list, &values[0], cmp_int, sizeof(int));
+	printf("List after removing 42: ");
+	print_list(list);
+
+	print_title("Test ft_mtsize");
+	printf("Size of list: %d\n", ft_mtsize(list));
+
+	print_title("Test ft_mtclear");
+	ft_mtclear(&list, ft_mtdel_data);
+	printf("List after clear: ");
+	print_list(list);
+
+	print_title("Test ft_mtiter");
+	ft_mtpush_data(&list, &values[3]);
+	ft_mtpush_data(&list, &values[2]);
+	ft_mtpush_data(&list, &values[4]);
+	ft_mtpush_data(&list, &values[1]);
+	ft_mtiter(list, print_node);
+
+	print_title("Test ft_mtpush_back");
+	ft_mtpush_back(&list, &migrated_list);
+	ft_mtpush_back(&list, &migrated_list);
+	printf("List after pushing back to new list:\n");
+	printf("Old List: ");
+	print_list(list);
+	printf("New List: ");
+	print_list(migrated_list);
+
+	print_title("Test ft_mtrotate");
+	ft_mtrotate(&migrated_list);
+	printf("List after rotate: ");
+	print_list(migrated_list);
+
+	printf("List before swap: ");
+	print_list(migrated_list);
+	ft_mtswap(&migrated_list);
+	printf("List after swap: ");
+	print_list(migrated_list);
+
+	print_title("Test ft_mtmigrate");
+	ft_mtmigrate(&migrated_list, &list);
+	printf("List after migrate to new list:\n");
+	printf("Source List: ");
+	print_list(migrated_list);
+	printf("Destination List: ");
+	print_list(list);
+
+	print_title("Test ft_mtreplace");
+	ft_mtreplace(list, &values[2], &values[0], cmp_int, sizeof(int));
+	printf("List after replace 30 with 42: ");
+	print_list(list);
+
+	print_title("Test ft_mtinsert_index");
+	ft_mtinsert_index(&list, ft_mtnew(&values[2]), 2);
+	printf("List after insert 30 at index 2: ");
+	print_list(list);
+
+	print_title("Test ft_mtreverse_rotate");
+	ft_mtreverse_rotate(&list);
+	printf("List after reverse rotate: ");
+	print_list(list);
+
+	/* print_title("Test ft_mtswap_nodes");
+	ft_mtswap_nodes(&list, list, list->next);
+	printf("List after swap nodes: ");
+	print_list(list); */
+
+	print_title("All tests completed");
 	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:11:23 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:49:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // busca el nodo que buscas en la lista y elimina la data no el nodo.
-void	ft_mtremove(t_mt **lst, void *data, int *(cmp)(), size_t n)
+void	ft_mtremove(t_mt **lst, void *data, int (*cmp)(), size_t n)
 {
 	t_mt	*current;
 	t_mt	*prev;
