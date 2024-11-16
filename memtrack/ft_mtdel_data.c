@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdel_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:10:19 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 12:58:14 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:09:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 void	del_array(char **data, size_t size)
 {
@@ -32,14 +32,14 @@ void	del_array(char **data, size_t size)
 // Deletes the data of the element of the list.
 void	ft_mtdel_data(void **data)
 {
-    t_mt *gc;
-    
+	t_mt	*gc;
+
 	if (data && *data)
-    {
-        gc = chaosmatrix(0, 0, 1);
-        ft_mtadd_back(&gc, ft_mtnew(*data));
-        *data = NULL;
-    }
+	{
+		gc = chaosmatrix(0, 0, 1);
+		ft_mtadd_back(&gc, ft_mtnew(*data));
+		*data = NULL;
+	}
 }
 
 /* mt->data = ft_strdup("miau");

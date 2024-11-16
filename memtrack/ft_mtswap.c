@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtswap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:53:43 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:25:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:11:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 void	ft_mtswap_nodes(t_mt *node1, t_mt *node2)
 {
@@ -25,7 +25,7 @@ void	ft_mtswap_nodes(t_mt *node1, t_mt *node2)
 
 void	ft_mtswap(t_mt **list)
 {
-	t_mt *tmp;
+	t_mt	*tmp;
 
 	if (!list || !*list || !(*list)->next)
 		return ;

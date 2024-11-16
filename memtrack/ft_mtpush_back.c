@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:58:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:18:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:23:50 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Adds the element 'new' at the end of the list.
 void	ft_mtpush_back(t_mt **src, t_mt **dest)
@@ -36,6 +36,6 @@ void	ft_mtpush_back(t_mt **src, t_mt **dest)
 
 // stacka = "miau" "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
 // stackb = "pi"
-// ft_mtpush_back(&stacka, &stackb); mueve el primer elemento de src atras de dest.
+// ft_mtpush_back(&stacka,&stackb); mueve el primer elemento de src atras de dest.
 // stacka = "guau" -> "mu" -> "le" -> "asd" -> "ñe"
 // stackb = "pi" -> "miau"

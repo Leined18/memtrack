@@ -6,11 +6,11 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:07:31 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 17:25:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:11:28 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Replaces the data 'to_replace' with 'new_data' in the list 'list'.
 

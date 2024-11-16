@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtmigrate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:53:15 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:11:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:10:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Migrates all the elements of the list src to the list dest in front.
 void	ft_mtmigrate(t_mt **src, t_mt **dest)

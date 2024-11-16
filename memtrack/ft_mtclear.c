@@ -6,14 +6,14 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 19:09:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:14:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Deletes and frees the memory of the elements of the list. with the funtion del_func.
-// delete all the elements of the list. not in chaosmatrix. (data -> chaosmatrix.)
+// delete all the elements of the list. not in chaosmatrix. (data-> chaosmatrix.)
 void	ft_mtclear(t_mt **lst, void (*del_func)())
 {
 	t_mt	*tmp;

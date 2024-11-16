@@ -6,11 +6,11 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:13 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 17:42:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:09:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Adds the element 'new' at the end of the list.
 

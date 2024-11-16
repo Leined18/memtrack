@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtreplace.c                                     :+:      :+:    :+:   */
+/*   ft_mtreplace_all.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:01:42 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 17:07:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:11:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Replaces the list 'lst' with the list 'replace'.
 void	ft_mtreplace_all(t_mt **lst, t_mt **replace)
 {
-	t_mt *tmp;
+	t_mt	*tmp;
 
 	tmp = *replace;
 	while (*lst)

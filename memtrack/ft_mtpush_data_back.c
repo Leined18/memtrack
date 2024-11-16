@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:13:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:18:27 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:10:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
-
+#include "mt.h"
 
 // Adds the element 'data' at the end of the list.
 void	ft_mtpush_data_back(t_mt **lst, void *data)
@@ -24,7 +23,7 @@ void	ft_mtpush_data_back(t_mt **lst, void *data)
 	new->data = data;
 	new->size = sizeof(t_mt);
 	new->count = 1;
-    new->next = NULL;
+	new->next = NULL;
 	ft_mtadd_back(lst, new);
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

@@ -6,11 +6,11 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 17:22:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:10:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // imprime la lista de datos de la lista.
 void	ft_mtprint(t_mt *lst, int b, char *c)

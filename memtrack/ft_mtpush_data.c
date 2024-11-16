@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:19:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:10:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 void	ft_mtpush_data(t_mt **lst, void *data)
 {
@@ -22,7 +22,7 @@ void	ft_mtpush_data(t_mt **lst, void *data)
 	new->data = data;
 	new->size = sizeof(t_mt);
 	new->count = 1;
-    new->next = NULL;
+	new->next = NULL;
 	ft_mtadd_front(lst, new);
 }
 

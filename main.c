@@ -6,11 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:12:30 by danpalac          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/15 18:22:31 by danpalac         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/15 19:51:41 by danpalac         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/11/16 11:05:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,24 +99,6 @@ void	ft_stkclear(t_stack *stack)
 
 int	main(void)
 {
-<<<<<<< HEAD
-	t_stack	*stacka;
-	t_stack	*stackb;
-
-	stacka = ft_stknew();
-	stackb = ft_stknew();
-
-	ft_stkadd_back(stacka, ft_mtnew("miau"));
-	ft_stkadd_back(stacka, ft_mtnew("guau"));
-
-	ft_stkadd_back(stackb, ft_mtnew("pi"));
-	ft_stkadd_back(stackb, ft_mtnew("mu"));
-
-	ft_mtprint(ft_stkhead(stacka), 0, " ");
-	ft_mtprint(ft_stkhead(stackb), 0, " ");
-
-	ft_mtprint(chaosmatrix(0,0,1), 0, " ");
-=======
 	t_mt	*stacka;
 	t_mt	*tmp;
 
@@ -142,6 +120,5 @@ int	main(void)
 	ft_mtprint(stacka, 1, " -> ");
 	tmp = chaosmatrix(0, 0, 1);
 	ft_mtprint(tmp, 0, " ");
->>>>>>> main
 	return (0);
 }

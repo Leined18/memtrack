@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtget_cmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:51:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:05:58 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:10:01 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // devuelve un nodo que busque en la lista y lo aisla de la lista original. lo saca de la lista.
 t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n)

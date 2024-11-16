@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/15 17:10:26 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/16 11:24:16 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,11 @@ LIB_DIR			:= ../lib/
 
 MEMTRACK_DIR	:= memtrack/
 MTLIB_DIR		:= mtlib/
+STACK_DIR		:= stack/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
 INC_LIBFT		:= $(LIBFT_DIR)$(INC)
-INCLUDES		:= $(INC)*.h
+INCLUDES		:= $(INC)*.h $(MEMTRACK_DIR)*.h $(MTLIB_DIR)*.h #$(STACK_DIR)*.h
 
 #==========COMMANDS============================================================#
 
@@ -83,7 +84,7 @@ RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(LIBFT_DIR) -I$(INC) -I$(LIB_DIR) 
+IFLAGS		:= -I$(LIB_DIR) -I$(MEMTRACK_DIR) -I$(INC) -I$(MTLIB_DIR) -I$(STACK_DIR) 
 LFLAGS		:= -L$(LIBFT_DIR)
 
 #==========SOURCES============================================================#
@@ -96,6 +97,8 @@ MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
 				ft_mtnew_chaos ft_mtget_cmp \
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
+
+STACK_FILES:= #ft_stacknew ft_stackpush ft_stackpop ft_stacksize ft_stackclear ft_stacktop
 
 #==========FILES==============================================================#
 

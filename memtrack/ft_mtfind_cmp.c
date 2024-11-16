@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfind_cmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:11:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/15 13:02:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:09:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Finds the first element in the list that matches the data with the function cmp.
 // mt = ft_mtfind_cmp(stacka, "le", ft_strncmp, 2);
