@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 15:22:43 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:48:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memtrack.h"
+#include "mt.h"
 
 // Funciones auxiliares para mostrar gráficos
 void	print_title(const char *title)
@@ -19,25 +19,6 @@ void	print_title(const char *title)
 	printf("   %s\n", title);
 	printf("%s\n\n", "==========================");
 }
-
-void	print_list(t_mt *list)
-{
-	if (!list)
-	{
-		printf("(NULL)\n");
-		return ;
-	}
-	while (list)
-	{
-		printf("%d", *(int *)(list->data));
-		if (list->next)
-			printf(" -> ");
-		list = list->next;
-	}
-	printf("\n");
-}
-
-// Función de comparación para enteros
 int	cmp_int(void *a, void *b, size_t n)
 {
 	(void)n; // Evitar advertencias por parámetro no utilizado
@@ -49,96 +30,116 @@ void	print_node(void *data)
 }
 // Main para probar todas las funciones
 // Main para pruebas
+void	ft_stkprint(t_stack *stack, int type, char *c)
+{
+	if (!stack)
+	{
+		ft_printf("(Stack is NULL)\n");
+		return ;
+	}
+	ft_printf("Stack size: %d\n", stack->size);
+	ft_printf("Stack head: %p\n", stack->head);
+	ft_mtprint(stack->head, type, c);
+	ft_printf("Stack tail: %p\n", stack->tail);
+	ft_printf("\n");
+}
+
+void	ft_stkmigrate_back(t_stack **src, t_stack **dest)
+{
+	if (!src || !(*src) || !(*src)->head)
+		return ;
+	ft_mtmigrate_back(&(*src)->head, &(*dest)->head);
+	(*src)->tail = ft_mtlast((*src)->head);
+	if ((*dest)->size == 0)
+		(*dest)->tail = (*dest)->head;
+	else
+		(*dest)->tail = ft_mtlast((*dest)->head);
+	(*src)->size = ft_mtsize((*src)->head);
+	(*dest)->size = ft_mtsize((*dest)->head);
+}
+
+t_stack	*ft_stkunzip(t_stack **stack)
+{
+	t_stack	*unzippedlist;
+	t_mt	*current;
+	t_mt	*unzipped;
+	t_stack	*temp_stack;
+
+	if (!stack || !(*stack) || !(*stack)->head)
+		return (NULL);
+	unzippedlist = ft_stknew(NULL);
+	if (!unzippedlist)
+		return (NULL);
+	while ((*stack)->size > 0)
+	{
+		current = (*stack)->head;
+		unzipped = ft_mtunzip((current->data), current->count);
+		if (unzipped)
+		{
+			temp_stack = ft_stknew(NULL);
+			temp_stack->head = unzipped;
+			ft_stkmigrate_back(&temp_stack, &unzippedlist);
+			(ft_mtpop(&(*stack)->head), (*stack)->size--);
+		}
+		else
+			ft_stkpush(stack, &unzippedlist);
+	}
+	return (unzippedlist);
+}
+
+t_stack	*ft_stkzip(t_stack **stack)
+{
+	t_stack	*zip;
+	t_mt	*zipdata;
+
+	if (!(*stack) || !(*stack)->head)
+		return (NULL);
+	zip = ft_stknew(NULL);
+	if (!zip)
+		return (NULL);
+	zipdata = ft_mtzip(&(*stack)->head);
+	ft_mtpush(&zipdata, &zip->head);
+	(*stack) = NULL;
+	return (zip);
+}
+
+void	ft_stkadd_back(t_stack **stack, t_mt *new)
+{
+	if (!stack || !new)
+		return ;
+	ft_mtadd_back(&(*stack)->head, new);
+	(*stack)->size = ft_mtsize((*stack)->head);
+}
+
 int	main(void)
 {
-	t_mt *list = NULL;
-	t_mt *migrated_list = NULL;
-	t_mt *node;
-	int values[] = {42, 56, 30, 20, 10};
+	t_stack *stacka;
+	t_stack *stackb;
+	t_stack *stackc;
 
-	print_title("Test ft_mtnew");
-	node = ft_mtnew_chaos(&values[0]);
-	printf("Node created with value: %d\n", *(int *)(node->data));
-	ft_mtadd_back(&list, node);
-	print_list(list);
+	stacka = ft_stknew(ft_mtnew("guau"));
+	stackb = ft_stknew(ft_mtnew("miau"));
+	ft_stkadd_back(&stacka, ft_mtnew("mu"));
+	ft_stkadd_back(&stacka, ft_mtnew("le"));
+	ft_stkadd_back(&stacka, ft_mtnew("asd"));
+	ft_stkadd_back(&stacka, ft_mtnew("ñe"));
+	ft_stkadd_back(&stacka, ft_mtnew("sa"));
+	ft_stkadd_back(&stackb, ft_mtnew("pi"));
 
-	print_title("Test ft_mtadd_back");
-	ft_mtadd_back(&list, ft_mtnew(&values[1]));
-	printf("List after adding node: ");
-	print_list(list);
+	ft_stkprint(stacka, 1, " -> ");
+	ft_stkprint(stackb, 1, " -> ");
 
-	print_title("Test ft_mtpush_data");
-	ft_mtpush_data(&list, &values[2]);
-	printf("List after pushing data: ");
-	print_list(list);
+	stackc = ft_stkzip(&stacka);
+	ft_stkprint(stackc, 0, " -> ");
 
-	print_title("Test ft_mtremove");
-	ft_mtremove(&list, &values[0], cmp_int, sizeof(int));
-	printf("List after removing 42: ");
-	print_list(list);
+	stacka = ft_stkunzip(&stackc);
+	ft_stkprint(stacka, 1, " -> ");
 
-	print_title("Test ft_mtsize");
-	printf("Size of list: %d\n", ft_mtsize(list));
+	/* ft_stkprint(stacka, 1, " -> ");
+	ft_stkprint(stackb, 1, " -> "); */
 
-	print_title("Test ft_mtclear");
-	ft_mtclear(&list, ft_mtdel_data);
-	printf("List after clear: ");
-	print_list(list);
-
-	print_title("Test ft_mtiter");
-	ft_mtpush_data(&list, &values[3]);
-	ft_mtpush_data(&list, &values[2]);
-	ft_mtpush_data(&list, &values[4]);
-	ft_mtpush_data(&list, &values[1]);
-	ft_mtiter(list, print_node);
-
-	print_title("Test ft_mtpush_back");
-	ft_mtpush_back(&list, &migrated_list);
-	ft_mtpush_back(&list, &migrated_list);
-	printf("List after pushing back to new list:\n");
-	printf("Old List: ");
-	print_list(list);
-	printf("New List: ");
-	print_list(migrated_list);
-
-	print_title("Test ft_mtrotate");
-	ft_mtrotate(&migrated_list);
-	printf("List after rotate: ");
-	print_list(migrated_list);
-
-	printf("List before swap: ");
-	print_list(migrated_list);
-	ft_mtswap(&migrated_list);
-	printf("List after swap: ");
-	print_list(migrated_list);
-
-	print_title("Test ft_mtmigrate");
-	ft_mtmigrate(&migrated_list, &list);
-	printf("List after migrate to new list:\n");
-	printf("Source List: ");
-	print_list(migrated_list);
-	printf("Destination List: ");
-	print_list(list);
-
-	print_title("Test ft_mtreplace");
-	ft_mtreplace(list, &values[2], &values[0], cmp_int, sizeof(int));
-	printf("List after replace 30 with 42: ");
-	print_list(list);
-
-	print_title("Test ft_mtinsert_index");
-	ft_mtinsert_index(&list, ft_mtnew(&values[2]), 2);
-	printf("List after insert 30 at index 2: ");
-	print_list(list);
-
-	print_title("Test ft_mtreverse_rotate");
-	ft_mtreverse_rotate(&list);
-	printf("List after reverse rotate: ");
-	print_list(list);
-
-	/* print_title("Test ft_mtswap_nodes");
-	ft_mtswap_nodes(&list, list, list->next);
-	printf("List after swap nodes: ");
-	print_list(list); */
+	chaosmatrix(0, 0, CLEAR);
+	ft_mtprint(chaosmatrix(0, 0, LIST_PTR), 0, " -> ");
 
 	print_title("All tests completed");
 	return (0);

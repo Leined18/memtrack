@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/16 12:37:08 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/18 12:30:07 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,13 +67,16 @@ SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
 LIBFT_DIR		:= ../libft/
 LIB_DIR			:= ../lib/
+SRC_DIR			:= src/
 
-MEMTRACK_DIR	:= memtrack/
-MTLIB_DIR		:= mtlib/
-STACK_DIR		:= stack/
+LIST_DIR_UTILS		:= list_utils/
+HASH_DIR_UTILS		:= hash_utils/
+STACK_DIR_UTILS		:= stack_utils/
+MEM_DIR_UTILS		:= mem_utils/
+MTLIB_DIR			:= mtlib/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
-INCLUDES		:= $(MEMTRACK_DIR)*.h $(MTLIB_DIR)*.h  $(INC)*.h #$(STACK_DIR)*.h
+INCLUDES		:= $(INC)/*.h
 
 #==========COMMANDS============================================================#
 
@@ -83,28 +86,39 @@ RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(LIB_DIR) -I$(MEMTRACK_DIR) -I$(INC) -I$(MTLIB_DIR) -I$(STACK_DIR) 
+IFLAGS		:= -I$(INC) -I$(LIBFT_DIR)$(INC)
 LFLAGS		:= -L$(LIBFT_DIR)
 
 #==========SOURCES============================================================#
 #ft_pop_back ft_pop_front ft_pop_a
-MEMTRACK_FILES:= ft_mtadd_back ft_mtnew ft_mtclear ft_mtdel_data ft_mtfind_cmp \
-				ft_mtiter ft_mtlast ft_mtprint ft_mtremove ft_mtsize \
-				ft_mtadd_front ft_mtpop ft_mtpush_data ft_mtpush_data_back\
-				ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
-				ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtreplace ft_mtreplace_all \
-				ft_mtnew_chaos ft_mtget_cmp \
+
+#LIST_FILES :=  ft_mtflatten.c ft_mtmap.c ft_mtmerge.c ft_mtdistinct.c ft_mtclone.c ft_mtinsert_index.c ft_mtfind_cmp.c ft_mtlast.c ft_mtiter.c
+
+LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
+			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
+			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
+			ft_mtget_cmp ft_mtreplace ft_mtreplace_all
+
+#HASH_FILES := ft_mthash_insert.c ft_mthash_get.c ft_mthash_resize.c
+
+MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
+			ft_mtnew_chaos ft_mtreplace_data ft_mtreplace_all_data ft_mtzip ft_mtunzip \
+
+STACK_FILES := ft_stknew ft_stkpush ft_stkclear
+
+#ft_stkclone.c ft_stkpush.c ft_stkpop.c ft_stkswap.c ft_stkrotate.c ft_stkreverse_rotate.c ft_stkpush_back.c ft_stkmigrate.c ft_stkinsert_index.c
+
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
 
-STACK_FILES:= #ft_stacknew ft_stackpush ft_stackpop ft_stacksize ft_stackclear ft_stacktop
-
 #==========FILES==============================================================#
 
-SRC_FILES+=$(addprefix $(MEMTRACK_DIR), $(MEMTRACK_FILES))
+SRC_FILES+=$(addprefix $(LIST_DIR_UTILS), $(LIST_FILES))
+SRC_FILES+=$(addprefix $(MEM_DIR_UTILS), $(MEM_FILES))
 SRC_FILES+=$(addprefix $(MTLIB_DIR), $(MTLIB_FILES))
+SRC_FILES+=$(addprefix $(STACK_DIR_UTILS), $(STACK_FILES))
 
-SRCS := $(addsuffix .c, $(SRC_FILES))
+SRCS := $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 DEPS := $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
@@ -113,7 +127,7 @@ DEPS := $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 -include $(DEPS)
 all: $(NAME)
 
-$(OBJ_DIR)%.o: %.c Makefile
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@$(MKDIR) $(dir $@)	
 	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
 
