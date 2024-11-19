@@ -1,15 +1,16 @@
-t_stack	*ft_stknew(void)
-{
-	t_stack	*stack;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_files.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 07:50:24 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/19 07:51:25 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	stack = (t_stack *)chaosmatrix(1, sizeof(t_stack), 0);
-	if (!stack)
-		return (NULL);
-	stack->head = NULL;
-	stack->tail = NULL;
-	stack->size = 0;
-	return (stack);
-}
+#include "mt.h"
 
 t_mt	*ft_stkhead(t_stack *stack)
 {

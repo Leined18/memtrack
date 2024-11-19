@@ -19,6 +19,7 @@ typedef struct s_stack
 	t_mt		*head;
 	t_mt		*tail;
 	int			size;
+	char		*name;
 }				t_stack;
 
 #endif // MTSTRUCTS_H

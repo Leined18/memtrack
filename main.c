@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 13:59:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:08:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_stkprint(t_stack *stack, int type, char *c)
 	}
 	ft_printf("Stack size: %d\n", stack->size);
 	ft_printf("Stack head: %p\n", stack->head);
+	ft_printf("Stack Name: %s\n", stack->name);
 	ft_mtprint(stack->head, type, c);
 	ft_printf("Stack tail: %p\n", stack->tail);
 	ft_printf("\n");
@@ -67,7 +68,7 @@ t_stack	*ft_stkunzip(t_stack **stack)
 
 	if (!stack || !(*stack) || !(*stack)->head)
 		return (NULL);
-	unzippedlist = ft_stknew(NULL);
+	unzippedlist = ft_stknew(NULL, "unzipped");
 	if (!unzippedlist)
 		return (NULL);
 	while ((*stack)->size > 0)
@@ -76,7 +77,7 @@ t_stack	*ft_stkunzip(t_stack **stack)
 		unzipped = ft_mtunzip((current->data), current->count);
 		if (unzipped)
 		{
-			temp_stack = ft_stknew(NULL);
+			temp_stack = ft_stknew(NULL, "temp");
 			temp_stack->head = unzipped;
 			ft_stkmigrate_back(&temp_stack, &unzippedlist);
 			(ft_mtpop(&(*stack)->head), (*stack)->size--);
@@ -94,7 +95,7 @@ t_stack	*ft_stkzip(t_stack **stack)
 
 	if (!(*stack) || !(*stack)->head)
 		return (NULL);
-	zip = ft_stknew(NULL);
+	zip = ft_stknew(NULL, "zip");
 	if (!zip)
 		return (NULL);
 	zipdata = ft_mtzip(&(*stack)->head);
@@ -103,12 +104,42 @@ t_stack	*ft_stkzip(t_stack **stack)
 	return (zip);
 }
 
-void	ft_stkadd_back(t_stack **stack, t_mt *new)
+void	ft_stkadd_mt_back(t_stack **stack, t_mt *new)
 {
 	if (!stack || !new)
 		return ;
-	ft_mtadd_back(&(*stack)->head, new);
+	while (new)
+	{
+		ft_mtpush_back(&new, &(*stack)->head);
+		(*stack)->tail = ft_mtlast((*stack)->head);
+		(*stack)->size++;
+	}
+	(*stack)->tail = ft_mtlast((*stack)->head);
 	(*stack)->size = ft_mtsize((*stack)->head);
+}
+
+void	ft_stkadd_mtlist_back(t_stack **stack, t_mt **new)
+{
+    t_mt    *tmp;
+	if (!stack || !new)
+		return ;
+
+    tmp = *new;
+	while (tmp)
+	{
+		if (!(*stack))
+			(*stack) = ft_stknew(NULL, "temp");
+		ft_mtpush_back(&tmp, &(*stack)->head);
+	}
+	(*stack)->tail = ft_mtlast((*stack)->head);
+	(*stack)->size = ft_mtsize((*stack)->head);
+}
+
+void	ft_stkadd_stk_back(t_stack **stack, t_stack *new)
+{
+	if (!stack || !new)
+		return ;
+	ft_stkmigrate_back(&new, stack);
 }
 
 int	main(void)
@@ -117,19 +148,21 @@ int	main(void)
 	t_stack *stackb;
 	t_stack *stackc;
 
-	stacka = ft_stknew(ft_mtnew("guau"));
-	stackb = ft_stknew(ft_mtnew("miau"));
-	ft_stkadd_back(&stacka, ft_mtnew("mu"));
-	ft_stkadd_back(&stacka, ft_mtnew("le"));
-	ft_stkadd_back(&stacka, ft_mtnew("asd"));
-	ft_stkadd_back(&stacka, ft_mtnew("ñe"));
-	ft_stkadd_back(&stacka, ft_mtnew("sa"));
-	ft_stkadd_back(&stackb, ft_mtnew("pi"));
+	stacka = ft_stknew(ft_mtnew("dog"), "animals");
+	stackb = ft_stknew(ft_mtnew("hammer"), "objects");
+	ft_stkadd_mt_back(&stacka, ft_mtnew("mu"));
+	ft_stkadd_mt_back(&stacka, ft_mtnew("le"));
+	ft_stkadd_mt_back(&stacka, ft_mtnew("asd"));
+	ft_stkadd_mt_back(&stacka, ft_mtnew("ñe"));
+	ft_stkadd_mt_back(&stacka, ft_mtnew("sa"));
+	ft_stkadd_mt_back(&stackb, ft_mtnew("pi"));
 
 	ft_stkprint(stacka, 1, " -> ");
 	ft_stkprint(stackb, 1, " -> ");
 
 	stackc = ft_stkzip(&stacka);
+	ft_stkadd_mtlist_back(&stacka, ft_splitmt("pisodemicasa ", 'i'));
+	ft_stkadd_stk_back(&stackc, ft_stkzip(&stacka));
 	ft_stkprint(stackc, 0, " -> ");
 
 	stacka = ft_stkunzip(&stackc);

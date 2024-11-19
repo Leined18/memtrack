@@ -6,43 +6,39 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 09:44:17 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/19 08:49:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // Splits the string 's' using the character 'c' as separator.
-static size_t	ft_countword(char const *s, char c)
+char	*ft_strndup(const char *s, size_t n)
 {
-	size_t	count;
+	char	*dup;
+	size_t	i;
 
-	if (!*s)
-		return (0);
-	count = 0;
-	while (*s)
+	dup = (char *)malloc(n + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < n && s[i])
 	{
-		while (*s == c)
-			s++;
-		if (*s)
-			count++;
-		while (*s != c && *s)
-			s++;
+		dup[i] = s[i];
+		i++;
 	}
-	return (count);
+	dup[i] = '\0';
+	return (dup);
 }
-char	**ft_splitmt(char const *s, char c)
+t_mt	**ft_splitmt(char const *s, char c)
 {
-	char	**lst;
+	t_mt	**list;
+	t_mt	*new_node;
 	size_t	word_len;
-	int		i;
 
 	if (!s)
-		return (0);
-	lst = (char **)chaosmatrix((ft_countword(s, c) + 1), sizeof(char *), 0);
-	if (!s || !lst)
-		return (0);
-	i = 0;
+		return (NULL);
+	(list) = (t_mt *[]){NULL, NULL};
 	while (*s)
 	{
 		while (*s == c && *s)
@@ -53,9 +49,12 @@ char	**ft_splitmt(char const *s, char c)
 				word_len = ft_strlen(s);
 			else
 				word_len = ft_strchr(s, c) - s;
-			lst[i++] = ft_substr(s, 0, word_len);
-			s += word_len;
+			new_node = ft_mtnew_chaos(ft_strndup(s, word_len));
+			if (!new_node)
+				return (NULL);
+			new_node->size = 1;
+			(ft_mtadd_back(list, new_node), s += word_len);
 		}
 	}
-	return (lst[i] = NULL, lst);
+	return (list);
 }
