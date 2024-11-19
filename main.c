@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 09:08:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:13:50 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,11 @@ void	ft_stkadd_mt_back(t_stack **stack, t_mt *new)
 
 void	ft_stkadd_mtlist_back(t_stack **stack, t_mt **new)
 {
-    t_mt    *tmp;
+	t_mt	*tmp;
+
 	if (!stack || !new)
 		return ;
-
-    tmp = *new;
+	tmp = *new;
 	while (tmp)
 	{
 		if (!(*stack))
@@ -161,8 +161,7 @@ int	main(void)
 	ft_stkprint(stackb, 1, " -> ");
 
 	stackc = ft_stkzip(&stacka);
-	ft_stkadd_mtlist_back(&stacka, ft_splitmt("pisodemicasa ", 'i'));
-	ft_stkadd_stk_back(&stackc, ft_stkzip(&stacka));
+	ft_stkadd_mt_back(&stackc, ft_mtzip(ft_splitmt("pisodemicasaisolaiasmdasime ", 'i')));
 	ft_stkprint(stackc, 0, " -> ");
 
 	stacka = ft_stkunzip(&stackc);
