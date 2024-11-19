@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/18 12:30:07 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/19 11:02:27 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,10 +104,10 @@ LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
 			ft_mtnew_chaos ft_mtreplace_data ft_mtreplace_all_data ft_mtzip ft_mtunzip \
 
-STACK_FILES := ft_stknew ft_stkpush ft_stkclear
+STACK_FILES := ft_stknew ft_stkpush ft_stkclear ft_stkpop ft_stkadd_mt_back ft_stkadd_mtlist_back ft_stkadd_stk_back ft_stkmigrate_back \
+			ft_stkpop ft_stkprint ft_stkunzip ft_stkzip 
 
 #ft_stkclone.c ft_stkpush.c ft_stkpop.c ft_stkswap.c ft_stkrotate.c ft_stkreverse_rotate.c ft_stkpush_back.c ft_stkmigrate.c ft_stkinsert_index.c
-
 
 MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
 

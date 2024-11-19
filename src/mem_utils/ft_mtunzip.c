@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:02:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 07:58:58 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:33:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ t_mt	*ft_mtunzip(void **data, size_t size)
 		ft_mtpush_data_back(&list, data[i]);
 		i++;
 	}
+	ft_mtpush_data_back(&list, data);
 	return (list);
 }

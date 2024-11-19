@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdel_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:10:19 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:09:55 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:25:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_mtdel_data(void **data)
 	if (data && *data)
 	{
 		gc = chaosmatrix(0, 0, 1);
-		ft_mtadd_back(&gc, ft_mtnew(*data));
+		ft_mtadd_back(&gc, ft_mtnew(*data, 1, 1));
 		*data = NULL;
 	}
 }
