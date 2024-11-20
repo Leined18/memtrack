@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 08:49:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:15:25 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ char	*ft_strndup(const char *s, size_t n)
 	dup[i] = '\0';
 	return (dup);
 }
-t_mt	**ft_splitmt(char const *s, char c)
+t_mt	*ft_splitmt(char const *s, char c)
 {
-	t_mt	**list;
+	t_mt	*list;
 	t_mt	*new_node;
 	size_t	word_len;
 
 	if (!s)
 		return (NULL);
-	(list) = (t_mt *[]){NULL, NULL};
+	list = NULL;
 	while (*s)
 	{
 		while (*s == c && *s)
@@ -53,7 +53,7 @@ t_mt	**ft_splitmt(char const *s, char c)
 			if (!new_node)
 				return (NULL);
 			new_node->size = 1;
-			(ft_mtadd_back(list, new_node), s += word_len);
+			(ft_mtadd_back(&list, new_node), s += word_len);
 		}
 	}
 	return (list);
