@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stkclear.c                                      :+:      :+:    :+:   */
+/*   ft_mtdel_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 11:30:38 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 12:19:08 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/25 16:12:50 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/25 18:14:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "mt.h"
 
-void	ft_stkclear(t_stack **stack)
+void	ft_mtdel_list(void **data)
 {
-	if (!stack || !*stack)
+	t_mt	*tmp;
+
+	if (!data)
 		return ;
-	ft_mterase(&(*stack)->head); // Borramos todos los nodos de la pila
-	free((*stack));
-		// Finalmente liberamos la estructura de la pila
-	(*stack) = NULL;
+	tmp = (t_mt *)*data;
+	ft_mtclear(&tmp);
+	*data = NULL;
 }
+

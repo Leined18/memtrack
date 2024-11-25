@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew_chaos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:51:22 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/11/18 13:58:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:19:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,5 @@ t_mt	*ft_mtnew_chaos(void *data)
 	if (!new)
 		return (NULL);
 	new->data = data;
-	new->size = 0;
-	new->count = 0;
-	new->next = NULL;
-    new->prev = NULL;
 	return (new);
 }

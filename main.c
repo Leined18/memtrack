@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 11:14:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:38:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,36 @@ int	cmp_int(void *a, void *b, size_t n)
 	(void)n; // Evitar advertencias por parámetro no utilizado
 	return (*(int *)a - *(int *)b);
 }
-void	print_node(void *data)
-{
-	printf("Node value: %d\n", *(int *)data);
-}
-// Main para probar todas las funciones
-// Main para pruebas
 
 int	main(void)
 {
-	t_stack	*stacka;
-	t_stack	*stackb;
-	t_stack	*stackc;
+	t_hash_table	*ht;
+	t_mt			*arr;
 
-	stacka = ft_stknew(ft_mtnew("dog"), "animals");
-	ft_stkadd_mt_back(&stacka, ft_mtnew("cat"));
-	stackb = ft_stknew(ft_mtnew("hammer"), "objects");
-	ft_stkadd_mt_back(&stacka, ft_mtnew("mu"));
-	ft_stkadd_mt_back(&stacka, ft_mtnew("le"));
-	ft_stkadd_mt_back(&stacka, ft_mtnew("asd"));
-	ft_stkadd_mt_back(&stacka, ft_mtnew("ñe"));
-	ft_stkadd_mt_back(&stacka, ft_mtnew("sa"));
-	ft_stkadd_mt_back(&stackb, ft_mtnew("pi"));
-	ft_stkprint(stacka, 1, " -> ");
-	ft_stkprint(stackb, 1, " -> ");
-	stackc = ft_stkzip(&stacka);
-	stackb = ft_stkzip(&stackb);
-	ft_stkadd_stk_back(&stackc, stackb);
-	ft_stkprint(stackc, 0, " -> ");
-	stacka = ft_stkunzip(&stackc);
-	ft_stkprint(stacka, 1, " -> ");
-	/* ft_stkprint(stacka, 1, " -> ");
-	ft_stkprint(stackb, 1, " -> "); */
-	chaosmatrix(0, 0, CLEAR);
-	ft_mtprint(chaosmatrix(0, 0, LIST_PTR), 0, " -> ");
-	print_title("All tests completed");
+	ht = ft_mtnew_hash_table(3);
+	if (!ht)
+		return (1);
+	arr = ft_splitmt("HOME/DANPALAC/BIN:USR/BIN:KERNEL/BIN", ':');
+	ft_mthash_insert(ht, "PATH", arr, LIST);
+	ft_mthash_insert(ht, "NUMBERS", ft_mtnew("DECIMAL", ft_strdup("1234567890"),
+			STRING), LIST);
+	ft_mthash_insert(ht, "LETTERS", ft_mtnew("LATIN", ft_strdup("ABCDEFGHIJ"),
+			STRING), LIST);
+	ft_mthash_insert(ht, "HOLA", ft_strdup("hola"), STRING);
+	ft_mtprint_hash_table(ht);
+	print_title("FINDING DATA");
+	arr = (t_mt *)ft_mthash_find(ht, "PATH");
+	if (arr)
+	{
+		ft_printf("DATA: %s\n", (char *)arr->data);
+		ft_printf("KEY: %s\n", arr->key);
+	}
+	print_title("REMOVING DATA");
+	ft_mthash_remove(ht, "NUMBERS");
+	ft_mtprint_hash_table(ht);
+	print_title("REPLACING DATA");
+	ft_mthash_insert(ht, "HOLA", ft_strdup("adios"), STRING);
+	ft_mtprint_hash_table(ht);
+	ft_mtfree_hash_table(ht);
 	return (0);
 }

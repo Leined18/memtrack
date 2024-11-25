@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/19 11:02:27 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/25 16:16:40 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ INCLUDES		:= $(INC)/*.h
 #==========COMMANDS============================================================#
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		:= -Wall -Wextra -Werror -g3 #-fsanitize=address
 RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
@@ -99,13 +99,10 @@ LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
 			ft_mtget_cmp ft_mtreplace ft_mtreplace_all
 
-#HASH_FILES := ft_mthash_insert.c ft_mthash_get.c ft_mthash_resize.c
+HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mtnew_hash_table ft_mtprint_hash_table 
 
-MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
+MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtdel_list ft_mterase ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
 			ft_mtnew_chaos ft_mtreplace_data ft_mtreplace_all_data ft_mtzip ft_mtunzip \
-
-STACK_FILES := ft_stknew ft_stkpush ft_stkclear ft_stkpop ft_stkadd_mt_back ft_stkadd_mtlist_back ft_stkadd_stk_back ft_stkmigrate_back \
-			ft_stkpop ft_stkprint ft_stkunzip ft_stkzip 
 
 #ft_stkclone.c ft_stkpush.c ft_stkpop.c ft_stkswap.c ft_stkrotate.c ft_stkreverse_rotate.c ft_stkpush_back.c ft_stkmigrate.c ft_stkinsert_index.c
 
@@ -115,6 +112,7 @@ MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr
 
 SRC_FILES+=$(addprefix $(LIST_DIR_UTILS), $(LIST_FILES))
 SRC_FILES+=$(addprefix $(MEM_DIR_UTILS), $(MEM_FILES))
+SRC_FILES+=$(addprefix $(HASH_DIR_UTILS), $(HASH_FILES))
 SRC_FILES+=$(addprefix $(MTLIB_DIR), $(MTLIB_FILES))
 SRC_FILES+=$(addprefix $(STACK_DIR_UTILS), $(STACK_FILES))
 

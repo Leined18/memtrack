@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stkadd_mt_back.c                                :+:      :+:    :+:   */
+/*   ft_mterase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:58:36 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 10:58:41 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/25 11:39:14 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/25 11:45:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "mt.h"
 
-void	ft_stkadd_mt_back(t_stack **stack, t_mt *new)
+void	ft_mterase(t_mt **lst)
 {
-	if (!stack || !new)
+	if (!lst || !*lst)
 		return ;
-	if (new)
-		ft_mtpush_back(&new, &(*stack)->head);
-	(*stack)->tail = ft_mtlast((*stack)->head);
-	(*stack)->size = ft_mtsize((*stack)->head);
+	while (*lst)
+		ft_mtpop(lst);
 }

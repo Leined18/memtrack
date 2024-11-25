@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtzip.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:30:29 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 13:50:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:40:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
+
+static void	ft_erase(t_mt **lst)
+{
+	t_mt	*tmp;
+
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		if (tmp->key)
+			free(tmp->key);
+		free(tmp);
+	}
+	*lst = NULL;
+}
 
 t_mt	*ft_mtzip(t_mt **lst)
 {
@@ -36,7 +53,7 @@ t_mt	*ft_mtzip(t_mt **lst)
 		tmp = tmp->next;
 	}
 	datas[i] = NULL;
-	(ft_mterase(lst), new = ft_mtnew_chaos(datas));
+	(ft_erase(lst), new = ft_mtnew_chaos(datas));
 	new->count = size;
 	return (new);
 }

@@ -3,29 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 09:38:58 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:57:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // Creates a new node for a list.
-t_mt	*ft_mtnew(void *data, ...)
+t_mt	*ft_mtnew(const char *key, void *data, t_data_type type)
 {
-	va_list	args;
-	t_mt	*new;
+	t_mt	*node;
 
-	va_start(args, data);
-	new = (t_mt *)malloc(sizeof(t_mt));
-	if (!new)
+	node = ft_calloc(1, sizeof(t_mt));
+	if (!node)
 		return (NULL);
-    ft_memset(new, 0, sizeof(t_mt));
-	new->data = data;
-	new->size = va_arg(args, size_t);
-	new->count = va_arg(args, int);
-	va_end(args);
-	return (new);
+	node->key = ft_strdup(key);
+	if (!node->key)
+		return (free(node), NULL);
+	node->data = data;
+	node->size = sizeof(data);
+	node->count = 1;
+	node->type = type;
+	if (type == STRING)
+		node->free_data = ft_mtdel_data;
+	else if (type == LIST)
+		node->free_data = ft_mtdel_list;
+	return (node);
 }

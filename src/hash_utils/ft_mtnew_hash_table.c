@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtunzip.c                                       :+:      :+:    :+:   */
+/*   ft_mtnew_hash_table.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 11:02:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 11:14:51 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/25 13:39:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_mt	*ft_mtunzip(void **data, size_t size)
-{
-	t_mt	*list;
-	size_t	i;
+/**
+ * ft_new_hash_table - Crea una nueva tabla hash.
+ * @bucket_count: Número de buckets.
+ *
+ * Retorna un puntero a la nueva tabla hash.
+ */
 
-	if (!data || size == 0)
+t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
+{
+	t_hash_table	*ht;
+
+	ht = malloc(sizeof(t_hash_table));
+	if (!ht)
 		return (NULL);
-	list = NULL;
-	i = 0;
-	while (i < size)
-	{
-		ft_mtpush_data_back(&list, data[i]);
-		i++;
-	}
-	free(data);
-	return (list);
+	ht->bucket_count = bucket_count;
+	ht->buckets = (t_mt **)ft_calloc(bucket_count, sizeof(t_mt *));
+	if (!ht->buckets)
+		return (free(ht), NULL);
+	return (ht);
 }
