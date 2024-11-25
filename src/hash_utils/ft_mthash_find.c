@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:23:07 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 13:31:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:34:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_mthash_find(t_hash_table *ht, const char *key)
 	while (current)
 	{
 		if (ft_strncmp(current->key, key, ft_strlen(current->key)) == 0)
-			return (current->data);
+			return (current);
 		current = current->next;
 	}
 	return (NULL);

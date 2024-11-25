@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 18:17:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:42:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_mt	*ft_splitmt_create_node(const char *s, size_t len)
 	data = ft_strndup(s, len);
 	if (!data)
 		return (NULL);
-	return (ft_mtnew("2", data, STRING));
+	return (ft_mtnew("", data, STRING));
 }
 
 static size_t	ft_splitmt_extract_word(const char *s, char c)

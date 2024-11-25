@@ -14,9 +14,9 @@ typedef struct s_mt
 {
 	char		*key;
 	void		*data;
+	t_data_type	type;
 	size_t		size;
 	int			count;
-	t_data_type	type;
 	struct s_mt	*next;
 	struct s_mt	*prev;
 	void		(*free_data)(void **);
