@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 19:36:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:46:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,25 +122,38 @@ int	test_search_in_children(void)
 
 int	test_search_node(void)
 {
+	t_mt	*greatgrandchild;
+	t_mt	*grandchild;
 	t_mt	*child1;
-	t_mt	*child2;
 	t_mt	*parent;
 	t_mt	*result;
 
-	child1 = ft_mtnew("child1", NULL, STRING);
-	child2 = ft_mtnew("child2", NULL, STRING);
-	ft_mtadd_back(&child1, child2);
+	// Crear nodos
+	greatgrandchild = ft_mtnew("greatgrandchild", NULL, STRING);
+	grandchild = ft_mtnew("grandchild", greatgrandchild, LIST);
+	child1 = ft_mtnew("child1", grandchild, LIST);
 	parent = ft_mtnew("parent", child1, LIST);
-	result = search_node(parent, "child2", compare_node);
-	if (!result || ft_strcmp(result->key, "child2") != 0)
-		return (0); // Debe encontrar child2
+	// Buscar "greatgrandchild" en el árbol
+	result = search_node(parent, "greatgrandchild", compare_node);
+	if (!result || ft_strcmp(result->key, "greatgrandchild") != 0)
+		return (0); // Debe encontrar greatgrandchild
+	// Buscar "grandchild" en el árbol
+	result = search_node(parent, "grandchild", compare_node);
+	if (!result || ft_strcmp(result->key, "grandchild") != 0)
+		return (0); // Debe encontrar grandchild
+	// Buscar "child1" en el árbol
+	result = search_node(parent, "child1", compare_node);
+	if (!result || ft_strcmp(result->key, "child1") != 0)
+		return (0); // Debe encontrar child1
+	// Buscar "parent" en el árbol
 	result = search_node(parent, "parent", compare_node);
 	if (!result || ft_strcmp(result->key, "parent") != 0)
 		return (0); // Debe encontrar parent
+	// Intentar buscar un nodo inexistente
 	result = search_node(parent, "nonexistent", compare_node);
 	if (result)
 		return (0); // No debe encontrar ningún nodo con esta clave
-	return (1);     // Prueba exitosa
+	return (1); // Prueba exitosa
 }
 
 int	test_hash_table_operations(void)
@@ -200,6 +213,6 @@ int	main(void)
 		ft_printf("Test hash table operations failed\n");
 		return (1);
 	}
-	ft_printf(GREEN"All tests passed successfully\n"RESET);
+	ft_printf(GREEN "All tests passed successfully\n" RESET);
 	return (0);
 }
