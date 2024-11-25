@@ -10,6 +10,8 @@
 t_mt	**ft_mtfind_cmp_ref(t_mt **lst, void *data, int (*cmp)(), size_t n);
 t_mt	*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)(), size_t n);
 t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n);
+t_mt	*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
+				const char *));
 
 void	ft_mtadd_back(t_mt **lst, t_mt *new);
 void	ft_mtiter(t_mt *lst, void (*f)(void *));

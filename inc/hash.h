@@ -13,6 +13,7 @@ void			*ft_mthash_find(t_hash_table *ht, const char *key);
 void			ft_mtfree_hash_table(t_hash_table *ht);
 void			ft_mtprint_hash_table(t_hash_table *ht);
 int				ft_mthash_remove(t_hash_table *ht, const char *key);
+int				ft_mthash_find_index(t_hash_table *ht, const char *key);
 // Function prototypes
 
 #endif // HASH_H
