@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/25 21:04:44 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/26 11:16:59 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ INCLUDES		:= $(INC)/*.h
 #==========COMMANDS============================================================#
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
 RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
@@ -97,10 +97,10 @@ LFLAGS		:= -L$(LIBFT_DIR)
 LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
-			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt
+			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child
 
 HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mtnew_hash_table ft_mtprint_hash_table \
-			ft_mthash_find_index
+			ft_mthash_find_index ft_mthash_add_child
 
 MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtdel_list ft_mterase ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
 			ft_mtnew_chaos ft_mtreplace_data ft_mtreplace_all_data ft_mtzip ft_mtunzip \

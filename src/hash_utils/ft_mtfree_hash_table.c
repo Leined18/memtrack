@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfree_hash_table.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:23:28 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 17:54:43 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:23:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

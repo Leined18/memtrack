@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew_hash_table.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 13:39:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:16:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
 		return (NULL);
 	ht->bucket_count = bucket_count;
 	ht->buckets = (t_mt **)ft_calloc(bucket_count, sizeof(t_mt *));
+    ht->put = ft_mthash_insert;
+    ht->get = ft_mthash_find_node;
+    ht->get_data = ft_mthash_find_data;
+    ht->remove = ft_mthash_remove;
+    ht->free_hash = ft_mtfree_hash_table;
+    ht->print = ft_mtprint_hash_table;
+    ht->add_child = ft_mthash_add_child;
 	if (!ht->buckets)
 		return (free(ht), NULL);
 	return (ht);

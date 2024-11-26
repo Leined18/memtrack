@@ -9,7 +9,10 @@ size_t			ft_mthash(const char *key, size_t bucket_count);
 t_hash_table	*ft_mtnew_hash_table(size_t bucket_count);
 int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 					t_data_type type);
-void			*ft_mthash_find(t_hash_table *ht, const char *key);
+int				ft_mthash_add_child(t_hash_table *ht, const char *key,
+					t_mt *child);
+void			*ft_mthash_find_node(t_hash_table *ht, const char *key);
+void			*ft_mthash_find_data(t_hash_table *ht, const char *key);
 void			ft_mtfree_hash_table(t_hash_table *ht);
 void			ft_mtprint_hash_table(t_hash_table *ht);
 int				ft_mthash_remove(t_hash_table *ht, const char *key);

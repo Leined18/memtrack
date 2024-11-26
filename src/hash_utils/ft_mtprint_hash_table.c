@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:29:11 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 18:33:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:48:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	print_node(t_mt *node)
 	if (!node)
 		return ;
 	ft_printf(YELLOW "(*) [%s]: " RESET, node->key);
-	if (node->type == LIST)
+	if (node->type == BRANCH)
 		print_inner_list((t_mt *)node->data);
-	else if (node->type == STRING)
+	else if (node->type == LEAF)
 		ft_printf(CYAN "\"%s\"" RESET, (char *)node->data);
 	ft_printf("\n");
 }

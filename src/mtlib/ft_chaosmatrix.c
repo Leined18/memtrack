@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chaosmatrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 17:54:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:48:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*chaosmatrix(int count, size_t size, int flag)
 	if (ptr)
 	{
 		ft_memset(ptr, 0, count * size);
-		tmp = ft_mtnew("", ptr, STRING);
+		tmp = ft_mtnew("", ptr, LEAF);
 		return (ft_mtadd_front(&gc, tmp), ptr);
 	}
 	return (NULL);

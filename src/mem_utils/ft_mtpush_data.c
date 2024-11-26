@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 17:47:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:48:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_mtpush_data(t_mt **lst, const char *key ,void *data)
 
 	if (!data || !lst)
 		return ;
-	new = ft_mtnew(key, data, STRING);
+	new = ft_mtnew(key, data, LEAF);
 	ft_mtadd_front(lst, new);
 }
 

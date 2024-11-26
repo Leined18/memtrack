@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtsearch_mt.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 20:43:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:13:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_mt	*search_in_children(t_mt *parent, const char *key, int (*cmp)(t_mt *,
 		if (cmp(child, key))
 			return (child);
 		// Si no lo encontramos, buscamos en los hijos de este nodo
-		if (child->type == LIST)
+		if (child->type == BRANCH)
 		{
 			result = search_in_children(child, key, cmp);
 			if (result)
@@ -44,7 +44,7 @@ t_mt	*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
 	// Si el nodo raíz tiene la clave que estamos buscando
 	if (cmp(root, key))
 		return (root);
-	if (root->type == LIST)
+	if (root->type == BRANCH)
 		return (search_in_children(root, key, cmp));
 	return (NULL); // Si no encontramos el nodo en ningún lado
 }
