@@ -8,6 +8,7 @@ typedef enum e_data_type
 {
 	LEAF,
 	BRANCH,
+    HASH_TABLE
 }				t_data_type;
 
 typedef struct s_mt

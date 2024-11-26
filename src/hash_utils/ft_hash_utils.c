@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mthash_replace_data.c                           :+:      :+:    :+:   */
+/*   ft_hash_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 12:46:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 13:44:36 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/26 13:30:12 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/26 13:43:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_mthash_replace_data(t_hash_table *ht, const char *key,
-		void *new_data, t_data_type type)
+void (*ft_mtget_free_data(t_data_type type))(void **)
 {
-	t_mt	*node;
+	if (type == BRANCH)
+		return (ft_mtdel_list);
+	else if (type == LEAF)
+		return (ft_mtdel_data);
+	else if (type == HASH_TABLE)
+		return (ft_mthash_table_free);
+	return (NULL);
+}
 
-	if (!ht || !key || !new_data)
+void	ft_mtdel_by_type(void **data, t_data_type type)
+{
+	void	(*del_function)(void **);
+
+	if (!data || !*data)
 		return ;
-	node = ft_mthash_find_node(ht, key);
-	if (!node)
-		return ;
-	ft_mtdel_by_type(&node->data, node->type);
-	ft_replace(node, new_data, type);
+	del_function = ft_mtget_free_data(type);
+	if (del_function)
+		del_function(data);
 }

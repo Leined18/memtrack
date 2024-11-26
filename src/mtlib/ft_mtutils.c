@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:50:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:43:11 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@ void	ft_replace(t_mt *current, void *new_data, t_data_type type)
 {
 	if (!current || !new_data)
 		return ;
-	if (current->type == LEAF)
-		ft_mtdel_data(&current->data);
-	else if (current->type == BRANCH)
-		ft_mtdel_list(&current->data);
+	ft_mtdel_by_type(&current->data, current->type);
 	current->data = new_data;
 	if (current->type != type)
 		current->type = type;
-	if (current->type == BRANCH)
-		current->free_data = ft_mtdel_list;
-	else if (current->type == LEAF)
-		current->free_data = ft_mtdel_data;
+	current->free_data = ft_mtget_free_data(type);
 }
 
 int	ft_mtcmp_key(t_mt *node, const char *key)
