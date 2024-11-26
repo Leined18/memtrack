@@ -3,16 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 20:46:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:50:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-int ft_mtcmp_key(t_mt *node, const char *key)
+void	ft_replace(t_mt *current, void *new_data, t_data_type type)
+{
+	if (!current || !new_data)
+		return ;
+	if (current->type == LEAF)
+		ft_mtdel_data(&current->data);
+	else if (current->type == BRANCH)
+		ft_mtdel_list(&current->data);
+	current->data = new_data;
+	if (current->type != type)
+		current->type = type;
+	if (current->type == BRANCH)
+		current->free_data = ft_mtdel_list;
+	else if (current->type == LEAF)
+		current->free_data = ft_mtdel_data;
+}
+
+int	ft_mtcmp_key(t_mt *node, const char *key)
 {
 	if (!node || !key)
 		return (0);

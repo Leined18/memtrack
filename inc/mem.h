@@ -10,6 +10,7 @@ t_mt	*ft_mtzip(t_mt **lst);
 t_mt	*ft_mtunzip(void **data, size_t size);
 t_mt	*ft_mtnew(const char *key, void *data, t_data_type type);
 t_mt	*ft_mtnew_chaos(void *data);
+void	ft_mtfree(t_mt *mt);
 void	ft_mtpush_data(t_mt **lst, const char *key, void *data);
 void	ft_mtpush_data_back(t_mt **lst, void *data);
 void	ft_mtremove_data(t_mt **lst, void *data, int (*cmp)(), size_t n);

@@ -34,6 +34,8 @@ typedef struct s_hash_table
 	void		(*free_hash)(struct s_hash_table *);
 	void		(*print)(struct s_hash_table *);
     int			(*add_child)(struct s_hash_table *, const char *, t_mt *);
+    void       (*replace_key)(struct s_hash_table *, const char *, const char *);
+    void       (*replace_data)(struct s_hash_table *, const char *, void *, t_data_type);
 }				t_hash_table;
 
 #endif // MTSTRUCTS_H

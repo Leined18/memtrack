@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_child.c                                   :+:      :+:    :+:   */
+/*   ft_mthash_replace_key.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:22:43 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/26 12:45:50 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/26 12:46:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-int	ft_mtadd_child(t_mt *parent, t_mt *child)
+void	ft_mthash_replace_key(t_hash_table *ht, const char *old_key,
+		const char *new_key)
 {
-	if (!parent || !child)
-		return (0);
-	if (parent->type != BRANCH)
-		return (0);
-	if (!parent->data)
-	{
-		parent->data = child;
-		child->prev = NULL;
-		child->next = NULL;
-		return (1);
-	}
-	ft_mtadd_back((t_mt **)&parent->data, child);
-	return (1);
+	t_mt	*node;
+
+	if (!ht || !old_key || !new_key)
+		return ;
+	node = ft_mthash_find_node(ht, old_key);
+	if (!node)
+		return ;
+	free(node->key);
+	node->key = ft_strdup(new_key);
 }

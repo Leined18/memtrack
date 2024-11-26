@@ -17,6 +17,10 @@ void			ft_mtfree_hash_table(t_hash_table *ht);
 void			ft_mtprint_hash_table(t_hash_table *ht);
 int				ft_mthash_remove(t_hash_table *ht, const char *key);
 int				ft_mthash_find_index(t_hash_table *ht, const char *key);
+void			ft_mthash_replace_key(t_hash_table *ht, const char *old_key,
+					const char *new_key);
+void			ft_mthash_replace_data(t_hash_table *ht, const char *key,
+					void *new_data, t_data_type type);
 // Function prototypes
 
 #endif // HASH_H

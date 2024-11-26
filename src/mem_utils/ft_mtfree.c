@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_child.c                                   :+:      :+:    :+:   */
+/*   ft_mtfree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:22:43 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/26 11:37:57 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/26 11:41:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-int	ft_mtadd_child(t_mt *parent, t_mt *child)
+void	ft_mtfree(t_mt *mt)
 {
-	if (!parent || !child)
-		return (0);
-	if (parent->type != BRANCH)
-		return (0);
-	if (!parent->data)
+	if (mt->type == BRANCH)
+		ft_mtdel_list((void **)&mt);
+	else
 	{
-		parent->data = child;
-		child->prev = NULL;
-		child->next = NULL;
-		return (1);
+		ft_mtdel_data((void **)&mt->key);
+		ft_mtdel_data(&mt->data);
+		free(mt);
 	}
-	ft_mtadd_back((t_mt **)&parent->data, child);
-	return (1);
 }

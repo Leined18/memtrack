@@ -19,5 +19,6 @@ int		ft_mtcmp_key(t_mt *node, const char *key);
 int		ft_strcmp(const char *s1, const char *s2);
 void	print_title(const char *title);
 int		cmp_int(void *a, void *b, size_t n);
+void	ft_replace(t_mt *current, void *new_data, t_data_type type);
 
 #endif // MTLIB_H

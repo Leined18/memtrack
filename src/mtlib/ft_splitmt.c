@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 09:49:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:54:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static size_t	ft_splitmt_extract_word(const char *s, char c)
 		return (size_t)(next_c - s);
 	return (ft_strlen(s));
 }
-
+// futura idea: agregar un flag para que se pueda elegir que key va a tener el nodo como
+//%s o %d
 t_mt	*ft_splitmt(const char *s, char c)
 {
 	t_mt	*list;

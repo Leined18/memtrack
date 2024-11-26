@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:16:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:44:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
     ht->free_hash = ft_mtfree_hash_table;
     ht->print = ft_mtprint_hash_table;
     ht->add_child = ft_mthash_add_child;
+    ht->replace_key = ft_mthash_replace_key;
+    ht->replace_data = ft_mthash_replace_data;
 	if (!ht->buckets)
 		return (free(ht), NULL);
 	return (ht);

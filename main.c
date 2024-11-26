@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:17:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:51:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,21 @@ int	test_hash_table_operations(t_hash_table *ht)
 }
 
 
+
+
 int	test(t_hash_table *ht)
 {
 	ht = ft_mtnew_hash_table(3);
-	ht->put(ht, "key1", ft_strdup("value1"), LEAF);
-	ht->put(ht, "key2", ft_strdup("value2"), LEAF);
-	ht->put(ht, "key3", ft_strdup("value3"), LEAF);
-    ht->put(ht, "key4", NULL, BRANCH);
-	if (ft_strcmp((char *)ht->get_data(ht, "key1"), "value1") != 0)
-		return (0);
-    ft_mtadd_child(ht->get(ht, "key4"), ft_mtnew("key5", ft_strdup("value5"), LEAF));
-    ft_mtadd_child(ht->get(ht, "key4"), ft_mtnew("key6", ft_strdup("value6"), LEAF));
-    ht->put(ht, "key2", ft_mtnew("key0", ft_strdup("child"), LEAF), BRANCH);
-    ht->put(ht, "key2", ft_mtnew("key1", ft_strdup("child1"), LEAF), BRANCH);
-    ht->add_child(ht, "key2", ft_mtnew("key2", ft_strdup("child2"), LEAF));
+	ht->put(ht, "ANIMALS", ft_splitmt("DOG:CAT:RABBIT", ':'), BRANCH);
+	ht->put(ht, "COLORS", ft_splitmt("RED:GREEN:BLUE", ':'), BRANCH);
+	ht->put(ht, "NUMBERS", ft_splitmt("ONE:TWO:THREE", ':'), BRANCH);
+	ht->put(ht, "LETTERS", ft_splitmt("A:B:C", ':'), BRANCH);
+	print_title("Test replace key");
+    ht->replace_key(ht, "ANIMALS", "ANIMALES");
+    ft_mtprint(ht->get_data(ht, "ANIMALES"), 1, "->");
+	print_title("Test replace data");
+	ft_mthash_replace_data(ht, "ANIMALES", ft_strdup("HUSKY"), LEAF);
+	ft_mtprint(ht->get_data(ht, "PERRO"), 1, "->");
 	ht->print(ht);
 	ht->free_hash(ht);
 	return (1);
