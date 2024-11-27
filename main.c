@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 13:35:50 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:25:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,20 @@ int	test(t_hash_table *ht)
 	ht->put(ht, "COLORS", ft_splitmt("RED:GREEN:BLUE", ':'), BRANCH);
 	ht->put(ht, "NUMBERS", ft_splitmt("ONE:TWO:THREE", ':'), BRANCH);
 	ht->put(ht, "LETTERS", ft_splitmt("A:B:C", ':'), BRANCH);
-	ht->put(ht, "HASH_TABLES", ft_splitmt("HT_LEAFS:HT_BRANCHS:HT_CMDS", ':'), BRANCH);
-    
-    ht->replace_data(ht, "HT_LEAFS", ft_mtnew_hash_table(5), HASH_TABLE);
+	ht->put(ht, "HASH_TABLES", ft_splitmt("HT_LEAFS:HT_BRANCHS:HT_CMDS", ':'),
+		BRANCH);
+	ht->replace_data(ht, "HT_LEAFS", ft_mtnew_hash_table(5), HASH_TABLE);
 	print_title("Test replace key");
 	ht->replace_key(ht, "ANIMALS", "ANIMALES");
 	ft_mtprint(ht->get_data(ht, "ANIMALES"), 1, "->");
 	print_title("Test replace data");
 	ft_mthash_replace_data(ht, "ANIMALES", ft_strdup("HUSKY"), LEAF);
 	ft_mtprint(ht->get(ht, "GREEN"), 1, "->");
-	ht->print(ht);
-	ht->free_hash(ht);
+    print_title("Test replace node");
+    ft_mthash_replace_node(ht, "NUMBERS", ft_mtnew("NUMEROS", ft_splitmt("UNO:DOS:TRES", ':'), BRANCH));
+	ht->replace_node(ht,"HASH_TABLES",  ft_mtnew("COLORS", ft_strdup("NEW_DATA"), LEAF));
+    ht->print(ht);
+	ht->free_table(ht);
 	return (1);
 }
 
@@ -90,7 +93,7 @@ int	main(void)
 	{
 		ft_printf("Test failed\n");
 		if (ht)
-			ft_mtfree_hash_table(ht);
+			ht->free_table(ht);
 		return (1);
 	}
 	ft_printf(GREEN "All tests passed successfully\n" RESET);
