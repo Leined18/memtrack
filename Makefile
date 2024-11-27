@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/27 11:17:40 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/27 17:52:46 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,11 +97,13 @@ LFLAGS		:= -L$(LIBFT_DIR)
 LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
-			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child
+			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
+			ft_mtcount_type
 
-HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mtnew_hash_table ft_mtprint_hash_table \
+HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mthash_new_table ft_mtprint_hash_table \
 			ft_mthash_find_index ft_mthash_add_child ft_mthash_replace_data ft_mthash_replace_key \
-			ft_mthash_table_free ft_hash_utils ft_mthash_add_node ft_mthash_exists ft_mthash_replace_node
+			ft_mthash_table_free ft_hash_utils ft_mthash_add_node ft_mthash_exists ft_mthash_replace_node \
+			ft_mthash_count_type
 
 MEM_FILES :=  ft_mtnew ft_mtclear ft_mtdel_data ft_mtfree ft_mtdel_list ft_mterase ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
 			ft_mtnew_chaos ft_mtreplace_data ft_mtreplace_all_data ft_mtzip ft_mtunzip \

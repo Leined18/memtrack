@@ -6,7 +6,7 @@
 
 // Define your hash table structure here
 size_t			ft_mthash(const char *key, size_t bucket_count);
-t_hash_table	*ft_mtnew_hash_table(size_t bucket_count);
+t_hash_table	*ft_mthash_new_table(size_t bucket_count, char *name);
 int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 					t_data_type type);
 int				ft_mthash_add_child(t_hash_table *ht, const char *key,
@@ -26,6 +26,7 @@ void			ft_mthash_replace_node(t_hash_table *ht, const char *key,
 					t_mt *node);
 int				ft_mthash_exists(t_hash_table *ht, const char *key);
 void			ft_mthash_add_node(t_hash_table *ht, t_mt *node);
+int				ft_mthash_count_type(t_hash_table *ht, t_data_type type);
 
 // hash_utils functions
 void			ft_mtdel_by_type(void **data, t_data_type type);

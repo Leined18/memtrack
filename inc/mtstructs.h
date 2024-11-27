@@ -14,8 +14,8 @@ typedef enum e_data_type
 typedef struct s_mt
 {
 	char		*key;
-	void		*data; // lista, struct, string, etc
-	t_data_type	type; // tipo de dato branch(lista mt), leaf(struct, string, etc), hash_table(tabla hash)
+	void *data;       // lista, struct, string, etc
+	t_data_type type; // tipo de dato branch(lista mt), leaf(struct, string,
 	size_t		size;
 	int			count;
 	struct s_mt	*next;
@@ -25,6 +25,7 @@ typedef struct s_mt
 
 typedef struct s_hash_table
 {
+	char		*name;
 	t_mt		**buckets;
 	size_t		bucket_count;
 	int			(*put)(struct s_hash_table *, const char *, void *,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 14:42:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:26:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,15 @@ void	ft_mtprint_hash_table(t_hash_table *ht)
 {
 	size_t	i;
 	int		j;
+	int		branch_flags[128];
 
-	int branch_flags[128] = {0}; // Rastrea qué niveles necesitan tuberías
 	if (!ht)
 		return ;
 	i = 0;
+	j = 0;
+	ft_printf(BRIGHT_BLUE "Hash Table: " BRIGHT_GREEN "%s\n\n" RESET, ht->name);
 	while (i < ht->bucket_count)
 	{
-		// Imprime el bucket como raíz
 		ft_printf(GREEN "Bucket %d\n" RESET, i);
 		if (!ht->buckets[i])
 			ft_printf("    NULL\n");

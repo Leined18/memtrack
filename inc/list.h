@@ -12,6 +12,7 @@ t_mt	*ft_mtfind_cmp(t_mt *lst, void *data, int (*cmp)(), size_t n);
 t_mt	*ft_mtget_cmp(t_mt **lst, void *data, int (*cmp)(), size_t n);
 t_mt	*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
 				const char *));
+int		ft_mtcount_type(t_mt *node, t_data_type type);
 int		ft_mtadd_child(t_mt *parent, t_mt *child);
 void	ft_mtadd_back(t_mt **lst, t_mt *new);
 void	ft_mtiter(t_mt *lst, void (*f)(void *));

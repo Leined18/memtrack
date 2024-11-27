@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew_hash_table.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:20:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:00:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
  */
 
 // crea una nueva tabla hash
-t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
+t_hash_table	*ft_mthash_new_table(size_t bucket_count, char *name)
 {
 	t_hash_table	*ht;
 
 	ht = malloc(sizeof(t_hash_table));
 	if (!ht)
 		return (NULL);
+	ht->name = name;
 	ht->bucket_count = bucket_count;
 	ht->buckets = (t_mt **)ft_calloc(bucket_count, sizeof(t_mt *));
-    // funciones de la tabla hash
 	ht->put = ft_mthash_insert;
 	ht->get = ft_mthash_find_node;
 	ht->get_data = ft_mthash_find_data;
