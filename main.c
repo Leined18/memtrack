@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 14:29:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:46:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int	test(t_hash_table *ht)
 	ht->remove(ht, "cat");
 	// recuerda siempre en el parametro data, enviar data allocada con malloc
 	ht->add_child(ht, "ANIMALS", ft_mtnew("bird", ft_strdup("pigeon"), LEAF));
-	ht->add_child(ht, "ANIMALS", ft_mtnew("descriptions", ft_mtnew("bird_d", ft_strdup("los pajaros"), LEAF), BRANCH));
+	ht->add_child(ht, "ANIMALS", ft_mtnew("descriptions", ft_mtnew("bird_d",
+				ft_strdup("los pajaros"), LEAF), BRANCH));
+	ht->add_child(ht, "descriptions", ft_mtnew("dog_d", ft_strdup("los perros"),
+			LEAF));
+	ht->add_child(ht, "descriptions", ft_mtnew("rabbit_d", ft_mtnew("white_rabbit",
+                ft_strdup("los conejos blancos"), LEAF), BRANCH));
 	printf("\n");
 	ht->print(ht);
 	ht->free_table(ht); // solo eliminamos esta tabla,
