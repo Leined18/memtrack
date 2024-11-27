@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:30:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 20:58:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:26:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	print_hashes_tables(t_hash_table *ht)
 	current = list;
 	while (list)
 	{
+		ft_printf(PURPLE "%s" RESET BLUE "%s\n" RESET, "SUBTABLE is FROM: ",
+			ht->name);
 		ft_mtprint_hash_table((t_hash_table *)list->data);
 		list = list->next;
 	}

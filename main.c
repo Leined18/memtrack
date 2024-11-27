@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 21:07:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:21:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	test(t_hash_table *ht)
 	ft_printf("\n");
 	ht->replace_node(ht, "dog", ft_mtnew("birds", ft_strdup("blue_bird"),
 			LEAF));
+	ht->put(ht->get_data(ht, "hash"), "hash", ft_mthash_new_table(2, "MANDY"), HASH_TABLE);
 	ht->print(ht);
 	ht->free_table(ht); // solo eliminamos esta tabla,
 	return (1);
