@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 17:26:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:51:29 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,21 +115,21 @@ void	ft_mtprint_hash_table(t_hash_table *ht)
 
 	if (!ht)
 		return ;
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	ft_printf(BRIGHT_BLUE "Hash Table: " BRIGHT_GREEN "%s\n\n" RESET, ht->name);
-	while (i < ht->bucket_count)
+	while (++i < ht->bucket_count)
 	{
 		ft_printf(GREEN "Bucket %d\n" RESET, i);
 		if (!ht->buckets[i])
 			ft_printf("    NULL\n");
 		else
 		{
-			while (j < 128)
-				branch_flags[j++] = 0;
+			while (++j < 128)
+				branch_flags[j] = 0;
 			print_bucket(ht->buckets[i], 1, branch_flags);
 		}
-		ft_printf("\n"); // Separación clara entre buckets
-		i++;
+		ft_printf("\n");
 	}
+	print_hashes_tables(ht);
 }

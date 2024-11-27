@@ -18,6 +18,7 @@ typedef struct s_mt
 	t_data_type type; // tipo de dato branch(lista mt), leaf(struct, string,
 	size_t		size;
 	int			count;
+	int			to_free;
 	struct s_mt	*next;
 	struct s_mt	*prev;
 	void		(*free_data)(void **);

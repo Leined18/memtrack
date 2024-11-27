@@ -27,10 +27,12 @@ void			ft_mthash_replace_node(t_hash_table *ht, const char *key,
 int				ft_mthash_exists(t_hash_table *ht, const char *key);
 void			ft_mthash_add_node(t_hash_table *ht, t_mt *node);
 int				ft_mthash_count_type(t_hash_table *ht, t_data_type type);
-
+t_mt			*ft_mthash_collect_types(t_hash_table *ht, t_data_type type);
+void			ft_mtset_to_free(t_mt *mt, int to_free);
 // hash_utils functions
 void			ft_mtdel_by_type(void **data, t_data_type type);
 void (*ft_mtget_free_data(t_data_type type))(void **);
+void			print_hashes_tables(t_hash_table *ht);
 // Function prototypes
 
 #endif // HASH_H

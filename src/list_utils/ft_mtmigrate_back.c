@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:01:18 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:10:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:18:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // Migrates all the elements of the list src to the list dest back.
 void	ft_mtmigrate_back(t_mt **src, t_mt **dest)
 {
+	if (!*src)
+		return ;
 	while (*src)
 		ft_mtpush_back(src, dest);
 }
