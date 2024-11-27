@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:22:35 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:51:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:13:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
  */
 
 
+// inserta un nodo en la tabla hash y remplace si ya existe
 int	ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 		t_data_type type)
 {

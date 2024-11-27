@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:08:22 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 13:13:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:19:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
+// libera la tabla hash
 void	ft_mthash_table_free(void **ht)
 {
 	t_mt			*current;
@@ -33,3 +34,4 @@ void	ft_mthash_table_free(void **ht)
 	tmp = NULL;
 	*ht = NULL;
 }
+// si funciona

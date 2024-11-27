@@ -6,12 +6,14 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:07:38 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 11:15:48 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:12:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
+// añade un nodo a la tabla hash
+// puedes añadir un arbol.
 void	ft_mthash_add_node(t_hash_table *ht, t_mt *node)
 {
 	size_t index;

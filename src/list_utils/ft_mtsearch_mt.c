@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 10:13:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:22:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_mt	*search_in_children(t_mt *parent, const char *key, int (*cmp)(t_mt *,
 	}
 	return (NULL);
 }
-
+// Busca un nodo en el árbol de la tabla hash
 t_mt	*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
 			const char *))
 {
@@ -45,6 +45,6 @@ t_mt	*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
 	if (cmp(root, key))
 		return (root);
 	if (root->type == BRANCH)
-		return (search_in_children(root, key, cmp));
+		return (search_in_children(root, key, cmp)); // Buscamos en los hijos
 	return (NULL); // Si no encontramos el nodo en ningún lado
 }

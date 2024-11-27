@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 11:19:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:20:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
  * Retorna un puntero a la nueva tabla hash.
  */
 
+// crea una nueva tabla hash
 t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
 {
 	t_hash_table	*ht;
@@ -28,6 +29,7 @@ t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
 		return (NULL);
 	ht->bucket_count = bucket_count;
 	ht->buckets = (t_mt **)ft_calloc(bucket_count, sizeof(t_mt *));
+    // funciones de la tabla hash
 	ht->put = ft_mthash_insert;
 	ht->get = ft_mthash_find_node;
 	ht->get_data = ft_mthash_find_data;
@@ -43,3 +45,5 @@ t_hash_table	*ft_mtnew_hash_table(size_t bucket_count)
 		return (free(ht), NULL);
 	return (ht);
 }
+// si funciona
+// tiene funciones como un menu

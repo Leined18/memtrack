@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:08:54 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 11:21:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:19:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
+// reemplaza un nodo en la tabla hash
 void	ft_mthash_replace_node(t_hash_table *ht, const char *key, t_mt *node)
 {
 	size_t index;
@@ -30,3 +31,5 @@ void	ft_mthash_replace_node(t_hash_table *ht, const char *key, t_mt *node)
     free(node);
 }
 // This function replaces the node with the key 'key' with the
+// node 'node' in the hash table 'ht'. If the node does not exist
+// it adds the node to the hash table.

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:23:07 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 10:15:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:13:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 	* Retorna un puntero a los datos si encuentra el nodo o NULL si no lo encuentra.
  */
+
+// busca un nodo en la tabla hash y retorna el nodo
 void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 {
 	int		index;
@@ -41,7 +43,7 @@ void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 	}
 	return (NULL);
 }
-
+// encuentra un nodo en la tabla hash y retorna los datos
 void	*ft_mthash_find_data(t_hash_table *ht, const char *key)
 {
 	int		index;

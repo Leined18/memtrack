@@ -6,12 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:30:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 13:43:57 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:07:29 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
+// obtiene la funcion de eliminacion de datos dependiendo del tipo de dato
 void (*ft_mtget_free_data(t_data_type type))(void **)
 {
 	if (type == BRANCH)
@@ -23,6 +24,7 @@ void (*ft_mtget_free_data(t_data_type type))(void **)
 	return (NULL);
 }
 
+// elimina un dato dependiendo del tipo de dato
 void	ft_mtdel_by_type(void **data, t_data_type type)
 {
 	void	(*del_function)(void **);

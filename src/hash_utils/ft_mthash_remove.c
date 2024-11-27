@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_remove.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:03:47 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 16:20:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:31:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,22 @@
  *
  * Retorna 0 si tuvo éxito, -1 si falló (clave no encontrada).
  */
+
+// falta actualizar para eliminar en cualquier parte de la lista
+// elimina un nodo de la tabla hash basado en la clave
 int	ft_mthash_remove(t_hash_table *ht, const char *key)
 {
-	size_t	index;
 	t_mt	*current;
 
 	if (!ht || !key)
 		return (-1);
-	index = ft_mthash(key, ht->bucket_count);
-	current = ht->buckets[index];
-	while (current)
-	{
-		if (ft_strncmp(current->key, key, ft_strlen(current->key)) == 0)
-		{
-			if (current->prev)
-				current->prev->next = current->next;
-			if (current->next)
-				current->next->prev = current->prev;
-			if (current == ht->buckets[index]) // Si es el primero en el bucket
-				ht->buckets[index] = current->next;
-			current->free_data(&current->data);
-			(free(current->key), free(current));
-			return (0); // Eliminación exitosa
-		}
-		current = current->next;
-	}
-	return (-1); // Clave no encontrada
+	current = ft_mthash_find_node(ht, key);
+	if (!current)
+        return (-1);
+    current->prev->next = current->next; // desanclamos el nodo
+    current->next->prev = current->prev; // Eliminamos el nodo
+    free(current->key);
+    ft_mtdel_by_type(&current->data, current->type);
+    free(current);
+	return (1); // si se elimina correctamente
 }

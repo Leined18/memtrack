@@ -6,12 +6,14 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:05:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 11:41:29 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:11:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
+// añade un hijo a un nodo de la tabla hash y si no encuentra al padre crea un nuevo nodo padre
+// y añade al hijo
 int	ft_mthash_add_child(t_hash_table *ht, const char *key, t_mt *child)
 {
 	t_mt	*parent;
@@ -33,3 +35,5 @@ int	ft_mthash_add_child(t_hash_table *ht, const char *key, t_mt *child)
 		return (ft_mtfree(child), 0);
 	return (ft_mtadd_child(parent, child));
 }
+
+// si funciona
