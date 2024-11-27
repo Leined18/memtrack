@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:43:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:29:41 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@ int	test(t_hash_table *ht)
 {
 	ht = ft_mtnew_hash_table(3);
 	ht->put(ht, "ANIMALS", ft_splitmt("dog:cat:rabbit", ':'), BRANCH);
-    ht->put(ht, "OBJECTS", ft_splitmt("hammer:fork:cube", ':'), BRANCH);
-    ht->put(ht, "COLORS", ft_splitmt("red:blue:green", ':'), BRANCH);
-    ht->put(ht, "BASURA", NULL, BRANCH);
-    ht->remove(ht, "cat");
-    // recuerda siempre en el parametro data, enviar data allocada con malloc
-    ht->add_child(ht, "ANIMALS", ft_mtnew("bird", ft_strdup("pigeon"), LEAF));
-    printf("\n");
-    ht->print(ht);
-	ht->free_table(ht); // solo eliminamos esta tabla, la otra se elimina en la función free_table
+	ht->put(ht, "OBJECTS", ft_splitmt("hammer:fork:cube", ':'), BRANCH);
+	ht->put(ht, "COLORS", ft_splitmt("red:blue:green", ':'), BRANCH);
+	ht->put(ht, "BASURA", NULL, BRANCH);
+	ht->remove(ht, "cat");
+	// recuerda siempre en el parametro data, enviar data allocada con malloc
+	ht->add_child(ht, "ANIMALS", ft_mtnew("bird", ft_strdup("pigeon"), LEAF));
+	ht->add_child(ht, "ANIMALS", ft_mtnew("descriptions", ft_mtnew("bird_d", ft_strdup("los pajaros"), LEAF), BRANCH));
+	printf("\n");
+	ht->print(ht);
+	ht->free_table(ht); // solo eliminamos esta tabla,
 	return (1);
 }
 

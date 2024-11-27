@@ -1,18 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/27 14:42:47 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mt.h"
 
 // Helper para imprimir indentación con estilo 'tree'
 void	print_tree_prefix(int depth, int is_last, int *branch_flags)
 {
-	for (int i = 0; i < depth; i++)
-		ft_printf("%s", branch_flags[i] ? "|   " : "    ");
+	int	i;
+
+	i = 0;
+	while (i < depth)
+	{
+		if (branch_flags[i])
+			ft_printf("|   ");
+		else
+			ft_printf("    ");
+		i++;
+	}
 	if (depth > 0)
-		ft_printf("%s── ", is_last ? "└" : "├");
+	{
+		if (is_last)
+			ft_printf("└── ");
+		else
+			ft_printf("├── ");
+	}
 }
 
 // Imprime una lista interna con estilo 'tree'
 void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 {
 	int	is_last;
+	int	print;
 
 	while (inner_list)
 	{
@@ -20,6 +47,7 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 		// Imprime el prefijo del árbol
 		print_tree_prefix(depth, is_last, branch_flags);
 		// Imprime el nodo actual
+		print = 1;
 		ft_printf(BLUE "{%s}" RESET, inner_list->key);
 		if (inner_list->type == BRANCH)
 		{
@@ -27,10 +55,12 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 			branch_flags[depth] = !is_last;
 			// Llamada recursiva para procesar hijos
 			print_inner_list((t_mt *)inner_list->data, depth + 1, branch_flags);
+			print = 0;
 		}
 		else if (inner_list->type == LEAF)
 			ft_printf(CYAN " \"%s\"" RESET, (char *)inner_list->data);
-		ft_printf("\n");
+		if (print)
+			ft_printf("\n");
 		inner_list = inner_list->next;
 	}
 }
@@ -56,8 +86,8 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 	}
 	else if (node->type == LEAF)
 		ft_printf(CYAN " \"%s\"" RESET, (char *)node->data);
-    if (is_last)
-	    ft_printf("\n");
+	if (is_last)
+		ft_printf("\n");
 }
 
 // Imprime los nodos del bucket como un árbol
@@ -80,6 +110,7 @@ void	print_bucket(t_mt *bucket, int depth, int *branch_flags)
 void	ft_mtprint_hash_table(t_hash_table *ht)
 {
 	size_t	i;
+	int		j;
 
 	int branch_flags[128] = {0}; // Rastrea qué niveles necesitan tuberías
 	if (!ht)
@@ -93,9 +124,8 @@ void	ft_mtprint_hash_table(t_hash_table *ht)
 			ft_printf("    NULL\n");
 		else
 		{
-			// Resetear banderas para cada bucket
-			for (int j = 0; j < 128; j++)
-				branch_flags[j] = 0;
+			while (j < 128)
+				branch_flags[j++] = 0;
 			print_bucket(ht->buckets[i], 1, branch_flags);
 		}
 		ft_printf("\n"); // Separación clara entre buckets
