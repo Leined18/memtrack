@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/27 19:57:23 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/28 12:26:23 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,10 +69,10 @@ LIBFT_DIR		:= ../libft/
 LIB_DIR			:= ../lib/
 SRC_DIR			:= src/
 
-LIST_DIR_UTILS		:= list_utils/
-HASH_DIR_UTILS		:= hash_utils/
-STACK_DIR_UTILS		:= stack_utils/
-MEM_DIR_UTILS		:= mem_utils/
+LIST_DIR		:= list/
+HASH_DIR		:= hash/
+STACK_DIR		:= stack/
+MEM_DIR			:= mem/
 MTLIB_DIR			:= mtlib/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
@@ -98,7 +98,7 @@ LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
 			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
-			ft_mtcount_type ft_mtcollect_type ft_mtset_to_free
+			ft_mtcount_type ft_mtcollect_type ft_mtset_to_free ft_mtnew_original_key
 
 HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mthash_new_table ft_mtprint_hash_table \
 			ft_mthash_find_index ft_mthash_add_child ft_mthash_replace_data ft_mthash_replace_key \
@@ -114,11 +114,11 @@ MTLIB_FILES:= ft_chaosmatrix ft_freedom ft_strmtdup ft_splitmt ft_submtstr ft_mt
 
 #==========FILES==============================================================#
 
-SRC_FILES+=$(addprefix $(LIST_DIR_UTILS), $(LIST_FILES))
-SRC_FILES+=$(addprefix $(MEM_DIR_UTILS), $(MEM_FILES))
-SRC_FILES+=$(addprefix $(HASH_DIR_UTILS), $(HASH_FILES))
+SRC_FILES+=$(addprefix $(LIST_DIR), $(LIST_FILES))
+SRC_FILES+=$(addprefix $(MEM_DIR), $(MEM_FILES))
+SRC_FILES+=$(addprefix $(HASH_DIR), $(HASH_FILES))
 SRC_FILES+=$(addprefix $(MTLIB_DIR), $(MTLIB_FILES))
-SRC_FILES+=$(addprefix $(STACK_DIR_UTILS), $(STACK_FILES))
+SRC_FILES+=$(addprefix $(STACK_DIR), $(STACK_FILES))
 
 SRCS := $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

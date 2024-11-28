@@ -3,7 +3,6 @@
 # define MTLIB_H
 
 # include "libft.h"
-# include "mt.h"
 # include "mtstructs.h"
 
 // Function declarations and other definitions for the mtlib library

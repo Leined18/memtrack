@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/26 13:43:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:37:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_replace(t_mt *current, void *new_data, t_data_type type)
 {
-	if (!current || !new_data)
+	if (!current)
 		return ;
 	ft_mtdel_by_type(&current->data, current->type);
 	current->data = new_data;

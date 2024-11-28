@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtreplace_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:07:31 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 09:28:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:12:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_mtreplace_data(t_mt *list, void *to_replace, void *new_data, int (*cmp)(
 	{
 		if (cmp(current->data, to_replace, n) == 0)
 		{
-			ft_mtdel_data(&current->data);
+			ft_mtdel_by_type(&current->data, current->type);
 			current->data = new_data;
 		}
 		current = current->next;

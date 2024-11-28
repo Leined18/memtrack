@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_insert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:22:35 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:13:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:36:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
  * Retorna 0 si tuvo éxito, -1 si falló.
  */
 
-
 // inserta un nodo en la tabla hash y remplace si ya existe
 int	ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 		t_data_type type)
@@ -33,17 +32,13 @@ int	ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 
 	if (!ht || !key)
 		return (-1);
-	index = ft_mthash(key, ht->bucket_count);
-	current = ht->buckets[index];
-	while (current)
+	if (ft_mthash_exists(ht, key))
 	{
-		if (ft_strncmp(current->key, key, ft_strlen(current->key)) == 0)
-		{
-			ft_replace(current, data, type);
-			return (0);
-		}
-		current = current->next;
+		current = ft_mthash_find_node(ht, key);
+		ft_replace(current, data, type);
+		return (0);
 	}
+	index = ft_mthash(key, ht->bucket_count);
 	new_node = ft_mtnew(key, data, type);
 	if (!new_node)
 		return (-1);

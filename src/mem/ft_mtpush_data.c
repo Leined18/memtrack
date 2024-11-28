@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtunzip.c                                       :+:      :+:    :+:   */
+/*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 11:02:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 11:14:51 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/28 10:14:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_mt	*ft_mtunzip(void **data, size_t size)
+void	ft_mtpush_data(t_mt **lst, const char *key, void *data,
+		t_data_type type)
 {
-	t_mt	*list;
-	size_t	i;
+	t_mt	*new;
 
-	if (!data || size == 0)
-		return (NULL);
-	list = NULL;
-	i = 0;
-	while (i < size)
+	if (!data || !lst)
+		return ;
+	new = ft_mtnew(key, data, type);
+	if (!new)
 	{
-		ft_mtpush_data_back(&list, data[i]);
-		i++;
+		ft_mtdel_by_type(&data, type);
+		return ;
 	}
-	free(data);
-	return (list);
+	ft_mtadd_front(lst, new);
 }
+
+// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
+// ft_mtpush_data(&stacka, ["pi"]);
+// stacka = ["pi"] -> "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

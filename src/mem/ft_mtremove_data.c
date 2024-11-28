@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtremove_data.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 09:59:21 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:19:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	ft_mtremove_data(t_mt **lst, void *data, int (*cmp)(), size_t n)
 	while (current)
 	{
 		if (!cmp(current->data, data, n))
-			ft_mtdel_data(&current->data);
+		{
+			ft_mtdel_by_type(&current->data, current->type);
+			current->data = NULL;
+		}
 		current = current->next;
 	}
 }

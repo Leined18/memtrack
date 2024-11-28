@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtadd_child.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:25:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:07:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 		return (0);
 	if (parent->type != BRANCH)
 		return (0);
-	if (!parent->data) // si no tiene hijos, añadimos el hijo
+	if (!parent->data)
 	{
 		parent->data = child;
 		child->prev = NULL;
 		child->next = NULL;
 		return (1);
 	}
-	ft_mtadd_back((t_mt **)&parent->data, child); // si ya tiene hijos, añadimos al final
+	if (ft_mtsearch_mt((t_mt *)parent->data, child->key, ft_mtcmp_key))
+		child->key = ft_mtnew_original_key(child->key, parent);
+	ft_mtadd_back((t_mt **)&parent->data, child); // si ya tiene hijos,
 	return (1);
 }

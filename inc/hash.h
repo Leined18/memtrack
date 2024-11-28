@@ -1,10 +1,34 @@
 #ifndef HASH_H
 # define HASH_H
-
-// Define your hash function(s) here
 # include "mtstructs.h"
 
 // Define your hash table structure here
+typedef struct s_hash_table_methods
+{
+	int			(*insert)(struct s_hash_table *, const char *, void *,
+					t_data_type);
+	void		*(*get)(struct s_hash_table *, const char *);
+	void		*(*get_data)(struct s_hash_table *, const char *);
+	int			(*remove)(struct s_hash_table *, const char *);
+	void		(*free_table)(struct s_hash_table *);
+	void		(*print)(struct s_hash_table *);
+	int			(*add_child)(struct s_hash_table *, const char *, t_mt *);
+	void		(*replace_key)(struct s_hash_table *, const char *,
+				const char *);
+	void		(*replace_data)(struct s_hash_table *, const char *, void *,
+				t_data_type);
+	void		(*replace_node)(struct s_hash_table *, const char *, t_mt *);
+	void		(*add)(struct s_hash_table *, t_mt *);
+}				t_hash_table_methods;
+
+typedef struct s_hash_table
+{
+	size_t		bucket_count;
+	char		*name;
+	t_mt		**buckets;
+	t_hash_table_methods methods; // Uso de t_hash_table_methods
+}				t_hash_table;
+// Function prototypes
 size_t			ft_mthash(const char *key, size_t bucket_count);
 t_hash_table	*ft_mthash_new_table(size_t bucket_count, char *name);
 int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
@@ -33,6 +57,6 @@ void			ft_mtset_to_free(t_mt *mt, int to_free);
 void			ft_mtdel_by_type(void **data, t_data_type type);
 void (*ft_mtget_free_data(t_data_type type))(void **);
 void			print_hashes_tables(t_hash_table *ht);
-// Function prototypes
+char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
 
 #endif // HASH_H

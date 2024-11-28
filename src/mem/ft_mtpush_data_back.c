@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:13:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 08:10:08 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:20:07 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // Adds the element 'data' at the end of the list.
-void	ft_mtpush_data_back(t_mt **lst, void *data)
+void	ft_mtpush_data_back(t_mt **lst, const char *key, void *data, t_data_type type)
 {
 	t_mt	*new;
 
-	if (!data || !lst)
+	if (!lst)
 		return ;
-	new = chaosmatrix(1, sizeof(t_mt), 0);
-	new->data = data;
-	new->size = sizeof(t_mt);
-	new->count = 1;
-	new->next = NULL;
-    new->prev = NULL;
+	new = ft_mtnew(key, data, type);
+	if (!new)
+		return ;
 	ft_mtadd_back(lst, new);
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

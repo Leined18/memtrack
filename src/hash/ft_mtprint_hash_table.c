@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 20:51:29 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:45:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 	}
 	else if (node->type == LEAF)
 		ft_printf(CYAN " \"%s\"" RESET, (char *)node->data);
-	if (is_last)
+	if (is_last || node->type == LEAF)
 		ft_printf("\n");
 }
 

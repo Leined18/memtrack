@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 11:49:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:06:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 // Deletes the first element of the list.
 void	ft_mtpop(t_mt **lst)
 {
-	t_mt	**gc;
-	
+	t_mt	*tmp;
+	t_mt	*prev;
 
-	if (!*lst || !lst)
+	if (!*lst)
 		return ;
-    gc = NULL;
-	gc = chaosmatrix(0, 0, GC_REF);
-	ft_mtpush_back(lst, gc);
+	tmp = *lst;
+	prev = tmp->prev;
+	*lst = (*lst)->next;
+	if (*lst)
+		(*lst)->prev = prev;
+	else if (prev)
+		prev->next = NULL;
+	ft_mtfree(tmp);
 }
 
 // Deletes the first element of the list that matches the data with the function cmp.
