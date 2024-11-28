@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 12:37:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:12:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_replace(t_mt *current, void *new_data, t_data_type type)
 {
 	if (!current)
 		return ;
-	ft_mtdel_by_type(&current->data, current->type);
+	if (current->to_free)
+		ft_mtdel_by_type(&current->data, current->type);
 	current->data = new_data;
 	if (current->type != type)
 		current->type = type;

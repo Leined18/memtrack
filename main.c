@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 12:40:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:51:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ int	test(t_hash_table *ht)
 	ht->methods.insert(ht, "key7", NULL, BRANCH);
 	ht->methods.add(ht, ft_mtnew("777", ft_strdup("data9"), LEAF));
 	ht->methods.add(ht, ft_mtnew("777", ft_strdup("data10"), LEAF));
-	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data8"), LEAF));
-	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data11"), LEAF));
+	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data8"),
+			LEAF));
+	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data11"),
+			LEAF));
+	ft_mthash_insert_child(ht, "key7", "hola-chevere", ft_strdup("data12"),
+		LEAF);
+	ft_mthash_insert_child(ht, "777", "hola", ft_strdup("data13"), LEAF);
+	ft_mthash_insert_child(ht, "hola", "chao", NULL, BRANCH);
 	ht->methods.print(ht);
 	ht->methods.free_table(ht);
 	return (1);

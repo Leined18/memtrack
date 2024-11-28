@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/28 12:26:23 by danpalac         ###   ########.fr        #
+#    Updated: 2024/11/28 13:37:11 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,8 @@ LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
 			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
-			ft_mtcount_type ft_mtcollect_type ft_mtset_to_free ft_mtnew_original_key
+			ft_mtcount_type ft_mtcollect_type ft_mtset_to_free ft_mtnew_original_key \
+			ft_mtexists_mt ft_mtexists_list
 
 HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mthash_new_table ft_mtprint_hash_table \
 			ft_mthash_find_index ft_mthash_add_child ft_mthash_replace_data ft_mthash_replace_key \
