@@ -43,15 +43,15 @@ void			ft_mtrotate(t_mt **list);
 void			ft_mtreverse_rotate(t_mt **list);
 void			ft_mtswap(t_mt **list);
 void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
-void			ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node);
+void			ft_mtreplace(t_mt *node, t_mt *new_node);
 void			ft_mtreplace_all(t_mt **list, t_mt **replace);
 t_mt			*ft_mtcollect_types(t_mt *mt, t_data_type type);
 char			*ft_mtnew_original_key(char *key, t_mt *node);
 t_mt			*ft_mtsearch_list(t_mt *root, const char *key,
 					int (*cmp)(t_mt *, const char *));
-int	ft_mtexists_mt(t_mt *root, const char *key);
-int	ft_mtexists_list(t_mt *root, const char *key);
-	// mem_utils functions
-	int ft_mtcmp_key(t_mt *node, const char *key);
+int				ft_mtexists_mt(t_mt *root, const char *key);
+int				ft_mtexists_list(t_mt *root, const char *key);
+// mem_utils functions
+int				ft_mtcmp_key(t_mt *node, const char *key);
 
 #endif // LIST_H

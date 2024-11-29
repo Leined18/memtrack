@@ -13,6 +13,8 @@ typedef struct s_hash_table_methods
 	void		(*free_table)(struct s_hash_table *);
 	void		(*print)(struct s_hash_table *);
 	int			(*add_child)(struct s_hash_table *, const char *, t_mt *);
+	void		(*insert_child)(struct s_hash_table *, const char *,
+				const char *, void *, t_data_type);
 	void		(*replace_key)(struct s_hash_table *, const char *,
 				const char *);
 	void		(*replace_data)(struct s_hash_table *, const char *, void *,
@@ -58,5 +60,7 @@ void			ft_mtdel_by_type(void **data, t_data_type type);
 void (*ft_mtget_free_data(t_data_type type))(void **);
 void			print_hashes_tables(t_hash_table *ht);
 char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
+void			ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
+					const char *child_key, void *data, t_data_type type);
 
 #endif // HASH_H
