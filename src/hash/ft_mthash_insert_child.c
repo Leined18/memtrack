@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:50:14 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 14:00:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:48:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
 		ft_mtadd_child(parent, ft_mtnew(child_key, data, type));
 		return ;
 	}
-	ft_mtadd_child(ft_mtnew(parent_key, NULL, BRANCH), ft_mtnew(child_key, data,
-			type));
+	ft_mthash_insert(ht, parent_key, NULL, BRANCH);
+	parent = ft_mthash_find_node(ht, parent_key);
+	ft_mtadd_child(parent, ft_mtnew(child_key, data, type));
 }
