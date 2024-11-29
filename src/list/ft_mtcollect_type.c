@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtcollect_type.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:58:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 20:38:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:14:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,32 @@
  */
 
 // no usar por ahora type branch
-t_mt	*ft_mtcollect_types(t_mt *mt, t_data_type type)
+
+t_mt	*ft_mtcollect_type_mt(t_mt *mt, t_data_type type)
+{
+	t_mt	*collected;
+	t_mt	*sub;
+
+	if (!mt)
+		return (NULL);
+	collected = NULL;
+	sub = NULL;
+	if (mt->type == type)
+	{
+		sub = ft_mtdup(mt);
+		ft_mtpush_back(&sub, &collected);
+	}
+	if (mt->type == BRANCH)
+	{
+		sub = ft_mtcollect_type_list((t_mt *)mt->data, type);
+		ft_mtmigrate_back(&sub, &collected);
+	}
+	if (collected)
+		ft_mtset_to_free(collected, 0);
+	return (collected);
+}
+
+t_mt	*ft_mtcollect_type_list(t_mt *mt, t_data_type type)
 {
 	t_mt	*collected;
 	t_mt	*current;
@@ -33,14 +58,8 @@ t_mt	*ft_mtcollect_types(t_mt *mt, t_data_type type)
 	current = mt;
 	while (current)
 	{
-		if (current->type == type)
-			ft_mtadd_back(&collected, ft_mtnew(current->key, current->data,
-					type));
-		if (current->type == BRANCH && current->data)
-		{
-			sub = ft_mtcollect_types((t_mt *)current->data, type);
-			ft_mtmigrate_back(&sub, &collected);
-		}
+		sub = ft_mtcollect_type_mt(current, type);
+		ft_mtmigrate_back(&sub, &collected);
 		current = current->next;
 	}
 	ft_mtset_to_free(collected, 0);

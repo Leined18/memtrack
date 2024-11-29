@@ -55,12 +55,11 @@ void			ft_mthash_add_node(t_hash_table *ht, t_mt *node);
 int				ft_mthash_count_type(t_hash_table *ht, t_data_type type);
 t_mt			*ft_mthash_collect_types(t_hash_table *ht, t_data_type type);
 void			ft_mtset_to_free(t_mt *mt, int to_free);
+void			ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
+					const char *child_key, void *data, t_data_type type);
+char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
 // hash_utils functions
 void			ft_mtdel_by_type(void **data, t_data_type type);
 void (*ft_mtget_free_data(t_data_type type))(void **);
-void			print_hashes_tables(t_hash_table *ht);
-char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
-void			ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
-					const char *child_key, void *data, t_data_type type);
 
 #endif // HASH_H

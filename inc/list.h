@@ -45,7 +45,8 @@ void			ft_mtswap(t_mt **list);
 void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
 void			ft_mtreplace(t_mt *node, t_mt *new_node);
 void			ft_mtreplace_all(t_mt **list, t_mt **replace);
-t_mt			*ft_mtcollect_types(t_mt *mt, t_data_type type);
+t_mt			*ft_mtcollect_type_mt(t_mt *mt, t_data_type type);
+t_mt			*ft_mtcollect_type_list(t_mt *mt, t_data_type type);
 char			*ft_mtnew_original_key(char *key, t_mt *node);
 t_mt			*ft_mtsearch_list(t_mt *root, const char *key,
 					int (*cmp)(t_mt *, const char *));

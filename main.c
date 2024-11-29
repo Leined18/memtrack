@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:51:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:39:28 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	test(t_hash_table *ht)
 		LEAF);
 	ft_mthash_insert_child(ht, "777", "hola", ft_strdup("data13"), LEAF);
 	ft_mthash_insert_child(ht, "hola", "chao", NULL, BRANCH);
+	ft_mthash_insert_child(ht, "777", "hash", ft_mthash_new_table(3, "hash"), HASH_TABLE);
 	ht->methods.print(ht);
 	ht->methods.free_table(ht);
 	return (1);

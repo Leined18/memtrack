@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:51:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:51:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:12:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_mt	*ft_mtdup(t_mt *src)
 	if (src->type != LEAF)
 	{
 		dst->data = src->data;
-		src->free_data = 0;
+		dst->to_free = 0;
 		return (dst);
 	}
 	dst->data = ft_strdup(src->data);
