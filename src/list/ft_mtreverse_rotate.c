@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:55:14 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 08:12:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:56:58 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ void	ft_mtreverse_rotate(t_mt **list)
 	// Desconectar el último nodo
 	prev->next = NULL;
 	last->prev = NULL;
-	// Conectar el último nodo al principio
 	last->next = *list;
 	(*list)->prev = last;
-	// Actualizar la cabecera de la lista
 	*list = last;
 }
 

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtreplace.c                                     :+:      :+:    :+:   */
+/*   ft_mtadd_key_suffix.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 13:56:38 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/28 14:48:24 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/28 14:48:28 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Replaces the node 'node' with 'new_node' in the list 'list'.
-
-void	ft_mtreplace(t_mt *node, t_mt *new_node)
+void	ft_mtadd_key_suffix(char *suffix, t_mt *node)
 {
-	if (!node || !new_node)
+	char *new_key;
+
+	if (!suffix || !node)
 		return ;
-    ft_mtfree(node);
-	node = ft_mtdup(new_node);
-    ft_mtfree(new_node);
+	new_key = ft_strjoin(node->key, suffix);
+	free(node->key);
+	node->key = new_key;
 }

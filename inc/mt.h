@@ -9,6 +9,7 @@
 # include "mt.h"
 # include "mtlib.h"
 # include "mtstructs.h"
+# include "utils.h"
 
 # define LIST_REF 2 // Devuelve la referencia de la lista
 # define LIST_PTR 1 // Devuelve el puntero de la lista

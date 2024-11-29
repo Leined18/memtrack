@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtreplace_all_data.c                            :+:      :+:    :+:   */
+/*   ft_mtexists_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 18:01:42 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 13:47:27 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/28 13:37:40 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/28 13:38:11 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Replaces data in all nodes of the list 'lst' with the data 'new_data'.
-void	ft_mtreplace_all_data(t_mt **lst, void *new_data)
+// Returns 1 if the node with the key 'key' exists in the list 'lst'.
+int	ft_mtexists_list(t_mt *root, const char *key)
 {
 	t_mt	*current;
 
-	if (!lst || !*lst)
-		return ;
-	current = *lst;
-	while (current)
-	{
-		ft_replace(current, new_data, current->type);
-		current = current->next;
-	}
+	if (!root || !key)
+		return (0);
+	current = ft_mtsearch_list(root, key, ft_mtcmp_key);
+	if (!current)
+		return (0);
+	return (1);
 }

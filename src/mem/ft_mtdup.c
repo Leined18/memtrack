@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtreplace.c                                     :+:      :+:    :+:   */
+/*   ft_mtdup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 13:56:38 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/28 14:51:05 by danpalac          #+#    #+#             */
+/*   Updated: 2024/11/29 15:12:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Replaces the node 'node' with 'new_node' in the list 'list'.
-
-void	ft_mtreplace(t_mt *node, t_mt *new_node)
+t_mt	*ft_mtdup(t_mt *src)
 {
-	if (!node || !new_node)
-		return ;
-    ft_mtfree(node);
-	node = ft_mtdup(new_node);
-    ft_mtfree(new_node);
+	t_mt *dst;
+
+	if (!src)
+		return (NULL);
+	dst = ft_mtnew(src->key, NULL, src->type);
+	if (!dst)
+		return (NULL);
+	if (src->type != LEAF)
+	{
+		dst->data = src->data;
+		dst->to_free = 0;
+		return (dst);
+	}
+	dst->data = ft_strdup(src->data);
+	return (dst);
 }

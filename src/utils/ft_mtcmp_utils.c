@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtutils.c                                       :+:      :+:    :+:   */
+/*   ft_mtcmp_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 12:37:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:29:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
-
-void	ft_replace(t_mt *current, void *new_data, t_data_type type)
-{
-	if (!current)
-		return ;
-	ft_mtdel_by_type(&current->data, current->type);
-	current->data = new_data;
-	if (current->type != type)
-		current->type = type;
-	current->free_data = ft_mtget_free_data(type);
-}
 
 int	ft_mtcmp_key(t_mt *node, const char *key)
 {
@@ -42,13 +31,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-// Funciones auxiliares para mostrar gráficos
-void	print_title(const char *title)
-{
-	printf("\n%s\n", "==========================");
-	printf("   %s\n", title);
-	printf("%s\n\n", "==========================");
-}
 int	cmp_int(void *a, void *b, size_t n)
 {
 	(void)n; // Evitar advertencias por parámetro no utilizado

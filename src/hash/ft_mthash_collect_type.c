@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_collect_type.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:49:02 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 20:39:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:56:31 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,8 @@ t_mt	*ft_mthash_collect_types(t_hash_table *ht, t_data_type type)
 	while (i < ht->bucket_count)
 	{
 		current = ht->buckets[i];
-		while (current)
-		{
-			// Recolectamos los nodos del bucket actual.
-			temp = ft_mtcollect_types(current, type);
-			ft_mtmigrate_back(&temp, &collected);
-			current = current->next;
-		}
+		temp = ft_mtcollect_type_list(current, type);
+		ft_mtmigrate_back(&temp, &collected);
 		i++;
 	}
 	return (collected);
