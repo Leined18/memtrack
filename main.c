@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:52:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:58:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	test(t_hash_table *ht)
 {
-	ht = ft_mthash_new_table(19, "test");
+	ht = ft_mthash_new_table(3, "test");
 	ht->methods.insert_child(ht, "key1", "data1", ft_strdup("xkasjd23"),
 		STRING);
 	ht->methods.insert_child(ht, "key1", "data2", ft_strdup("xkasjd23"),
