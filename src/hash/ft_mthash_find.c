@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:23:07 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:13:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:03:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 
 	if (!ht || !key)
 		return (NULL);
-	index = ft_mthash_find_index(ht, key);
+	index = ft_mthash_get_index(ht, key);
 	if (index == -1)
 		return (NULL);
 	current = ht->buckets[index];
@@ -39,7 +39,7 @@ void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 		result = ft_mtsearch_mt(current, key, ft_mtcmp_key);
 		if (result)
 			return (result);
-		current = current->next;
+		current = current->right;
 	}
 	return (NULL);
 }
@@ -52,7 +52,7 @@ void	*ft_mthash_find_data(t_hash_table *ht, const char *key)
 
 	if (!ht || !key)
 		return (NULL);
-	index = ft_mthash_find_index(ht, key);
+	index = ft_mthash_get_index(ht, key);
 	if (index == -1)
 		return (NULL);
 	current = ht->buckets[index];
@@ -61,7 +61,7 @@ void	*ft_mthash_find_data(t_hash_table *ht, const char *key)
 		result = ft_mtsearch_mt(current, key, ft_mtcmp_key);
 		if (result)
 			return (result->data);
-		current = current->next;
+		current = current->right;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 13:56:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:18:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 
 void	ft_mtreplace(t_mt *node, t_mt *new_node)
 {
+    t_mt *temp;
 	if (!node || !new_node)
 		return ;
+    temp = node->left;
+    if (temp)
+        temp->right = new_node;
+    new_node->left = temp;
+    new_node->right = node->right;
+    if (node->right)
+        node->right->left = new_node;
     ft_mtfree(node);
-	node = ft_mtdup(new_node);
-    ft_mtfree(new_node);
 }

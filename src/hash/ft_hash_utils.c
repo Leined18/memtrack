@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:30:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 14:41:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:41:18 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // obtiene la funcion de eliminacion de datos dependiendo del tipo de dato
 void (*ft_mtget_free_data(t_data_type type))(void **)
 {
-	if (type == BRANCH)
+	if (type == LIST)
 		return (ft_mtdel_list);
-	else if (type == LEAF)
+	else if (type == STRING)
 		return (ft_mtdel_data);
 	else if (type == HASH_TABLE)
 		return (ft_mthash_table_free);

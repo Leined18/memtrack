@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/11/29 14:00:58 by danpalac         ###   ########.fr        #
+#    Updated: 2024/12/02 11:18:16 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ LIST_DIR		:= list/
 HASH_DIR		:= hash/
 STACK_DIR		:= stack/
 MEM_DIR			:= mem/
-MTLIB_DIR			:= mtlib/
+MTLIB_DIR		:= mtlib/
 UTILS_DIR		:= utils/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
@@ -95,10 +95,10 @@ LFLAGS		:= -L$(LIBFT_DIR)
 
 #LIST_FILES :=  ft_mtflatten.c ft_mtmap.c ft_mtmerge.c ft_mtdistinct.c ft_mtclone.c ft_mtinsert_index.c ft_mtfind_cmp.c ft_mtlast.c ft_mtiter.c
 
-LIST_FILES := ft_mtadd_back ft_mtfind_cmp ft_mtiter ft_mtlast ft_mtsize \
+LIST_FILES := ft_mtadd_back ft_mtiter ft_mtlast ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
-			ft_mtget_cmp ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
+			ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
 			ft_mtcount_type ft_mtcollect_type ft_mtnew_original_key \
 			ft_mtexists_mt ft_mtexists_list
 

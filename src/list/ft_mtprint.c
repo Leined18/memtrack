@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 12:25:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:17:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	ft_mtprint(t_mt *lst, int b, char *c)
         else if (!lst->data) // Imprimir NULL si no hay datos
             ft_printf("(NULL)");
 		// Imprimir el separador solo si no es el último nodo
-		if (lst->next)
+		if (lst->right)
 			ft_printf("%s", c);
 		// Avanzar al siguiente nodo
-		lst = lst->next;
+		lst = lst->right;
 	}
 	// Imprimir salto de línea después de recorrer toda la lista
 	printf("\n");

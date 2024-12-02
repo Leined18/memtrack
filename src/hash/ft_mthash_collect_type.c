@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:49:02 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 14:56:31 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:56:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  *
  * Return: Lista enlazada de nodos recolectados.
  */
-t_mt	*ft_mthash_collect_types(t_hash_table *ht, t_data_type type)
+t_mt	*ft_mthash_collect_data_types(t_hash_table *ht, t_data_type type)
 {
 	size_t	i;
 	t_mt	*collected;
@@ -34,7 +34,28 @@ t_mt	*ft_mthash_collect_types(t_hash_table *ht, t_data_type type)
 	while (i < ht->bucket_count)
 	{
 		current = ht->buckets[i];
-		temp = ft_mtcollect_type_list(current, type);
+		temp = ft_mtcollect_data_type_list(current, type);
+		ft_mtmigrate_back(&temp, &collected);
+		i++;
+	}
+	return (collected);
+}
+
+t_mt	*ft_mthash_collect_node_types(t_hash_table *ht, t_node_type type)
+{
+	size_t	i;
+	t_mt	*collected;
+	t_mt	*current;
+	t_mt	*temp;
+
+	if (!ht)
+		return (NULL);
+	i = 0;
+	collected = NULL;
+	while (i < ht->bucket_count)
+	{
+		current = ht->buckets[i];
+		temp = ft_mtcollect_node_type_list(current, type);
 		ft_mtmigrate_back(&temp, &collected);
 		i++;
 	}

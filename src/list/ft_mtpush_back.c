@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:58:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 08:06:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:54:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,21 @@ void	ft_mtpush_back(t_mt **src, t_mt **dest)
 		return ;
 	// Extraer el nodo desde la fuente
 	node_to_move = *src;
-	*src = (*src)->next;
+	*src = (*src)->right;
 	if (*src) // Si hay más nodos en la fuente, actualizar su puntero prev
-		(*src)->prev = NULL;
-	node_to_move->next = NULL;
-	node_to_move->prev = NULL;
-	// Si la lista destino está vacía
+		(*src)->left = NULL;
+	node_to_move->right = NULL;
+	node_to_move->left = NULL;
 	if (!*dest)
 	{
 		*dest = node_to_move; // Asignar el nodo como el primer elemento
 		return ;
 	}
-	// Encontrar el último nodo en la lista destino
 	current = *dest;
-	while (current->next)
-		current = current->next;
-	// Insertar el nodo al final
-	current->next = node_to_move;
-	node_to_move->prev = current; // Actualizar el puntero prev del nodo movido
+	while (current->right)
+		current = current->right;
+	current->right = node_to_move;
+	node_to_move->left = current;
 }
 
 // stacka = "miau" "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

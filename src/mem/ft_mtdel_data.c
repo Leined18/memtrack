@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdel_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:10:19 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/25 18:13:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:34:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	del_array(char **data, size_t size)
+void	ft_del_array(char **data, size_t size)
 {
 	size_t	i;
 

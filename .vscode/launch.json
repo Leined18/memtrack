@@ -19,8 +19,8 @@
           "ignoreFailures": true
         }
       ],
-        "preLaunchTask": "make",
-        "postDebugTask": "make clean"
+      "preLaunchTask": "make",
+      "postDebugTask": "make clean"
     },
     {
       "name": "C/C++ Runner: Debug Session",

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 15:49:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:52:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@
 
 int	test(t_hash_table *ht)
 {
-	ht = ft_mthash_new_table(3, "test");
-	ht->methods.insert(ht, "key1", ft_strdup("data1"), LEAF);
-	ht->methods.insert(ht, "key2", ft_strdup("data2"), LEAF);
-	ht->methods.insert(ht, "key3", ft_strdup("data3"), LEAF);
-	ht->methods.insert(ht, "key4", ft_strdup("data4"), LEAF);
-	ht->methods.insert(ht, "key5", ft_strdup("data5"), LEAF);
-	ht->methods.insert(ht, "key6", ft_strdup("data6"), LEAF);
-	ht->methods.insert(ht, "key7", ft_strdup("data7"), LEAF);
-	ht->methods.insert(ht, "key7", NULL, BRANCH);
-	ht->methods.add(ht, ft_mtnew("777", ft_strdup("data9"), LEAF));
-	ht->methods.add(ht, ft_mtnew("777", ft_strdup("data10"), LEAF));
-	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data8"),
-			LEAF));
-	ht->methods.add_child(ht, "key7", ft_mtnew("777", ft_strdup("data11"),
-			LEAF));
-	ht->methods.insert_child(ht, "hash", "key7", ft_strdup("data12"), LEAF);
-	ht->methods.insert_child(ht, "hash", "key7_table", ft_mthash_new_table(2, "algoritms"), HASH_TABLE);
+	ht = ft_mthash_new_table(19, "test");
+	ht->methods.insert_child(ht, "key1", "data1", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data2", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data3", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data4", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data5", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data6", ft_strdup("xkasjd23"),
+		STRING);
+	ht->methods.insert_child(ht, "key1", "data7", ft_strdup("xkasjd23"),
+		STRING);
 	ht->methods.print(ht);
 	ht->methods.free_table(ht);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 13:41:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:03:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	set_methods(t_hash_table *ht)
 	ht->methods.insert = ft_mthash_insert;
 	ht->methods.get = ft_mthash_find_node;
 	ht->methods.get_data = ft_mthash_find_data;
-	ht->methods.remove = ft_mthash_remove;
+	ht->methods.remove = ft_mthash_remove_node;
 	ht->methods.free_table = ft_mtfree_hash_table;
 	ht->methods.print = ft_mtprint_hash_table;
 	ht->methods.add_child = ft_mthash_add_child;

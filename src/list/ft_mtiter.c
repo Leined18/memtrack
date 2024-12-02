@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtiter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:10:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:17:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_mtiter(t_mt *lst, void (*f)(void *))
 	while (lst)
 	{
 		f(lst->data);
-		lst = lst->next;
+		lst = lst->right;
 	}
 }

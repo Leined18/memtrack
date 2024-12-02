@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:54:06 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/18 08:07:43 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:54:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	ft_mtpush(t_mt **src, t_mt **dest)
 		return ;
 	// Extraer el nodo desde la cabecera de src
 	node_to_move = *src;
-	*src = (*src)->next;
+	*src = (*src)->right;
 	// Si hay más nodos en src, actualizar el puntero prev del nuevo primer nodo
 	if (*src)
-		(*src)->prev = NULL;
+		(*src)->left = NULL;
 	// Conectar el nodo movido con dest
-	node_to_move->next = *dest;
-	node_to_move->prev = NULL;
+	node_to_move->right = *dest;
+	node_to_move->left = NULL;
 	// Si dest no está vacío, actualizar el puntero prev del primer nodo de dest
 	if (*dest)
-		(*dest)->prev = node_to_move;
+		(*dest)->left = node_to_move;
 	// Actualizar la cabecera de dest
 	*dest = node_to_move;
 }

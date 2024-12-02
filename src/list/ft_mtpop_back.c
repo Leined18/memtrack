@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpop_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:15:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 10:07:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:52:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	ft_mtpop_back(t_mt **lst)
 	if (!*lst) // Si la lista está vacía, no hacemos nada
 		return ;
 	tmp = *lst;
-	while (tmp->next) // Vamos hasta el último nodo
-		tmp = tmp->next;
-	if (tmp->prev) // Si el nodo anterior existe, lo actualizamos
-		tmp->prev->next = NULL;
+	while (tmp->right) // Vamos hasta el último nodo
+		tmp = tmp->right;
+	if (tmp->left)
+		tmp->left->right = NULL;
 	else
 		*lst = NULL;
 	ft_mtfree(tmp); // Liberamos el nodo eliminado

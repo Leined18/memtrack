@@ -15,11 +15,11 @@ void	ft_mtpush_data(t_mt **lst, const char *key, void *data,
 			t_data_type type);
 void	ft_mtpush_data_back(t_mt **lst, const char *key, void *data,
 			t_data_type type);
-void	ft_mtremove_data(t_mt **lst, void *data, int (*cmp)(), size_t n);
+void	ft_mtremove_data(t_mt *lst, char *key);
 void	ft_mtclear(t_mt **lst);
 void	ft_mterase(t_mt **lst);
 void	ft_mtdel_data(void **data);
 void	ft_mtdel_list(void **data);
-void	ft_mtreplace_all_data(t_mt **lst, void *new_data);
+void	ft_mtreplace_all_data(t_mt **lst, void *new_data, t_data_type type);
 
 #endif // MEM_H

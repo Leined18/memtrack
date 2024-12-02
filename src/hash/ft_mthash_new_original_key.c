@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_new_original_key.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:45:41 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:46:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:47:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_mthash_new_original_key(char *key, t_hash_table *ht)
 			tmp = ft_mtnew_original_key(key, current);
 			if (tmp)
 				return (tmp);
-			current = current->next;
+			current = current->right;
 		}
 		i++;
 	}

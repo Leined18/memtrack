@@ -31,35 +31,68 @@ typedef struct s_hash_table
 	t_hash_table_methods methods; // Uso de t_hash_table_methods
 }				t_hash_table;
 // Function prototypes
+
+// create functions
 size_t			ft_mthash(const char *key, size_t bucket_count);
 t_hash_table	*ft_mthash_new_table(size_t bucket_count, char *name);
-int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
-					t_data_type type);
-int				ft_mthash_add_child(t_hash_table *ht, const char *key,
-					t_mt *child);
+
+// find functions
 void			*ft_mthash_find_node(t_hash_table *ht, const char *key);
 void			*ft_mthash_find_data(t_hash_table *ht, const char *key);
+
+// free functions
 void			ft_mtfree_hash_table(t_hash_table *ht);
 void			ft_mthash_table_free(void **ht);
+
+// print functions
 void			ft_mtprint_hash_table(t_hash_table *ht);
-int				ft_mthash_remove(t_hash_table *ht, const char *key);
-int				ft_mthash_find_index(t_hash_table *ht, const char *key);
+
+// remove functions
+int				ft_mthash_remove_node(t_hash_table *ht, const char *key);
+
+// get functions
+void (*ft_mtget_free_data(t_data_type type))(void **);
+int				ft_mthash_get_index(t_hash_table *ht, const char *key);
+
+// replace functions
 void			ft_mthash_replace_key(t_hash_table *ht, const char *old_key,
 					const char *new_key);
 void			ft_mthash_replace_data(t_hash_table *ht, const char *key,
 					void *new_data, t_data_type type);
 void			ft_mthash_replace_node(t_hash_table *ht, const char *key,
 					t_mt *node);
+
+// check functions
 int				ft_mthash_exists(t_hash_table *ht, const char *key);
+
+// add functions
 void			ft_mthash_add_node(t_hash_table *ht, t_mt *node);
-int				ft_mthash_count_type(t_hash_table *ht, t_data_type type);
-t_mt			*ft_mthash_collect_types(t_hash_table *ht, t_data_type type);
-void			ft_mtset_to_free(t_mt *mt, int to_free);
+int				ft_mthash_add_child(t_hash_table *ht, const char *key,
+					t_mt *child);
+
+// count functions
+int				ft_mthash_count_data_type(t_hash_table *ht, t_data_type type);
+int				ft_mthash_count_node_type(t_hash_table *ht, t_node_type type);
+
+// set functions
+void			ft_mthash_set_methods(t_hash_table *ht);
+
+// insert functions
 void			ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
 					const char *child_key, void *data, t_data_type type);
+int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
+					t_data_type type);
+
+// hash key functions
 char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
+
 // hash_utils functions
 void			ft_mtdel_by_type(void **data, t_data_type type);
-void (*ft_mtget_free_data(t_data_type type))(void **);
+
+// collect functions
+t_mt			*ft_mthash_collect_node_types(t_hash_table *ht,
+					t_node_type type);
+t_mt			*ft_mthash_collect_data_types(t_hash_table *ht,
+					t_data_type type);
 
 #endif // HASH_H

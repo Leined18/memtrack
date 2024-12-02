@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtsize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:15:43 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/16 11:11:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:01:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_mtsize(t_mt *lst)
 	while (lst)
 	{
 		size++;
-		lst = lst->next;
+		lst = lst->right;
 	}
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:27:19 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 14:41:14 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:48:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_hashes_tables(t_hash_table *ht)
 
 	if (!ht)
 		return ;
-	list = ft_mthash_collect_types(ht, HASH_TABLE);
+	list = ft_mthash_collect_data_types(ht, HASH_TABLE);
 	if (!list)
 		return ;
 	current = list;
@@ -35,7 +35,7 @@ void	print_hashes_tables(t_hash_table *ht)
 		ft_printf(PURPLE "%s" RESET BLUE "%s\n" RESET, "SUBTABLE is FROM: ",
 			ht->name);
 		ft_mtprint_hash_table((t_hash_table *)list->data);
-		list = list->next;
+		list = list->right;
 	}
 	ft_mtclear(&current);
 }

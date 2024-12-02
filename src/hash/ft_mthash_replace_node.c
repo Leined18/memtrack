@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:08:54 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:19:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:43:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	ft_mthash_replace_node(t_hash_table *ht, const char *key, t_mt *node)
 		ft_mtadd_back(&ht->buckets[index], node);
 		return ;
 	}
-	ft_mthash_replace_data(ht, key, node->data, node->type);
-	ft_mthash_replace_key(ht, key, node->key);
-    free(node->key);
-    free(node);
+	ft_mtreplace(ft_mthash_find_node(ht, key), node);
 }
 // This function replaces the node with the key 'key' with the
 // node 'node' in the hash table 'ht'. If the node does not exist

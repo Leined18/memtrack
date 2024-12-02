@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtremove_data.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 10:19:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:25:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// busca el nodo que buscas en la lista y elimina la data no el nodo.
-void	ft_mtremove_data(t_mt **lst, void *data, int (*cmp)(), size_t n)
+void	ft_mtremove_data(t_mt *lst, char *key)
 {
 	t_mt	*current;
 
-	current = *lst;
+	current = lst;
 	while (current)
 	{
-		if (!cmp(current->data, data, n))
+		if (ft_mtcmp_key(current, key))
 		{
-			ft_mtdel_by_type(&current->data, current->type);
+			ft_mtdel_by_type(&current->data, current->values.data_type);
 			current->data = NULL;
 		}
-		current = current->next;
+		if (current->children)
+			ft_mtremove_data(current->children, key);
+		current = current->right;
 	}
 }
 

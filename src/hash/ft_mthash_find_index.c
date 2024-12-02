@@ -6,14 +6,14 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:04:02 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:13:01 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:01:29 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // find the index where the key is, no matter if is the key is in a child
-int	ft_mthash_find_index(t_hash_table *ht, const char *key)
+int	ft_mthash_get_index(t_hash_table *ht, const char *key)
 {
 	size_t index;
 	t_mt *current;
@@ -28,7 +28,7 @@ int	ft_mthash_find_index(t_hash_table *ht, const char *key)
 		{
 			if (ft_mtsearch_mt(current, key, ft_mtcmp_key))
 				return (index);
-			current = current->next;
+			current = current->right;
 		}
 		index++;
 	}

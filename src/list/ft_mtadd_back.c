@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:13 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/19 08:44:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:33:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_mtadd_back(t_mt **lst, t_mt *new)
         return ;
     }
     last = *lst;
-    while (last->next)
-        last = last->next;
-    last->next = new;
-	new->prev = last;
-	new->next = NULL;
+    while (last->right)
+        last = last->right;
+    last->right = new;
+	new->left = last;
+	new->right = NULL;
 }

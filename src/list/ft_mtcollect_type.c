@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:58:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 15:14:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:51:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 // no usar por ahora type branch
 
-t_mt	*ft_mtcollect_type_mt(t_mt *mt, t_data_type type)
+t_mt	*ft_mtcollect_node_type_mt(t_mt *mt, t_node_type type)
 {
 	t_mt	*collected;
 	t_mt	*sub;
@@ -31,14 +31,14 @@ t_mt	*ft_mtcollect_type_mt(t_mt *mt, t_data_type type)
 		return (NULL);
 	collected = NULL;
 	sub = NULL;
-	if (mt->type == type)
+	if (mt->values.node_type == type)
 	{
 		sub = ft_mtdup(mt);
 		ft_mtpush_back(&sub, &collected);
 	}
-	if (mt->type == BRANCH)
+	if (mt->children)
 	{
-		sub = ft_mtcollect_type_list((t_mt *)mt->data, type);
+		sub = ft_mtcollect_node_type_list(mt->children, type);
 		ft_mtmigrate_back(&sub, &collected);
 	}
 	if (collected)
@@ -46,7 +46,31 @@ t_mt	*ft_mtcollect_type_mt(t_mt *mt, t_data_type type)
 	return (collected);
 }
 
-t_mt	*ft_mtcollect_type_list(t_mt *mt, t_data_type type)
+t_mt	*ft_mtcollect_data_type_mt(t_mt *mt, t_data_type type)
+{
+	t_mt	*collected;
+	t_mt	*sub;
+
+	if (!mt)
+		return (NULL);
+	collected = NULL;
+	sub = NULL;
+	if (mt->values.data_type == type)
+	{
+		sub = ft_mtdup(mt);
+		ft_mtpush_back(&sub, &collected);
+	}
+	if (mt->children)
+	{
+		sub = ft_mtcollect_data_type_list(mt->children, type);
+		ft_mtmigrate_back(&sub, &collected);
+	}
+	if (collected)
+		ft_mtset_to_free(collected, 0);
+	return (collected);
+}
+
+t_mt	*ft_mtcollect_data_type_list(t_mt *mt, t_data_type type)
 {
 	t_mt	*collected;
 	t_mt	*current;
@@ -58,9 +82,29 @@ t_mt	*ft_mtcollect_type_list(t_mt *mt, t_data_type type)
 	current = mt;
 	while (current)
 	{
-		sub = ft_mtcollect_type_mt(current, type);
+		sub = ft_mtcollect_data_type_mt(current, type);
 		ft_mtmigrate_back(&sub, &collected);
-		current = current->next;
+		current = current->right;
+	}
+	ft_mtset_to_free(collected, 0);
+	return (collected);
+}
+
+t_mt	*ft_mtcollect_node_type_list(t_mt *mt, t_node_type type)
+{
+	t_mt	*collected;
+	t_mt	*current;
+	t_mt	*sub;
+
+	if (!mt)
+		return (NULL);
+	collected = NULL;
+	current = mt;
+	while (current)
+	{
+		sub = ft_mtcollect_node_type_mt(current, type);
+		ft_mtmigrate_back(&sub, &collected);
+		current = current->right;
 	}
 	ft_mtset_to_free(collected, 0);
 	return (collected);
