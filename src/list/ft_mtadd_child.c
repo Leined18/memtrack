@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:41:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:09:42 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 	if (!parent->children)
 	{
 		parent->children = child;
-        child->parent = parent;
-        child->left = NULL;
-        child->right = NULL;
+        	child->parent = parent;
 		return (1);
 	}
 	if (ft_mtsearch_mt(parent->children, child->key, ft_mtcmp_key))
