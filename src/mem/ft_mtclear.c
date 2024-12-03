@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:22:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:00:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	ft_mtclear(t_mt **lst)
 	{
 		tmp = *lst;
 		*lst = (*lst)->right;
+		if (tmp->children)
+			ft_mtclear(&tmp->children);
 		if (tmp->values.to_free)
 		{
 			if (tmp->free_data)
 				tmp->free_data(&tmp->data);
 		}
-        if (tmp->children)
-            ft_mtclear(&tmp->children);
 		if (tmp->key)
 			free(tmp->key);
 		free(tmp);

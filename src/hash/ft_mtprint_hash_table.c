@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/03 12:07:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:57:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,13 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 		ft_printf(BLUE "{%s}" RESET, inner_list->key);
 		if (inner_list->children)
 		{
-			ft_printf(BRIGHT_BLUE " \"%s\"\n" RESET, (char *)inner_list->data);
+			print_data(inner_list);
+			ft_printf("\n");
 			branch_flags[depth] = !is_last;
 			print_inner_list(inner_list->children, depth + 1, branch_flags);
 			print = 0;
 		}
-		if (inner_list->values.data_type == STRING)
-			ft_printf(CYAN " \"%s\"" RESET, (char *)inner_list->data);
-		else
-			ft_printf(CYAN " %p" RESET, inner_list->data);
+		print_data(inner_list);
 		if (print)
 			ft_printf("\n");
 		inner_list = inner_list->right;
