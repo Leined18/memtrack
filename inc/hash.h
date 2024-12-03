@@ -7,8 +7,8 @@ typedef struct s_hash_table_methods
 {
 	int			(*insert)(struct s_hash_table *, const char *, void *,
 					t_data_type);
-	void		*(*get)(struct s_hash_table *, const char *);
-	void		*(*get_data)(struct s_hash_table *, const char *);
+	void		*(*search)(struct s_hash_table *, const char *);
+	void		*(*search_data)(struct s_hash_table *, const char *);
 	int			(*remove)(struct s_hash_table *, const char *);
 	void		(*free_table)(struct s_hash_table *);
 	void		(*print)(struct s_hash_table *);

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/03 12:57:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:51:31 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 			print_inner_list(inner_list->children, depth + 1, branch_flags);
 			print = 0;
 		}
-		print_data(inner_list);
+        else
+		    print_data(inner_list);
 		if (print)
 			ft_printf("\n");
 		inner_list = inner_list->right;
