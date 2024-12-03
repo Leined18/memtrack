@@ -60,10 +60,8 @@ t_mt			*ft_mtcollect_node_type_mt(t_mt *mt, t_node_type type);
 t_mt			*ft_mtcollect_data_type_mt(t_mt *mt, t_data_type type);
 t_mt			*ft_mtcollect_data_type_list(t_mt *mt, t_data_type type);
 t_mt			*ft_mtcollect_node_type_list(t_mt *mt, t_node_type type);
-t_mt			*ft_mtsearch_list(t_mt *root, const char *key,
-					int (*cmp)(t_mt *, const char *));
-t_mt			*ft_mtsearch_mt(t_mt *root, const char *key, int (*cmp)(t_mt *,
-						const char *));
+t_mt			*ft_mtsearch_list(t_mt *root, const char *key);
+t_mt			*ft_mtsearch_mt(t_mt *root, const char *key);
 t_mt			*ft_mtlast(t_mt *lst);
 
 #endif // LIST_H

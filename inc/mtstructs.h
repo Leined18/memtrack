@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:40:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:12:08 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_hash_table	t_hash_table;
 typedef enum e_data_type
 {
     NONE,
+    PTR,
 	STRING,
 	LIST,
 	HASH_TABLE

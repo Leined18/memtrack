@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew_original_key.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:24:52 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:48:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:02:46 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_mtnew_original_key(char *key, t_mt *node)
 		return (NULL);
 	new_key = ft_strdup(key);
 	i = 1;
-	while (ft_mtsearch_list(node, new_key, ft_mtcmp_key))
+	while (ft_mtsearch_list(node, new_key))
 	{
 		key_suffix = ft_itoa(i++);
 		tmp = new_key;
@@ -36,7 +36,7 @@ char	*ft_mtnew_original_key(char *key, t_mt *node)
 		new_key = ft_mtnew_key(tmp, key_suffix);
 		(free(tmp), free(key_suffix));
 	}
-	if (!ft_mtsearch_list(node, new_key, ft_mtcmp_key))
+	if (!ft_mtsearch_list(node, new_key))
 		return (free(key), new_key);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:23:07 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:03:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:03:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 	current = ht->buckets[index];
 	while (current)
 	{
-		result = ft_mtsearch_mt(current, key, ft_mtcmp_key);
+		result = ft_mtsearch_mt(current, key);
 		if (result)
 			return (result);
 		current = current->right;
@@ -58,7 +58,7 @@ void	*ft_mthash_find_data(t_hash_table *ht, const char *key)
 	current = ht->buckets[index];
 	while (current)
 	{
-		result = ft_mtsearch_mt(current, key, ft_mtcmp_key);
+		result = ft_mtsearch_mt(current, key);
 		if (result)
 			return (result->data);
 		current = current->right;

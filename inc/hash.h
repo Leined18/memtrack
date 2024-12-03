@@ -51,7 +51,6 @@ void			ft_mtprint_hash_table(t_hash_table *ht);
 int				ft_mthash_remove_node(t_hash_table *ht, const char *key);
 
 // get functions
-void (*ft_mtget_free_data(t_data_type type))(void **);
 int				ft_mthash_get_index(t_hash_table *ht, const char *key);
 
 // replace functions
@@ -85,9 +84,6 @@ int				ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 
 // hash key functions
 char			*ft_mthash_new_original_key(char *key, t_hash_table *ht);
-
-// hash_utils functions
-void			ft_mtdel_by_type(void **data, t_data_type type);
 
 // collect functions
 t_mt			*ft_mthash_collect_node_types(t_hash_table *ht,

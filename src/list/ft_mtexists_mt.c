@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtexists_mt.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:33:32 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:49:03 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:02:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_mtexists_mt(t_mt *root, const char *key)
 
 	if (!root || !key)
 		return (0);
-	current = ft_mtsearch_mt(root, key, ft_mtcmp_key);
+	current = ft_mtsearch_mt(root, key);
 	if (!current)
 		return (0);
 	return (1);

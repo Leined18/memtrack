@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:25:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:03:18 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_mtremove_data(t_mt *lst, char *key)
 	current = lst;
 	while (current)
 	{
-		if (ft_mtcmp_key(current, key))
+		if (ft_mtcmp_key(current, key, ft_strlen(key)))
 		{
 			ft_mtdel_by_type(&current->data, current->values.data_type);
 			current->data = NULL;
