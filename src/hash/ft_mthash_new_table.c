@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_new_table.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:21:40 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/03 13:38:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:21:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	set_methods(t_hash_table *ht)
 	ht->methods.replace_data = ft_mthash_replace_data;
 	ht->methods.replace_node = ft_mthash_replace_node;
 	ht->methods.add = ft_mthash_add_node;
+	ht->methods.set_free_func = ft_mthash_set_free_func;
 }
 
 t_hash_table	*ft_mthash_new_table(size_t bucket_count, char *name)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/03 13:51:31 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:17:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 			print_inner_list(inner_list->children, depth + 1, branch_flags);
 			print = 0;
 		}
-        else
-		    print_data(inner_list);
+		else
+			print_data(inner_list);
 		if (print)
 			ft_printf("\n");
 		inner_list = inner_list->right;
@@ -78,12 +78,16 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 	// Si el nodo es una rama, imprime sus hijos recursivamente
 	if (node->children)
 	{
-		ft_printf(BRIGHT_BLUE " \"%s\"\n" RESET, (char *)node->data);
+		print_data(node);
+		ft_printf("\n");
 		branch_flags[depth] = !is_last; // Actualiza bandera de continuación
 		print_inner_list(node->children, depth + 1, branch_flags);
 	}
 	else
-		ft_printf(CYAN " \"%s\"\n" RESET, (char *)node->data);
+	{
+		print_data(node);
+		printf("\n");
+	}
 	if (is_last)
 		ft_printf("\n");
 }

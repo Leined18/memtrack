@@ -26,6 +26,7 @@ int				ft_mtsize(t_mt *lst);
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
 void			ft_mtprint(t_mt *lst, int b, char *c);
 void			ft_mtset_to_free(t_mt *mt, int to_free);
+void			ft_mtset_free_func(t_mt *node, void (*free_func)(void **));
 
 // move functions
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);

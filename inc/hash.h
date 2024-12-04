@@ -21,6 +21,8 @@ typedef struct s_hash_table_methods
 				t_data_type);
 	void		(*replace_node)(struct s_hash_table *, const char *, t_mt *);
 	void		(*add)(struct s_hash_table *, t_mt *);
+	void 		(*set_free_func)(struct s_hash_table *, char *,
+				void (*free_func)(void **));
 }				t_hash_table_methods;
 
 typedef struct s_hash_table
@@ -75,6 +77,8 @@ int				ft_mthash_count_node_type(t_hash_table *ht, t_node_type type);
 
 // set functions
 void			ft_mthash_set_methods(t_hash_table *ht);
+void			ft_mthash_set_free_func(t_hash_table *ht, char *key,
+					void (*free_func)(void **));
 
 // insert functions
 void			ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
