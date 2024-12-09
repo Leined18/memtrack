@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   mtutils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/03 12:57:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:02:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef MTUTILS_H
+# define MTUTILS_H
+
+# include "mtstructs.h"
 
 char	*ft_mtnew_key(char *prefix, char *suffix);
 void	ft_mtadd_key_suffix(char *suffix, t_mt *node);
@@ -30,4 +32,4 @@ void	print_title(const char *title);
 void	print_hashes_tables(t_hash_table *ht);
 void	print_data(t_mt *node);
 
-#endif // UTILS_H
+#endif // MTUTILS_H

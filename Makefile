@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/12/04 10:10:13 by danpalac         ###   ########.fr        #
+#    Updated: 2024/12/09 10:54:33 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,7 +149,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@cp $(NAME) $(INCLUDES) $(LIB_DIR)
 
 $(EXE): main.c $(NAME)
-	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS)  -lft -o $(EXE)
+	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS) -lft -o $(EXE)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(EXE)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 
