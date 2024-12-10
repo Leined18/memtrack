@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:51:32 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:21:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:26:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_mtcount_node_type(t_mt *node, t_node_type type)
 	current = node;
 	while (current)
 	{
-		if (current->values.node_type == type)
+		if (current->values.node_type == (int)type)
 			count++;
 		if (current->children)
 			count += ft_mtcount_node_type(current->children, type);
@@ -43,7 +43,7 @@ int	ft_mtcount_data_type(t_mt *node, t_data_type type)
 	current = node;
 	while (current)
 	{
-		if (current->values.data_type == type)
+		if (current->values.data_type == (int)type)
 			count++;
 		if (current->children)
 			count += ft_mtcount_data_type(current->children, type);
