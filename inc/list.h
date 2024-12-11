@@ -12,6 +12,7 @@ typedef struct s_mt
 	struct s_mt	*children;
 	struct s_mt	*right;
 	struct s_mt	*left;
+	struct s_mt	*aux;
 	t_values	values;
 	void		(*free_data)(void **);
 }				t_mt;
