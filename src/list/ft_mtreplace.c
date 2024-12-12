@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtreplace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:18:27 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:38:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Replaces the node 'node' with 'new_node' in the list 'list'.
 
-void	ft_mtreplace(t_mt *node, t_mt *new_node)
+void	ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node)
 {
     t_mt *temp;
 	if (!node || !new_node)
@@ -22,6 +22,8 @@ void	ft_mtreplace(t_mt *node, t_mt *new_node)
     temp = node->left;
     if (temp)
         temp->right = new_node;
+    else
+        *list = new_node;
     new_node->left = temp;
     new_node->right = node->right;
     if (node->right)

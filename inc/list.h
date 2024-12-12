@@ -44,7 +44,7 @@ void			ft_mtpop(t_mt **lst);
 
 // insert functions
 void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
-void			ft_mtreplace(t_mt *node, t_mt *new_node);
+void			ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node);
 void			ft_mtreplace_all(t_mt **list, t_mt **replace);
 int				ft_mtadd_child(t_mt *parent, t_mt *child);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);

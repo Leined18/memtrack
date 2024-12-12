@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_replace_node.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:08:54 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:43:17 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:44:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mthash_replace_node(t_hash_table *ht, const char *key, t_mt *node)
 		ft_mtadd_back(&ht->buckets[index], node);
 		return ;
 	}
-	ft_mtreplace(ft_mthash_find_node(ht, key), node);
+	ft_mtreplace(&ht->buckets[index], ft_mthash_find_node(ht, key), node);
 }
 // This function replaces the node with the key 'key' with the
 // node 'node' in the hash table 'ht'. If the node does not exist
