@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_add_child.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:05:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:41:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:01:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_mthash_add_child(t_hash_table *ht, const char *key, t_mt *child)
 		index = ft_mthash(key, ht->bucket_count);
 		parent = ft_mtnew(key, NULL, NONE);
 		if (!parent)
-			return (ft_mtfree(child), 0);
+			return (ft_mtfree(&child), 0);
 		parent->values.node_type = BRANCH;
 		ft_mtadd_back(&ht->buckets[index], parent);
 		return (ft_mtadd_child(parent, child));

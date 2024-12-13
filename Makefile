@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/12/13 14:17:38 by danpalac         ###   ########.fr        #
+#    Updated: 2024/12/13 17:20:10 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,7 @@ HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfr
 			ft_mthash_set_free_func
 
 MEM_FILES :=  ft_mtnew ft_mtdup ft_mtclear ft_mtdel_data ft_mtfree ft_mtdel_list ft_mterase ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
-			ft_mtnew_chaos ft_mtreplace_all_data ft_mtzip ft_mtunzip ft_mtdisconnect\
+			ft_mtnew_chaos ft_mtreplace_all_data ft_mtdisconnect\
 
 UTILS_FILES := ft_mtadd_key_prefix ft_mtadd_key_suffix ft_mtnew_key ft_mtcmp_utils ft_mtprint_utils ft_mtutils \
 			ft_mtset_to_free

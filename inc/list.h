@@ -71,5 +71,6 @@ t_mt			*ft_mtlast(t_mt *lst);
 t_mt			*ft_mtlast_children(t_mt *lst);
 t_mt			*ft_mtfirst(t_mt *lst);
 t_mt			*ft_mtfirst_parent(t_mt *lst);
+t_mt			**ft_mtsearch_mt_ref(t_mt **root, const char *key);
 
 #endif // LIST_H

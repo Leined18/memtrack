@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpop_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:15:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 10:52:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:47:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_mtpop_back(t_mt **lst)
 		tmp->left->right = NULL;
 	else
 		*lst = NULL;
-	ft_mtfree(tmp); // Liberamos el nodo eliminado
+	ft_mtfree(&tmp); // Liberamos el nodo eliminado
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

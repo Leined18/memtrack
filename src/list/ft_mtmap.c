@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:31:30 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/13 13:39:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:52:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	ft_mtmap(t_mt *lst, int (*func)(t_mt *))
 		return (0);
 	result = 0;
 	lst->ptr_aux = "used";
-	if (lst->parent)
-		result += ft_mtmap(lst->parent, func);
-	if (lst->right)
+	if (lst->right && !lst->right->ptr_aux)
 		result += ft_mtmap(lst->right, func);
-	if (lst->left)
+	if (lst->left && !lst->left->ptr_aux)
 		result += ft_mtmap(lst->left, func);
-	if (lst->children)
+	if (lst->parent && !lst->parent->ptr_aux)
+		result += ft_mtmap(lst->parent, func);
+	if (lst->children && !lst->children->ptr_aux)
 		result += ft_mtmap(lst->children, func);
 	lst->ptr_aux = NULL;
 	result += func(lst);
