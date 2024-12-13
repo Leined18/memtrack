@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:03:47 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:02:09 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:19:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ int	ft_mthash_remove_node(t_hash_table *ht, const char *key)
 		return (-1);
 	current = ft_mthash_find_node(ht, key);
 	if (!current)
-        return (-1);
-    current->left->right = current->right; // desanclamos el nodo
-    current->right->left = current->left; // Eliminamos el nodo
-    ft_mtfree(current); // liberamos la memoria
-	return (1); // si se elimina correctamente
+		return (-1);
+	ft_mtfree(current); // liberamos la memoria
+	return (1);         // si se elimina correctamente
 }

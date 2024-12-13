@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/11 12:21:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:43:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,17 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 	child->parent = parent;
 	parent->values.node_type = BRANCH;
 	ft_mtadd_back(&parent->children, child);
+	return (1);
+}
+
+int	ft_mtadd_children(t_mt *parent, t_mt *children)
+{
+	if (!parent || !children)
+		return (0);
+	while (children)
+	{
+		ft_mtadd_child(parent, children);
+		children = children->right;
+	}
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdel_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:12:50 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 19:54:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:50:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_mtdel_list(void **data)
 	if (!data || !*data)
 		return ;
 	tmp = (t_mt *)*data;
-	ft_mtclear(&tmp);
+	ft_mterase(&tmp);
 	*data = NULL;
 }
-

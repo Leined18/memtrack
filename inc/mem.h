@@ -11,12 +11,22 @@ t_mt	*ft_mtnew(const char *key, void *data, t_data_type type);
 t_mt	*ft_mtdup(t_mt *src);
 t_mt	*ft_mtnew_chaos(void *data);
 void	ft_mtfree(t_mt *mt);
+
+// disconnect
+t_mt	*ft_mtdisconnect(t_mt **node);
+
+// connect
+
+t_mt	*ft_connect_childrens(t_mt **node);
+t_mt	*ft_connect_parent(t_mt **node);
+t_mt	*ft_connect_siblings(t_mt **node);
+
 void	ft_mtpush_data(t_mt **lst, const char *key, void *data,
 			t_data_type type);
 void	ft_mtpush_data_back(t_mt **lst, const char *key, void *data,
 			t_data_type type);
 void	ft_mtremove_data(t_mt *lst, char *key);
-void	ft_mtclear(t_mt **lst);
+int		ft_mtclear(t_mt **lst);
 void	ft_mterase(t_mt **lst);
 void	ft_mtdel_data(void **data);
 void	ft_mtdel_list(void **data);

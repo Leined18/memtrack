@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2024/12/09 10:54:33 by danpalac         ###   ########.fr        #
+#    Updated: 2024/12/13 14:17:38 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,12 +95,12 @@ LFLAGS		:= -L$(LIBFT_DIR)
 
 #LIST_FILES :=  ft_mtflatten.c ft_mtmap.c ft_mtmerge.c ft_mtdistinct.c ft_mtclone.c ft_mtinsert_index.c ft_mtfind_cmp.c ft_mtlast.c ft_mtiter.c
 
-LIST_FILES := ft_mtadd_back ft_mtiter ft_mtlast ft_mtsize \
+LIST_FILES := ft_mtadd_back ft_mtiter ft_mtlast ft_mtfirst ft_mtsize \
 			ft_mtadd_front ft_mtpop ft_mtpop_back ft_mtpush ft_mtswap ft_mtmigrate ft_mtreverse_rotate ft_mtrotate \
 			ft_mtinsert_index ft_mtpush_back ft_mtmigrate_back ft_mtprint \
 			ft_mtreplace ft_mtreplace_all ft_mtsearch_mt ft_mtadd_child \
 			ft_mtcount_type ft_mtcollect_type ft_mtnew_original_key \
-			ft_mtexists_mt ft_mtexists_list ft_mtset_free_func
+			ft_mtexists_mt ft_mtexists_list ft_mtset_free_func ft_mtmap
 
 HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfree_hash_table ft_mthash_new_table ft_mtprint_hash_table \
 			ft_mthash_find_index ft_mthash_add_child ft_mthash_replace_data ft_mthash_replace_key \
@@ -109,7 +109,7 @@ HASH_FILES := ft_mthash_insert ft_mthash_remove ft_mthash ft_mthash_find ft_mtfr
 			ft_mthash_set_free_func
 
 MEM_FILES :=  ft_mtnew ft_mtdup ft_mtclear ft_mtdel_data ft_mtfree ft_mtdel_list ft_mterase ft_mtremove_data ft_mtpush_data ft_mtpush_data_back \
-			ft_mtnew_chaos ft_mtreplace_all_data ft_mtzip ft_mtunzip \
+			ft_mtnew_chaos ft_mtreplace_all_data ft_mtzip ft_mtunzip ft_mtdisconnect\
 
 UTILS_FILES := ft_mtadd_key_prefix ft_mtadd_key_suffix ft_mtnew_key ft_mtcmp_utils ft_mtprint_utils ft_mtutils \
 			ft_mtset_to_free

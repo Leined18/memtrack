@@ -13,6 +13,7 @@ typedef struct s_mt
 	struct s_mt	*right;
 	struct s_mt	*left;
 	struct s_mt	*aux;
+	void		*ptr_aux;
 	t_values	values;
 	void		(*free_data)(void **);
 }				t_mt;
@@ -25,9 +26,10 @@ int				ft_mtsize(t_mt *lst);
 
 // iter and set functions
 void			ft_mtiter(t_mt *lst, void (*f)(void *));
-void			ft_mtprint(t_mt *lst, int b, char *c);
+void			ft_mtprint(t_mt *mt);
 void			ft_mtset_to_free(t_mt *mt, int to_free);
 void			ft_mtset_free_func(t_mt *node, void (*free_func)(void **));
+int				ft_mtmap(t_mt *lst, int (*func)(t_mt *));
 
 // move functions
 void			ft_mtmigrate_back(t_mt **src, t_mt **dest);
@@ -47,6 +49,7 @@ void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
 void			ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node);
 void			ft_mtreplace_all(t_mt **list, t_mt **replace);
 int				ft_mtadd_child(t_mt *parent, t_mt *child);
+int				ft_mtadd_children(t_mt *parent, t_mt *children);
 void			ft_mtadd_back(t_mt **lst, t_mt *new);
 void			ft_mtadd_front(t_mt **lst, t_mt *new);
 
@@ -65,5 +68,8 @@ t_mt			*ft_mtcollect_node_type_list(t_mt *mt, t_node_type type);
 t_mt			*ft_mtsearch_list(t_mt *root, const char *key);
 t_mt			*ft_mtsearch_mt(t_mt *root, const char *key);
 t_mt			*ft_mtlast(t_mt *lst);
+t_mt			*ft_mtlast_children(t_mt *lst);
+t_mt			*ft_mtfirst(t_mt *lst);
+t_mt			*ft_mtfirst_parent(t_mt *lst);
 
 #endif // LIST_H

@@ -6,37 +6,35 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:17:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:15:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// imprime la lista de datos de la lista.
-void	ft_mtprint(t_mt *lst, int b, char *c)
+void	clear_screen(void)
 {
-	if (!lst)
-	{
-		ft_printf("(NULL)\n");
-		return ;
-	}
-	while (lst) // Recorrer toda la lista
-	{
-		// Imprimir de acuerdo al tipo de dato solicitado
-		if (b == 1 && lst->data) // Imprimir strings
-			ft_printf("%s", (char *)lst->data);
-		else if (b == 0 && lst->data) // Imprimir direcciones
-			ft_printf("%p", lst->data);
-		else if (b == 2 && lst->data) // Imprimir enteros
-			ft_printf("%d", *(int *)lst->data);
-        else if (!lst->data) // Imprimir NULL si no hay datos
-            ft_printf("(NULL)");
-		// Imprimir el separador solo si no es el último nodo
-		if (lst->right)
-			ft_printf("%s", c);
-		// Avanzar al siguiente nodo
-		lst = lst->right;
-	}
-	// Imprimir salto de línea después de recorrer toda la lista
-	printf("\n");
+	printf("\033[2J\033[H");
+}
+
+void	move_cursor(int x, int y)
+{
+	printf("\033[%d;%dH", y, x);
+}
+
+void	print_box(const char *key, const char *data, int x, int y)
+{
+	move_cursor(x, y);
+	printf("┌──────────────┐\n");
+	move_cursor(x, y + 1);
+	printf("│ Key: %-8s│\n", key ? key : "NULL");
+	move_cursor(x, y + 2);
+	printf("│ Data: %-7s│\n", data ? data : "NULL");
+	move_cursor(x, y + 3);
+	printf("└──────────────┘\n");
+}
+
+void	ft_mtprint(t_mt *mt)
+{
+	print_box(mt->key, (char *)mt->data, 0, 0);
 }

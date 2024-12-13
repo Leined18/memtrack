@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:04:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:30:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 void	ft_mtfree(t_mt *mt)
 {
-	ft_mtdel_by_type(&mt->data, mt->values.data_type);
-	mt->data = NULL;
-	if (mt->children)
-		ft_mtclear(&mt->children);
-	free(mt->key);
-	free(mt);
+	t_mt	*node_to_free;
+
+	if (!mt)
+		return ;
+	node_to_free = ft_mtdisconnect(&mt);
+	if (!node_to_free)
+		return ;
+	if (node_to_free->values.to_free)
+	{
+		if (node_to_free->free_data)
+			node_to_free->free_data(&node_to_free->data);
+	}
+	if (node_to_free->key)
+		free(node_to_free->key);
+	free(node_to_free);
 }

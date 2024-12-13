@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtlast.c                                        :+:      :+:    :+:   */
+/*   ft_mtfirst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:13:01 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/13 11:17:30 by danpalac         ###   ########.fr       */
+/*   Created: 2024/12/13 11:17:15 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/13 11:17:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Returns the last element of the list.
-t_mt	*ft_mtlast(t_mt *lst)
+t_mt	*ft_mtfirst(t_mt *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst->right)
-		lst = lst->right;
+	while (lst->left)
+		lst = lst->left;
 	return (lst);
 }
 
-t_mt *ft_mtlast_children(t_mt *lst)
+t_mt	*ft_mtfirst_parent(t_mt *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst->children)
-		lst = lst->children;
+	while (lst->parent)
+		lst = lst->parent;
 	return (lst);
 }

@@ -6,39 +6,51 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:58:19 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:19:00 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * test_hash_table_operations - Prueba las operaciones de la tabla hash.
- *
- * Retorna 1 si la prueba fue exitosa, 0 si falló.
+ * ft_mtprint - Imprime un grafo de nodos de forma recursiva.
+ * @mt: Nodo inicial del grafo.
  */
 
 int	test(t_hash_table *ht)
 {
-	ht = ft_mthash_new_table(3, "test");
-	ht->methods.insert_child(ht, "key1", "data1", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data2", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data3", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data4", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data5", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data6", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data7", ft_strdup("xkasjd23"),
-		STRING);
+	ht = ft_mthash_new_table(2, "test");
+	if (!ht)
+		return (0);
+	ft_mtadd_back(&ht->buckets[1], ft_mtnew("key1", ft_strdup("value1"),
+			STRING));
+	ft_mtadd_back(&ht->buckets[1], ft_mtnew("key2", ft_strdup("value2"),
+			STRING));
+	ft_mthash_insert_child(ht, "key1", "key3", ft_strdup("value3"), STRING);
+	ft_mthash_insert_child(ht, "key2", "key4", ft_strdup("value4"), STRING);
+	ft_mthash_insert_child(ht, "key1", "key5", ft_strdup("value5"), STRING);
+	ft_mthash_insert_child(ht, "key2", "key6", ft_strdup("value6"), STRING);
+	ft_mthash_insert_child(ht, "key1", "key7", ft_strdup("value7"), STRING);
+	ft_mthash_insert_child(ht, "key2", "key8", ft_strdup("value8"), STRING);
+	ft_printf("\n\n");
+	ht->methods.remove(ht, "key1");
 	ht->methods.print(ht);
 	ht->methods.free_table(ht);
 	return (1);
 }
+
+#include "mem.h"
+
+/**
+ * ft_mtiter
+	- Aplica una función a cada nodo de la lista y devuelve la suma total.
+ * @lst: Lista a recorrer.
+ * @func: Función personalizada a aplicar a cada nodo.
+ *
+
+	* La función devuelve la suma de los valores que retorna la función personalizada
+ * al ser aplicada a cada nodo.
+ */
 
 int	main(void)
 {
