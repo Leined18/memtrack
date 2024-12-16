@@ -13,6 +13,7 @@ typedef struct s_mt
 	struct s_mt	*right;
 	struct s_mt	*left;
 	struct s_mt	*aux;
+	void		*ptr_aux;
 	t_values	values;
 	void		(*free_data)(void **);
 }				t_mt;
@@ -24,7 +25,7 @@ int				ft_mtcount_node_type(t_mt *node, t_node_type type);
 int				ft_mtsize(t_mt *lst);
 
 // iter and set functions
-void			ft_mtiter(t_mt *lst, void (*f)(void *));
+void			ft_mtiter(t_mt *lst, void (*func)(t_mt *));
 void			ft_mtprint(t_mt *lst, int b, char *c);
 void			ft_mtset_to_free(t_mt *mt, int to_free);
 void			ft_mtset_free_func(t_mt *node, void (*free_func)(void **));
@@ -52,18 +53,28 @@ void			ft_mtadd_front(t_mt **lst, t_mt *new);
 
 // check functions
 int				ft_mtexists_mt(t_mt *root, const char *key);
-int				ft_mtexists_list(t_mt *root, const char *key);
 
 // key functions
 char			*ft_mtnew_original_key(char *key, t_mt *node);
 
+// filter functions
+
+t_mt			**ft_mtfilter(t_mt *lst, int (*predicate)(t_mt *),
+					t_mt **result, int *size);
+
+// fold functions
+int				ft_mtfold(t_mt *lst, int (*func)(t_mt *));
+
 // collect functions
-t_mt			*ft_mtcollect_node_type_mt(t_mt *mt, t_node_type type);
-t_mt			*ft_mtcollect_data_type_mt(t_mt *mt, t_data_type type);
-t_mt			*ft_mtcollect_data_type_list(t_mt *mt, t_data_type type);
-t_mt			*ft_mtcollect_node_type_list(t_mt *mt, t_node_type type);
-t_mt			*ft_mtsearch_list(t_mt *root, const char *key);
-t_mt			*ft_mtsearch_mt(t_mt *root, const char *key);
+t_mt			*ft_mtcollect_node_type(t_mt *mt, t_node_type type);
+t_mt			*ft_mtcollect_data_type(t_mt *mt, t_data_type type);
+t_mt			*ft_mtcollect_state(t_mt *mt, int state);
+
+// search pointer functions
+t_mt			*ft_mtsearch(t_mt *lst, void *, int (*predicate)(t_mt *,
+						void *));
+t_mt			*ft_mtsearch_key(t_mt *root, const char *key);
 t_mt			*ft_mtlast(t_mt *lst);
+t_mt			*ft_mtfirst(t_mt *lst);
 
 #endif // LIST_H

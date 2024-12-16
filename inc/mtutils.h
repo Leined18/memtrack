@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtutils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/09 11:02:10 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:26:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_mtdel_by_type(void **data, t_data_type type);
 int		ft_mtcmp_key(t_mt *node, const char *key, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		cmp_int(void *a, void *b, size_t n);
+int		match_key(t_mt *node, void *key);
 
 // print utils
 void	print_title(const char *title);
