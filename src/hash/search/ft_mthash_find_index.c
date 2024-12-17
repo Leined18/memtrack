@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:04:02 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 17:27:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:21:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_mthash_get_index(t_hash_table *ht, const char *key)
 	while (index < ht->bucket_count)
 	{
 		current = ht->buckets[index];
-		if (ft_mtsearch(current, (void *)key, match_key))
+		if (ft_mtsearch_key(current, key))
 			return (index);
 		index++;
 	}
