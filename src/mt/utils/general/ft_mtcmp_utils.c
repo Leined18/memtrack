@@ -12,11 +12,6 @@
 
 #include "mt.h"
 
-int	match_key(t_mt *node, void *key)
-{
-	return (ft_strcmp(node->key, key) == 0);
-}
-
 int	ft_mtcmp_key(t_mt *node, const char *key, size_t n)
 {
 	if (!node || !key)
