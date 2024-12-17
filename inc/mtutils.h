@@ -29,7 +29,6 @@ void	ft_mtdel_by_type(void **data, t_data_type type);
 int		ft_mtcmp_key(t_mt *node, const char *key, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		cmp_int(void *a, void *b, size_t n);
-int		match_key(t_mt *node, void *key);
 
 /* Printing utilities */
 void	print_title(const char *title);
