@@ -6,11 +6,20 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:01:42 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 15:09:19 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:14:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
+
+/**
+ * ft_mtreplace_all_data
+ * Replaces data in all nodes of the list 'lst' with the data 'new_data'.
+ * @lst: List of nodes to replace the data.
+ * @new_data: New data to replace the old data.
+ * @type: Type of data to replace.
+ * uses ft_replace to replace the data in all nodes of the list
+ */
 
 // Replaces data in all nodes of the list 'lst' with the data 'new_data'.
 void	ft_mtreplace_all_data(t_mt **lst, void *new_data, t_data_type type)

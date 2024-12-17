@@ -6,40 +6,43 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 14:54:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:23:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mem.h"
+#include "mt.h"
+
+/**
+ * match_clear - Libera la memoria de un nodo.
+ * @node: Nodo a liberar.
+ * @param: Parámetro adicional que se pasa a la función.
+ */
+
+static void	match_clear(t_mt *node, void *param)
+{
+	(void)param;
+	if (!node)
+		return ;
+	if (node->values.to_free)
+	{
+		if (node->free_data && node->data)
+			node->free_data(&node->data);
+	}
+	if (node->key)
+		free(node->key);
+	free_null((void **)&node);
+}
 
 /**
  * ft_mtclear - Libera la memoria de la lista.
  * @lst: Lista a liberar.
- * tmp->free_data(&tmp->data); libera segun free_data
+ * usa ft_mtiter para liberar la memoria de la lista
  */
 
 void	ft_mtclear(t_mt **lst)
 {
-	if (!*lst || !lst || (*lst)->ptr_aux)
+	if (!*lst || !lst)
 		return ;
-	(*lst)->ptr_aux = "freed";
-	if ((*lst)->parent)
-		ft_mtclear(&(*lst)->parent);
-	if ((*lst)->right)
-		ft_mtclear(&(*lst)->right);
-	if ((*lst)->left)
-		ft_mtclear(&(*lst)->left);
-	if ((*lst)->children)
-		ft_mtclear(&(*lst)->children);
-	if (*lst)
-	{
-		if ((*lst)->values.to_free)
-		{
-			if ((*lst)->free_data && (*lst)->data)
-				(*lst)->free_data(&(*lst)->data);
-		}
-		if ((*lst)->key)
-			free((*lst)->key);
-		free_null((void **)lst);
-	}
+	ft_mtiter(*lst, NULL, match_clear);
+	*lst = NULL;
 }

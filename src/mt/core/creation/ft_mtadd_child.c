@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtadd_child.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/11 12:21:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:15:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 		return (0);
 	if (!parent->children)
 	{
-		parent->values.node_type = BRANCH;
+		if (parent->values.node_type != ROOT)
+			parent->values.node_type = BRANCH;
+		child->values.node_type = LEAF;
 		parent->children = child;
 		child->parent = parent;
 		return (1);
 	}
-	child->parent = parent;
-	parent->values.node_type = BRANCH;
+	if (parent->values.node_type != ROOT)
+		parent->values.node_type = BRANCH;
+	child->values.node_type = LEAF;
 	ft_mtadd_back(&parent->children, child);
 	return (1);
 }

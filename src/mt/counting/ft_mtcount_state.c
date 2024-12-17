@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtcollect_state.c                               :+:      :+:    :+:   */
+/*   ft_mtcount_state.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:16:36 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:02:10 by danpalac         ###   ########.fr       */
+/*   Created: 2024/12/17 12:08:55 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/17 12:10:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
  * @state: Estado de nodo a comparar.
  * Return: 1 si el nodo es del estado pasado, 0 en caso contrario.
  */
+
 static int match_state(t_mt *node, void *state)
 {
 	if (node->values.state == *(int *)state)
@@ -26,21 +27,17 @@ static int match_state(t_mt *node, void *state)
 }
 
 /**
- * ft_mtcollect_state
-	- Recolecta nodos de un estado específico en un árbol/lista.
- * @mt: Nodo raíz o inicio de la lista de nodos a procesar.
- * @state: Estado de nodo que se desea recolectar.
- * utiliza ft_mtfilter para recolectar los nodos de un estado específico
- *
+ * ft_mtcount_state
+ * Cuenta los nodos de un estado específico en un árbol/lista.
+ * @node: Nodo raíz o inicio de la lista de nodos a procesar.
+ * @state: Estado de nodo que se desea contar.
+ * Return: Número de nodos del estado especificado.
+ * usa ft_mtfold para contar los nodos de un estado específico
  */
 
-t_mt	*ft_mtcollect_state(t_mt *mt, int state)
+int	ft_mtcount_state(t_mt *node, int state)
 {
-	t_mt	*collected;
-
-	if (!mt || mt->ptr_aux)
-		return (NULL);
-	collected = NULL;
-	ft_mtfilter(mt, &state, match_state, &collected);
-	return (collected);
+	if (!node)
+		return (0);
+	return (ft_mtfold(node, &state, match_state));
 }
