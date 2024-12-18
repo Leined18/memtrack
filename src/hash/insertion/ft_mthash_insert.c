@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:22:35 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/29 14:00:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:10:31 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 	if (ft_mthash_exists(ht, key))
 	{
 		current = ft_mthash_find_node(ht, key);
-		ft_replace(current, data, type);
+		ft_replace_data(current, data, type);
 		return (0);
 	}
 	index = ft_mthash(key, ht->bucket_count);

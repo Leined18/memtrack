@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfold.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:19:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:49:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:59:29 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	ft_mtfold(t_mt *lst, void *param, int (*func)(t_mt *, void *))
 		return (0);
 	result = 0;
 	lst->ptr_aux = NODE_VISITED;
-	result += traverse_node(lst->right, param, func);
-	result += traverse_node(lst->left, param, func);
-	result += traverse_node(lst->children, param, func);
-	result += traverse_node(lst->parent, param, func);
+	result += traverse_node(lst->vect.right, param, func);
+	result += traverse_node(lst->vect.left, param, func);
+	result += traverse_node(lst->vect.up, param, func);
+	result += traverse_node(lst->vect.down, param, func);
 	lst->ptr_aux = NULL;
 	result += func(lst, param);
 	return (result);

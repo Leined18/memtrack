@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:53:43 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:01:21 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:58:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	ft_mtswap(t_mt **list)
 	t_mt	*tmp;
 	// Si la lista es vacía o solo tiene un elemento,
 	//no hay nada que intercambiar
-	if (!list || !*list || !(*list)->right)
+	if (!list || !*list || !(*list)->vect.right)
 		return ;
 	// Intercambiamos los dos primeros nodos
-	tmp = (*list)->right;
-	(*list)->right = tmp->right;
-	if (tmp->right)
-		tmp->right->left = *list;
-	tmp->right = *list;
-	(*list)->left = tmp;
-	tmp->left = NULL;
+	tmp = (*list)->vect.right;
+	(*list)->vect.right = tmp->vect.right;
+	if (tmp->vect.right)
+		tmp->vect.right->vect.left = *list;
+	tmp->vect.right = *list;
+	(*list)->vect.left = tmp;
+	tmp->vect.left = NULL;
 	*list = tmp;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 13:10:27 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:49:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@
 typedef struct s_mt			t_mt;
 typedef struct s_hash_table	t_hash_table;
 // Definir el enum t_data_type completamente antes de usarlo
+
+typedef struct s_cords
+{
+	int						x;
+	int						y;
+	int						z;
+}							t_cords;
+
+typedef struct s_vectors
+{
+	t_mt					*left;
+	t_mt					*right;
+	t_mt					*up;
+	t_mt					*down;
+}							t_vectors;
+
 typedef enum e_data_type
 {
 	NONE,

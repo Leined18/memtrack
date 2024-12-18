@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_count_key.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:30:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 17:25:31 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:51:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	ft_count_in_children(t_mt *parent, const char *key)
 			if (result)
 				return (result);
 		}
-		child = child->right;
+		child = child->vect.right;
 	}
 	return (result);
 }
@@ -58,7 +58,7 @@ size_t	ft_mtcount_key_list(t_mt *head, const char *key)
 	while (head)
 	{
 		count += ft_mtcount_key_mt(head, key);
-		head = head->right;
+		head = head->vect.right;
 	}
 	return (count);
 }

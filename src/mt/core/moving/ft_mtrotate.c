@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:54:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:00:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:58:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	ft_mtrotate(t_mt **list)
 	t_mt	*first;
 	t_mt	*last;
 
-	if (!list || !*list || !(*list)->right)
+	if (!list || !*list || !(*list)->vect.right)
 		return ;
 	first = *list;
 	last = *list;
-	while (last->right)
-		last = last->right;
-	*list = first->right;
-    (*list)->left = NULL;
-	first->right = NULL;
-	last->right = first;
-    first->left = last;
+	while (last->vect.right)
+		last = last->vect.right;
+	*list = first->vect.right;
+	(*list)->vect.left = NULL;
+	first->vect.right = NULL;
+	last->vect.right = first;
+	first->vect.left = last;
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

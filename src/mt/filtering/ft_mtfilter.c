@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfilter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:28:51 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:03:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:59:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	ft_mtfilter(t_mt *lst, void *param, int (*predicate)(t_mt *, void *),
 	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
 	// Si el nodo cumple con la condición,
 	if (predicate(lst, param))
-		ft_mtadd_back(result, ft_mtdup(lst));
+		ft_mtadd_back(result, ft_mtnew(lst->key, lst, NONE));
 	// Recorre los nodos relacionados
-	traverse_node(lst->right, param, predicate, result);
-	traverse_node(lst->left, param, predicate, result);
-	traverse_node(lst->parent, param, predicate, result);
-	traverse_node(lst->children, param, predicate, result);
+	traverse_node(lst->vect.right, param, predicate, result);
+	traverse_node(lst->vect.left, param, predicate, result);
+	traverse_node(lst->vect.up, param, predicate, result);
+	traverse_node(lst->vect.down, param, predicate, result);
 	lst->ptr_aux = NULL; // Restablece al salir
 }

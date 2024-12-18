@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:46:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 11:40:14 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:10:46 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mthash_replace_data(t_hash_table *ht, const char *key,
 	if (!node)
 		return ;
 	ft_mtdel_by_type(&node->data, node->values.data_type);
-	ft_replace(node, new_data, type);
+	ft_replace_data(node, new_data, type);
 }
 
 // si funciona

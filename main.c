@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 13:24:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:17:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ int	test(t_hash_table **ht)
 	found = (*ht)->methods.search((*ht), "data3");
 	if (!found)
 		return (0);
-	found = ft_mtcollect_node_type((*ht)->buckets[0], BRANCH);
+	found = ft_mtcollect_node_type((*ht)->buckets[0], LEAF);
 	node = ft_mtfirst(found);
 	while (found)
 	{
+		if (ft_strcmp(found->key, "data3") == 0)
+			ft_replace_key(found->data, "new_data3");
 		ft_printf("Found key: %s\n", found->key);
-		ft_printf("Found data: %s\n", (char *)found->data);
-		found = found->right;
+		ft_printf("Found data: %s\n", found->data);
+		found = found->vect.right;
 	}
 	ft_mtclear(&node);
 	node = ft_mtsearch_key((*ht)->buckets[0], "data7");
@@ -61,11 +63,6 @@ int	test(t_hash_table **ht)
 		ft_printf("key found: %s\n", found->key);
 		ft_printf("size of node: %d\n", ft_mtcount_node(node));
 	}
-	ft_mthash_replace_data((*ht), "data7", ft_strdup("new_data"), STRING);
-	ft_mthash_replace_node((*ht), "data7", ft_mtnew("new_key",
-			ft_strdup("new_data"), STRING));
-	ft_mthash_replace_key((*ht), "new_key", "data7");
-	(*ht)->methods.remove((*ht), "new_key");
 	(*ht)->methods.remove((*ht), "data7");
 	(*ht)->methods.print((*ht));
 	(*ht)->methods.free_table((*ht));

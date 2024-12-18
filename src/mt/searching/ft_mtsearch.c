@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtsearch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 11:55:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:05:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ t_mt	*ft_mtsearch(t_mt *lst, void *param, int (*predicate)(t_mt *, void *))
 	}
 	// Buscar en los nodos adyacentes
 	found = NULL;
-	found = traverse_node(lst->right, param, predicate);
+	found = traverse_node(lst->vect.right, param, predicate);
 	if (!found)
-		found = traverse_node(lst->left, param, predicate);
+		found = traverse_node(lst->vect.left, param, predicate);
 	if (!found)
-		found = traverse_node(lst->parent, param, predicate);
+		found = traverse_node(lst->vect.up, param, predicate);
 	if (!found)
-		found = traverse_node(lst->children, param, predicate);
+		found = traverse_node(lst->vect.down, param, predicate);
 	lst->ptr_aux = NULL; // Restablece al salir
 	return (found);      // Retorna el nodo encontrado, o NULL si no se encontró
 }

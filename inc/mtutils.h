@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtutils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 11:06:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:09:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_mtadd_key_suffix(char *suffix, t_mt *node);
 void	ft_mtadd_key_prefix(char *prefix, t_mt *node);
 
 /* Data replacement utilities */
-void	ft_replace(t_mt *current, void *new_data, t_data_type type);
+void	ft_replace_data(t_mt *current, void *new_data, t_data_type type);
+void	ft_replace_key(t_mt *current, char *new_key);
 void (*ft_mtget_free_data(t_data_type type))(void **);
 void	ft_mtdel_by_type(void **data, t_data_type type);
 

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:56:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:11:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:06:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_mtset_to_free(t_mt *mt, int to_free)
 	while (current)
 	{
 		current->values.to_free = to_free;
-		if (current->children)
-			ft_mtset_to_free(current->children, to_free);
-		current = current->right;
+		if (current->vect.down)
+			ft_mtset_to_free(current->vect.down, to_free);
+		current = current->vect.right;
 	}
 }

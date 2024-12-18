@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:34:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 10:51:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:54:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos)
 	}
 	while (pos > 1 && current)
 	{
-		current = current->right;
+		current = current->vect.right;
 		pos--;
 	}
 	if (current)
 	{
-		new_node->right = current->right;
-		new_node->left = current;
-		if (current->right)
-			current->right->left = new_node;
-		current->right = new_node;
+		new_node->vect.right = current->vect.right;
+		new_node->vect.left = current;
+		if (current->vect.right)
+			current->vect.right->vect.left = new_node;
+		current->vect.right = new_node;
 	}
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

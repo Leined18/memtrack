@@ -9,13 +9,11 @@ typedef struct s_mt
 {
 	char		*key;
 	void		*data;
-	struct s_mt	*parent;
-	struct s_mt	*children;
-	struct s_mt	*right;
-	struct s_mt	*left;
 	struct s_mt	*aux;
 	void		*ptr_aux;
 	t_values	values;
+	t_vectors	vect;
+	t_cords		cords;
 	void		(*free_data)(void **);
 }				t_mt;
 

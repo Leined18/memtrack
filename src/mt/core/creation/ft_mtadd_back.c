@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtadd_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:01:13 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 14:23:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:52:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_mtadd_back(t_mt **lst, t_mt *new)
 		return ;
 	}
 	last = *lst;
-	while (last->right && last)
-		last = last->right;
-	last->right = new;
-	new->left = last;
+	while (last->vect.right && last)
+		last = last->vect.right;
+	last->vect.right = new;
+	new->vect.left = last;
 }

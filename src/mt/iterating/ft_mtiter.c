@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtiter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:24:26 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:59:43 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *))
 		return ;
 	lst->ptr_aux = NULL;         // Restablece al entrar
 	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
-	traverse_node(lst->right, param, func);
-	traverse_node(lst->left, param, func);
-	traverse_node(lst->parent, param, func);
-	traverse_node(lst->children, param, func);
+	traverse_node(lst->vect.right, param, func);
+	traverse_node(lst->vect.left, param, func);
+	traverse_node(lst->vect.up, param, func);
+	traverse_node(lst->vect.down, param, func);
 	lst->ptr_aux = NULL; // Restablece al salir
-	func(lst, param); // Aplica la función al nodo actual
+	func(lst, param);    // Aplica la función al nodo actual
 }
