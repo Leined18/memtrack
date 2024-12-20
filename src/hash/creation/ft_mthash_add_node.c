@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_add_node.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:07:38 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 13:04:03 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	ft_mthash_add_node(t_hash_table *ht, t_mt *node)
 	if (ft_mthash_exists(ht, node->key))
 		node->key = ft_mthash_new_original_key(node->key, ht);
 	index = ft_mthash(node->key, ht->bucket_count);
-	ft_mtadd_back(&ht->buckets[index], node);
+	ft_mtadd_right(&ht->buckets[index], node);
 }

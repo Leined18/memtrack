@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 11:54:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	ft_mtpop(t_mt **lst)
 	if (*lst)
 		(*lst)->vect.left = NULL;
 	tmp->vect.right = NULL;
-	ft_mtfree(tmp);
+	ft_mtdelete(&tmp);
 }

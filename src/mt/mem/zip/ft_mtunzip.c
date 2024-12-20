@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:02:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 12:05:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_mt	*ft_mtunzip(void **data, size_t size)
 	{
 		prefix = ft_itoa(i);
 		key = ft_strjoin("Data-", prefix);
-		ft_mtpush_data_back(&list->vect.down, key, data[i], STRING);
+		ft_mtpush_data_right(&list->vect.down, key, data[i], STRING);
 		free(key);
 		free(prefix);
 		i++;

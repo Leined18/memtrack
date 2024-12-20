@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:30:29 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 12:05:32 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ t_mt	*ft_mtzip(t_mt **lst)
 		tmp = tmp->vect.right;
 	}
 	datas[i] = NULL;
-	(ft_mterase(lst), ft_mtadd_back(lst, ft_mtnew("zip", datas, STRING)));
+	(ft_mterase(lst), ft_mtadd_right(lst, ft_mtnew("zip", datas, STRING)));
 	return (*lst);
 }

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mthash_new_original_key.c                       :+:      :+:    :+:   */
+/*   ft_mtadd_aux.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:45:41 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Created: 2024/12/20 11:30:08 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/20 11:37:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-char	*ft_mthash_new_original_key(char *key, t_hash_table *ht)
+void	ft_mtadd_aux(t_mt *node, t_mt *aux)
 {
-	size_t	i;
-	t_mt	*current;
-	char	*tmp;
-
-	if (!key || !ht)
-		return (NULL);
-	i = 0;
-	while (i < ht->bucket_count)
-	{
-		current = ht->buckets[i];
-		while (current)
-		{
-			tmp = ft_mtnew_original_key(key, current);
-			if (tmp)
-				return (tmp);
-			current = current->vect.right;
-		}
-		i++;
-	}
-	return (NULL);
+	if (!node || !aux)
+		return ;
+	if (node->aux)
+		ft_mtadd_right(&node->aux, aux);
+	else
+		node->aux = aux;
 }

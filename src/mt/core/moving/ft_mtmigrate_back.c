@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtmigrate_back.c                                :+:      :+:    :+:   */
+/*   ft_mtmigrate_right.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,17 @@
 
 #include "mt.h"
 
-// Migrates all the elements of the list src to the list dest back.
-void	ft_mtmigrate_back(t_mt **src, t_mt **dest)
+// Migrates all the elements of the list src to the list dest right.
+void	ft_mtmigrate_right(t_mt **src, t_mt **dest)
 {
 	if (!*src)
 		return ;
 	while (*src)
-		ft_mtpush_back(src, dest);
+		ft_mtpush_right(src, dest);
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
 // stackb = "pi"
 
-// ft_mtmigrate_back(&stacka, &stackb);
+// ft_mtmigrate_right(&stacka, &stackb);
 // stacka = NULL;
 // stackb = "pi" -> "sa" -> "ñe" -> "asd" -> "le" -> "mu" -> "guau" -> "miau"

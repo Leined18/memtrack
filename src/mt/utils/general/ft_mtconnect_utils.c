@@ -1,40 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chaosmatrix.c                                   :+:      :+:    :+:   */
+/*   ft_mtconnect_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 09:32:18 by danpalac          #+#    #+#             */
+/*   Created: 2024/12/20 08:14:19 by danpalac          #+#    #+#             */
 /*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	*chaosmatrix(int count, size_t size, int flag)
+t_mt	*ft_mtconnect_left(t_mt *node, t_mt *left)
 {
-	void		*ptr;
-	t_mt		*tmp;
-	static t_mt	*gc = NULL;
+	if (!node)
+		return (NULL);
+	node->vect.left = left;
+	if (left)
+		left->vect.right = node;
+	return (left);
+}
+t_mt	*ft_mtconnect_right(t_mt *node, t_mt *right)
+{
+	if (!node)
+		return (NULL);
+	node->vect.right = right;
+	if (right)
+		right->vect.left = node;
+	return (right);
+}
 
-	if (flag == CLEAR)
-	{
-		ft_mtclear(&gc);
+t_mt	*ft_mtconnect_up(t_mt *node, t_mt *up)
+{
+	if (!node)
 		return (NULL);
-	}
-	if (flag == GC_PTR)
-		return (gc);
-	if (flag == GC_REF)
-		return (&gc);
-	if (count == 0 || size == 0)
+	node->vect.up = up;
+	if (up)
+		up->vect.down = node;
+	return (up);
+}
+
+t_mt	*ft_mtconnect_down(t_mt *node, t_mt *down)
+{
+	if (!node)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr)
-	{
-		ft_memset(ptr, 0, count * size);
-		tmp = ft_mtnew("", ptr, NONE);
-		return (ft_mtadd_left(&gc, tmp), ptr);
-	}
-	return (NULL);
+	node->vect.down = down;
+	if (down)
+		down->vect.up = node;
+	return (down);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_front.c                                   :+:      :+:    :+:   */
+/*   ft_mtadd_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:16:13 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 11:54:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Adds the element 'new' at the beginning of the list.
 
-void	ft_mtadd_front(t_mt **lst, t_mt *new)
+void	ft_mtadd_left(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new) // Verifica que los punteros sean válidos
 		return ;

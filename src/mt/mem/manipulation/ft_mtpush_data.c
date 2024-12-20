@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 10:14:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 void	ft_mtpush_data(t_mt **lst, const char *key, void *data,
-		t_data_type type)
-{
-	t_mt	*new;
+		t_data_type type) {
+  t_mt *new;
 
-	if (!data || !lst)
-		return ;
-	new = ft_mtnew(key, data, type);
-	if (!new)
-	{
-		ft_mtdel_by_type(&data, type);
-		return ;
-	}
-	ft_mtadd_front(lst, new);
+  if (!data || !lst)
+    return ;
+  new = ft_mtnew(key, data, type);
+  if (!new) {
+    ft_mtdel_by_type(&data, type);
+    return ;
+  }
+  ft_mtadd_left(lst, new);
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtpush_data_back.c                              :+:      :+:    :+:   */
+/*   ft_mtpush_data_right.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,8 @@
 #include "mt.h"
 
 // Adds the element 'data' at the end of the list.
-void	ft_mtpush_data_back(t_mt **lst, const char *key, void *data, t_data_type type)
+void	ft_mtpush_data_right(t_mt **lst, const char *key, void *data,
+		t_data_type type)
 {
 	t_mt	*new;
 
@@ -22,8 +23,8 @@ void	ft_mtpush_data_back(t_mt **lst, const char *key, void *data, t_data_type ty
 	new = ft_mtnew(key, data, type);
 	if (!new)
 		return ;
-	ft_mtadd_back(lst, new);
+	ft_mtadd_right(lst, new);
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
-// ft_mtpush_data_back(&stacka, "pi");
+// ft_mtpush_data_right(&stacka, "pi");
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa" -> "pi"

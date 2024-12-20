@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:34:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 11:54:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos)
 		pos = ft_mtsize(*list);
 	if (pos == 0)
 	{
-		ft_mtadd_front(list, new_node);
+		ft_mtadd_left(list, new_node);
 		return ;
 	}
 	while (pos > 1 && current)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_collect_type.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:49:02 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 14:43:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_mt	*ft_mthash_collect_data_types(t_hash_table *ht, t_data_type type)
 	{
 		current = ht->buckets[i];
 		temp = ft_mtcollect_data_type(current, type);
-		ft_mtmigrate_back(&temp, &collected);
+		ft_mtmigrate_right(&temp, &collected);
 		i++;
 	}
 	return (collected);
@@ -56,7 +56,7 @@ t_mt	*ft_mthash_collect_node_types(t_hash_table *ht, t_node_type type)
 	{
 		current = ht->buckets[i];
 		temp = ft_mtcollect_node_type(current, type);
-		ft_mtmigrate_back(&temp, &collected);
+		ft_mtmigrate_right(&temp, &collected);
 		i++;
 	}
 	return (collected);

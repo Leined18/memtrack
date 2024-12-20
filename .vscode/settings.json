@@ -29,7 +29,9 @@
     "utils.h": "c",
     "memory": "c",
     "mtmethods.h": "c",
-    "mtutils.h": "c"
+    "mtutils.h": "c",
+    "deque": "c",
+    "vector": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

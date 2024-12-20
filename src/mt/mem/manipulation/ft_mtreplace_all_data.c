@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:01:42 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 12:04:50 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:43:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	ft_mtreplace_all_data(t_mt **lst, void *new_data, t_data_type type)
 		return ;
 	current = ft_mtnew(NULL, new_data, type);
 	ft_mtiter(*lst, current, ft_replace_match_data);
-	ft_mtfree(current);
+	ft_mtdelete(&current);
 }

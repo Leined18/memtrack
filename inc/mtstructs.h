@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 11:49:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:21:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_vectors
 	t_mt					*right;
 	t_mt					*up;
 	t_mt					*down;
+	t_mt					*back;
+	t_mt					*front;
 }							t_vectors;
 
 typedef enum e_data_type

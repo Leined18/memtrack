@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtpop_back.c                                    :+:      :+:    :+:   */
+/*   ft_mtpop_right.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:15:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 11:55:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:21:26 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // Deletes the last element of the list.
-void	ft_mtpop_back(t_mt **lst)
+void	ft_mtpop_right(t_mt **lst)
 {
 	t_mt	*tmp;
 
@@ -26,9 +26,9 @@ void	ft_mtpop_back(t_mt **lst)
 		tmp->vect.left->vect.right = NULL;
 	else
 		*lst = NULL;
-	ft_mtfree(tmp); // Liberamos el nodo eliminado
+	ft_mtdelete(&tmp); // Liberamos el nodo eliminado
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
-// ft_mtpop_back(&stacka);
+// ft_mtpop_right(&stacka);
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe"

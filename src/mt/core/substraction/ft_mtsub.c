@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtfree.c                                        :+:      :+:    :+:   */
+/*   ft_mtsub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:37:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 13:03:13 by danpalac         ###   ########.fr       */
+/*   Created: 2024/12/20 08:09:27 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/20 08:44:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_mtfree(t_mt *mt)
+static int	match_node(t_mt *node, void *sub)
 {
-	ft_mtdel_by_type(&mt->data, mt->values.data_type);
-	mt->data = NULL;
-	mt->ptr_aux = "freed";
-	if (mt->vect.down)
-		ft_mtclear(&mt->vect.down);
-	free(mt->key);
-	free(mt);
+	return (node == sub);
+}
+
+t_mt	*ft_mtsub(t_mt **mt, t_mt *node_to_sub)
+{
+	t_mt	*sub;
+
+	if (!mt || !*mt || !node_to_sub)
+		return (NULL);
+	sub = ft_mtsearch(*mt, node_to_sub, match_node);
+	if (sub == NULL)
+		return (NULL);
+	sub = ft_mtdisconnect_safe(mt, sub);
+	if (sub)
+		return (sub);
+	return (NULL);
 }
