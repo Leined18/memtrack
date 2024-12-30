@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 12:18:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/30 11:34:18 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_mt	*ft_mtsearch(t_mt *lst, void *param, int (*predicate)(t_mt *, void *))
 		lst->ptr_aux = NULL;
 		return (lst);
 	}
+	found = NULL;
 	found = traverse_comprimed(lst, param, predicate);
 	lst->ptr_aux = NULL; // Restablece al salir
 	return (found);      // Retorna el nodo encontrado, o NULL si no se encontró

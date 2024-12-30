@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 13:11:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/30 11:42:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_mt	*ft_mtnew(const char *key, void *data, t_data_type type)
 	node->values.count = 1;
 	node->values.to_free = 1;
 	node->values.data_type = type;
-    node->values.node_type = ROOT;
+	node->values.node_type = ROOT;
+	node->values.priority = -1;
 	node->free_data = ft_mtget_free_data(type);
 	return (node);
 }
