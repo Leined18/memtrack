@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:21:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/30 09:02:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_values
 	int						count;
 	int						to_free;
 	int						state;
+	int						priority;
 }							t_values;
 
 #endif // MTSTRUCTS_H
