@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 16:03:26 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 18:33:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ int	test(t_hash_table **ht)
 	if (!found)
 		return (0);
 	ft_mtadd_child(found, ft_mtnew("key8", "value8", NONE));
+	ft_mtadd_child(found, ft_mtnew("key9", "value9", NONE));
+	ft_mtadd_back(&node, ft_mtnew("key10", "value10", NONE));
+	ft_mtadd_front(&node, ft_mtnew("key11", "value11", NONE));
+	ft_mtadd_back(&found, ft_mtnew("key12", "value12", NONE));
 	ft_mtremove(&node, found);
+	printf("size x: %d\n", ft_mtsize_dimension(node, 'x', '-'));
 	ft_mtclear(&node);
 	return (1);
 }

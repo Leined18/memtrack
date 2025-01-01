@@ -31,6 +31,7 @@ int				ft_mtcount_node_type(t_mt *node, t_node_type type);
 int				ft_mtcount_state(t_mt *node, int state);
 size_t			ft_mtcount_node(t_mt *lst);
 int				ft_mtsize(t_mt *lst);
+int				ft_mtsize_dimension(t_mt *node, char dimension, char min_max);
 
 // ==================== Iteration and Set Functions ====================
 void			ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *));
@@ -67,6 +68,8 @@ void			ft_mtadd_right(t_mt **lst, t_mt *new);
 void			ft_mtadd_left(t_mt **lst, t_mt *new);
 int				ft_mtadd_child(t_mt *parent, t_mt *child);
 void			ft_mtadd_aux(t_mt *node, t_mt *aux);
+void			ft_mtadd_back(t_mt **lst, t_mt *new);
+void			ft_mtadd_front(t_mt **lst, t_mt *new);
 
 // ==================== Check Functions ====================
 int				ft_mtexists_mt(t_mt *root, const char *key);
