@@ -18,9 +18,5 @@ void	ft_mtadd_left(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new) // Verifica que los punteros sean válidos
 		return ;
-	new->vect[RIGHT] = *lst;
-	new->vect[LEFT] = NULL; // 'new' es el primer nodo,
-	if (*lst)
-		(*lst)->vect[LEFT] = new;
-	*lst = new; // Haz que la cabeza de la lista apunte a 'new'
+	ft_mtadd(lst, new, LEFT); // Añade el nuevo nodo a la izquierda
 }

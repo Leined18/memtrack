@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 13:28:16 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ static void	traverse_node(t_mt *node, void *param, void (*func)(t_mt *, void *))
 
 void	ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *))
 {
-	if (!lst || !func || lst->ptr_aux)
-		return ;
-	lst->ptr_aux = NULL;         // Restablece al entrar
+	if (!lst || !func || lst->ptr_aux == NODE_VISITED)
+		return ; 
 	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
 	traverse_node(lst->vect[RIGHT], param, func);
 	traverse_node(lst->vect[LEFT], param, func);

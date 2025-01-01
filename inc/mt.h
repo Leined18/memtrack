@@ -16,4 +16,5 @@
 # define CLEAR -1   // Borra todos los elementos de la lista
 # define NODE_VISITED ((void *)-1)
 
+
 #endif // MT_H

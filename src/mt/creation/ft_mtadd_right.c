@@ -16,18 +16,7 @@
 
 void	ft_mtadd_right(t_mt **lst, t_mt *new)
 {
-	t_mt	*last;
-
-	if (!new)
+	if (!lst || !new)
 		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = *lst;
-	while (last->vect[RIGHT] && last)
-		last = last->vect[RIGHT];
-	last->vect[RIGHT] = new;
-	new->vect[LEFT] = last;
+	ft_mtadd(lst, new, RIGHT);
 }

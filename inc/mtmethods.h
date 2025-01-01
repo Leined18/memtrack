@@ -56,6 +56,13 @@ void			ft_mtremove(t_mt **mt, t_mt *node_to_remove);
 void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
 void			ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node);
 void			ft_mtreplace_all(t_mt **list, t_mt **replace);
+void			ft_mtunset_ptr_aux(t_mt *node, void *field);
+
+// ==================== Add Functions ====================
+
+void			ft_mtadd(t_mt **lst, t_mt *new, t_direction direction);
+void			ft_mtadd_down(t_mt **lst, t_mt *new);
+void			ft_mtadd_up(t_mt **lst, t_mt *new);
 void			ft_mtadd_right(t_mt **lst, t_mt *new);
 void			ft_mtadd_left(t_mt **lst, t_mt *new);
 int				ft_mtadd_child(t_mt *parent, t_mt *child);
@@ -84,8 +91,10 @@ t_mt			*ft_mtsub(t_mt **mt, t_mt *node_to_sub);
 t_mt			*ft_mtsearch(t_mt *lst, void *, int (*predicate)(t_mt *,
 						void *));
 t_mt			*ft_mtsearch_key(t_mt *root, const char *key);
-t_mt			*ft_mtlast(t_mt *lst);
-t_mt			*ft_mtfirst(t_mt *lst);
+
+// ==================== Navigation Functions ====================
+
+t_mt			*ft_mtlast(t_mt *lst, t_direction direction);
 t_mt			*ft_mtroot(t_mt *lst);
 
 // ==================== Utility Functions ====================

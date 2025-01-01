@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 12:50:18 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,25 @@
 static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
 			void *))
 {
-	if (node && !node->ptr_aux)
-		return (ft_mtsearch(node, param, predicate));
-	return (NULL);
+	t_mt	*found;
+	int		i;
+
+	if (!node || !predicate || node->ptr_aux == NODE_VISITED)
+		return (NULL);
+	node->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
+	// Si el nodo cumple la condición, retornarlo directamente
+	if (predicate(node, param))
+		return (node->ptr_aux = NULL, node); // Restablece al salir
+	found = NULL;
+	i = 0;
+	while (i < MAX_DIRECTIONS && !found)
+	{
+		if (node->vect[i])
+			found = traverse_node(node->vect[i], param, predicate);
+		i++;
+	}
+	node->ptr_aux = NULL; // Restablece al salir
+	return (found);
 }
 
 /**
@@ -30,44 +46,12 @@ static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
  * Return: El nodo que cumple con la condición, o NULL si no se encontró.
  */
 
-static t_mt	*traverse_comprimed(t_mt *node, void *param,
-		int (*predicate)(t_mt *, void *))
-{
-	t_mt	*found;
-
-	found = NULL;
-	if (node->vect[LEFT] && !found)
-		found = traverse_node(node->vect[LEFT], param, predicate);
-	if (node->vect[RIGHT] && !found)
-		found = traverse_node(node->vect[RIGHT], param, predicate);
-	if (node->vect[UP] && !found)
-		found = traverse_node(node->vect[UP], param, predicate);
-	if (node->vect[DOWN] && !found)
-		found = traverse_node(node->vect[DOWN], param, predicate);
-	if (node->aux && !found)
-		found = traverse_node(node->aux, param, predicate);
-	if (node->vect[BACK] && !found)
-		found = traverse_node(node->vect[BACK], param, predicate);
-	if (node->vect[FRONT] && !found)
-		found = traverse_node(node->vect[FRONT], param, predicate);
-	return (found);
-}
-
 t_mt	*ft_mtsearch(t_mt *lst, void *param, int (*predicate)(t_mt *, void *))
 {
 	t_mt	*found;
 
 	if (!lst || !predicate || lst->ptr_aux)
 		return (NULL);
-	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
-	// Si el nodo cumple la condición, retornarlo directamente
-	if (predicate(lst, param))
-	{
-		lst->ptr_aux = NULL;
-		return (lst);
-	}
-	found = NULL;
-	found = traverse_comprimed(lst, param, predicate);
-	lst->ptr_aux = NULL; // Restablece al salir
-	return (found);      // Retorna el nodo encontrado, o NULL si no se encontró
+	found = traverse_node(lst, param, predicate);
+	return (found);
 }

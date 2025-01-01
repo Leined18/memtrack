@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtfirst.c                                       :+:      :+:    :+:   */
+/*   ft_mtadd_down.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:11:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
+/*   Created: 2025/01/01 11:28:08 by danpalac          #+#    #+#             */
+/*   Updated: 2025/01/01 11:57:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_mt	*ft_mtfirst(t_mt *lst)
+// Adds the element 'new' at the end of the list, in the DOWN direction.
+
+void	ft_mtadd_down(t_mt **lst, t_mt *new)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->vect[LEFT])
-		lst = lst->vect[LEFT];
-	return (lst);
+	if (!lst || !new)
+		return ;
+	ft_mtadd(lst, new, DOWN);
 }

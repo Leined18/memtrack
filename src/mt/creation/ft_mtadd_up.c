@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtsub.c                                         :+:      :+:    :+:   */
+/*   ft_mtadd_up.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 08:09:27 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 13:30:03 by danpalac         ###   ########.fr       */
+/*   Created: 2025/01/01 11:28:38 by danpalac          #+#    #+#             */
+/*   Updated: 2025/01/01 11:55:48 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-static int	match_node(t_mt *node, void *sub)
-{
-	return (node == sub);
-}
+// Adds the element 'new' at the beginning of the list, in the UP direction.
 
-t_mt	*ft_mtsub(t_mt **mt, t_mt *node_to_sub)
+void	ft_mtadd_up(t_mt **lst, t_mt *new)
 {
-	t_mt	*sub;
-
-	if (!mt || !*mt || !node_to_sub)
-		return (NULL);
-	sub = ft_mtsearch(*mt, node_to_sub, match_node);
-	if (sub == NULL)
-		return (NULL);
-	sub = ft_mtdisconnect_safe(mt, sub);
-	update_cords(*mt, ft_cords(0, 0, 0));
-	return (sub);
+	if (!lst || !new)
+		return ;
+	ft_mtadd(lst, new, UP);
 }

@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:13:01 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:04:45 by danpalac         ###   ########.fr       */
+/*   Created: 2025/01/01 11:36:11 by danpalac          #+#    #+#             */
+/*   Updated: 2025/01/01 11:36:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Returns the last element of the list.
-t_mt	*ft_mtlast(t_mt *lst)
+// Returns the last element of the list in the direction specified.
+
+t_mt	*ft_mtlast(t_mt *lst, t_direction direction)
 {
 	if (!lst)
 		return (NULL);
-	while (lst->vect[RIGHT])
-		lst = lst->vect[RIGHT];
+	while (lst->vect[direction])
+		lst = lst->vect[direction];
 	return (lst);
 }

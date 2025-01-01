@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:26 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 11:27:31 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 		child->values.node_type = LEAF;
 		parent->vect[DOWN] = child;
 		child->vect[UP] = parent;
+		child->cords.x = parent->cords.x;
+		child->cords.y = parent->cords.y + 1;
+		child->cords.z = parent->cords.z;
 		return (1);
 	}
 	if (parent->values.node_type != ROOT)
