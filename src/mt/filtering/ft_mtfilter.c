@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfilter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:28:51 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 12:02:28 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	ft_mtfilter(t_mt *lst, void *param, int (*predicate)(t_mt *, void *),
 	if (predicate(lst, param))
 		ft_mtadd_right(result, ft_mtnew(lst->key, lst, NONE));
 	// Recorre los nodos relacionados
-	traverse_node(lst->vect.right, param, predicate, result);
-	traverse_node(lst->vect.left, param, predicate, result);
-	traverse_node(lst->vect.up, param, predicate, result);
-	traverse_node(lst->vect.down, param, predicate, result);
-	traverse_node(lst->vect.back, param, predicate, result);
-	traverse_node(lst->vect.front, param, predicate, result);
+	traverse_node(lst->vect[RIGHT], param, predicate, result);
+	traverse_node(lst->vect[LEFT], param, predicate, result);
+	traverse_node(lst->vect[UP], param, predicate, result);
+	traverse_node(lst->vect[DOWN], param, predicate, result);
+	traverse_node(lst->vect[BACK], param, predicate, result);
+	traverse_node(lst->vect[FRONT], param, predicate, result);
 	traverse_node(lst->aux, param, predicate, result);
 	lst->ptr_aux = NULL; // Restablece al salir
 }

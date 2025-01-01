@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 08:56:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:17:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	test(t_hash_table **ht)
 		STRING);
 	(*ht)->methods.insert_child((*ht), "data8", "data9", ft_strdup("xkasjd23"),
 		STRING);
-	(*ht)->methods.remove((*ht), "data7");
+	(*ht)->methods.remove((*ht), "data8");
 	(*ht)->methods.print((*ht));
 	(*ht)->methods.free_table((*ht));
 	return (1);

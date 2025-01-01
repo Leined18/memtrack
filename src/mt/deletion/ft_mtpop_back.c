@@ -20,10 +20,10 @@ void	ft_mtpop_right(t_mt **lst)
 	if (!*lst) // Si la lista está vacía, no hacemos nada
 		return ;
 	tmp = *lst;
-	while (tmp->vect.right) // Vamos hasta el último nodo
-		tmp = tmp->vect.right;
-	if (tmp->vect.left)
-		tmp->vect.left->vect.right = NULL;
+	while (tmp->vect[RIGHT]) // Vamos hasta el último nodo
+		tmp = tmp->vect[RIGHT];
+	if (tmp->vect[LEFT])
+		tmp->vect[LEFT]->vect[RIGHT] = NULL;
 	else
 		*lst = NULL;
 	ft_mtdelete(&tmp); // Liberamos el nodo eliminado

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:26 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,23 @@ void	print_inner_list(t_mt *inner_list, int depth, int *branch_flags)
 
 	while (inner_list)
 	{
-		is_last = (inner_list->vect.right == NULL);
+		is_last = (inner_list->vect[RIGHT] == NULL);
 		print_tree_prefix(depth, is_last, branch_flags);
 		print = 1;
 		ft_printf(BLUE "{%s}" RESET, inner_list->key);
-		if (inner_list->vect.down)
+		if (inner_list->vect[DOWN])
 		{
 			print_data(inner_list);
 			ft_printf("\n");
 			branch_flags[depth] = !is_last;
-			print_inner_list(inner_list->vect.down, depth + 1, branch_flags);
+			print_inner_list(inner_list->vect[DOWN], depth + 1, branch_flags);
 			print = 0;
 		}
 		else
 			print_data(inner_list);
 		if (print)
 			ft_printf("\n");
-		inner_list = inner_list->vect.right;
+		inner_list = inner_list->vect[RIGHT];
 	}
 }
 
@@ -70,18 +70,18 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 
 	if (!node)
 		return ;
-	is_last = (node->vect.right == NULL);
+	is_last = (node->vect[RIGHT] == NULL);
 	// Imprime el prefijo del árbol
 	print_tree_prefix(depth, is_last, branch_flags);
 	// Imprime la clave del nodo
 	ft_printf(YELLOW "[%s]" RESET, node->key);
 	// Si el nodo es una rama, imprime sus hijos recursivamente
-	if (node->vect.down)
+	if (node->vect[DOWN])
 	{
 		print_data(node);
 		ft_printf("\n");
 		branch_flags[depth] = !is_last; // Actualiza bandera de continuación
-		print_inner_list(node->vect.down, depth + 1, branch_flags);
+		print_inner_list(node->vect[DOWN], depth + 1, branch_flags);
 	}
 	else
 	{
@@ -99,10 +99,10 @@ void	print_bucket(t_mt *bucket, int depth, int *branch_flags)
 
 	while (bucket)
 	{
-		is_last = (bucket->vect.right == NULL);
+		is_last = (bucket->vect[RIGHT] == NULL);
 		print_node(bucket, depth, branch_flags);
 		branch_flags[depth] = !is_last;
-		bucket = bucket->vect.right;
+		bucket = bucket->vect[RIGHT];
 	}
 }
 

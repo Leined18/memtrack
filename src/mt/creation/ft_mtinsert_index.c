@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtinsert_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:34:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos)
 	}
 	while (pos > 1 && current)
 	{
-		current = current->vect.right;
+		current = current->vect[RIGHT];
 		pos--;
 	}
 	if (current)
 	{
-		new_node->vect.right = current->vect.right;
-		new_node->vect.left = current;
-		if (current->vect.right)
-			current->vect.right->vect.left = new_node;
-		current->vect.right = new_node;
+		new_node->vect[RIGHT] = current->vect[RIGHT];
+		new_node->vect[LEFT] = current;
+		if (current->vect[RIGHT])
+			current->vect[RIGHT]->vect[LEFT] = new_node;
+		current->vect[RIGHT] = new_node;
 	}
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

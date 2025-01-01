@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtsize.c                                        :+:      :+:    :+:   */
+/*   ft_mtremove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:15:43 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Created: 2024/12/20 08:36:53 by danpalac          #+#    #+#             */
+/*   Updated: 2025/01/01 01:05:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Returns the size of the list.
-int	ft_mtsize(t_mt *lst)
+void    ft_mtremove(t_mt **mt, t_mt *node_to_remove)
 {
-	int	size;
+    t_mt    *node;
 
-	size = 0;
-	while (lst)
-	{
-		size++;
-		lst = lst->vect.right;
-	}
-	return (size);
+    if (!mt || !*mt || !node_to_remove)
+        return ;
+    node = ft_mtsub(mt, node_to_remove);
+    if (node)
+        ft_mtdelete(&node);
 }
-
-// stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
-// ft_mtsize(stacka); // 7

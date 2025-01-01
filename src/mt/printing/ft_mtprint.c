@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:04:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	ft_mtprint(t_mt *lst, int b, char *c)
 		else if (!lst->data) // Imprimir NULL si no hay datos
 			ft_printf("(NULL)");
 		// Imprimir el separador solo si no es el último nodo
-		if (lst->vect.right)
+		if (lst->vect[RIGHT])
 			ft_printf("%s", c);
 		// Avanzar al siguiente nodo
-		lst = lst->vect.right;
+		lst = lst->vect[RIGHT];
 	}
 	// Imprimir salto de línea después de recorrer toda la lista
 	printf("\n");

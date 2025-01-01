@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:54:06 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	move_src_to_left(t_mt **src, t_mt *node_to_move)
 {
 	t_mt	*prev;
 
-	prev = node_to_move->vect.left;
+	prev = node_to_move->vect[LEFT];
 	if (prev)
 	{
 		*src = prev;
-		prev->vect.right = node_to_move->vect.right;
-		if (node_to_move->vect.right)
-			node_to_move->vect.right->vect.left = prev;
+		prev->vect[RIGHT] = node_to_move->vect[RIGHT];
+		if (node_to_move->vect[RIGHT])
+			node_to_move->vect[RIGHT]->vect[LEFT] = prev;
 	}
 	else
 		*src = prev;
@@ -36,17 +36,17 @@ static void	move_src_to_right(t_mt **src, t_mt *node_to_move)
 	t_mt	*prev;
 
 	prev = NULL;
-	prev = node_to_move->vect.left;
-	*src = node_to_move->vect.right;
+	prev = node_to_move->vect[LEFT];
+	*src = node_to_move->vect[RIGHT];
 	if (*src)
 	{
 		if (prev)
 		{
-			prev->vect.right = *src;
-			(*src)->vect.left = prev;
+			prev->vect[RIGHT] = *src;
+			(*src)->vect[LEFT] = prev;
 		}
 		else
-			(*src)->vect.left = NULL;
+			(*src)->vect[LEFT] = NULL;
 	}
 }
 
@@ -55,12 +55,12 @@ static void	disconnect_node_from_src(t_mt **src, t_mt *node_to_move)
 {
 	t_mt	*prev;
 
-	prev = node_to_move->vect.left;
+	prev = node_to_move->vect[LEFT];
 	if (prev)
-		prev->vect.right = node_to_move->vect.right;
+		prev->vect[RIGHT] = node_to_move->vect[RIGHT];
 	if (*src == NULL && prev)
 	{
-		prev->vect.right = NULL;
+		prev->vect[RIGHT] = NULL;
 		*src = prev;
 	}
 }
@@ -68,10 +68,10 @@ static void	disconnect_node_from_src(t_mt **src, t_mt *node_to_move)
 // Conecta el nodo a la lista de destino
 static void	connect_node_to_dest(t_mt **dest, t_mt *node_to_move)
 {
-	node_to_move->vect.right = *dest;
-	node_to_move->vect.left = NULL;
+	node_to_move->vect[RIGHT] = *dest;
+	node_to_move->vect[LEFT] = NULL;
 	if (*dest)
-		(*dest)->vect.left = node_to_move;
+		(*dest)->vect[LEFT] = node_to_move;
 	*dest = node_to_move;
 }
 

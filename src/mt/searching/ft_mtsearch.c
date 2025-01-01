@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtsearch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/30 11:34:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
 
 /**
  * ft_mtsearch
-	- Busca un nodo en la estructura t_mt que cumpla con la condición.
+		- Busca un nodo en la estructura t_mt que cumpla con la condición.
  * @lst: Nodo inicial para comenzar la búsqueda.
  * @param: Parámetro adicional que se pasa a la función `predicate`.
  * @predicate: Función que determina si un nodo cumple con la condición.
@@ -36,20 +36,20 @@ static t_mt	*traverse_comprimed(t_mt *node, void *param,
 	t_mt	*found;
 
 	found = NULL;
-	if (node->vect.left && !found)
-		found = traverse_node(node->vect.left, param, predicate);
-	if (node->vect.right && !found)
-		found = traverse_node(node->vect.right, param, predicate);
-	if (node->vect.up && !found)
-		found = traverse_node(node->vect.up, param, predicate);
-	if (node->vect.down && !found)
-		found = traverse_node(node->vect.down, param, predicate);
+	if (node->vect[LEFT] && !found)
+		found = traverse_node(node->vect[LEFT], param, predicate);
+	if (node->vect[RIGHT] && !found)
+		found = traverse_node(node->vect[RIGHT], param, predicate);
+	if (node->vect[UP] && !found)
+		found = traverse_node(node->vect[UP], param, predicate);
+	if (node->vect[DOWN] && !found)
+		found = traverse_node(node->vect[DOWN], param, predicate);
 	if (node->aux && !found)
 		found = traverse_node(node->aux, param, predicate);
-	if (node->vect.back && !found)
-		found = traverse_node(node->vect.back, param, predicate);
-	if (node->vect.front && !found)
-		found = traverse_node(node->vect.front, param, predicate);
+	if (node->vect[BACK] && !found)
+		found = traverse_node(node->vect[BACK], param, predicate);
+	if (node->vect[FRONT] && !found)
+		found = traverse_node(node->vect[FRONT], param, predicate);
 	return (found);
 }
 

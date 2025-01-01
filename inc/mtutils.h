@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtutils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 01:04:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,8 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		cmp_int(void *a, void *b, size_t n);
 
 /* Connect Utilties */
-t_mt	*ft_mtconnect_left(t_mt *node, t_mt *left);
-t_mt	*ft_mtconnect_right(t_mt *node, t_mt *right);
-t_mt	*ft_mtconnect_up(t_mt *node, t_mt *up);
-t_mt	*ft_mtconnect_down(t_mt *node, t_mt *down);
-
-/* Disconnect Utilities */
-t_mt	*ft_mtdisconnect_left(t_mt *node);
-t_mt	*ft_mtdisconnect_right(t_mt *node);
-t_mt	*ft_mtdisconnect_up(t_mt *node);
-t_mt	*ft_mtdisconnect_down(t_mt *node);
-
-t_mt	*ft_mtdisconnect_horizontal(t_mt *node);
-t_mt	*ft_mtdisconnect_vertical(t_mt *node);
+void	ft_connect_nodes(t_mt *node1, int direction1, t_mt *node2,
+			int direction2);
 
 /* Printing utilities */
 void	print_title(const char *title);

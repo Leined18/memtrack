@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtset_to_free.c                                 :+:      :+:    :+:   */
+/*   ft_mtreplace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 19:56:25 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:26 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_mtset_to_free(t_mt *mt, int to_free)
-{
-	t_mt	*current;
+// Replaces the node 'node' with 'new_node' in the list 'list'.
 
-	if (!mt)
+void	ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node)
+{
+	t_mt	*temp;
+
+	if (!node || !new_node)
 		return ;
-	current = mt;
-	while (current)
-	{
-		current->values.to_free = to_free;
-		if (current->vect[DOWN])
-			ft_mtset_to_free(current->vect[DOWN], to_free);
-		current = current->vect[RIGHT];
-	}
+	temp = node->vect[LEFT];
+	if (temp)
+		temp->vect[RIGHT] = new_node;
+	else
+		*list = new_node;
+	new_node->vect[LEFT] = temp;
+	new_node->vect[RIGHT] = node->vect[RIGHT];
+	if (node->vect[RIGHT])
+		node->vect[RIGHT]->vect[LEFT] = new_node;
+	ft_mtdelete(&node);
 }

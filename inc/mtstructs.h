@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/30 09:02:49 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:06:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@ typedef struct s_cords
 	int						z;
 }							t_cords;
 
-typedef struct s_vectors
+typedef enum e_state
 {
-	t_mt					*left;
-	t_mt					*right;
-	t_mt					*up;
-	t_mt					*down;
-	t_mt					*back;
-	t_mt					*front;
-}							t_vectors;
+	EMPTY,
+	FILLED,
+	DELETED
+}							t_state;
+
+typedef enum e_direction
+{
+	RIGHT,
+	LEFT,
+	UP,
+	DOWN,
+	FRONT,
+	BACK,
+	MAX_DIRECTIONS
+}							t_direction;
 
 typedef enum e_data_type
 {

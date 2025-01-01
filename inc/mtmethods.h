@@ -12,7 +12,7 @@ typedef struct s_mt
 	struct s_mt	*aux;
 	void		*ptr_aux;
 	t_values	values;
-	t_vectors	vect;
+	t_mt		*vect[MAX_DIRECTIONS];
 	t_cords		cords;
 	void		(*free_data)(void **);
 }				t_mt;

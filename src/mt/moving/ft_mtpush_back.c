@@ -22,18 +22,18 @@ void	ft_mtpush_right(t_mt **src, t_mt **dest)
 		return ;
 	// Extraer el nodo desde la fuente
 	node_to_move = *src;
-	*src = (*src)->vect.right;
-	node_to_move = ft_mtdisconnect_horizontal(node_to_move);
+	*src = (*src)->vect[RIGHT];
+	node_to_move = ft_mtdisconnect_safe(src, node_to_move);
 	if (!*dest)
 	{
 		*dest = node_to_move; // Asignar el nodo como el primer elemento
 		return ;
 	}
 	current = *dest;
-	while (current->vect.right)
-		current = current->vect.right;
-	current->vect.right = node_to_move;
-	node_to_move->vect.left = current;
+	while (current->vect[RIGHT])
+		current = current->vect[RIGHT];
+	current->vect[RIGHT] = node_to_move;
+	node_to_move->vect[LEFT] = current;
 }
 
 // stacka = "miau" "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtzip.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:30:29 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:04:45 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_mt	*ft_mtzip(t_mt **lst)
 	while (tmp)
 	{
 		datas[i++] = tmp->data;
-		tmp = tmp->vect.right;
+		tmp = tmp->vect[RIGHT];
 	}
 	datas[i] = NULL;
 	(ft_mterase(lst), ft_mtadd_right(lst, ft_mtnew("zip", datas, STRING)));

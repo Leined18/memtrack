@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtreplace.c                                     :+:      :+:    :+:   */
+/*   ft_mtadd_right.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 09:32:46 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 10:01:13 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/20 10:13:46 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Replaces the node 'node' with 'new_node' in the list 'list'.
+// Adds the element 'new' at the end of the list.
 
-void	ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node)
+void	ft_mtadd_right(t_mt **lst, t_mt *new)
 {
-	t_mt	*temp;
+	t_mt	*last;
 
-	if (!node || !new_node)
+	if (!new)
 		return ;
-	temp = node->vect.left;
-	if (temp)
-		temp->vect.right = new_node;
-	else
-		*list = new_node;
-	new_node->vect.left = temp;
-	new_node->vect.right = node->vect.right;
-	if (node->vect.right)
-		node->vect.right->vect.left = new_node;
-	ft_mtdelete(&node);
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->vect[RIGHT] && last)
+		last = last->vect[RIGHT];
+	last->vect[RIGHT] = new;
+	new->vect[LEFT] = last;
 }

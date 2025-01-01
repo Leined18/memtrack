@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtreverse_rotate.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:55:14 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	ft_mtreverse_rotate(t_mt **list)
 {
 	t_mt	*last;
 
-	if (!list || !*list || !(*list)->vect.right)
+	if (!list || !*list || !(*list)->vect[RIGHT])
 		return ;
 	last = *list;
-	while (last->vect.right)
-		last = last->vect.right;
-	last->vect.left->vect.right = NULL;
-	last->vect.left = NULL;
-	last->vect.right = *list;
-	(*list)->vect.left = last;
+	while (last->vect[RIGHT])
+		last = last->vect[RIGHT];
+	last->vect[LEFT]->vect[RIGHT] = NULL;
+	last->vect[LEFT] = NULL;
+	last->vect[RIGHT] = *list;
+	(*list)->vect[LEFT] = last;
 	*list = last;
 }
 

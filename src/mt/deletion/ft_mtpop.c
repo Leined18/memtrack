@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtremove.c                                      :+:      :+:    :+:   */
+/*   ft_mtpop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 08:36:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 08:37:04 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/31 23:05:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void    ft_mtremove(t_mt **mt, t_mt *node_to_remove)
+// Deletes the first element of the list.
+void	ft_mtpop(t_mt **lst)
 {
-    t_mt    *node;
+	t_mt	*tmp;
 
-    if (!mt || !*mt || !node_to_remove)
-        return ;
-    node = ft_mtsub(mt, node_to_remove);
-    if (node)
-        ft_mtdelete(&node);
+	if (!*lst)
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->vect[RIGHT];
+	if (*lst)
+		(*lst)->vect[LEFT] = NULL;
+	tmp->vect[RIGHT] = NULL;
+	ft_mtdelete(&tmp);
 }

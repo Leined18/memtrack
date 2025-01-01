@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtfirst.c                                       :+:      :+:    :+:   */
+/*   ft_mtadd_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:11:53 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:27:05 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/12 10:16:13 by danpalac          #+#    #+#             */
+/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_mt	*ft_mtfirst(t_mt *lst) {
-  if (!lst)
-    return (NULL);
-  while (lst->vect.left)
-    lst = lst->vect.left;
-  return (lst);
+// Adds the element 'new' at the beginning of the list.
+
+void	ft_mtadd_left(t_mt **lst, t_mt *new)
+{
+	if (!lst || !new) // Verifica que los punteros sean válidos
+		return ;
+	new->vect[RIGHT] = *lst;
+	new->vect[LEFT] = NULL; // 'new' es el primer nodo,
+	if (*lst)
+		(*lst)->vect[LEFT] = new;
+	*lst = new; // Haz que la cabeza de la lista apunte a 'new'
 }
