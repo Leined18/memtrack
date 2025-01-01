@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 12:52:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:03:26 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	test(t_hash_table **ht)
 	found = ft_mtsearch_key(node, "key7");
 	if (!found)
 		return (0);
+	ft_mtadd_child(found, ft_mtnew("key8", "value8", NONE));
 	ft_mtremove(&node, found);
 	ft_mtclear(&node);
 	return (1);
