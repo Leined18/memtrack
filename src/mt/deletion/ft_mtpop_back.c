@@ -19,14 +19,9 @@ void	ft_mtpop_right(t_mt **lst)
 
 	if (!*lst) // Si la lista está vacía, no hacemos nada
 		return ;
-	tmp = *lst;
-	while (tmp->vect[RIGHT]) // Vamos hasta el último nodo
-		tmp = tmp->vect[RIGHT];
-	if (tmp->vect[LEFT])
-		tmp->vect[LEFT]->vect[RIGHT] = NULL;
-	else
-		*lst = NULL;
-	ft_mtdelete(&tmp); // Liberamos el nodo eliminado
+	tmp = ft_mtlast(*lst, RIGHT); // Obtenemos el último elemento de la lista
+	ft_mtremove(lst, tmp); // Eliminamos el último elemento de la lista
+	
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"

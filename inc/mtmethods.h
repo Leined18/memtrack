@@ -18,12 +18,10 @@ typedef struct s_mt
 }				t_mt;
 
 // ==================== Memory Management ====================
+
 void			ft_mtdelete(t_mt **mt);
 void			ft_mtclear(t_mt **lst);
-void			ft_mterase(t_mt **lst);
-void			ft_mtdel_data(void **data);
 void			ft_mtdel_list(void **data);
-;
 
 // ==================== Count Functions ====================
 int				ft_mtcount_data_type(t_mt *node, t_data_type type);
@@ -73,6 +71,7 @@ void			ft_mtadd_front(t_mt **lst, t_mt *new);
 
 // ==================== Check Functions ====================
 int				ft_mtexists_mt(t_mt *root, const char *key);
+int				ft_mtexists_cords(t_mt *node, t_cords cords);
 
 // ==================== Key Management ====================
 char			*ft_mtnew_original_key(char *key, t_mt *node);
@@ -94,6 +93,7 @@ t_mt			*ft_mtsub(t_mt **mt, t_mt *node_to_sub);
 t_mt			*ft_mtsearch(t_mt *lst, void *, int (*predicate)(t_mt *,
 						void *));
 t_mt			*ft_mtsearch_key(t_mt *root, const char *key);
+t_mt			*ft_mtsearch_cords(t_mt *node, t_cords cords);
 
 // ==================== Navigation Functions ====================
 
@@ -101,7 +101,7 @@ t_mt			*ft_mtlast(t_mt *lst, t_direction direction);
 t_mt			*ft_mtroot(t_mt *lst);
 
 // ==================== Utility Functions ====================
-t_mt			*ft_mtdisconnect_safe(t_mt **ref, t_mt *node);
+
 t_mt			*ft_mtzip(t_mt **lst);
 t_mt			*ft_mtunzip(void **data, size_t size);
 t_mt			*ft_mtnew(const char *key, void *data, t_data_type type);
@@ -114,5 +114,9 @@ void			ft_mtpush_data_right(t_mt **lst, const char *key, void *data,
 void			ft_mtremove_data(t_mt *lst, char *key);
 void			ft_mtreplace_all_data(t_mt **lst, void *new_data,
 					t_data_type type);
+
+// ==================== Manipulation Functions ====================
+
+t_mt			*ft_mtdisconnect_safe(t_mt **ref, t_mt *node);
 
 #endif // MTMETHODS_H

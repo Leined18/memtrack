@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtpop.c                                         :+:      :+:    :+:   */
+/*   ft_mtexists_cords.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 11:01:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 21:17:25 by danpalac         ###   ########.fr       */
+/*   Created: 2025/01/03 05:25:54 by danpalac          #+#    #+#             */
+/*   Updated: 2025/01/03 05:26:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Deletes the first element of the list.
-void	ft_mtpop(t_mt **lst)
-{
-	t_mt	*tmp;
+/**
+ * ft_mtexists_cords - Comprueba si un nodo existe con las coordenadas dadas.
+ *
+ * Retorna 1 si el nodo existe, 0 si no.
+ */
 
-	if (!*lst)
-		return ;
-	tmp = *lst;
-	ft_mtremove(lst, tmp);
+int	ft_mtexists_cords(t_mt *node, t_cords cords)
+{
+	if (ft_mtsearch_cords(node, cords))
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:43:39 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 17:26:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/03 05:16:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,13 @@ int	cmp_int(void *a, void *b, size_t n)
 	(void)n; // Evitar advertencias por parámetro no utilizado
 	return (*(int *)a - *(int *)b);
 }
+
+int ft_cordscmp(t_cords a, t_cords b)
+{
+	if (a.x != b.x)
+		return (a.x - b.x);
+	if (a.y != b.y)
+		return (a.y - b.y);
+	return (a.z - b.z);
+}
+

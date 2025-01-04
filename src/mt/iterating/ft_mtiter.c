@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 13:28:16 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:19:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,22 @@
 
 static void	traverse_node(t_mt *node, void *param, void (*func)(t_mt *, void *))
 {
-	if (node && !node->ptr_aux)
-		ft_mtiter(node, param, func);
+	int	i;
+
+	if (!node)
+		return ;
+	i = 0;
+	while (i < MAX_DIRECTIONS)
+	{
+		if (node->vect[i] && node->vect[i]->ptr_aux != NODE_VISITED)
+		{
+			node->vect[i]->ptr_aux = NODE_VISITED;
+			traverse_node(node->vect[i], param, func);
+			node->vect[i]->ptr_aux = NULL;
+			func(node->vect[i], param);
+		}
+		i++;
+	}
 }
 
 /**
@@ -34,16 +48,9 @@ static void	traverse_node(t_mt *node, void *param, void (*func)(t_mt *, void *))
 
 void	ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *))
 {
-	if (!lst || !func || lst->ptr_aux == NODE_VISITED)
-		return ; 
-	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
-	traverse_node(lst->vect[RIGHT], param, func);
-	traverse_node(lst->vect[LEFT], param, func);
-	traverse_node(lst->vect[UP], param, func);
-	traverse_node(lst->vect[DOWN], param, func);
-	traverse_node(lst->vect[BACK], param, func);
-	traverse_node(lst->vect[FRONT], param, func);
-	traverse_node(lst->aux, param, func);
-	lst->ptr_aux = NULL; // Restablece al salir
-	func(lst, param);    // Aplica la función al nodo actual
+	if (!lst || !func)
+		return ;
+	lst->ptr_aux = NODE_VISITED;
+	traverse_node(lst, param, func);
+	lst->ptr_aux = NULL;
 }

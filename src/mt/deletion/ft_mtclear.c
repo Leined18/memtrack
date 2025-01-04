@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:23:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 21:01:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,43 @@
  * @param: Parámetro adicional que se pasa a la función.
  */
 
-static void	match_clear(t_mt *node, void *param)
+static void	match_clear(t_mt **node, void *param)
 {
 	(void)param;
-	if (!node)
+	if (!(*node) || !node)
 		return ;
-	if (node->values.to_free)
+	if ((*node)->values.to_free)
 	{
-		if (node->free_data && node->data)
-			node->free_data(&node->data);
+		if ((*node)->free_data && (*node)->data)
+			(*node)->free_data(&(*node)->data);
 	}
-	if (node->key)
-		free(node->key);
-	free_null((void **)&node);
+	if ((*node)->key)
+	{
+		free((*node)->key);
+		(*node)->key = NULL;
+	}
+	free_null((void **)node);
+}
+
+static void	ft_mtclean_aux(t_mt *lst)
+{
+	int	i;
+
+	i = 0;
+	if (!lst || lst->ptr_aux == NODE_VISITED)
+		return ;
+	lst->ptr_aux = NODE_VISITED;
+	while (i < MAX_DIRECTIONS)
+	{
+		if (lst->vect[i] && lst->vect[i]->ptr_aux == NODE_VISITED)
+			ft_mtdisconnect(lst, i);
+		ft_mtclean_aux(lst->vect[i]);
+		if (lst->aux)
+			ft_mtclean_aux(lst->aux);
+		i++;
+	}
+	lst->ptr_aux = NULL;
+	match_clear(&lst, NULL);
 }
 
 /**
@@ -43,6 +67,6 @@ void	ft_mtclear(t_mt **lst)
 {
 	if (!*lst || !lst)
 		return ;
-	ft_mtiter(*lst, NULL, match_clear);
+	ft_mtclean_aux(*lst);
 	*lst = NULL;
 }

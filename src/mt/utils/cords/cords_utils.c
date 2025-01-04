@@ -6,13 +6,13 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:58:46 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 13:29:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/03 06:02:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_cords	ft_cords(int x, int y, int z)
+t_cords	ft_mtcords(int x, int y, int z)
 {
 	t_cords	cords;
 
@@ -22,7 +22,7 @@ t_cords	ft_cords(int x, int y, int z)
 	return (cords);
 }
 
-t_cords	ft_cords_diff(t_cords cords, int x, int y, int z)
+t_cords	ft_mtcords_diff(t_cords cords, int x, int y, int z)
 {
 	cords.x += x;
 	cords.y += y;
@@ -33,29 +33,23 @@ t_cords	ft_cords_diff(t_cords cords, int x, int y, int z)
 static void	update_cords_recursive(t_mt *node, t_cords cords)
 {
 	t_cords	new_cords;
+	int		i;
 
-	for (int i = 0; i < MAX_DIRECTIONS; i++)
+	i = 0;
+	while (i < MAX_DIRECTIONS)
 	{
 		if (node->vect[i])
 		{
 			new_cords = cords;
-			if (i == 0)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, 1, 0, 0));
-			else if (i == 1)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, -1, 0, 0));
-			else if (i == 2)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, 0, 1, 0));
-			else if (i == 3)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, 0, -1, 0));
-			else if (i == 4)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, 0, 0, 1));
-			else if (i == 5)
-				update_cords(node->vect[i], ft_cords_diff(new_cords, 0, 0, -1));
+			new_cords = ft_mtcords_sum_direction(new_cords, i);
+			node->vect[i]->cords = new_cords;
+			ft_mtupdate_cords(node->vect[i], new_cords);
 		}
+		i++;
 	}
 }
 
-void	update_cords(t_mt *node, t_cords cords)
+void	ft_mtupdate_cords(t_mt *node, t_cords cords)
 {
 	if (!node || node->ptr_aux)
 		return ;
@@ -63,4 +57,9 @@ void	update_cords(t_mt *node, t_cords cords)
 	node->ptr_aux = NODE_VISITED;
 	update_cords_recursive(node, cords);
 	node->ptr_aux = NULL;
+}
+
+t_cords	ft_mtcordscpy(t_cords cords)
+{
+	return (ft_mtcords(cords.x, cords.y, cords.z));
 }

@@ -17,7 +17,7 @@ void	ft_mtreplace_all(t_mt **list, t_mt **replace)
 {
     if (!list || !replace || !*list || !*replace)
         return ;
-    ft_mterase(list);
+    ft_mtclear(list);
     *list = *replace;
     *replace = NULL;
 }

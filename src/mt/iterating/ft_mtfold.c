@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:19:57 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:27:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,25 @@
  nodos visitados.
  */
 
-static int	traverse_node(t_mt *node, void *param, int (*func)(t_mt *, void *))
-{
-	if (node && !node->ptr_aux)
-		return (ft_mtfold(node, param, func));
-	return (0);
-}
 
 int	ft_mtfold(t_mt *lst, void *param, int (*func)(t_mt *, void *))
 {
 	int	result;
+	int i;
 
-	if (!lst || !func || lst->ptr_aux)
+	if (!lst || !func || lst->ptr_aux == NODE_VISITED)
 		return (0);
 	result = 0;
+	i = 0;
 	lst->ptr_aux = NODE_VISITED;
-	result += traverse_node(lst->vect[RIGHT], param, func);
-	result += traverse_node(lst->vect[LEFT], param, func);
-	result += traverse_node(lst->vect[UP], param, func);
-	result += traverse_node(lst->vect[DOWN], param, func);
-	result += traverse_node(lst->vect[BACK], param, func);
-	result += traverse_node(lst->vect[FRONT], param, func);
-	result += traverse_node(lst->aux, param, func);
+	while (i < MAX_DIRECTIONS)
+	{
+		if (lst->vect[i] && lst->vect[i]->ptr_aux != NODE_VISITED)
+			result += ft_mtfold(lst->vect[i], param, func);
+		if (lst->aux && lst->aux->ptr_aux != NODE_VISITED)
+			result += ft_mtfold(lst->aux, param, func);
+		i++;
+	}
 	lst->ptr_aux = NULL;
 	result += func(lst, param);
 	return (result);

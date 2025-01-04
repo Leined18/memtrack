@@ -6,49 +6,43 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:14:19 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/01 12:37:03 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:54:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_connect_nodes(t_mt *node1, int direction1, t_mt *node2,
-		int direction2)
+void	ft_mtdisconnect(t_mt *node, t_direction direction)
 {
-	if (node1 && node2)
-	{
-		node1->vect[direction1] = node2;
-		node2->vect[direction2] = node1;
-	}
-}
+	int	opposite;
 
-void	ft_disconnect_node(t_mt *node, int direction)
-{
-	int		opposite;
-	t_mt	*neighbor;
-
-	opposite = (direction + 1) % 6;
-	neighbor = node->vect[direction];
-	if (neighbor)
+	opposite = ft_mtoposite_direction(direction);
+	if (node->vect[direction])
 	{
-		if (neighbor->vect[opposite] == node)
-			neighbor->vect[opposite] = NULL;
-		if (neighbor->vect[(direction - 1) % 6] == node)
-			neighbor->vect[(direction - 1) % 6] = NULL;
+		node->vect[direction]->vect[opposite] = NULL;
 		node->vect[direction] = NULL;
 	}
 }
 
-void	ft_reconnect_single(t_mt *node, t_mt *single_node, int direction,
-		int opposite)
+void	ft_mtconnect(t_mt *node, t_mt *node_to_connect, t_direction direction)
 {
-	for (int i = 0; i < 6; i++)
-	{
-		if (i != direction && i != opposite && node->vect[i])
-		{
-			ft_connect_nodes(single_node, (direction + 1) % 6, node->vect[i], (i
-					- 1) % 6);
-			break ;
-		}
-	}
+	if (!node || !node_to_connect)
+		return ;
+	node->vect[direction] = node_to_connect;
+	node_to_connect->vect[ft_mtoposite_direction(direction)] = node;
 }
+
+int	ft_mtoposite_direction(int direction)
+{
+	int	opposite;
+
+	if (direction < 0)
+		return (-1);
+	if (direction % 2 == 0)
+		opposite = (direction + 1) % 6;
+	else
+		opposite = (direction - 1) % 6;
+	return (opposite);
+}
+
+
