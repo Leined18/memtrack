@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 21:40:04 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 22:40:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	test(t_mt **node1)
 	ft_mtadd(&node, ft_mtnew("key6", "value6", NONE), DOWN);
 	ft_mtadd(&node, ft_mtnew("key7", "value7", NONE), DOWN);
 	ft_mtadd(&node, ft_mtnew("key8", "value8", NONE), DOWN);
+	ft_mtadd_aux(node, ft_mtnew("key9", "value9", NONE));
+	ft_mtadd_aux(node, ft_mtnew("key10", "value10", NONE));
 	ft_mtremove(&node, node);
 	printf("size x: %ld\n", ft_abs(ft_mtsize_dimension(node, 'y', '-')));
 	found = ft_mtsearch_cords(node, ft_mtcords(-1, 0, 0));

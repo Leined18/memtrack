@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:06:57 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 22:15:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef struct s_cords
 	int						z;
 }							t_cords;
 
-typedef enum e_state
+typedef enum e_mtstate
 {
 	EMPTY,
 	FILLED,
 	DELETED
-}							t_state;
+}							t_mtstate;
 
 typedef enum e_direction
 {
