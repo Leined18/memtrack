@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_insert_child.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:50:14 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/18 10:10:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_mthash_insert_child(t_hash_table *ht, const char *parent_key,
 			ft_replace_data(child, data, type);
 			return ;
 		}
-		ft_mtadd_child(parent, ft_mtnew(child_key, data, type));
+		ft_mtaddlast_child(parent, ft_mtnew(child_key, data, type));
 		return ;
 	}
 	ft_mthash_insert(ht, parent_key, NULL, NONE);

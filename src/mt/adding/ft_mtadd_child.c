@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_child.c                                   :+:      :+:    :+:   */
+/*   ft_mtaddlast_child.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "mt.h"
 
 // añade un hijo a un nodo de la tabla hash
-int	ft_mtadd_child(t_mt *parent, t_mt *child)
+int	ft_mtaddlast_child(t_mt *parent, t_mt *child)
 {
 	if (!parent || !child)
 		return (0);
@@ -32,6 +32,6 @@ int	ft_mtadd_child(t_mt *parent, t_mt *child)
 	if (parent->values.node_type != ROOT)
 		parent->values.node_type = BRANCH;
 	child->values.node_type = LEAF;
-	ft_mtadd_right(&parent->vect[DOWN], child);
+	ft_mtaddlast_right(&parent->vect[DOWN], child);
 	return (1);
 }

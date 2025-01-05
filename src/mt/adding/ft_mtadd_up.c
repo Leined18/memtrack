@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_up.c                                      :+:      :+:    :+:   */
+/*   ft_mtaddlast_up.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 
 // Adds the element 'new' at the beginning of the list, in the UP direction.
 
-void	ft_mtadd_up(t_mt **lst, t_mt *new)
+void	ft_mtaddlast_up(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new)
 		return ;
-	ft_mtadd(lst, new, UP);
+	ft_mtaddlast(lst, new, UP);
 }

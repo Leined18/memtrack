@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 22:40:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:52:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ int	test(t_mt **node1)
 	node = ft_mtnew("key1", "value1", NONE);
 	if (!node)
 		return (0);
-	ft_mtadd(&node, ft_mtnew("key2", "value2", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key3", "value3", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key4", "value4", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key5", "value5", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key6", "value6", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key7", "value7", NONE), DOWN);
-	ft_mtadd(&node, ft_mtnew("key8", "value8", NONE), DOWN);
-	ft_mtadd_aux(node, ft_mtnew("key9", "value9", NONE));
-	ft_mtadd_aux(node, ft_mtnew("key10", "value10", NONE));
+	ft_mtaddlast(&node, ft_mtnew("key2", "value2", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key3", "value3", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key4", "value4", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key5", "value5", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key6", "value6", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key7", "value7", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key8", "value8", NONE), DOWN);
+	ft_mtaddfirst(&node, ft_mtnew("key9", "value9", NONE), DOWN);
+	ft_mtaddlast_aux(node, ft_mtnew("key9", "value9", NONE));
+	ft_mtaddlast_aux(node, ft_mtnew("key10", "value10", NONE));
 	ft_mtremove(&node, node);
 	printf("size x: %ld\n", ft_abs(ft_mtsize_dimension(node, 'y', '-')));
 	found = ft_mtsearch_cords(node, ft_mtcords(-1, 0, 0));

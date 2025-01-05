@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_insert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:22:35 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int	ft_mthash_insert(t_hash_table *ht, const char *key, void *data,
 	new_node = ft_mtnew(key, data, type);
 	if (!new_node)
 		return (-1);
-	ft_mtadd_right(&ht->buckets[index], new_node);
+	ft_mtaddlast_right(&ht->buckets[index], new_node);
 	return (0);
 }

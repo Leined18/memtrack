@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_left.c                                   :+:      :+:    :+:   */
+/*   ft_mtaddlast_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 
 // Adds the element 'new' at the beginning of the list.
 
-void	ft_mtadd_left(t_mt **lst, t_mt *new)
+void	ft_mtaddlast_left(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new) // Verifica que los punteros sean válidos
 		return ;
-	ft_mtadd(lst, new, LEFT); // Añade el nuevo nodo a la izquierda
+	ft_mtaddlast(lst, new, LEFT); // Añade el nuevo nodo a la izquierda
 }

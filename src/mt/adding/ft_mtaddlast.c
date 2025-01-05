@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd.c                                         :+:      :+:    :+:   */
+/*   ft_mtaddlast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:35:29 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 18:52:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:32:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 // Adds the element 'new' at the end of the list in whatever direction.
-void	ft_mtadd(t_mt **lst, t_mt *new, t_direction direction)
+void	ft_mtaddlast(t_mt **lst, t_mt *new, t_direction direction)
 {
 	t_mt	*last;
 

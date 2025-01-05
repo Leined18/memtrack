@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_mt	*ft_splitmt(const char *s, char c)
 			new_node = ft_splitmt_create_node(s, word_len);
 			if (!new_node)
 				return (ft_mtdel_list((void **)&list), NULL);
-			ft_mtadd_right(&list, new_node);
+			ft_mtaddlast_right(&list, new_node);
 			s += word_len;
 		}
 	}

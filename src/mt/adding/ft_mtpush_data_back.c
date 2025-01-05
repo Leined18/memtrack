@@ -23,7 +23,7 @@ void	ft_mtpush_data_right(t_mt **lst, const char *key, void *data,
 	new = ft_mtnew(key, data, type);
 	if (!new)
 		return ;
-	ft_mtadd_right(lst, new);
+	ft_mtaddlast_right(lst, new);
 }
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
 // ft_mtpush_data_right(&stacka, "pi");

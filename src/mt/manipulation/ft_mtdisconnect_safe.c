@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:20:53 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 20:03:10 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:52:29 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ static int	ft_mtadd_posible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
 		{
 			oposite = ft_mtoposite_direction(i);
 			if (!neighbour->vect[oposite] && !node->vect[i])
-				return (ft_mtadd(&neighbour, node, oposite), 1);
+				return (ft_mtaddlast(&neighbour, node, oposite), 1);
 			else if (!neighbour->vect[i] && !node->vect[oposite])
-				return (ft_mtadd(&neighbour, node, i), 1);
+				return (ft_mtaddlast(&neighbour, node, i), 1);
 		}
 	}
 	return (0);

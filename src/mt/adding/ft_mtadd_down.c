@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_down.c                                    :+:      :+:    :+:   */
+/*   ft_mtaddlast_down.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 
 // Adds the element 'new' at the end of the list, in the DOWN direction.
 
-void	ft_mtadd_down(t_mt **lst, t_mt *new)
+void	ft_mtaddlast_down(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new)
 		return ;
-	ft_mtadd(lst, new, DOWN);
+	ft_mtaddlast(lst, new, DOWN);
 }

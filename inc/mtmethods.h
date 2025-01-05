@@ -59,15 +59,16 @@ void			ft_mtunset_ptr_aux(t_mt *node, void *field);
 
 // ==================== Add Functions ====================
 
-void			ft_mtadd(t_mt **lst, t_mt *new, t_direction direction);
-void			ft_mtadd_down(t_mt **lst, t_mt *new);
-void			ft_mtadd_up(t_mt **lst, t_mt *new);
-void			ft_mtadd_right(t_mt **lst, t_mt *new);
-void			ft_mtadd_left(t_mt **lst, t_mt *new);
-int				ft_mtadd_child(t_mt *parent, t_mt *child);
-void			ft_mtadd_aux(t_mt *node, t_mt *aux);
-void			ft_mtadd_back(t_mt **lst, t_mt *new);
-void			ft_mtadd_front(t_mt **lst, t_mt *new);
+void			ft_mtaddfirst(t_mt **lst, t_mt *new, t_direction direction);
+void			ft_mtaddlast(t_mt **lst, t_mt *new, t_direction direction);
+void			ft_mtaddlast_down(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_up(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_right(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_left(t_mt **lst, t_mt *new);
+int				ft_mtaddlast_child(t_mt *parent, t_mt *child);
+void			ft_mtaddlast_aux(t_mt *node, t_mt *aux);
+void			ft_mtaddlast_back(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_front(t_mt **lst, t_mt *new);
 
 // ==================== Check Functions ====================
 int				ft_mtexists_mt(t_mt *root, const char *key);

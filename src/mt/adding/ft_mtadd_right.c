@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_right.c                                    :+:      :+:    :+:   */
+/*   ft_mtaddlast_right.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 
 // Adds the element 'new' at the end of the list.
 
-void	ft_mtadd_right(t_mt **lst, t_mt *new)
+void	ft_mtaddlast_right(t_mt **lst, t_mt *new)
 {
 	if (!lst || !new)
 		return ;
-	ft_mtadd(lst, new, RIGHT);
+	ft_mtaddlast(lst, new, RIGHT);
 }

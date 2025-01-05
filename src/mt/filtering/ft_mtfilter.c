@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:28:51 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:05:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_mtfilter(t_mt *lst, void *param, int (*predicate)(t_mt *, void *),
 	lst->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
 	// Si el nodo cumple con la condición,
 	if (predicate(lst, param))
-		ft_mtadd_right(result, ft_mtnew(lst->key, lst, NONE));
+		ft_mtaddlast_right(result, ft_mtnew(lst->key, lst, NONE));
 	// Recorre los nodos relacionados
 	traverse_node(lst->vect[RIGHT], param, predicate, result);
 	traverse_node(lst->vect[LEFT], param, predicate, result);
