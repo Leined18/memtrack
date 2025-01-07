@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:52:03 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:39:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ int	test(t_mt **node1)
 	ft_mtaddfirst(&node, ft_mtnew("key9", "value9", NONE), DOWN);
 	ft_mtaddlast_aux(node, ft_mtnew("key9", "value9", NONE));
 	ft_mtaddlast_aux(node, ft_mtnew("key10", "value10", NONE));
-	ft_mtremove(&node, node);
-	printf("size x: %ld\n", ft_abs(ft_mtsize_dimension(node, 'y', '-')));
-	found = ft_mtsearch_cords(node, ft_mtcords(-1, 0, 0));
+	ft_mtrotate(&node, DOWN);
+	ft_mtrotate(&node, DOWN);
+	ft_mtreverse_rotate(&node, DOWN);
+	printf("size -y: %ld\n", ft_abs(ft_mtsize_dimension(node, 'y', '-')));
+	found = ft_mtsearch_cords(node, ft_mtcords(0, -2, 0));
 	if (!found)
 		return (0);
+	ft_mtpush(&node, &found, RIGHT);
 	c = ft_cordscmp(ft_mtcords(4, 0, 0), found->cords);
 	printf("Cords cmp: %d\n", c);
 	ft_mtclear(&node);

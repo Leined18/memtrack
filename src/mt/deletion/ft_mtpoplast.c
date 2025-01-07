@@ -13,15 +13,16 @@
 #include "mt.h"
 
 // Deletes the last element of the list.
-void	ft_mtpop_right(t_mt **lst)
+void	ft_mtpoplast(t_mt **lst, t_direction direction)
 {
 	t_mt	*tmp;
 
 	if (!*lst) // Si la lista está vacía, no hacemos nada
 		return ;
-	tmp = ft_mtlast(*lst, RIGHT); // Obtenemos el último elemento de la lista
-	ft_mtremove(lst, tmp); // Eliminamos el último elemento de la lista
-	
+	tmp = ft_mtlast(*lst, direction);
+		// Obtenemos el último elemento de la lista
+	ft_mtremove(lst, tmp);           
+		// Eliminamos el último elemento de la lista
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
