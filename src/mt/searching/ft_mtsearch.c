@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 10:37:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:18:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
 	i = 0;
 	while (i < MAX_DIRECTIONS && !found)
 	{
-		if (node->aux && !found)
+		if (node->aux && !found && i == 0)
 			found = traverse_node(node->aux, param, predicate);
 		if (node->vect[i] && !found)
 			found = traverse_node(node->vect[i], param, predicate);
