@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mthash_add_child.c                              :+:      :+:    :+:   */
+/*   ft_mthash_add_aux.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,12 +15,12 @@
 // añade un hijo a un nodo de la tabla hash y si no encuentra al padre crea un nuevo nodo padre
 // y añade al hijo
 
-int	ft_mthash_add_child(t_hash_table *ht, const char *key, t_mt *child)
+int	ft_mthash_add_aux(t_hash_table *ht, const char *key, t_mt *aux)
 {
 	t_mt	*parent;
 	int		index;
 
-	if (!ht || !key || !child)
+	if (!ht || !key || !aux)
 		return (0);
 	parent = ft_mthash_find_node(ht, key);
 	if (!parent)
@@ -28,12 +28,12 @@ int	ft_mthash_add_child(t_hash_table *ht, const char *key, t_mt *child)
 		index = ft_mthash(key, ht->bucket_count);
 		parent = ft_mtnew(key, NULL, NONE);
 		if (!parent)
-			return (ft_mtdelete(&child), 0);
+			return (ft_mtdelete(&aux), 0);
 		parent->values.node_type = BRANCH;
 		ft_mtaddlast_right(&ht->buckets[index], parent);
-		return (ft_mtaddlast_child(parent, child));
+		return (ft_mtaddlast_aux(parent, aux), 1);
 	}
-	return (ft_mtaddlast_child(parent, child));
+	return (ft_mtaddlast_aux(parent, aux), 1);
 }
 
 // si funciona

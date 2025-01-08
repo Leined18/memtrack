@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtiter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 20:19:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:16:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,23 @@ static void	traverse_node(t_mt *node, void *param, void (*func)(t_mt *, void *))
 {
 	int	i;
 
-	if (!node)
+	if (!node || node->ptr_aux == NODE_VISITED)
 		return ;
 	i = 0;
+	if (node->ptr_aux != NODE_VISITED)
+	{
+		func(node, param);
+		node->ptr_aux = NODE_VISITED;
+	}
 	while (i < MAX_DIRECTIONS)
 	{
+		if (node->aux && node->aux->ptr_aux != NODE_VISITED && i == 0)
+			traverse_node(node->aux, param, func);
 		if (node->vect[i] && node->vect[i]->ptr_aux != NODE_VISITED)
-		{
-			node->vect[i]->ptr_aux = NODE_VISITED;
 			traverse_node(node->vect[i], param, func);
-			node->vect[i]->ptr_aux = NULL;
-			func(node->vect[i], param);
-		}
 		i++;
 	}
+	node->ptr_aux = NULL;
 }
 
 /**
@@ -50,7 +53,5 @@ void	ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *))
 {
 	if (!lst || !func)
 		return ;
-	lst->ptr_aux = NODE_VISITED;
 	traverse_node(lst, param, func);
-	lst->ptr_aux = NULL;
 }

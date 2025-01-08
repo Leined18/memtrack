@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtaddlast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:35:29 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:32:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:35:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_mtaddlast(t_mt **lst, t_mt *new, t_direction direction)
 		*lst = new;
 	else
 	{
+		new->values.data_type = LEAF;
 		last = ft_mtlast(*lst, direction);
 		ft_mtconnect(last, new, direction);
 		ft_mtupdate_cords((*lst), ft_mtcords(0, 0, 0));

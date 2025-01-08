@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 11:09:10 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:40:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_hash_table_methods
 	int						(*remove)(struct s_hash_table *, const char *);
 	void					(*free_table)(struct s_hash_table *);
 	void					(*print)(struct s_hash_table *);
-	int						(*add_child)(struct s_hash_table *, const char *,
+	int						(*add_aux)(struct s_hash_table *, const char *,
 								t_mt *);
-	void					(*insert_child)(struct s_hash_table *, const char *,
+	void					(*insert_aux)(struct s_hash_table *, const char *,
 							const char *, void *, t_data_type);
 	void					(*replace_key)(struct s_hash_table *, const char *,
 							const char *);
@@ -96,8 +96,8 @@ int							ft_mthash_exists(t_hash_table *ht, const char *key);
 
 /* Add Functions */
 void						ft_mthash_add_node(t_hash_table *ht, t_mt *node);
-int							ft_mthash_add_child(t_hash_table *ht,
-								const char *key, t_mt *child);
+int							ft_mthash_add_aux(t_hash_table *ht, const char *key,
+								t_mt *aux);
 
 /* Count Functions */
 int							ft_mthash_count_data_type(t_hash_table *ht,
@@ -111,8 +111,8 @@ void						ft_mthash_set_free_func(t_hash_table *ht, char *key,
 								void (*free_func)(void **));
 
 /* Insert Functions */
-void						ft_mthash_insert_child(t_hash_table *ht,
-								const char *parent_key, const char *child_key,
+void						ft_mthash_insert_aux(t_hash_table *ht,
+								const char *parent_key, const char *aux_key,
 								void *data, t_data_type type);
 int							ft_mthash_insert(t_hash_table *ht, const char *key,
 								void *data, t_data_type type);

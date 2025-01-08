@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtpush_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:51:53 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:37:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mtpush_data(t_mt **lst, const char *key, void *data,
 		ft_mtdel_by_type(&data, type);
 		return ;
 	}
-	ft_mtaddlast_left(lst, new);
+	ft_mtaddfirst(lst, new, LEFT);
 }
 
 // stacka = "miau" -> "guau" -> "mu" -> "le" -> "asd" -> "ñe" -> "sa"
