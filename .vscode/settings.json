@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.dbclient-js": "javascript",
     "memtrack.h": "c",
     "string.h": "c",
     "initializer_list": "c",
@@ -26,7 +27,11 @@
     "type_traits": "c",
     "utility": "c",
     "utils.h": "c",
-    "memory": "c"
+    "memory": "c",
+    "mtmethods.h": "c",
+    "mtutils.h": "c",
+    "deque": "c",
+    "vector": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

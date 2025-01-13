@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/02 12:58:19 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:39:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,50 @@
  * Retorna 1 si la prueba fue exitosa, 0 si falló.
  */
 
-int	test(t_hash_table *ht)
+int	test(t_mt **node1)
 {
-	ht = ft_mthash_new_table(3, "test");
-	ht->methods.insert_child(ht, "key1", "data1", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data2", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data3", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data4", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data5", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data6", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.insert_child(ht, "key1", "data7", ft_strdup("xkasjd23"),
-		STRING);
-	ht->methods.print(ht);
-	ht->methods.free_table(ht);
+	t_mt	*found;
+	int		c;
+	t_mt	*node;
+
+	node = *node1;
+	node = ft_mtnew("key1", "value1", NONE);
+	if (!node)
+		return (0);
+	ft_mtaddlast(&node, ft_mtnew("key2", "value2", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key3", "value3", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key4", "value4", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key5", "value5", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key6", "value6", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key7", "value7", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key8", "value8", NONE), DOWN);
+	ft_mtaddfirst(&node, ft_mtnew("key9", "value9", NONE), DOWN);
+	ft_mtaddlast_aux(node, ft_mtnew("key9", "value9", NONE));
+	ft_mtaddlast_aux(node, ft_mtnew("key10", "value10", NONE));
+	ft_mtrotate(&node, DOWN);
+	ft_mtrotate(&node, DOWN);
+	ft_mtreverse_rotate(&node, DOWN);
+	printf("size -y: %ld\n", ft_abs(ft_mtsize_dimension(node, 'y', '-')));
+	found = ft_mtsearch_cords(node, ft_mtcords(0, -2, 0));
+	if (!found)
+		return (0);
+	ft_mtpush(&node, &found, RIGHT);
+	c = ft_cordscmp(ft_mtcords(4, 0, 0), found->cords);
+	printf("Cords cmp: %d\n", c);
+	ft_mtclear(&node);
 	return (1);
 }
 
 int	main(void)
 {
-	t_hash_table	*ht;
+	t_mt	*ht;
 
 	ht = NULL;
-	if (!test(ht))
+	if (!test(&ht))
 	{
 		ft_printf("Test failed\n");
 		if (ht)
-			ht->methods.free_table(ht);
+			ft_mtclear(&ht);
 		return (1);
 	}
 	ft_printf(GREEN "All tests passed successfully\n" RESET);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/10 12:00:47 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/04 22:15:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,32 @@
 typedef struct s_mt			t_mt;
 typedef struct s_hash_table	t_hash_table;
 // Definir el enum t_data_type completamente antes de usarlo
+
+typedef struct s_cords
+{
+	int						x;
+	int						y;
+	int						z;
+}							t_cords;
+
+typedef enum e_mtstate
+{
+	EMPTY,
+	FILLED,
+	DELETED
+}							t_mtstate;
+
+typedef enum e_direction
+{
+	RIGHT,
+	LEFT,
+	UP,
+	DOWN,
+	FRONT,
+	BACK,
+	MAX_DIRECTIONS
+}							t_direction;
+
 typedef enum e_data_type
 {
 	NONE,
@@ -31,6 +57,7 @@ typedef enum e_data_type
 
 typedef enum e_node_type
 {
+	ROOT,
 	LEAF,
 	BRANCH
 }							t_node_type;
@@ -43,6 +70,7 @@ typedef struct s_values
 	int						count;
 	int						to_free;
 	int						state;
+	int						priority;
 }							t_values;
 
 #endif // MTSTRUCTS_H
