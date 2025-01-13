@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/07 10:39:55 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:14:01 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	test(t_mt **node1)
 	if (!node)
 		return (0);
 	ft_mtaddlast(&node, ft_mtnew("key2", "value2", NONE), DOWN);
-	ft_mtaddlast(&node, ft_mtnew("key3", "value3", NONE), DOWN);
+	ft_mtaddlast(&node, ft_mtnew("key3", "value3", NONE), UP);
 	ft_mtaddlast(&node, ft_mtnew("key4", "value4", NONE), DOWN);
 	ft_mtaddlast(&node, ft_mtnew("key5", "value5", NONE), DOWN);
 	ft_mtaddlast(&node, ft_mtnew("key6", "value6", NONE), DOWN);

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:14:42 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/07 10:26:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:39:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,14 @@
 
 void	ft_mtrotate(t_mt **lst, t_direction direction)
 {
-	t_mt *last;
-	t_mt *sub;
+	t_mt	*sub;
+
 	if (!(*lst) || !lst)
-		return ;
-	last = NULL;
-	last = ft_mtlast((*lst), direction);
-	if (!last)
 		return ;
 	sub = NULL;
 	sub = ft_mtsub(lst, (*lst));
 	if (!sub)
 		return ;
-	ft_mtaddlast(&last, sub, direction);
+	ft_mtaddlast(lst, sub, direction);
+	ft_mtupdate_cords((*lst), ft_mtcords(0, 0, 0));
 }

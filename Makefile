@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/01/13 09:13:28 by danpalac         ###   ########.fr        #
+#    Updated: 2025/01/13 11:23:19 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,10 @@ $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 	
 clean:
-	@$(RM) -rf $(OBJ_DIR) $(LIB_DIR)
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		$(RM) $(OBJ_DIR) $(LIB_DIR); \
+		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
+	fi
 	@make clean -sC $(LIBFT_DIR)
 
 fclean: clean
