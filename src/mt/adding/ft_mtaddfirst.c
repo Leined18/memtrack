@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 12:37:08 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 19:24:58 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:16:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_mtaddfirst(t_mt **lst, t_mt *new, t_direction direction)
 	else
 	{
 		ft_mtconnect_safe(lst, new, direction);
-		ft_mtupdate_cords((*lst), (*lst)->cords);
+		/* ft_mtupdate_cords((*lst), (*lst)->cords); */
 		(*lst) = new;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:20:53 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:52:29 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:57:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * Returns the node disconnected.
  */
 
-static int	ft_is_all_connected(t_mt *neighbours[MAX_DIRECTIONS])
+static int	ft_is_all_connected(t_mt *neighbours[MAX_DIRECTIONS], t_mt **ref)
 {
 	int		i;
 	t_mt	*neighbour;
@@ -31,7 +31,7 @@ static int	ft_is_all_connected(t_mt *neighbours[MAX_DIRECTIONS])
 	while (i < MAX_DIRECTIONS)
 	{
 		neighbour = neighbours[i];
-		if (neighbour && !ft_mtsearch_cords(neighbour, ft_mtcords(0, 0, 0)))
+		if (neighbour && !ft_mtis_connected(ref, neighbour))
 			return (0);
 		i++;
 	}
@@ -50,8 +50,7 @@ static t_mt	*ft_get_nearly_avalible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
 	{
 		neighbour = neighbours[(*direction)];
 		oposite = ft_mtoposite_direction((*direction));
-		if (neighbour && !neighbour->vect[oposite]
-			&& !ft_mtsearch_cords(neighbour, ft_mtcords(0, 0, 0)))
+		if (neighbour && !neighbour->vect[oposite])
 			return (neighbour);
 		(*direction)++;
 	}
@@ -84,7 +83,8 @@ static int	ft_mtadd_posible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
 	return (0);
 }
 
-static void	ft_mtreconnect_neighbours(t_mt *neighbours[MAX_DIRECTIONS])
+static void	ft_mtreconnect_neighbours(t_mt *neighbours[MAX_DIRECTIONS],
+		t_mt **ref)
 {
 	t_direction	direction;
 	t_mt		*avalible_neighbour;
@@ -96,9 +96,8 @@ static void	ft_mtreconnect_neighbours(t_mt *neighbours[MAX_DIRECTIONS])
 		avalible_neighbour = ft_get_nearly_avalible_neighbour(neighbours,
 				&direction);
 		ft_mtadd_posible_neighbour(neighbours, avalible_neighbour);
-		if (ft_is_all_connected(neighbours))
+		if (ft_is_all_connected(neighbours, ref))
 			break ;
-		direction = 0;
 	}
 }
 
@@ -109,14 +108,15 @@ t_mt	*ft_mtdisconnect_safe(t_mt **ref, t_mt *node)
 
 	if (!ref || !*ref || !node)
 		return (NULL);
-	i = 0;
+	i = -1;
 	ft_mtupdate_ref(ref, node);
-	while (i < MAX_DIRECTIONS)
+	while (++i < MAX_DIRECTIONS)
 	{
 		neighbours[i] = node->vect[i];
 		ft_mtdisconnect(node, i);
-		i++;
 	}
-	ft_mtreconnect_neighbours(neighbours);
+	if (ft_is_all_connected(neighbours, ref))
+		return (node);
+	ft_mtreconnect_neighbours(neighbours, ref);
 	return (node);
 }

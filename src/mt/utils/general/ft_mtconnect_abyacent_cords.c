@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:52:35 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 19:04:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:11:30 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	ft_connect_one_abyacent_cords(t_mt *last, t_mt *new,
 	if (found_in_last && !new->vect[direction])
 		ft_mtconnect(new, found_in_last, direction);
 }
+
+
 
 void	ft_mtconnect_abyacent_cords(t_mt *last, t_mt *new)
 {

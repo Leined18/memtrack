@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:58:46 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/03 06:02:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:10:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	update_cords_recursive(t_mt *node, t_cords cords)
 
 void	ft_mtupdate_cords(t_mt *node, t_cords cords)
 {
-	if (!node || node->ptr_aux)
+	if (!node || node->ptr_aux == NODE_VISITED)
 		return ;
 	node->cords = cords;
 	node->ptr_aux = NODE_VISITED;

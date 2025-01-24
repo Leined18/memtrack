@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:10:50 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 17:27:51 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:17:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 			if (node->vect[i])
 			{
 				*ref = node->vect[i];
-				ft_mtupdate_cords(*ref, ft_mtcords(0, 0, 0));
+				/* ft_mtupdate_cords(*ref, ft_mtcords(0, 0, 0)); */
 				return ;
 			}
 			i++;
