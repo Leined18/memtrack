@@ -41,7 +41,7 @@ void			ft_mtset_free_func(t_mt *node, void (*free_func)(void **));
 void			ft_mtmigrate_right(t_mt **src, t_mt **dest);
 void			ft_mtmigrate(t_mt **src, t_mt **dest);
 void			ft_mtpush(t_mt **dst, t_mt **src, t_direction direction);
-void			ft_mtpushlast(t_mt **dest, t_mt **src, t_direction direction);
+void			ft_mtpush_last(t_mt **dest, t_mt **src, t_direction direction);
 void			ft_mtrotate(t_mt **lst, t_direction direction);
 void			ft_mtreverse_rotate(t_mt **lst, t_direction direction);
 void			ft_mtswap(t_mt **lst, t_direction direction);
