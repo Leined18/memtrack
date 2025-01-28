@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfold.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:19:57 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 20:27:23 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:17:110 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@
  nodos visitados.
  */
 
-
 int	ft_mtfold(t_mt *lst, void *param, int (*func)(t_mt *, void *))
 {
 	int	result;
-	int i;
+	int	i;
 
 	if (!lst || !func || lst->ptr_aux == NODE_VISITED)
 		return (0);
 	result = 0;
 	i = 0;
 	lst->ptr_aux = NODE_VISITED;
+	result += func(lst, param);
 	while (i < MAX_DIRECTIONS)
 	{
 		if (lst->vect[i] && lst->vect[i]->ptr_aux != NODE_VISITED)
@@ -42,7 +42,5 @@ int	ft_mtfold(t_mt *lst, void *param, int (*func)(t_mt *, void *))
 			result += ft_mtfold(lst->aux, param, func);
 		i++;
 	}
-	lst->ptr_aux = NULL;
-	result += func(lst, param);
-	return (result);
+	return (lst->ptr_aux = NULL, result);
 }
