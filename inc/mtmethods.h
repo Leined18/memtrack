@@ -76,6 +76,7 @@ int				ft_mtexists_mt(t_mt *root, const char *key);
 int				ft_mtexists_cords(t_mt *node, t_cords cords);
 int				ft_mtis_connected(t_mt **first, t_mt *node);
 int				ft_mtcheck_state(t_mt *mt, int state);
+int				ft_mtcheck_priority(t_mt *mt, int priority);
 
 // ==================== Key Management ====================
 char			*ft_mtnew_original_key(char *key, t_mt *node);
