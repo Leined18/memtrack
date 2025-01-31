@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:20:53 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/24 17:57:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:36:00 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
  * Returns the node disconnected.
  */
 
-static int	ft_is_all_connected(t_mt *neighbours[MAX_DIRECTIONS], t_mt **ref)
+static int	ft_is_all_connected(t_mt **neighbours, t_mt **ref)
 {
 	int		i;
 	t_mt	*neighbour;
 
+	if (!neighbours || !ref)
+		return (0);
 	i = 0;
 	while (i < MAX_DIRECTIONS)
 	{
@@ -38,8 +40,8 @@ static int	ft_is_all_connected(t_mt *neighbours[MAX_DIRECTIONS], t_mt **ref)
 	return (1);
 }
 
-static t_mt	*ft_get_nearly_avalible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
-		t_direction(*direction))
+static t_mt	*ft_get_nearly_avalible_neighbour(t_mt **neighbours,
+		t_direction *direction)
 {
 	int		oposite;
 	t_mt	*neighbour;
@@ -57,8 +59,7 @@ static t_mt	*ft_get_nearly_avalible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
 	return (NULL);
 }
 
-static int	ft_mtadd_posible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
-		t_mt *node)
+static int	ft_mtadd_posible_neighbour(t_mt **neighbours, t_mt *node)
 {
 	t_mt	*neighbour;
 	int		i;
@@ -83,8 +84,7 @@ static int	ft_mtadd_posible_neighbour(t_mt *neighbours[MAX_DIRECTIONS],
 	return (0);
 }
 
-static void	ft_mtreconnect_neighbours(t_mt *neighbours[MAX_DIRECTIONS],
-		t_mt **ref)
+static void	ft_mtreconnect_neighbours(t_mt **neighbours, t_mt **ref)
 {
 	t_direction	direction;
 	t_mt		*avalible_neighbour;
@@ -104,11 +104,12 @@ static void	ft_mtreconnect_neighbours(t_mt *neighbours[MAX_DIRECTIONS],
 t_mt	*ft_mtdisconnect_safe(t_mt **ref, t_mt *node)
 {
 	int		i;
-	t_mt	*neighbours[MAX_DIRECTIONS];
+	t_mt	**neighbours;
 
 	if (!ref || !*ref || !node)
 		return (NULL);
 	i = -1;
+	neighbours = ft_calloc(MAX_DIRECTIONS, sizeof(t_mt *));
 	ft_mtupdate_ref(ref, node);
 	while (++i < MAX_DIRECTIONS)
 	{
@@ -116,7 +117,7 @@ t_mt	*ft_mtdisconnect_safe(t_mt **ref, t_mt *node)
 		ft_mtdisconnect(node, i);
 	}
 	if (ft_is_all_connected(neighbours, ref))
-		return (node);
+		return (free(neighbours), node);
 	ft_mtreconnect_neighbours(neighbours, ref);
-	return (node);
+	return (free(neighbours), node);
 }
