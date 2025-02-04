@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtsearch_key.c                                  :+:      :+:    :+:   */
+/*   ft_mtcheck_key.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:55:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/02/04 12:21:16 by danpalac         ###   ########.fr       */
+/*   Created: 2025/02/04 12:16:16 by danpalac          #+#    #+#             */
+/*   Updated: 2025/02/04 12:22:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-static int	match_key(t_mt *node, void *key)
+int	ft_mtcheck_key(t_mt *mt, char *key)
 {
-	return (ft_strncmp(node->key, key, ft_strlen(key)) == 0);
-}
-
-t_mt	*ft_mtsearch_key(t_mt *root, const char *key)
-{
-	t_mt	*result;
-
-	if (!root || !key)
-		return (NULL);
-	result = ft_mtsearch(root, (void *)key, match_key);
-	return (result);
+	if (!mt)
+		return (0);
+	return (ft_strncmp(mt->key, key, ft_strlen(key)));
 }
