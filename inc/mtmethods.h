@@ -125,5 +125,6 @@ void			ft_mtreplace_all_data(t_mt **lst, void *new_data,
 
 t_mt			*ft_mtdisconnect_safe(t_mt **ref, t_mt *node);
 void			ft_mtconnect_safe(t_mt **lst, t_mt *new, t_direction direction);
+int				ft_mtexchange(t_mt **lst, t_mt *curr, t_direction direction);
 
 #endif // MTMETHODS_H
