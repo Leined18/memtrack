@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 22:15:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:35:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include "structs.h"
 
 // Ahora puedes usar estos tipos en las siguientes estructuras
 typedef struct s_mt			t_mt;
@@ -71,6 +72,7 @@ typedef struct s_values
 	int						to_free;
 	int						state;
 	int						priority;
+	t_bool					boolean;
 }							t_values;
 
 #endif // MTSTRUCTS_H
