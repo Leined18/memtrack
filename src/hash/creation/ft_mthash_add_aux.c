@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mthash_add_aux.c                              :+:      :+:    :+:   */
+/*   ft_mthash_add_aux.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:05:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
+/*   Created: 2025/03/07 10:12:58 by danpalac          #+#    #+#             */
+/*   Updated: 2025/03/07 10:13:00 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
-
-// añade un hijo a un nodo de la tabla hash y si no encuentra al padre crea un nuevo nodo padre
-// y añade al hijo
 
 int	ft_mthash_add_aux(t_hash_table *ht, const char *key, t_mt *aux)
 {
@@ -35,5 +32,3 @@ int	ft_mthash_add_aux(t_hash_table *ht, const char *key, t_mt *aux)
 	}
 	return (ft_mtaddlast_aux(parent, aux), 1);
 }
-
-// si funciona

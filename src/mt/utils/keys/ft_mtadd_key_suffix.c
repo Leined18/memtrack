@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:48:24 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:48:28 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:42:34 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_mtadd_key_suffix(char *suffix, t_mt *node)
 {
-	char *new_key;
+	char	*new_key;
 
 	if (!suffix || !node)
 		return ;

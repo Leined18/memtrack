@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtclear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 12:17:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:45:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static void	ft_mtclean_aux(t_mt *lst)
 	int	i;
 
 	i = 0;
-	if (!lst || lst->ptr_aux == NODE_VISITED)
+	if (!lst || lst->ptr_aux == (void *)NODE_VISITED)
 		return ;
-	lst->ptr_aux = NODE_VISITED;
+	lst->ptr_aux = (void *)NODE_VISITED;
 	while (i < MAX_DIRECTIONS)
 	{
-		if (lst->vect[i] && lst->vect[i]->ptr_aux == NODE_VISITED)
+		if (lst->vect[i] && lst->vect[i]->ptr_aux == (void *)NODE_VISITED)
 			ft_mtdisconnect(lst, i);
 		ft_mtclean_aux(lst->vect[i]);
 		i++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtaddlast_left.c                                   :+:      :+:    :+:   */
+/*   ft_mtadd_left.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:16:13 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 10:26:47 by danpalac         ###   ########.fr       */
+/*   Created: 2025/03/07 10:09:12 by danpalac          #+#    #+#             */
+/*   Updated: 2025/03/07 10:09:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	ft_mtaddlast_left(t_mt **lst, t_mt *new)
 {
-	if (!lst || !new) // Verifica que los punteros sean válidos
+	if (!lst || !new)
 		return ;
-	ft_mtaddlast(lst, new, LEFT); // Añade el nuevo nodo a la izquierda
+	ft_mtaddlast(lst, new, LEFT);
 }

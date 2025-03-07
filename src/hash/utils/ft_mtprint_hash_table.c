@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtprint_hash_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:30:24 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 10:42:57 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:07:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,13 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 	if (!node)
 		return ;
 	is_last = (node->vect[RIGHT] == NULL);
-	// Imprime el prefijo del árbol
 	print_tree_prefix(depth, is_last, branch_flags);
-	// Imprime la clave del nodo
 	ft_printf(YELLOW "[%s]" RESET, node->key);
-	// Si el nodo es una rama, imprime sus hijos recursivamente
 	if (node->aux)
 	{
 		print_data(node);
 		ft_printf("\n");
-		branch_flags[depth] = !is_last; // Actualiza bandera de continuación
+		branch_flags[depth] = !is_last;
 		print_inner_list(node->aux, depth + 1, branch_flags);
 	}
 	else
@@ -92,7 +89,6 @@ void	print_node(t_mt *node, int depth, int *branch_flags)
 		ft_printf("\n");
 }
 
-// Imprime los nodos del bucket como un árbol
 void	print_bucket(t_mt *bucket, int depth, int *branch_flags)
 {
 	int	is_last;
@@ -106,7 +102,6 @@ void	print_bucket(t_mt *bucket, int depth, int *branch_flags)
 	}
 }
 
-// Imprime la tabla hash con estilo 'tree'
 void	ft_mtprint_hash_table(t_hash_table *ht)
 {
 	size_t	i;

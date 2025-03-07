@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_exists.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:06:56 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:12:37 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:12:26 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // verifica si un nodo existe en la tabla hash
 int	ft_mthash_exists(t_hash_table *ht, const char *key)
 {
-	t_mt *current;
+	t_mt	*current;
 
 	if (!ht || !key)
 		return (0);
@@ -24,4 +24,3 @@ int	ft_mthash_exists(t_hash_table *ht, const char *key)
 		return (0);
 	return (1);
 }
-// si funciona

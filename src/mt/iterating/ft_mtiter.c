@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtiter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:12:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 10:16:25 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:46:11 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static void	traverse_node(t_mt *node, void *param, void (*func)(t_mt *, void *))
 {
 	int	i;
 
-	if (!node || node->ptr_aux == NODE_VISITED)
+	if (!node || node->ptr_aux == (void *)NODE_VISITED)
 		return ;
 	i = 0;
-	if (node->ptr_aux != NODE_VISITED)
+	if (node->ptr_aux != (void *)NODE_VISITED)
 	{
 		func(node, param);
-		node->ptr_aux = NODE_VISITED;
+		node->ptr_aux = (void *)NODE_VISITED;
 	}
 	while (i < MAX_DIRECTIONS)
 	{
-		if (node->aux && node->aux->ptr_aux != NODE_VISITED && i == 0)
+		if (node->aux && node->aux->ptr_aux != (void *)NODE_VISITED && i == 0)
 			traverse_node(node->aux, param, func);
-		if (node->vect[i] && node->vect[i]->ptr_aux != NODE_VISITED)
+		if (node->vect[i] && node->vect[i]->ptr_aux != (void *)NODE_VISITED)
 			traverse_node(node->vect[i], param, func);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:46:28 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/28 14:47:48 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:42:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_mtadd_key_prefix(char *prefix, t_mt *node)
 {
-	char *new_key;
+	char	*new_key;
 
 	if (!prefix || !node)
 		return ;

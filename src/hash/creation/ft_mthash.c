@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:20:36 by danpalac          #+#    #+#             */
-/*   Updated: 2024/11/27 13:19:51 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:13:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // returns the hash of the key
 size_t	ft_mthash(const char *key, size_t bucket_count)
 {
-	size_t hash;
+	size_t	hash;
 
 	hash = 0;
 	while (*key)

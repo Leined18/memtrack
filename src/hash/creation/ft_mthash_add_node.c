@@ -6,12 +6,11 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:07:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:12:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
-
 
 // Añade el nodo a la tabla hash
 void	ft_mthash_add_node(t_hash_table *ht, t_mt *node)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 09:40:33 by danpalac         ###   ########.fr       */
+/*   Created: 2025/03/07 10:26:35 by danpalac          #+#    #+#             */
+/*   Updated: 2025/03/07 10:52:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,24 @@
 typedef struct s_hash_table_methods
 {
 	int						(*insert)(struct s_hash_table *, const char *,
-								void *, t_data_type);
+			void *, t_data_type);
 	void					*(*search)(struct s_hash_table *, const char *);
 	void					*(*search_data)(struct s_hash_table *,
-							const char *);
+			const char *);
 	int						(*remove)(struct s_hash_table *, const char *);
 	void					(*free_table)(struct s_hash_table *);
 	void					(*print)(struct s_hash_table *);
 	int						(*add_aux)(struct s_hash_table *, const char *,
-								t_mt *);
-	void					(*insert_aux)(struct s_hash_table *, const char *,
-							const char *, void *, t_data_type);
+			t_mt *);
 	void					(*replace_key)(struct s_hash_table *, const char *,
-							const char *);
+			const char *);
 	void					(*replace_data)(struct s_hash_table *, const char *,
-							void *, t_data_type);
+			void *, t_data_type);
 	void					(*replace_node)(struct s_hash_table *, const char *,
-							t_mt *);
+			t_mt *);
 	void					(*add)(struct s_hash_table *, t_mt *);
 	void					(*set_free_func)(struct s_hash_table *, char *,
-							void (*free_func)(void **));
+			void (*free_func)(void **));
 }							t_hash_table_methods;
 
 typedef struct s_hash_table
@@ -111,9 +109,6 @@ void						ft_mthash_set_free_func(t_hash_table *ht, char *key,
 								void (*free_func)(void **));
 
 /* Insert Functions */
-void						ft_mthash_insert_aux(t_hash_table *ht,
-								const char *parent_key, const char *aux_key,
-								void *data, t_data_type type);
 int							ft_mthash_insert(t_hash_table *ht, const char *key,
 								void *data, t_data_type type);
 

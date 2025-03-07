@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:28:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 21:19:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:37:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	ft_replace_key(t_mt *current, char *new_key)
 	current->key = ft_strdup(new_key);
 }
 
-// obtiene la funcion de eliminacion de datos dependiendo del tipo de dato
-void (*ft_mtget_free_data(t_data_type type))(void **)
+t_free_funtion	ft_mtget_free_data(t_data_type type)
 {
 	if (type == NONE)
 		return (NULL);
@@ -48,7 +47,6 @@ void (*ft_mtget_free_data(t_data_type type))(void **)
 	return (NULL);
 }
 
-// elimina un dato dependiendo del tipo de dato
 void	ft_mtdel_by_type(void **data, t_data_type type)
 {
 	void	(*del_function)(void **);

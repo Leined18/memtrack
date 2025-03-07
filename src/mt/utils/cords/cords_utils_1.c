@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 05:41:04 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/24 17:09:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:59:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,17 @@ t_cords	ft_mtcords_sum(t_cords a, t_cords b)
 t_cords	ft_mtcords_sum_direction(t_cords cords, int direction)
 {
 	t_cords	result;
-	t_cords	DIRECTIONS[6] = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0,
-			0, 1}, {0, 0, -1}};
+	t_cords	dir[6];
 
-	result.x = cords.x + DIRECTIONS[direction].x;
-	result.y = cords.y + DIRECTIONS[direction].y;
-	result.z = cords.z + DIRECTIONS[direction].z;
+	dir[0] = ft_mtcords(1, 0, 0);
+	dir[1] = ft_mtcords(-1, 0, 0);
+	dir[2] = ft_mtcords(0, 1, 0);
+	dir[3] = ft_mtcords(0, -1, 0);
+	dir[4] = ft_mtcords(0, 0, 1);
+	dir[5] = ft_mtcords(0, 0, -1);
+	result.x = cords.x + dir[direction].x;
+	result.y = cords.y + dir[direction].y;
+	result.z = cords.z + dir[direction].z;
 	return (result);
 }
 
@@ -54,9 +59,14 @@ t_direction	ft_mtget_direction_by_cords(t_cords cords)
 t_cords	ft_mtget_cords_by_direction(t_direction direction)
 {
 	t_cords	result;
-	t_cords	DIRECTIONS[6] = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0,
-			0, 1}, {0, 0, -1}};
+	t_cords	dir[6];
 
-	result = DIRECTIONS[direction];
+	dir[0] = ft_mtcords(1, 0, 0);
+	dir[1] = ft_mtcords(-1, 0, 0);
+	dir[2] = ft_mtcords(0, 1, 0);
+	dir[3] = ft_mtcords(0, -1, 0);
+	dir[4] = ft_mtcords(0, 0, 1);
+	dir[5] = ft_mtcords(0, 0, -1);
+	result = dir[direction];
 	return (result);
 }

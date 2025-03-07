@@ -6,13 +6,12 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:59:34 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/05 12:35:24 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:49:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Splits the string 's' using the character 'c' as separator.
 static char	*ft_strndup(const char *s, size_t n)
 {
 	char	*dup;
@@ -47,11 +46,10 @@ static size_t	ft_splitmt_extract_word(const char *s, char c)
 
 	next_c = ft_strchr(s, c);
 	if (next_c)
-		return (size_t)(next_c - s);
+		return ((size_t)(next_c - s));
 	return (ft_strlen(s));
 }
-// futura idea: agregar un flag para que se pueda elegir que key va a tener el nodo como
-//%s o %d
+
 t_mt	*ft_splitmt(const char *s, char c)
 {
 	t_mt	*list;

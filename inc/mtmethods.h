@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mtmethods.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/07 10:16:16 by danpalac          #+#    #+#             */
+/*   Updated: 2025/03/07 10:51:12 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MTMETHODS_H
 # define MTMETHODS_H
 
 # include "libft.h"
 # include "mtstructs.h"
 
-// Struct Definition
 typedef struct s_mt
 {
 	char		*key;
@@ -29,7 +40,6 @@ int				ft_mtcount_node_type(t_mt *node, t_node_type type);
 int				ft_mtcount_state(t_mt *node, int state);
 size_t			ft_mtcount_node(t_mt *lst);
 int				ft_mtsize(t_mt *lst);
-int				ft_mtsize_dimension(t_mt *node, char dimension, char min_max);
 
 // ==================== Iteration and Set Functions ====================
 void			ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *));
@@ -96,8 +106,8 @@ t_mt			*ft_mtcollect_state(t_mt *mt, int state);
 t_mt			*ft_mtsub(t_mt **mt, t_mt *node_to_sub);
 
 // ==================== Search Functions ====================
-t_mt			*ft_mtsearch(t_mt *lst, void *, int (*predicate)(t_mt *,
-						void *));
+
+t_mt			*ft_mtsearch(t_mt *lst, void *p, t_predicate predicate);
 t_mt			*ft_mtsearch_key(t_mt *root, const char *key);
 t_mt			*ft_mtsearch_cords(t_mt *node, t_cords cords);
 

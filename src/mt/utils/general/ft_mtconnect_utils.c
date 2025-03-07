@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:14:19 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/04 18:54:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:43:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,3 @@ int	ft_mtoposite_direction(int direction)
 		opposite = (direction - 1) % 6;
 	return (opposite);
 }
-
-

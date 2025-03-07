@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtconnect_safe.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:22:36 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/07 09:40:01 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:46:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
-
-// Adds the element 'new' at the beginning of the list in whatever direction.
 
 static void	ft_mtconnect_neighbours(t_mt ***neighbours, t_mt *new)
 {
@@ -63,12 +61,12 @@ void	ft_mtconnect_safe(t_mt **lst, t_mt *new, t_direction direction)
 	}
 	neighbours = malloc(sizeof(t_mt *) * MAX_DIRECTIONS);
 	if (!neighbours)
-		return ; // Handle memory allocation failure.
+		return ;
 	i = -1;
 	while (++i < MAX_DIRECTIONS)
 		neighbours[i] = 0;
 	ft_mtget_neighbourds(*lst, &neighbours, direction);
 	ft_mtaddlast(lst, new, direction);
 	ft_mtconnect_neighbours(&neighbours, new);
-	free(neighbours); // Free the allocated memory.
+	free(neighbours);
 }

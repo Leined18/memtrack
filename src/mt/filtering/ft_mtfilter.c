@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtfilter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:28:51 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/07 10:11:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:45:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	traverse_node(t_mt *lst, void *param, int (*predicate)(t_mt *,
 {
 	int	i;
 
-	if (!lst || lst->ptr_aux == NODE_VISITED)
+	if (!lst || lst->ptr_aux == (void *)NODE_VISITED)
 		return ;
 	i = 0;
-	lst->ptr_aux = NODE_VISITED;
+	lst->ptr_aux = (void *)NODE_VISITED;
 	if (predicate(lst, param))
 		ft_mtaddlast_right(result, ft_mtnew(lst->key, lst, NONE));
 	while (i < MAX_DIRECTIONS)
@@ -28,7 +28,7 @@ static void	traverse_node(t_mt *lst, void *param, int (*predicate)(t_mt *,
 		traverse_node(lst->vect[i], param, predicate, result);
 		i++;
 	}
-	lst->ptr_aux = NULL; // Restablece al salir
+	lst->ptr_aux = NULL;
 }
 
 /**
@@ -45,6 +45,6 @@ void	ft_mtfilter(t_mt *lst, void *param, int (*predicate)(t_mt *, void *),
 {
 	if (!lst)
 		return ;
-	lst->ptr_aux = NULL; // Restablece al entrar
+	lst->ptr_aux = NULL;
 	traverse_node(lst, param, predicate, result);
 }

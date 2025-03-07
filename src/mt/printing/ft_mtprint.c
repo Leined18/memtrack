@@ -6,13 +6,12 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:13:16 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/31 23:04:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:46:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// imprime la lista de datos de la lista.
 void	ft_mtprint(t_mt *lst, int b, char *c)
 {
 	if (!lst)
@@ -20,23 +19,19 @@ void	ft_mtprint(t_mt *lst, int b, char *c)
 		ft_printf("(NULL)\n");
 		return ;
 	}
-	while (lst) // Recorrer toda la lista
+	while (lst)
 	{
-		// Imprimir de acuerdo al tipo de dato solicitado
-		if (b == 1 && lst->data) // Imprimir strings
+		if (b == 1 && lst->data)
 			ft_printf("%s", (char *)lst->data);
-		else if (b == 0 && lst->data) // Imprimir direcciones
+		else if (b == 0 && lst->data)
 			ft_printf("%p", lst->data);
-		else if (b == 2 && lst->data) // Imprimir enteros
+		else if (b == 2 && lst->data)
 			ft_printf("%d", *(int *)lst->data);
-		else if (!lst->data) // Imprimir NULL si no hay datos
+		else if (!lst->data)
 			ft_printf("(NULL)");
-		// Imprimir el separador solo si no es el último nodo
 		if (lst->vect[RIGHT])
 			ft_printf("%s", c);
-		// Avanzar al siguiente nodo
 		lst = lst->vect[RIGHT];
 	}
-	// Imprimir salto de línea después de recorrer toda la lista
 	printf("\n");
 }

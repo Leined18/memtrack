@@ -6,30 +6,28 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:10:50 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/31 14:28:01 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:42:59 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
- void	ft_mtupdate_ref(t_mt **ref, t_mt *node)
+void	ft_mtupdate_ref(t_mt **ref, t_mt *node)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*ref == node)
 	{
-		// Asignamos un nuevo nodo base si es posible
 		while (i < MAX_DIRECTIONS)
 		{
 			if (node->vect[i])
 			{
 				*ref = node->vect[i];
-				/* ft_mtupdate_cords(*ref, ft_mtcords(0, 0, 0)); */
 				return ;
 			}
 			i++;
 		}
-		*ref = NULL; // No hay nodos restantes
+		*ref = NULL;
 	}
 }

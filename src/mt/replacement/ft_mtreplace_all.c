@@ -12,12 +12,11 @@
 
 #include "mt.h"
 
-// Replaces all the nodes of the list 'list' with the nodes of the list 'replace'.
 void	ft_mtreplace_all(t_mt **list, t_mt **replace)
 {
-    if (!list || !replace || !*list || !*replace)
-        return ;
-    ft_mtclear(list);
-    *list = *replace;
-    *replace = NULL;
+	if (!list || !replace || !*list || !*replace)
+		return ;
+	ft_mtclear(list);
+	*list = *replace;
+	*replace = NULL;
 }

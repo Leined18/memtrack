@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/02/27 12:35:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:19:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MTSTRUCTS_H
 # define MTSTRUCTS_H
 
+# include "structs.h"
 # include <stdio.h>
 # include <stdlib.h>
-# include "structs.h"
 
 // Ahora puedes usar estos tipos en las siguientes estructuras
 typedef struct s_mt			t_mt;
 typedef struct s_hash_table	t_hash_table;
-// Definir el enum t_data_type completamente antes de usarlo
+typedef void				(*t_free_funtion)(void **);
+typedef int					(*t_predicate)(t_mt *, void *);
 
 typedef struct s_cords
 {
@@ -75,4 +76,4 @@ typedef struct s_values
 	t_bool					boolean;
 }							t_values;
 
-#endif // MTSTRUCTS_H
+#endif

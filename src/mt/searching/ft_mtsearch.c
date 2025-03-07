@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtsearch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:40:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/08 11:18:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:50:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
-			void *))
+static t_mt	*traverse_node(t_mt *node, void *param, t_predicate predicate)
 {
 	t_mt	*found;
 	int		i;
 
-	if (!node || !predicate || node->ptr_aux == NODE_VISITED)
+	if (!node || !predicate || node->ptr_aux == (void *)NODE_VISITED)
 		return (NULL);
-	node->ptr_aux = NODE_VISITED; // Marca el nodo como visitado
-	// Si el nodo cumple la condición, retornarlo directamente
+	node->ptr_aux = (void *)NODE_VISITED;
 	if (predicate(node, param))
-		return (node->ptr_aux = NULL, node); // Restablece al salir
+		return (node->ptr_aux = NULL, node);
 	found = NULL;
 	i = 0;
 	while (i < MAX_DIRECTIONS && !found)
@@ -34,7 +32,7 @@ static t_mt	*traverse_node(t_mt *node, void *param, int (*predicate)(t_mt *,
 			found = traverse_node(node->vect[i], param, predicate);
 		i++;
 	}
-	node->ptr_aux = NULL; // Restablece al salir
+	node->ptr_aux = NULL;
 	return (found);
 }
 

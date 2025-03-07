@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 13:23:07 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/16 17:27:59 by danpalac         ###   ########.fr       */
+/*   Created: 2025/03/07 10:10:13 by danpalac          #+#    #+#             */
+/*   Updated: 2025/03/07 10:12:10 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
  * ft_hash_find - Busca un nodo en la tabla hash.
  * @ht: Tabla hash.
  * @key: Clave del nodo.
- *
-
-	* Retorna un puntero a los datos si encuentra el nodo o NULL si no lo encuentra.
- */
-
+ * @return NULL if is not found
+ * 
+**/
 // busca un nodo en la tabla hash y retorna el nodo
 void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 {
@@ -39,6 +37,7 @@ void	*ft_mthash_find_node(t_hash_table *ht, const char *key)
 		return (result);
 	return (NULL);
 }
+
 // encuentra un nodo en la tabla hash y retorna los datos
 void	*ft_mthash_find_data(t_hash_table *ht, const char *key)
 {

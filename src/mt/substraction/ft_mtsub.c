@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:09:27 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/24 17:12:11 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:44:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ t_mt	*ft_mtsub(t_mt **mt, t_mt *node_to_sub)
 	if (sub == NULL)
 		return (NULL);
 	sub = ft_mtdisconnect_safe(mt, sub);
-	/* ft_mtupdate_cords(*mt, ft_mtcords(0, 0, 0)); */
 	return (sub);
 }

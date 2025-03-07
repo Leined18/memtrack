@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mthash_remove.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:03:47 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/20 08:42:58 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:12:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	ft_mthash_remove_node(t_hash_table *ht, const char *key)
 	if (!current)
 		return (-1);
 	ft_mtremove(&ht->buckets[index], current);
-	return (1); // si se elimina correctamente
+	return (1);
 }

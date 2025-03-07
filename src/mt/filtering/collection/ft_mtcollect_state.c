@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:16:36 by danpalac          #+#    #+#             */
-/*   Updated: 2024/12/17 12:02:10 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:47:25 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @state: Estado de nodo a comparar.
  * Return: 1 si el nodo es del estado pasado, 0 en caso contrario.
  */
-static int match_state(t_mt *node, void *state)
+static int	match_state(t_mt *node, void *state)
 {
 	if (node->values.state == *(int *)state)
 		return (1);
