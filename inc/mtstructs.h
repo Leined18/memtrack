@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:19:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:43:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_values
 	int						state;
 	int						priority;
 	t_bool					boolean;
+	t_bool					swap_checked;
 }							t_values;
 
 #endif
