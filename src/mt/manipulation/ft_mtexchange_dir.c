@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtexchange.c                                    :+:      :+:    :+:   */
+/*   ft_mtexchange_dir.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:14:20 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/02/19 12:17:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:08:30 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ It exchanges the position of the current node with the node in the direction
 specified. If the current node is the root or the node in the direction is the
 root, it swaps the root with the node in the opposite direction.
 */
-int	ft_mtexchange(t_mt **lst, t_mt *curr, t_direction direction)
+int	ft_mtexchange_dir(t_mt **lst, t_mt *curr, t_direction direction)
 {
 	t_mt	*prev;
 	t_mt	*next;

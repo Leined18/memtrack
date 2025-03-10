@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtmethods.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:16:16 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:51:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:08:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void			ft_mtreplace_all_data(t_mt **lst, void *new_data,
 
 t_mt			*ft_mtdisconnect_safe(t_mt **ref, t_mt *node);
 void			ft_mtconnect_safe(t_mt **lst, t_mt *new, t_direction direction);
-int				ft_mtexchange(t_mt **lst, t_mt *curr, t_direction direction);
+int				ft_mtexchange_dir(t_mt **lst, t_mt *curr, t_direction direction);
+void			ft_mtexchange_nodes(t_mt **token, t_mt *first, t_mt *last);
 
 #endif // MTMETHODS_H
