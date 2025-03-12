@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/02/04 12:37:42 by danpalac         ###   ########.fr        #
+#    Updated: 2025/03/12 13:01:22 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
 LIBFT_DIR		:= ../libft/
 LIB_DIR			:= ../lib/
+MT_LIB			:= $(LIB_DIR)mt/
 SRC_DIR			:= src/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
@@ -108,9 +109,9 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
-	@mkdir -p $(LIB_DIR)
-	@$(MKDIR) $(LIB_DIR) 
-	@cp $(NAME) $(INCLUDES) $(LIB_DIR)
+	@$(MKDIR) $(LIB_DIR)
+	@cp $(NAME) $(LIB_DIR)
+	@cp -r inc $(LIB_DIR)
 
 $(EXE): main.c $(NAME)
 	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS) -lft -o $(EXE)
@@ -122,7 +123,7 @@ $(LIBFT):
 	
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
-		$(RM) $(OBJ_DIR) $(LIB_DIR); \
+		$(RM) $(OBJ_DIR) $(MT_LIB); \
 		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
 	fi
 	@make clean -sC $(LIBFT_DIR)
