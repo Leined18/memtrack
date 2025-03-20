@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 18:42:48 by mvidal-h          #+#    #+#             */
-/*   Updated: 2025/03/10 11:12:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:10:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	swap_nonadjacent_nodes(t_mt *first, t_mt *last)
 void	ft_mtexchange_nodes(t_mt **token, t_mt *first, t_mt *last)
 {
 	if (!token || !*token || !first || !last || first == last)
-		return;
+		return ;
 	if ((first->vect[RIGHT] == last) && (last->vect[LEFT] == first))
 		ft_mtexchange_dir(token, first, RIGHT);
 	else
