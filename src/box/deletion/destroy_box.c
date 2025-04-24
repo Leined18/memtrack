@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy_box.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 18:10:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/24 23:30:21 by danpalac         ###   ########.fr       */
+/*   Created: 2025/04/24 17:53:11 by danpalac          #+#    #+#             */
+/*   Updated: 2025/04/24 23:15:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builder.h"
+#include "box.h"
 
-int	main(void)
+int	destroy_box(t_box **box, void *arg, const char *id)
 {
-	t_box *box1;
-	t_box *box2;
-	t_factory *factory;
-	t_builder *builder1;
-
-	box1 = create_box("Box 1", NULL, 0);
-	box2 = create_box("Box 2", NULL, 0);
-	builder1 = create_builder(1, box1);
-	factory = create_factory(1, builder1);
-	destroy_factory(&factory, &builder1, NULL, "Box 1");
-	return (0);
+	if (!box || !*box)
+		return (0);
+	if (ft_strcmp((*box)->id, id) != 0)
+		return (0);
+	if ((*box)->data)
+		(*box)->actions[ORDER_DESTROY_DATA](box, NULL, id);
+	if ((*box)->id)
+		free((*box)->id);
+	free(*box);
+	*box = arg;
+	return (1);
 }

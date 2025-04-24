@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_box_builder.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 18:10:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/24 23:30:21 by danpalac         ###   ########.fr       */
+/*   Created: 2025/04/24 22:04:38 by danpalac          #+#    #+#             */
+/*   Updated: 2025/04/24 22:57:00 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builder.h"
 
-int	main(void)
+int	get_box_builder(t_builder **builder, t_box **box, void *arg, const char *id)
 {
-	t_box *box1;
-	t_box *box2;
-	t_factory *factory;
-	t_builder *builder1;
-
-	box1 = create_box("Box 1", NULL, 0);
-	box2 = create_box("Box 2", NULL, 0);
-	builder1 = create_builder(1, box1);
-	factory = create_factory(1, builder1);
-	destroy_factory(&factory, &builder1, NULL, "Box 1");
+	if (!builder || !*builder)
+		return (0);
+	if (!(*builder)->box)
+	{
+		*box = NULL;
+		return (0);
+	}
+	if (box && *box)
+	{
+		(*box)->destroy(*box);
+		*box = NULL;
+	}
+	if ((*builder)->box)
+	{
+		*box = (*builder)->box;
+		return (1);
+	}
 	return (0);
 }

@@ -29,8 +29,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/danpalac/sgoinfre/Minishell/submodules/memtrack",
-      "program": "/home/danpalac/sgoinfre/Minishell/submodules/memtrack/build/Debug/outDebug",
+      "cwd": "/home/danpalac/sgoinfre/Minishell/submodules/mebuilderrack",
+      "program": "/home/danpalac/sgoinfre/Minishell/submodules/mebuilderrack/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

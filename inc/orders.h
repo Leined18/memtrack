@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   orders.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 18:10:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/24 23:30:21 by danpalac         ###   ########.fr       */
+/*   Created: 2025/04/24 19:12:59 by danpalac          #+#    #+#             */
+/*   Updated: 2025/04/24 23:24:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builder.h"
+#ifndef ORDERS_H
+# define ORDERS_H
 
-int	main(void)
+# include "box.h"
+# include "builder.h"
+# include "factory.h"
+# include "libft.h"
+
+typedef enum e_sys_order
 {
-	t_box *box1;
-	t_box *box2;
-	t_factory *factory;
-	t_builder *builder1;
+	ORDER_NONE,
+	ORDER_BUILD,
+	ORDER_DESTROY,
+	ORDER_DESTROY_DATA,
+	ORDER_DESTROY_ALL,
+	ORDER_VALIDATE,
+	ORDER_GET,
+	ORDER_UPDATE,
+	ORDER_REPORT,
+	ORDER_COUNT // ← cantidad total
+}			t_sys_order;
 
-	box1 = create_box("Box 1", NULL, 0);
-	box2 = create_box("Box 2", NULL, 0);
-	builder1 = create_builder(1, box1);
-	factory = create_factory(1, builder1);
-	destroy_factory(&factory, &builder1, NULL, "Box 1");
-	return (0);
-}
+

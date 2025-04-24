@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_box_builder.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 18:10:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/24 23:30:21 by danpalac         ###   ########.fr       */
+/*   Created: 2025/04/24 18:08:25 by danpalac          #+#    #+#             */
+/*   Updated: 2025/04/24 18:08:41 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builder.h"
 
-int	main(void)
+int	set_box_builder(t_builder *builder, t_box *box)
 {
-	t_box *box1;
-	t_box *box2;
-	t_factory *factory;
-	t_builder *builder1;
-
-	box1 = create_box("Box 1", NULL, 0);
-	box2 = create_box("Box 2", NULL, 0);
-	builder1 = create_builder(1, box1);
-	factory = create_factory(1, builder1);
-	destroy_factory(&factory, &builder1, NULL, "Box 1");
-	return (0);
+	if (!builder || !box)
+		return (0);
+	if (builder->box)
+	{
+		builder->box->destroy(builder->box);
+		builder->box = NULL;
+	}
+	builder->box = box;
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/03/12 13:01:22 by danpalac         ###   ########.fr        #
+#    Updated: 2025/04/24 18:30:37 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ MOVE_UP     = \033[1A
 
 #==========NAMES===============================================================#
 
-NAME		:= libmt.a
+NAME		:= libfactory.a
 EXE			:= exe
 LIBFT_LIB	:= libft.a
 
@@ -67,7 +67,7 @@ SRC_DIR 		:= src/
 OBJ_DIR 		:= obj/
 LIBFT_DIR		:= ../libft/
 LIB_DIR			:= ../lib/
-MT_LIB			:= $(LIB_DIR)mt/
+factory_LIB			:= $(LIB_DIR)factory/
 SRC_DIR			:= src/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
@@ -86,7 +86,7 @@ LFLAGS		:= -L$(LIBFT_DIR)
 
 #==========SOURCES============================================================#
 # Subdirectorios
-MT_DIR         := $(SRC_DIR)/mt
+factory_DIR         := $(SRC_DIR)/factory
 HASH_DIR       := $(SRC_DIR)/hash
 
 #==========FILES==============================================================#
@@ -123,7 +123,7 @@ $(LIBFT):
 	
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
-		$(RM) $(OBJ_DIR) $(MT_LIB); \
+		$(RM) $(OBJ_DIR) $(factory_LIB); \
 		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
 	fi
 	@make clean -sC $(LIBFT_DIR)
