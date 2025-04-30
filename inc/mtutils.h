@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtutils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:22:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:36:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:11:01 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,11 @@ int				ft_cordscmp(t_cords a, t_cords b);
 
 // ==================== Connection utilities ====================
 
-void			ft_mtconnect_abyacent_cords(t_mt *last, t_mt *new);
 void			ft_mtconnect(t_mt *node, t_mt *node_to_connect,
 					t_direction direction);
 void			ft_mtdisconnect(t_mt *node, t_direction direction);
 void			ft_mtupdate_ref(t_mt **ref, t_mt *node);
 int				ft_mtoposite_direction(int direction);
 
-// ==================== Printing utilities ====================
-
-void			print_title(const char *title);
-void			print_hashes_tables(t_hash_table *ht);
-void			print_data(t_mt *node);
-
-// ==================== Cords utilities ====================
-
-t_cords			ft_mtcords_diff(t_cords cords, int x, int y, int z);
-t_cords			ft_mtcords(int x, int y, int z);
-void			ft_mtupdate_cords(t_mt *node, t_cords cords);
-t_cords			ft_mtcordscpy(t_cords cords);
-t_cords			ft_mtcords_sum(t_cords a, t_cords b);
-t_cords			ft_mtcords_sum_direction(t_cords cords, int direction);
-t_direction		ft_mtget_direction_by_cords(t_cords cords);
-t_cords			ft_mtget_cords_by_direction(t_direction direction);
 
 #endif // MTUTILS_H

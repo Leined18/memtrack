@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:54:46 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:09:48 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	test(t_mt **node1)
 	ft_mtrotate(&node, DOWN);
 	ft_mtrotate(&node, DOWN);
 	ft_mtreverse_rotate(&node, DOWN);
-	found = ft_mtsearch_cords(node, ft_mtcords(0, -1, 0));
 	if (!found)
 		return (0);
 	ft_mtpush(&node, &found, RIGHT);

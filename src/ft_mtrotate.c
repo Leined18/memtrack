@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtrotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:14:42 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/13 12:39:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:11:14 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ void	ft_mtrotate(t_mt **lst, t_direction direction)
 	if (!sub)
 		return ;
 	ft_mtaddlast(lst, sub, direction);
-	ft_mtupdate_cords((*lst), ft_mtcords(0, 0, 0));
 }
