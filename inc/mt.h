@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/30 15:40:07 by kali             ###   ########.fr       */
+/*   Updated: 2025/04/30 16:34:26 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,165 @@
 # define MT_H
 
 # include "libft.h"
-# include "mtmethods.h"
 # include "mtstructs.h"
-# include "mtutils.h"
+
+typedef struct s_mt
+{
+	char		*key;
+	void		*data;
+	struct s_mt	*aux;
+	void		*ptr_aux;
+	t_values	values;
+	struct s_mt		*vect[MAX_DIRECTIONS];
+	struct s_cords		cords;
+	void		(*free_data)(void **);
+}				t_mt;
+
+typedef void				(*t_free_funtion)(void **);
+typedef int					(*t_predicate)(t_mt *, void *);
+
 
 # define NODE_VISITED 0x002025
+
+// ==================== Memory Management ====================
+
+void			ft_mtdelete(t_mt **mt);
+void			ft_mtclear(t_mt **lst);
+void			ft_mtdel_list(void **data);
+
+// ==================== Count Functions ====================
+int				ft_mtcount_data_type(t_mt *node, t_data_type type);
+int				ft_mtcount_node_type(t_mt *node, t_node_type type);
+int				ft_mtcount_state(t_mt *node, int state);
+size_t			ft_mtcount_node(t_mt *lst);
+int				ft_mtsize(t_mt *lst);
+
+// ==================== Iteration and Set Functions ====================
+void			ft_mtiter(t_mt *lst, void *param, void (*func)(t_mt *, void *));
+void			ft_mtprint(t_mt *lst, int b, char *c);
+void			ft_mtset_to_free(t_mt *mt, int to_free);
+void			ft_mtset_free_func(t_mt *node, void (*free_func)(void **));
+
+// ==================== Movement Functions ====================
+void			ft_mtmigrate_right(t_mt **src, t_mt **dest);
+void			ft_mtmigrate(t_mt **src, t_mt **dest);
+void			ft_mtpush(t_mt **dst, t_mt **src, t_direction direction);
+void			ft_mtpush_last(t_mt **dest, t_mt **src, t_direction direction);
+void			ft_mtrotate(t_mt **lst, t_direction direction);
+void			ft_mtreverse_rotate(t_mt **lst, t_direction direction);
+void			ft_mtswap(t_mt **lst, t_direction direction);
+
+// ==================== Deletion Functions ====================
+
+void			ft_mtpoplast(t_mt **lst, t_direction direction);
+void			ft_mtpop(t_mt **lst);
+void			ft_mtremove(t_mt **mt, t_mt *node_to_remove);
+
+// ==================== Insertion Functions ====================
+void			ft_mtinsert_index(t_mt **list, t_mt *new_node, int pos);
+void			ft_mtreplace(t_mt **list, t_mt *node, t_mt *new_node);
+void			ft_mtreplace_all(t_mt **list, t_mt **replace);
+void			ft_mtunset_ptr_aux(t_mt *node, void *field);
+
+// ==================== Add Functions ====================
+
+void			ft_mtaddfirst(t_mt **lst, t_mt *new, t_direction direction);
+void			ft_mtaddlast(t_mt **lst, t_mt *new, t_direction direction);
+void			ft_mtaddlast_down(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_up(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_right(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_left(t_mt **lst, t_mt *new);
+int				ft_mtaddlast_child(t_mt *parent, t_mt *child);
+void			ft_mtaddlast_aux(t_mt *node, t_mt *aux);
+void			ft_mtaddlast_back(t_mt **lst, t_mt *new);
+void			ft_mtaddlast_front(t_mt **lst, t_mt *new);
+
+// ==================== Check Functions ====================
+int				ft_mtexists_mt(t_mt *root, const char *key);
+int				ft_mtexists_cords(t_mt *node, t_cords cords);
+int				ft_mtis_connected(t_mt **first, t_mt *node);
+int				ft_mtcheck_state(t_mt *mt, int state);
+int				ft_mtcheck_priority(t_mt *mt, int priority);
+int				ft_mtcheck_key(t_mt *mt, char *key);
+
+// ==================== Key Management ====================
+char			*ft_mtnew_original_key(char *key, t_mt *node);
+
+// ==================== Filter Functions ====================
+void			ft_mtfilter(t_mt *lst, void *param, int (*predicate)(t_mt *,
+						void *), t_mt **result);
+
+// ==================== Fold Functions ====================
+int				ft_mtfold(t_mt *lst, void *param, int (*func)(t_mt *, void *));
+
+// ==================== Collection Functions ====================
+t_mt			*ft_mtcollect_node_type(t_mt *mt, t_node_type type);
+t_mt			*ft_mtcollect_data_type(t_mt *mt, t_data_type type);
+t_mt			*ft_mtcollect_state(t_mt *mt, int state);
+t_mt			*ft_mtsub(t_mt **mt, t_mt *node_to_sub);
+
+// ==================== Search Functions ====================
+
+t_mt			*ft_mtsearch(t_mt *lst, void *p, t_predicate predicate);
+t_mt			*ft_mtsearch_key(t_mt *root, const char *key);
+t_mt			*ft_mtsearch_cords(t_mt *node, t_cords cords);
+
+// ==================== Navigation Functions ====================
+
+t_mt			*ft_mtlast(t_mt *lst, t_direction direction);
+t_mt			*ft_mtroot(t_mt *lst);
+
+
+
+// ==================== Utility Functions ====================
+
+t_mt			*ft_mtzip(t_mt **lst);
+t_mt			*ft_mtunzip(void **data, size_t size);
+t_mt			*ft_mtnew(const char *key, void *data, t_data_type type);
+t_mt			*ft_mtdup(t_mt *src);
+t_mt			*ft_mtnew_chaos(void *data);
+void			ft_mtpush_data(t_mt **lst, const char *key, void *data,
+					t_data_type type);
+void			ft_mtpush_data_right(t_mt **lst, const char *key, void *data,
+					t_data_type type);
+void			ft_mtremove_data(t_mt *lst, char *key);
+void			ft_mtreplace_all_data(t_mt **lst, void *new_data,
+					t_data_type type);
+
+// ==================== Manipulation Functions ====================
+
+t_mt			*ft_mtdisconnect_safe(t_mt **ref, t_mt *node);
+void			ft_mtconnect_safe(t_mt **lst, t_mt *new, t_direction direction);
+int				ft_mtexchange_dir(t_mt **lst, t_mt *cur, t_direction direction);
+void			ft_mtexchange_nodes(t_mt **token, t_mt *first, t_mt *last);
+
+// ==================== Key manipulation utilities ====================
+
+char			*ft_mtnew_key(char *prefix, char *suffix);
+void			ft_mtadd_key_suffix(char *suffix, t_mt *node);
+void			ft_mtadd_key_prefix(char *prefix, t_mt *node);
+
+// ==================== Data replacement utilities ====================
+
+void			ft_replace_data(t_mt *current, void *new_data,
+					t_data_type type);
+void			ft_replace_key(t_mt *current, char *new_key);
+t_free_funtion	ft_mtget_free_data(t_data_type type);
+void			ft_mtdel_by_type(void **data, t_data_type type);
+
+// ==================== Comparison utilities ====================
+
+int				ft_mtcmp_key(t_mt *node, const char *key, size_t n);
+int				ft_mtcmp_data(t_mt *node, void *data, t_data_type type);
+int				ft_mtcmp_node(t_mt *node1, t_mt *node2);
+int				ft_cordscmp(t_cords a, t_cords b);
+
+// ==================== Connection utilities ====================
+
+void			ft_mtconnect(t_mt *node, t_mt *node_to_connect,
+					t_direction direction);
+void			ft_mtdisconnect(t_mt *node, t_direction direction);
+void			ft_mtupdate_ref(t_mt **ref, t_mt *node);
+int				ft_mtoposite_direction(int direction);
 
 #endif // MT_H

@@ -6,7 +6,7 @@
 #    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/04/30 16:03:12 by kali             ###   ########.fr        #
+#    Updated: 2025/04/30 16:25:20 by kali             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ $(LIBFT):
 	
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
-		$(RM) $(OBJ_DIR) $(MT_LIB); \
+		$(RM) $(OBJ_DIR) $(LIB_DIR); \
 		echo "$(CYAN)[$(NAME)]:\tobject files $(GREEN) => Cleaned!$(DEF_COLOR)"; \
 	fi
 	@make clean -sC $(LIBFT_DIR)
