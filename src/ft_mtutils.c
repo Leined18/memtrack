@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:28:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:37:27 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:42:29 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ t_free_funtion	ft_mtget_free_data(t_data_type type)
 	else if (type == LIST)
 		return (ft_mtdel_list);
 	else if (type == STRING)
-		return (freedom);
-	else if (type == HASH_TABLE)
-		return (ft_mthash_table_free);
+		return (free_null);
 	else if (type == PTR)
-		return (freedom);
+		return (free_null);
 	return (NULL);
 }
 

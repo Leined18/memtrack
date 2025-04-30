@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtclear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:45:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:40:25 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	match_clear(t_mt **node, void *param)
 	if ((*node)->aux)
 		ft_mtclear(&(*node)->aux);
 	if ((*node)->key)
-		freedom((void **)&(*node)->key);
-	freedom((void **)node);
+		free_null((void **)&(*node)->key);
+	free_null((void **)node);
 }
 
 static void	ft_mtclean_aux(t_mt *lst)

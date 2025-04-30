@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+         #
+#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/03/12 13:01:22 by danpalac         ###   ########.fr        #
+#    Updated: 2025/04/30 16:03:12 by kali             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,16 +62,13 @@ LIBFT_LIB	:= libft.a
 
 #==========DIRECTORIES=======================================================#
 
-INC 			:= inc/
-SRC_DIR 		:= src/
+INC_DIR			:= inc/
 OBJ_DIR 		:= obj/
-LIBFT_DIR		:= ../libft/
+LIBFT_DIR		:= ../Libft/
 LIB_DIR			:= ../lib/
-MT_LIB			:= $(LIB_DIR)mt/
 SRC_DIR			:= src/
 
 LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
-INCLUDES		:= $(INC)/*.h
 
 #==========COMMANDS============================================================#
 
@@ -81,27 +78,21 @@ RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
-IFLAGS		:= -I$(INC) -I$(LIBFT_DIR)$(INC)
+IFLAGS		:= -I$(INC_DIR) -I$(LIBFT_DIR)$(INC_DIR)
 LFLAGS		:= -L$(LIBFT_DIR)
-
-#==========SOURCES============================================================#
-# Subdirectorios
-MT_DIR         := $(SRC_DIR)/mt
-HASH_DIR       := $(SRC_DIR)/hash
 
 #==========FILES==============================================================#
 
 # Variables de fuentes y objetos
 SRCS      := $(shell find $(SRC_DIR) -type f -name "*.c")
-OBJS      := $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+OBJS      := $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
 DEPS      := $(patsubst $(OBJ_DIR)%.o, $(OBJ_DIR)%.d, $(OBJS))
 
 #==========RULES==============================================================#
 
--include $(DEPS)
 all: $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
+$(OBJ_DIR)%.o: %.c Makefile
 	@$(MKDIR) $(dir $@)	
 	@$(CC) $(CFLAGS) $(LFLAGS) $(IFLAGS) -MP -MMD -c $< -o $@
 
@@ -110,8 +101,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "$(BOLD_BLUE)[$(BRIGHT_GREEN)$(NAME)$(DEF_COLOR)$(BOLD_BLUE)] compiled!$(DEF_COLOR)"
 	@echo "$(TURQUOISE)------------\n| Done! 👌 |\n------------$(DEF_COLOR)"
 	@$(MKDIR) $(LIB_DIR)
-	@cp $(NAME) $(LIB_DIR)
-	@cp -r inc $(LIB_DIR)
+	@cp -r $(NAME) $(OBJ_DIR) $(INC_DIR) $(LIB_DIR)
 
 $(EXE): main.c $(NAME)
 	@$(CC) $(CFLAGS) $(LFLAGS) -L. main.c $(NAME) $(IFLAGS) -lft -o $(EXE)
