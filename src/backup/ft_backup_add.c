@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtclear.c                                       :+:      :+:    :+:   */
+/*   ft_backup_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 14:52:07 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 15:14:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_mtclear - Libera la memoria de mt usando la función de eliminación en backup
- * @node: Doble puntero a t_mt
+ * ft_backup_add - Agrega un nodo a la lista de seguimiento del backup.
+ * @backup: Doble puntero a la estructura de backup.
+ * @node: Puntero al nodo a agregar.
  * 
  */
 
-void	ft_mtclear(t_mt **node)
+void	ft_backup_add(t_backup **backup, t_mt *node)
 {
-	t_backup *backup;
-	
-	if (!node || !*node)
+	t_list *new;
+
+	if (!backup || !node)
 		return ;
-	backup = (*node)->backup;
-	if (backup)
-		ft_backup_free(&backup);
-	*node = NULL;
+	new = ft_lstnew(node);
+	if (!new)
+		return ;
+	ft_lstadd_back(&(*backup)->tracker, new);
+	(*backup)->item_count++;
 }

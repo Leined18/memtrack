@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 12:08:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:04:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,16 @@
 # include "libft.h"
 # include "mtstructs.h"
 
-typedef struct s_mt
-{
-	char				*key;
-	t_data				data;
-	struct s_mt			*aux;
-	struct s_link		*links;
-	struct s_list		*backup;
-	struct s_cords		cords;
-}				t_mt;
+
 
 
 // ==================== Memory Management ====================
 
+void			ft_data_def_free(t_data *data);
 void			ft_mtdelete(void *mt);
 void			ft_mtclear(t_mt **lst);
-t_mt			*ft_mtnew(const char *key, t_data data, void (*free_ft)(t_data *), t_list **backup);
-t_data			ft_data_new(void *data, size_t size, char *label, bool alloc);
+t_mt			*ft_mtnew(const char *key, t_data data, void (*free_func)(t_data *), t_backup **backup);
+t_data			ft_data_new(void *item, size_t size, char *label, bool alloc);
 
 // ==================== Count Functions ====================
 
@@ -63,13 +56,11 @@ void			ft_linkadd_last(t_link **origin, t_link *link);
 t_link			*ft_linkdirection(t_link **links, float direction);
 
 // ==================== Backup Functions =======================
-void			ft_mtbackup(t_list **backup, t_mt *node);
+t_slot			*ft_slotnew(size_t slot_count);
+void			ft_backup_add(t_backup **backup, t_mt *node);
+void			ft_backup_free(t_backup **backup);
+t_backup		*ft_backup_new(size_t slot_count);
 
-
-// ==================== Check Functions ====================
-
-
-// ==================== Key Management ====================
 
 
 // ==================== Filter Functions ====================
@@ -81,6 +72,8 @@ void			ft_mtbackup(t_list **backup, t_mt *node);
 
 
 // ==================== Search Functions ====================
+
+t_mt			*ft_mtsearch(t_mt *start, t_data data, bool (*filter)(t_mt *, t_data));
 
 
 // ==================== Navigation Functions ====================

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtbackup.c                                      :+:      :+:    :+:   */
+/*   ft_data_default_free.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 09:48:54 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 14:09:25 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 15:16:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Esta variable podría ser global o parte de tu sistema
-// t_list *g_backup = NULL;
+/**
+ * ft_data_def_free - Libera la memoria de los datos.
+ * @data: Doble puntero a la estructura de datos.
+ *
+ * Esta función libera la memoria ocupada por los datos y restablece los
+ * valores de la estructura de datos a su estado inicial.
+ */
 
-void	ft_mtbackup(t_list **backup, t_mt *node)
+void ft_data_def_free(t_data *data)
 {
-	t_list	*new;
-
-	if (!backup || !node)
-		return ;
-	new = ft_lstnew(node);
-	if (!new)
-		return ;
-	ft_lstadd_back(backup, new);
+	if (data->alloc && data->item)
+		free_null(&data->item);
+	data->item = NULL;
+	data->size = 0;
+	data->label = NULL;
+	data->alloc = false;
 }

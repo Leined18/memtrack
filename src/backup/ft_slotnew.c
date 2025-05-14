@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtclear.c                                       :+:      :+:    :+:   */
+/*   ft_slotnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 14:52:07 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 15:03:29 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 15:15:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_mtclear - Libera la memoria de mt usando la función de eliminación en backup
- * @node: Doble puntero a t_mt
- * 
+ * ft_slotnew - Crea un nuevo slot.
+ * @slot_count: Número de slots en el backup.
+ *
  */
 
-void	ft_mtclear(t_mt **node)
+t_slot	*ft_slotnew(size_t slot_count)
 {
-	t_backup *backup;
-	
-	if (!node || !*node)
-		return ;
-	backup = (*node)->backup;
-	if (backup)
-		ft_backup_free(&backup);
-	*node = NULL;
+	t_slot	*slot;
+
+	slot = ft_calloc(slot_count, sizeof(t_slot));
+	if (!slot)
+		return (NULL);
+	slot->node = NULL;
+	slot->next = NULL;
+	return (slot);
 }
