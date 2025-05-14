@@ -6,7 +6,7 @@
 #    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/05/14 16:58:42 by danpalac         ###   ########.fr        #
+#    Updated: 2025/05/14 19:58:59 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ LIBFT_LIB	:= libft.a
 
 INC_DIR			:= inc/
 OBJ_DIR 		:= obj/
-LIBFT_DIR		:= ../Libft/
+LIBFT_DIR		:= ../libft/
 LIB_DIR			:= ../lib/
 SRC_DIR			:= src/
 
