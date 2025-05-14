@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 19:03:52 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:20:41 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@
 #define DOWN    0.00f  // -Y (bajar)
 #define FLAT    0.5f  // horizontal (sin cambio en Y)
 #define UP      1.00f  // +Y (subir)
+
+#define DEGREE_NORTH 0.00f
+#define DEGREE_EAST 90.00f
+#define DEGREE_SOUTH 180.00f
+#define DEGREE_WEST 270.00f
+
+#define DEGREE_DOWN -90.00f
+#define DEGREE_FLAT 0.00f
+#define DEGREE_UP 90.00f
 
 
 
