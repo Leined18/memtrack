@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_linkdirection.c                                 :+:      :+:    :+:   */
+/*   ft_cords_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 11:59:16 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 12:00:16 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 15:29:40 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 15:29:50 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_linkdirection - Devuelve el link con esta dirección.
- * @links: Doble puntero a la lista de links.
- * @direction: Dirección del link.
+ * ft_cords_add - Suma dos estructuras de coordenadas.
+ * @a: Primera coordenada.
+ * @b: Segunda coordenada.
+ * 
+ * Devuelve una nueva estructura de coordenadas que es la suma de a y b.
  */
 
-t_link	*ft_linkdirection(t_link **links, float direction)
+t_cords	ft_cords_add(t_cords a, t_cords b)
 {
-	t_link	*link;
+	t_cords	cords;
 
-	if (!links || !*links)
-		return (NULL);
-	link = *links;
-	while (link)
-	{
-		if (link->direction == direction)
-			return (link);
-		link = link->next;
-	}
-	return (NULL);
+	cords.x = a.x + b.x;
+	cords.y = a.y + b.y;
+	cords.z = a.z + b.z;
+	return (cords);
 }

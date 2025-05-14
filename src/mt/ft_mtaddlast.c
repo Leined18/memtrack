@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:35:29 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 12:22:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:21:30 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,37 @@
  * @direction: Direction of the link (0.0 to 1.0).
  * @distance: Distance of the link.
  * 
+ * @bid_link: Pointer to the bidirectional link.
+ * 
  * Esta función agrega un nuevo link al final de la lista de links del nodo
  * origen y también agrega un link bidireccional al nuevo nodo.
  * Es una nueva forma de agregar nodos dependiendo de la direccion en radianes
  * y la distancia entre ellos.
  */
  
-void	ft_mtaddlast(t_mt **origin, t_mt *new, float direction, float distance)
+void	ft_mtaddlast(t_mt **origin, t_mt *new, t_offset offset)
 {
 	t_link		*link;
-	t_link		*bidirectional_link;
+	t_link		*bid_link;
 	t_mt		*last;
 
 	if (!origin || !*origin || !new)
 		return ;
-	last = ft_mtlast(origin, direction, false);
+	last = ft_mtlast(origin, offset.direction, offset.elevation, false);
 	if (!last)
 		return ;
-	link = ft_linknew(new, direction, distance);
+	link = ft_linknew(new, offset);
 	if (!link)
 		return ;
-	bidirectional_link = ft_linknew(last, direction * -1, distance);
-	if (!bidirectional_link)
+	bid_link = ft_linknew(last, ft_offset_inverse(offset));
+	if (!bid_link)
 	{
 		free(link);
 		return ;
 	}
 	new->backup = last->backup;
-	ft_linkadd_last(&last->links, link);
-	ft_linkadd_last(&new->links, bidirectional_link);
+	ft_linkadd_first(&last->links, link);
+	ft_linkadd_first(&new->links, bid_link);
 }
 	
 	

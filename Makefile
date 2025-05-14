@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/04/30 16:25:20 by kali             ###   ########.fr        #
+#    Updated: 2025/05/14 16:58:42 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ AR			:= ar rcs
 LIB			:= ranlib
 MKDIR 		:= mkdir -p
 IFLAGS		:= -I$(INC_DIR) -I$(LIBFT_DIR)$(INC_DIR)
-LFLAGS		:= -L$(LIBFT_DIR)
+LFLAGS		:= -L$(LIBFT_DIR) -lm
 
 #==========FILES==============================================================#
 

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 14:51:34 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:49:05 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,19 @@ typedef struct s_data
 	void		(*free)(struct s_data *);
 } t_data;
 
+typedef struct s_offset
+{
+	float 		direction;      // Angulo horizontal (0.0 a 1.0)
+	float 		elevation;      // Angulo vertical (0.0 a 1.0)
+	float 		distance; 		// Distancia euclidiana
+} t_offset;
+
 typedef struct s_link
 {
-	float		direction;      // Dirección en float (0.0 a 1.0)
-	float		distance;       // Distancia de separación
-	struct s_mt	*node;          // Nodo conectado
-	struct s_link *next;        // Siguiente conexión (lista enlazada)
-	struct s_link *prev;        // Conexión anterior (lista enlazada) m
+	struct s_offset	offset;       // Offset de la conexión
+	struct s_mt		*node;          // Nodo conectado
+	struct s_link 	*next;        // Siguiente conexión (lista enlazada)
+	struct s_link 	*prev;        // Conexión anterior (lista enlazada)
 }	t_link;
 
 typedef struct s_slot
