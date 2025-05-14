@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_back.c                                    :+:      :+:    :+:   */
+/*   ft_mtclear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 10:09:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:09:58 by danpalac         ###   ########.fr       */
+/*   Created: 2024/11/25 11:34:12 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 11:13:08 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Adds the element 'new' at the end of the list, in the BACK direction.
+/**
+ * ft_mtclear - Libera la memoria de mt usando la función de eliminación en backup
+ * @node: Doble puntero a t_mt
+ * 
+ */
 
-void	ft_mtaddlast_back(t_mt **lst, t_mt *new)
+void	ft_mtclear(t_mt **node)
 {
-	if (!lst || !new)
+	t_list *backup;
+	
+	if (!node || !*node)
 		return ;
-	ft_mtaddlast(lst, new, BACK);
+	backup = (*node)->backup;
+	ft_lstclear(&backup, ft_mtdelete);
+	*node = NULL;
 }

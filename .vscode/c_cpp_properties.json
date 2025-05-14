@@ -6,6 +6,7 @@
         "${workspaceFolder}/**"
       ],
       "compilerPath": "/usr/bin/gcc",
+      "debuggerPath": "/usr/bin/gdb",
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "linux-gcc-x64",

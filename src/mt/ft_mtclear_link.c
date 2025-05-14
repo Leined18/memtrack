@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtdelete.c                                      :+:      :+:    :+:   */
+/*   ft_mtclear_link.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 11:37:57 by danpalac          #+#    #+#             */
-/*   Updated: 2025/01/07 08:30:04 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 09:51:41 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 12:20:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_mtdelete(t_mt **mt)
+void	ft_mtclear_link(t_link **links)
 {
-	if (!mt || !*mt)
+	t_link	*link;
+	t_link 	*temp;
+
+	if (!links || !*links)
 		return ;
-	if ((*mt)->data)
-		ft_mtdel_by_type(&(*mt)->data, (*mt)->values.data_type);
-	if ((*mt)->aux)
-		ft_mtclear(&(*mt)->aux);
-	if ((*mt)->key)
-		free((*mt)->key);
-	free((*mt));
-	(*mt) = NULL;
+	link = *links;
+	if (link->next)
+	{
+		temp = link->next;
+		link->next = NULL;
+		temp->prev = NULL;
+		ft_mtclear_link(&temp);
+	}
+	if (link->prev)
+	{
+		temp = link->prev;
+		link->prev = NULL;
+		temp->next = NULL;
+		ft_mtclear_link(&temp);
+	}
+	free(link);
+	*links = NULL;
 }

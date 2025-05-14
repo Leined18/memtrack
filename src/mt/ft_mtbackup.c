@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtadd_up.c                                      :+:      :+:    :+:   */
+/*   ft_mtbackup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 10:08:16 by danpalac          #+#    #+#             */
-/*   Updated: 2025/03/07 10:08:19 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/14 09:48:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-// Adds the element 'new' at the beginning of the list, in the UP direction.
+// Esta variable podría ser global o parte de tu sistema
+// t_list *g_backup = NULL;
 
-void	ft_mtaddlast_up(t_mt **lst, t_mt *new)
+void	ft_mtbackup(t_list **backup, t_mt *node)
 {
-	if (!lst || !new)
+	t_list	*new;
+
+	if (!backup || !node)
 		return ;
-	ft_mtaddlast(lst, new, UP);
+	new = ft_lstnew(node);
+	if (!new)
+		return ;
+	ft_lstadd_back(backup, new);
 }

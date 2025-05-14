@@ -3,54 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/04/30 16:09:48 by kali             ###   ########.fr       */
+/*   Updated: 2025/05/14 12:27:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-/**
- * test_hash_table_operations - Prueba las operaciones de la tabla hash.
- *
- * Retorna 1 si la prueba fue exitosa, 0 si falló.
- */
-
-int	test(t_mt **node1)
+void free_data(t_data *data)
 {
-	t_mt	*found;
-	t_mt	*node;
-
-	node = *node1;
-	node = ft_mtnew("key1", "value1", NONE);
-	if (!node)
-		return (0);
-	ft_mtaddlast(&node, ft_mtnew("key2", "value2", NONE), DOWN);
-	ft_mtaddlast(&node, ft_mtnew("key3", "value3", NONE), UP);
-	ft_mtaddlast_aux(node, ft_mtnew("key9", "value9", NONE));
-	ft_mtaddlast_aux(node, ft_mtnew("key10", "value10", NONE));
-	ft_mtrotate(&node, DOWN);
-	ft_mtrotate(&node, DOWN);
-	ft_mtreverse_rotate(&node, DOWN);
-	if (!found)
-		return (0);
-	ft_mtpush(&node, &found, RIGHT);
-	ft_mtclear(&node);
-	return (1);
+	if (data->alloc)
+		free(data->data);
+	data->data = NULL;
+	data->size = 0;
+	data->label = NULL;
+	data->alloc = false;
 }
+
 
 int	main(void)
 {
-	t_mt	*ht;
+	t_mt	*node;
+	t_list	*backup;
 
-	ht = NULL;
-	if (!test(&ht))
+	t_data	data;
+	backup = NULL;
+	data = ft_data_new(malloc(10), 10, "test", true);
+	node = ft_mtnew("test", data, free_data, &backup);
+	ft_mtaddlast(&node, ft_mtnew("test2", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	ft_mtaddlast(&node, ft_mtnew("test3", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	ft_mtaddlast(&node, ft_mtnew("test4", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	ft_mtaddlast(&node, ft_mtnew("test5", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	ft_mtaddlast(&node, ft_mtnew("test6", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	ft_mtaddlast(&node, ft_mtnew("test7", ft_data_new(NULL,0,0,0), free_data, &backup), 0.5, 2.0);
+	if (backup)
 	{
-		ft_printf("Test failed\n");
-		if (ht)
-			ft_mtclear(&ht);
+		t_list *temp = backup;
+		while (temp)
+		{
+			t_mt *mt = (t_mt *)temp->content;
+			printf("Node key: %s\n", mt->key);
+			temp = temp->next;
+		}
+		ft_lstclear(&backup, ft_mtdelete);
+	}
+	else
+	{
+		ft_printf(RED "Backup is NULL\n" RESET);
 		return (1);
 	}
 	ft_printf(GREEN "All tests passed successfully\n" RESET);
