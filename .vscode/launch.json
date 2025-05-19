@@ -5,7 +5,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/exe", // Asegúrate de que el ejecutable esté en este path
-      "args": [],
+      "args": ["40", "0", "5"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}", // Establece el directorio de trabajo
       "environment": [],

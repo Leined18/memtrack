@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backup_add.c                                    :+:      :+:    :+:   */
+/*   ft_backup_clear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:49:31 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/14 14:38:51 by danpalac          #+#    #+#             */
+/*   Updated: 2025/05/19 12:06:30 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-
 /**
- * ft_backup_add - Agrega un nodo a la lista de seguimiento del backup.
+ * ft_backup_clear - Libera la memoria de la estructura de backup.
  * @backup: Doble puntero a la estructura de backup.
- * @node: Puntero al nodo a agregar.
- * 
+ *
+ * Esta función libera la memoria ocupada por la estructura de backup y sus
+ * elementos. Se asegura de liberar todos los slots y el tracker asociado.
  */
 
-void	ft_backup_add(t_backup **backup, t_mt *node)
+void	ft_backup_clear(t_backup **backup)
 {
-	t_mt 	*new_node;
-	t_track *track;
-	
-	if (!backup || !node)
+	if (!backup || !*backup)
 		return ;
-	node->backup = *backup;
-	new_node = node;
-	track = ft_backup_new_track(node->key, new_node);
-	if (!track)
-		return ;
-	ft_backup_add_track(backup, track);
-	ft_backup_add_slot((*backup), new_node);
-	(*backup)->item_count++;
+	if ((*backup)->slots)
+		free_null((void **)&(*backup)->slots);
+	ft_backup_clear_tracks(&(*backup)->tracker);
+	free(*backup);
+	*backup = NULL;
 }

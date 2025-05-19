@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:12:43 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:14:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 t_mt	*ft_mtnew(const char *key, t_data data, void (*free_func)(t_data *), t_backup **backup)
 {
-	t_mt	*node;
+	t_mt		*node;
+	t_backup	*backup_temp;
 	
 	if (!key || !backup)
 		return (NULL);
@@ -38,7 +39,7 @@ t_mt	*ft_mtnew(const char *key, t_data data, void (*free_func)(t_data *), t_back
 		node->data.free = free_func;
 	if (!*backup)
 		*backup = ft_backup_new(0);
-	node->backup = *backup;
-	ft_backup_add(&node->backup, node);
+	backup_temp = *backup;
+	ft_backup_add(&backup_temp, node);
 	return (node);
 }

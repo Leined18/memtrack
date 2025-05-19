@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 19:20:41 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:32:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 
 void			ft_data_def_free(t_data *data);
 void			ft_mtdelete(void *mt);
+void            ft_mtremove(t_mt **head, t_mt *target);
 void			ft_mtclear(t_mt **lst);
 t_mt			*ft_mtnew(const char *key, t_data data, void (*free_func)(t_data *), t_backup **backup);
 t_data			ft_data_new(void *item, size_t size, char *label, bool alloc);
@@ -78,12 +79,12 @@ float			ft_degrees_to_elev(float degrees);
 
 t_offset		ft_offset_new(float direction, float elevation, float distance);
 // ==================== Cords Functions ====================
-t_cords		ft_cords_new(float x, float y, float z);
-t_cords		ft_cords_add(t_cords a, t_cords b);
-t_cords		ft_cords_sub(t_cords a, t_cords b);
-float		ft_cords_distance(t_cords a, t_cords b);
-t_cords		ft_calc_cords_2d(t_cords origin, t_offset offset);
-t_cords		ft_calc_cords_3d(t_cords origin, t_offset offset);
+t_cords		    ft_cords_new(float x, float y, float z);
+t_cords		    ft_cords_add(t_cords a, t_cords b);
+t_cords		    ft_cords_sub(t_cords a, t_cords b);
+float		    ft_cords_distance(t_cords a, t_cords b);
+t_cords		    ft_calc_cords_2d(t_cords origin, t_offset offset);
+t_cords		    ft_calc_cords_3d(t_cords origin, t_offset offset);
 
 
 // ==================== Iteration and Set Functions ====================
@@ -100,7 +101,8 @@ t_cords		ft_calc_cords_3d(t_cords origin, t_offset offset);
 
 // ==================== Add Functions ====================
 
-void			ft_mtaddlast(t_mt **origin, t_mt *new, t_offset offset);
+void	        ft_mtadd_link(t_mt **origin, t_mt *new, t_offset offset, t_backup **backup);
+int				ft_mtadd_back(t_mt **node, t_mt **new_node, t_backup **backup);
 
 // ==================== Connection Funtions ====================
 void			ft_mtclear_link(t_link **links);
@@ -108,12 +110,24 @@ t_link			*ft_linknew(t_mt *node, t_offset offset);
 void			ft_linkadd_last(t_link **origin, t_link *link);
 void			ft_linkadd_first(t_link **origin, t_link *link);
 t_link			*ft_link_offset(t_link **links, t_offset offset);
+void             ft_linkremove(t_link **links, t_link *link);
 
 // ==================== Backup Functions =======================
-t_slot			*ft_slotnew(size_t slot_count);
+
 void			ft_backup_add(t_backup **backup, t_mt *node);
-void			ft_backup_free(t_backup **backup);
+void			ft_backup_clear(t_backup **backup);
+void			ft_backup_remove(t_backup **backup, t_mt *node);
+t_mt            **ft_backup_new_slots(size_t slot_count);
 t_backup		*ft_backup_new(size_t slot_count);
+void			ft_backup_add_slot(t_backup *backup, t_mt *node);
+size_t			ft_hash(t_mt *node);
+size_t          ft_hash_str(const char *str);
+t_mt			*ft_backup_get(t_backup *backup, const char *key);
+void			ft_backup_clear_tracks(t_track **tracks);
+void			ft_backup_remove_track(t_backup **backup, t_track *node);
+void			ft_backup_add_track(t_backup **backup, t_track *track);
+t_track			*ft_backup_new_track(const char *key, t_mt *node);
+t_track         *ft_backup_get_track(t_backup *backup, t_mt *node);
 
 
 

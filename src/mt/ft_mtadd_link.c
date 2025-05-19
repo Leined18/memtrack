@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtaddlast.c                                     :+:      :+:    :+:   */
+/*   ft_mtadd_link.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 11:35:29 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 17:21:30 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:36:52 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * y la distancia entre ellos.
  */
  
-void	ft_mtaddlast(t_mt **origin, t_mt *new, t_offset offset)
+void	ft_mtadd_link(t_mt **origin, t_mt *new, t_offset offset, t_backup **backup)
 {
 	t_link		*link;
 	t_link		*bid_link;
@@ -46,9 +46,11 @@ void	ft_mtaddlast(t_mt **origin, t_mt *new, t_offset offset)
 		free(link);
 		return ;
 	}
-	new->backup = last->backup;
+	link->key = new->key;
 	ft_linkadd_first(&last->links, link);
 	ft_linkadd_first(&new->links, bid_link);
+	if (backup)
+		ft_backup_add(backup, new);
 }
 	
 	

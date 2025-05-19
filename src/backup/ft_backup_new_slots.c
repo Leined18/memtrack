@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_slotnew.c                                       :+:      :+:    :+:   */
+/*   ft_backup_new_slots.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:03:29 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:15:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:44:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
  *
  */
 
-t_slot	*ft_slotnew(size_t slot_count)
+t_mt	**ft_backup_new_slots(size_t slot_count)
 {
-	t_slot	*slot;
+	t_mt	**slots;
 
-	slot = ft_calloc(slot_count, sizeof(t_slot));
-	if (!slot)
+	slots = ft_calloc(slot_count, sizeof(t_mt *));
+	if (!slots)
 		return (NULL);
-	slot->node = NULL;
-	slot->next = NULL;
-	return (slot);
+	return (slots);
 }
+

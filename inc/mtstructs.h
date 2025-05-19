@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:49:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:32:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ typedef struct s_offset
 
 typedef struct s_link
 {
+	char 			*key;           // Clave del nodo conectado
 	struct s_offset	offset;       // Offset de la conexión
 	struct s_mt		*node;          // Nodo conectado
 	struct s_link 	*next;        // Siguiente conexión (lista enlazada)
 	struct s_link 	*prev;        // Conexión anterior (lista enlazada)
 }	t_link;
 
-typedef struct s_slot
+typedef struct s_track
 {
-	struct t_mt   *node;
-	struct s_slot *next;
-} t_slot;
+	char 				*key;           // Clave del nodo
+	struct s_mt			*node;          // Nodo conectado
+	struct s_track		*next;         // Siguiente conexión (lista enlazada)
+} t_track;
 
 typedef struct s_backup
 {
-	t_slot		*slots;
-	size_t		slot_count;
-	size_t		item_count;
-	t_list		*tracker;
+	struct s_mt			**slots;
+	size_t				slot_count;
+	size_t				item_count;
+	struct s_track		*tracker;       // Lista de seguimiento de conexiones
 } t_backup;
 
 
@@ -80,6 +82,7 @@ typedef struct s_mt
 	struct s_link		*links;
 	struct s_backup		*backup;
 	struct s_cords		cords;
+	struct s_mt 		*next;
 }				t_mt;
 
 
