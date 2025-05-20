@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data_default_free.c                             :+:      :+:    :+:   */
+/*   ft_data_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:09:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:16:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:44:11 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
  * valores de la estructura de datos a su estado inicial.
  */
 
-void ft_data_def_free(t_data *data)
+void ft_data_free(void *ptr)
 {
+	t_data *data;
+
+	if (!ptr)
+		return ;
+	data = (t_data *)ptr;
 	if (data->alloc && data->item)
-		free_null(&data->item);
-	data->item = NULL;
-	data->size = 0;
-	data->label = NULL;
-	data->alloc = false;
+		data->free(data->item);
+	if (data->label)
+		free(data->label);
+	free(data);
 }

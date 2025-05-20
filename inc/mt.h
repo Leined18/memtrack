@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 13:32:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:57:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@
 
 // ==================== Memory Management ====================
 
-void			ft_data_def_free(t_data *data);
+void			ft_data_free(void *ptr);
 void			ft_mtdelete(void *mt);
 void            ft_mtremove(t_mt **head, t_mt *target);
 void			ft_mtclear(t_mt **lst);
-t_mt			*ft_mtnew(const char *key, t_data data, void (*free_func)(t_data *), t_backup **backup);
+t_mt			*ft_mtnew(const char *key, void *data, t_backup **backup);
 t_data			ft_data_new(void *item, size_t size, char *label, bool alloc);
 t_mt 			*ft_mtnew2(const char *key, void *item, t_backup **backup);
 
@@ -141,17 +141,22 @@ t_track         *ft_backup_get_track(t_backup *backup, t_mt *node);
 
 // ==================== Search Functions ====================
 
-t_mt			*ft_mtsearch(t_mt *start, t_data data, bool (*filter)(t_mt *, t_data));
-
 
 // ==================== Navigation Functions ====================
-t_mt			*ft_mtlast(t_mt **node, float direction, float elevation, bool move);
+t_mt			*ft_mtlast(t_mt **node, bool move);
 
 
 // ==================== Manipulation Functions ====================
 
 
+// ==================== Setter Functions ====================
 
+int				setter(int (*s_function)(void **s_ref,char *args[], va_list ap), void **s_ref,
+                     const char *str, ...);
+int				ft_data_setter(void **s_ref, char *args[], va_list ap);
 
+// ==================== Constructor Functions ====================
+void			*constructor(void *(*c_function)(char *args[], va_list ap), const char *str, ...);
+void            *c_data(char *av[], va_list ap);
 
 #endif // MT_H
