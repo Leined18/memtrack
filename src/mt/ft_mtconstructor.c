@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtconstructor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:40:47 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 11:12:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:40:12 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int set_camps(t_mt **obj, char *tokens[], va_list ap)
 
  void    *c_mt(t_args *args)
  {
-    if (!args || !args->tokens || !args->ap)
+    if (!args || !args->tokens)
         return (NULL);
     t_mt *new_mt;
     

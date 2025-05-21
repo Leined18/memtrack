@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_data_setter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:53:35 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 11:02:06 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:39:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int set_camps(t_data **data, char *tokens[], va_list ap)
 
 int set_data(t_args *args)
 {
-	if (!args || !args->s_ref || !args->tokens || !args->ap)
+	if (!args || !args->s_ref || !args->tokens)
 		return (0);
 	if (set_camps((t_data **)args->s_ref, args->tokens, args->ap) == 0)
 		return (0);

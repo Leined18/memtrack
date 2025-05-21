@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_data_constructor.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:33:54 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 10:37:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:37:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void *c_data(t_args *args)
 	va_list	ap;
 	t_data	*data;
 
-	if (!args || !args->tokens || !args->ap)
+	if (!args || !args->tokens)
 		return (NULL);
 	av = args->tokens;
 	va_copy(ap, args->ap);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 11:11:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:40:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_data
 	size_t		size;
 	int 		type; // Tipo de datos (0: int, 1: float, 2: double, 3: char, 4: string)
 	char		*label; // Etiqueta del dato
-	void		(*free)();
+	void		(*free)(void *);
 } t_data;
 
 /**
@@ -157,7 +157,7 @@ typedef struct s_mt
     int					id;
     char				*key;
     void				*data;
-	void				(*free)();
+	void				(*free)(void *);
     struct s_mt			*aux;
     void				*links;
     struct s_backup		*backup;
