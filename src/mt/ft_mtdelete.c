@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:57 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 12:11:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:13:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	ft_mtdelete(void *mt)
 	if (node->key)
 		free(node->key);
 	if (node->data)
-		free_null(&node->data);
+	{
+		if (node->free)
+			node->free(node->data);
+		else
+			free_null(&node->data);
+	}
 	if (node->links)
 		free_null(&node->links);
 	if (node->aux)

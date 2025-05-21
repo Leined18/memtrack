@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 12:42:48 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:11:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_data
 	bool 		alloc;
 	size_t		size;
 	int 		type; // Tipo de datos (0: int, 1: float, 2: double, 3: char, 4: string)
-	char		*label;
+	char		*label; // Etiqueta del dato
 	void		(*free)();
 } t_data;
 
@@ -105,6 +105,22 @@ typedef struct s_track
 } t_track;
 
 /**
+ * t_args - Estructura de argumentos para funciones de construcción y asignación.
+ * @tokens: Array de cadenas de caracteres (tokens).
+ * @count: Cantidad de tokens.
+ * @ap: Lista de argumentos variables.
+*/
+
+typedef struct s_args
+{
+	char **tokens;
+	int count;
+	va_list ap;
+	void **s_ref;
+} t_args;
+
+
+/**
  * t_backup - Estructura de backup.
  * @id: ID del backup.
  * @slots: Array de punteros a nodos.
@@ -141,13 +157,12 @@ typedef struct s_mt
     int					id;
     char				*key;
     void				*data;
+	void				(*free)();
     struct s_mt			*aux;
     void				*links;
     struct s_backup		*backup;
     struct s_cords		*cords;
     struct s_mt 		*next;
-	time_t 				createt_at;
-	time_t 				updated_at;
 	bool				status;
 	int					type;
 }				t_mt;

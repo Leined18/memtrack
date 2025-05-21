@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:26:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 12:42:05 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 10:10:07 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,30 @@
  * @param ... The variable arguments to be passed to the function, to set the values. 
  */
 
-void *constructor(void *(*c_function)(char *args[], va_list ap), const char *str, ...)
+void *constructor(void *(*c_function)(t_args *args), const char *str, ...)
 {
     if (!str || !c_function)
         return (NULL);
     va_list ap;
     void *result;
-    char **args;
+    char **tokens;
     int i;
-    
+    t_args args_ref;
+
     va_start(ap, str);
-    args = ft_split(str, '%');
-    if (!args)
+    tokens = ft_split(str, '%');
+    if (!tokens)
         return (NULL);
-    result = c_function(args, ap);
+    args_ref.tokens = tokens;
+    args_ref.count = 0;
+    va_copy(args_ref.ap, ap);
+    while (tokens[args_ref.count])
+        args_ref.count++;
+    result = c_function(&args_ref);
     i = 0;
-    if (args)
-    {
-        while (args[i])
-            free(args[i++]);
-        free(args);
-    }
+    while (tokens[i])
+        free(tokens[i++]);
+    free(tokens);
     return (va_end(ap), result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 12:57:55 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:08:20 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@
 #define DEGREE_UP 90.00f
 
 
-
-
 // ==================== Memory Management ====================
 
 void			ft_data_free(void *ptr);
@@ -56,7 +54,7 @@ void			ft_mtdelete(void *mt);
 void            ft_mtremove(t_mt **head, t_mt *target);
 void			ft_mtclear(t_mt **lst);
 t_mt			*ft_mtnew(const char *key, void *data, t_backup **backup);
-t_data			ft_data_new(void *item, size_t size, char *label, bool alloc);
+t_data			*ft_data_new(void *item, size_t size, void (*free)(void *));
 t_mt 			*ft_mtnew2(const char *key, void *item, t_backup **backup);
 
 // ==================== Count Functions ====================
@@ -151,12 +149,18 @@ t_mt			*ft_mtlast(t_mt **node, bool move);
 
 // ==================== Setter Functions ====================
 
-int				setter(int (*s_function)(void **s_ref,char *args[], va_list ap), void **s_ref,
+int				setter(int (*s_function)(t_args *args), void **s_ref,
                      const char *str, ...);
-int				ft_data_setter(void **s_ref, char *args[], va_list ap);
+int				set_data(t_args *args);
+int				set_mt(t_args *args);
 
 // ==================== Constructor Functions ====================
-void			*constructor(void *(*c_function)(char *args[], va_list ap), const char *str, ...);
-void            *c_data(char *av[], va_list ap);
+void			*constructor(void *(*c_function)(t_args *args), const char *str, ...);
+void            *c_data(t_args *args);
+void            *c_mt(t_args *args);
+
+// ==================== utils ====================
+
+void set_mem(void **ptr, void *ptr2);
 
 #endif // MT_H

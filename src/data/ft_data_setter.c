@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:53:35 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 13:00:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:02:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,52 @@ static void set_item(t_data *data, void *item)
     data->item = item;
 }
 
-static void set_label(t_data *data, char *label)
+static int set_camp(t_data **data, char *str, va_list ap)
 {
-	if (data->label)
-		free(data->label);
-	data->label = ft_strdup(label);
+	if (!data || !str)
+		return (0);
+	if (ft_strncmp(str, "id", 2) == 0)
+		(*data)->id = va_arg(ap, int);
+	else if (ft_strncmp(str, "item", 4) == 0)
+		set_item((*data), va_arg(ap, void *));
+	else if (ft_strncmp(str, "alloc", 5) == 0)
+		(*data)->alloc = va_arg(ap, int);
+	else if (ft_strncmp(str, "size", 4) == 0)
+		(*data)->size = va_arg(ap, size_t);
+	else if (ft_strncmp(str, "type", 4) == 0)
+		(*data)->type = va_arg(ap, int);
+	else if (ft_strncmp(str, "label", 5) == 0)
+		(*data)->label = va_arg(ap, char *);
+	else if (ft_strncmp(str, "free", 4) == 0)
+		(*data)->free = va_arg(ap, void *);
+	else
+		return (0);
+	return (1);
 }
 
-int ft_data_setter(void **s_ref, char *args[], va_list ap)
+static int set_camps(t_data **data, char *tokens[], va_list ap)
 {
 	int		i;
+	char	*str;
 
-	if (!s_ref || !args)
+	if (!data || !tokens)
 		return (0);
-	i = 0;
-	while (args[i])
+	i = -1;
+	while (tokens[++i])
 	{
-		if (ft_strncmp(args[i], "id", 2) == 0)
-			((t_data *)*s_ref)->id = va_arg(ap, int);
-		else if (ft_strncmp(args[i], "item", 4) == 0)
-            set_item(((t_data *)*s_ref), va_arg(ap, void *));
-		else if (ft_strncmp(args[i], "alloc", 5) == 0)
-			((t_data *)*s_ref)->alloc = va_arg(ap, int);
-		else if (ft_strncmp(args[i], "size", 4) == 0)
-			((t_data *)*s_ref)->size = va_arg(ap, size_t);
-		else if (ft_strncmp(args[i], "type", 4) == 0)
-			((t_data *)*s_ref)->type = va_arg(ap, int);
-		else if (ft_strncmp(args[i], "label", 5) == 0)
-			set_label(((t_data *)*s_ref), va_arg(ap, char *));
-		else if (ft_strncmp(args[i], "free", 4) == 0)
-			((t_data *)*s_ref)->free = va_arg(ap, void *);
-		i++;
+		str = ft_strtrim(tokens[i], " ");
+		if (!set_camp(data, str, ap))
+			return (free(str), 0);
+		free(str);
 	}
+	return (1);
+}
+
+int set_data(t_args *args)
+{
+	if (!args || !args->s_ref || !args->tokens || !args->ap)
+		return (0);
+	if (set_camps((t_data **)args->s_ref, args->tokens, args->ap) == 0)
+		return (0);
 	return (1);
 }
