@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 11:08:20 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:47:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_cords		    ft_calc_cords_3d(t_cords origin, t_offset offset);
 // ==================== Add Functions ====================
 
 void	        ft_mtadd_link(t_mt **origin, t_mt *new, t_offset offset, t_backup **backup);
-int				ft_mtadd_back(t_mt **node, t_mt **new_node, t_backup **backup);
+int				ft_mtadd_back(t_mt **node, t_mt *new_node, t_backup **backup);
 
 // ==================== Connection Funtions ====================
 void			ft_mtclear_link(t_link **links);

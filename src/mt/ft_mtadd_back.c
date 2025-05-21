@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:17:09 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:36:59 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:47:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * Retorna 0 si se añade correctamente, -1 si no se puede añadir.
  */
 
-int	ft_mtadd_back(t_mt **node, t_mt **new_node, t_backup **backup)
+int	ft_mtadd_back(t_mt **node, t_mt *new_node, t_backup **backup)
 {
     t_mt	*current;
 
@@ -29,19 +29,19 @@ int	ft_mtadd_back(t_mt **node, t_mt **new_node, t_backup **backup)
         return (-1);
     if (!*node)
     {
-        *node = *new_node;
+        *node = new_node;
         return (0);
     }
     current = *node;
     while (current->next)
         current = current->next;
-    if (current == *new_node)
+    if (current == new_node)
         return (-1);
-    current->next = *new_node;
+    current->next = new_node;
     if (backup)
     {
-        (*new_node)->backup = *backup;
-        ft_backup_add(backup, *new_node);
+        new_node->backup = *backup;
+        ft_backup_add(backup, new_node);
     }
     return (0);
 }

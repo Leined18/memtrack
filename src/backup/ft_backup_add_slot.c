@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:33:58 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 11:16:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:47:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	ft_backup_add_slot(t_backup *backup, t_mt *node)
     if (index >= backup->slot_count)
         index = backup->slot_count - 1;
     if (backup->slots)
-        ft_mtadd_back(&backup->slots[index], &node, NULL);
+        ft_mtadd_back(&backup->slots[index], node, NULL);
 }
     
