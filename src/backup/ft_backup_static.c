@@ -37,7 +37,7 @@ t_backup *ft_backup_static(size_t slot_count, bool new, bool clear)
     }
     else if (backup && clear && !new) // si solo se solicita limpieza
         return (ft_backup_clear(&backup), NULL);
-    else if (backup && !clear && !new && slot_count > 0)
+    else if (backup && !clear && new && slot_count > 0)
         return (ft_backup_slot_update(&backup, slot_count), backup);
     return (backup);
 }
