@@ -15,7 +15,9 @@
 /**
  * ft_backup_static - Crea un backup estático de un nodo t_mt.
  * @slot_count: Número de ranuras en el backup.
- *
+ * @new booleano que determina si creas un nuevo backup mas el @slotcount
+ * @clear booleano que determina si limpias el backup, new + clear reinicia el backup
+sin new, solo limpia y retorna nulo.
  * Retorna:
  *   Un puntero a la estructura de backup creada.
  */
