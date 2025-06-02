@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cords_sub.c                                     :+:      :+:    :+:   */
+/*   ft_mtkey.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 15:30:22 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:30:35 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/02 11:57:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-/**
- * ft_cords_sub - Resta dos estructuras de coordenadas.
- * @a: Primera coordenada.
- * @b: Segunda coordenada.
- * 
- * Devuelve una nueva estructura de coordenadas que es la resta de a y b.
- */
-
-t_cords	ft_cords_sub(t_cords a, t_cords b)
+char	*ft_mtget_key(t_mt *mt)
 {
-	t_cords	cords;
-
-	cords.x = a.x - b.x;
-	cords.y = a.y - b.y;
-	cords.z = a.z - b.z;
-	return (cords);
+    if (!mt)
+        return (NULL);
+    return (mt->key);
 }
+
+void	ft_mtset_key(t_mt *mt, const char *key)
+{
+    if (!mt || !key)
+        return;
+    
+    if (mt->key)
+        free(mt->key);
+    mt->key = ft_strdup(key);
+}
+

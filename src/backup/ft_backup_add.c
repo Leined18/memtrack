@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:49:31 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 12:19:09 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@
  * 
  */
 
-void	ft_backup_add(t_backup **backup, t_mt *node)
+void	ft_backup_add(t_backup *backup, t_mt *node)
 {
 	t_mt 	*new_node;
 	t_track *track;
 	
 	if (!backup || !node)
 		return ;
-	node->backup = *backup;
+	node->backup = backup;
 	new_node = node;
 	track = ft_backup_new_track(node->key, new_node);
 	if (!track)
 		return ;
 	ft_backup_add_track(backup, track);
-	ft_backup_add_slot((*backup), new_node);
-	(*backup)->item_count++;
+	ft_backup_add_slot(backup, new_node);
+	backup->item_count++;
 }

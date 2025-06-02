@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:30:43 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:02:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:19:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,28 @@
  * @node: Puntero al nodo a eliminar.
  */
 
-void	ft_mtremove(t_mt **head, t_mt *target)
+void	ft_mtremove(t_mt **head, t_mt *target, bool free)
 {
-	t_mt *cur = *head;
-	t_mt *prev = NULL;
-
-	while (cur)
+	if (!head || !*head || !target)
+		return ;
+	if (*head == target)
 	{
-		if (cur == target)
-		{
-			if (prev)
-				prev->next = cur->next;
-			else
-				*head = cur->next;
-			break ;
-		}
-		prev = cur;
-		cur = cur->next;
+		if (target->next)
+			*head = target->next;
+		else if (target->prev)
+			*head = target->prev;
+		else
+			*head = NULL; // Si es el único nodo, se establece el head a NULL
+	}
+	if (target->prev)
+		target->prev->next = target->next;
+	if (target->next)
+		target->next->prev = target->prev;
+	if (free)
+		ft_mtfree(target); // Libera el nodo si se solicita
+	else
+	{
+		target->next = NULL; // Desconecta el nodo sin liberarlo
+		target->prev = NULL;
 	}
 }

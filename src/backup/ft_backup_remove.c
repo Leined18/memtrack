@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:28:23 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 13:38:42 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:55:20 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,25 @@
 /**
  * ft_backup_remove - Elimina un nodo de la lista de seguimiento del backup.
  * @backup: Doble puntero a la estructura de backup.
- * @node: Puntero al nodo a eliminar.
+ * @target: Puntero al nodo a eliminar.
  * 
  * Esta función elimina un nodo de la lista de seguimiento del backup y libera
  * su memoria. Se asegura de eliminar el nodo de la lista y liberar su memoria.
  */
 
-void	ft_backup_remove(t_backup **backup, t_mt *node)
+void	ft_backup_remove(t_backup **backup, t_mt *target, bool free_target)
 {
-    size_t	index;
-    t_track   *track;
+    const char	*key;
 
-	if (!backup || !(*backup)->slots || !node->key)
+	if (!backup || !(*backup)->slots || !target->key)
 		return ;
-	index = ft_hash_str(node->key) % (*backup)->slot_count;
-	node = ft_backup_get(*backup, node->key);
-    if (!node)
+	target = ft_backup_get(*backup, target->key);
+    if (!target)
         return ;
-    ft_mtremove(&(*backup)->slots[index], node);
-    track = ft_backup_get_track(*backup, node);
-    ft_backup_remove_track(backup, track);
-    ft_mtdelete(node);
+    key = target->key;
+	if (free_target)
+		target->backup = NULL;
+	ft_backup_remove_slot(backup, target, false);
+    ft_backup_remove_track(backup, ft_backup_get_track(*backup, key), true, free_target);
     (*backup)->item_count--;
 }

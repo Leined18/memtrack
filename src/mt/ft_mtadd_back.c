@@ -1,47 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_mtadd_back.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 10:17:09 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 12:47:32 by danpalac         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "mt.h"
 
 /**
- * ft_mtaddback - Añade un nodo al final de la lista enlazada.
- * @node: Doble puntero al nodo a añadir.
- * @new_node: Doble puntero al nuevo nodo a añadir.
- * @backup: Doble puntero a la lista de backup. necesita ser inicializado. 
+ * ft_mtadd_back - Añade un nodo al final de la lista t_mt.
+ * @head: Doble puntero al primer nodo de la lista.
+ * @new_node: Nodo a insertar al final.
+ * @backup: Opcional. Si no es NULL, se enlaza el nodo con su sistema de backup.
  *
- * Retorna 0 si se añade correctamente, -1 si no se puede añadir.
+ * Retorna:
+ *   0 si el nodo fue añadido correctamente.
+ *  -1 si hay error (punteros nulos o ciclo detectado).
  */
-
-int	ft_mtadd_back(t_mt **node, t_mt *new_node, t_backup **backup)
+int	ft_mtadd_back(t_mt **head, t_mt *new_node)
 {
-    t_mt	*current;
+	t_mt	*current;
 
-    if (!node || !new_node)
-        return (-1);
-    if (!*node)
-    {
-        *node = new_node;
-        return (0);
-    }
-    current = *node;
-    while (current->next)
-        current = current->next;
-    if (current == new_node)
-        return (-1);
-    current->next = new_node;
-    if (backup)
-    {
-        new_node->backup = *backup;
-        ft_backup_add(backup, new_node);
-    }
-    return (0);
+	if (!head || !new_node)
+		return (-1);
+	if (!*head)
+		*head = new_node;
+	else
+	{
+		current = *head;
+		while (current->next)
+		{
+			if (current == new_node) // evita ciclos o reinserciones
+				return (-1);
+			current = current->next;
+		}
+		current->next = new_node;
+		new_node->prev = current; // establecer enlace doble si se usa
+	}
+	return (0);
 }

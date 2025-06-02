@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:50:10 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:56:36 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 12:26:12 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_backup_clear_tracks(t_track **tracks)
         next = cur->next;
         if (cur->key)
             free(cur->key);
-        ft_mtdelete(cur->node);
+        ft_mtfree(cur->node);
         free(cur);
         cur = next;
     }

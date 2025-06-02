@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cords_add.c                                     :+:      :+:    :+:   */
+/*   ft_mtid.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 15:29:40 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 15:29:50 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/02 11:36:32 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/02 11:44:23 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-/**
- * ft_cords_add - Suma dos estructuras de coordenadas.
- * @a: Primera coordenada.
- * @b: Segunda coordenada.
- * 
- * Devuelve una nueva estructura de coordenadas que es la suma de a y b.
- */
-
-t_cords	ft_cords_add(t_cords a, t_cords b)
+int	ft_mtget_id(t_mt *mt)
 {
-	t_cords	cords;
-
-	cords.x = a.x + b.x;
-	cords.y = a.y + b.y;
-	cords.z = a.z + b.z;
-	return (cords);
+    if (!mt)
+        return (-1);
+    return (mt->id);
 }
+
+void	ft_mtset_id(t_mt *mt, int id)
+{
+    if (!mt)
+        return;
+    mt->id = id;
+}
+
+

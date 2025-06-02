@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:23:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:19:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:15:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ t_mt	*ft_backup_get(t_backup *backup, const char *key)
 {
 	size_t	index;
 	t_mt	*cur;
+	t_mt 	*found;
+	t_track *track;
 
 	if (!backup || !backup->slots || !key)
 		return (NULL);
 
 	index = ft_hash_str(key) % backup->slot_count;
 	cur = backup->slots[index];
-	while (cur)
+	found = ft_mtget(cur, key);
+	if (!found)
 	{
-		if (cur->key && ft_strncmp(cur->key, key, ft_strlen(key)) == 0)
-			return (cur);
-		cur = cur->next;
+		track = ft_backup_get_track(backup, key);
+		if (track)
+			found = track->node;
 	}
-	return (NULL);
+	return (found);
 }

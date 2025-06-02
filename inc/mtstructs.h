@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 12:43:31 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:13:39 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,73 +16,7 @@
 # include "libft.h"
 # include "mt.h"
 
-typedef struct s_cords
-{
-	float					x;
-	float					y;
-	float					z;
-	bool 					valid;
-}							t_cords;
-
-/**
- * t_data - Estructura de datos genérica.
- * @item: Puntero a los datos.
- * @size: Tamaño de los datos.
- * @label: Etiqueta del dato.
- * @alloc: Indica si el dato fue asignado dinámicamente.
- * @free: Función de liberación de memoria.
- * @type: Tipo de dato (0: int, 1: float, 2: double, 3: char, 4: string).
- * @id: ID del nodo.
- */
-
-typedef struct s_data
-{
-	int 		id; // ID del nodo
-	void		*item;
-	bool 		alloc;
-	size_t		size;
-	int 		type; // Tipo de datos (0: int, 1: float, 2: double, 3: char, 4: string)
-	char		*label; // Etiqueta del dato
-	void		(*free)(void *);
-} t_data;
-
-/**
- * t_offset - Estructura de offset.
- * @direction: Dirección horizontal (0.0 a 1.0).
- * @elevation: Elevación (0.0 a 1.0).
- * @distance: Distancia euclidiana.
- * @valid: Indica si el offset es válido.
- */
-
-typedef struct s_offset
-{
-	float 		direction;      // Angulo horizontal (0.0 a 1.0)
-	float 		elevation;      // Angulo vertical (0.0 a 1.0)
-	float 		distance; 		// Distancia euclidiana
-	bool 		valid;          // Indica si el offset es válido
-} t_offset;
-
-/**
- * t_link - Estructura de conexión entre nodos.
- * @key: Clave del nodo conectado.
- * @offset: Offset de la conexión.
- * @node: Nodo conectado.
- * @next: Siguiente conexión (lista enlazada).
- * @prev: Conexión anterior (lista enlazada).
- * @weight: Peso de la conexión.
- * @status: Estado de la conexión (true: activa, false: inactiva).
- */
-
-typedef struct s_link
-{
-	char 			*key;
-	struct s_offset	offset;
-	struct s_mt		*node;
-	struct s_link 	*next;
-	struct s_link 	*prev;
-	float			weight;
-	bool			status;
-}	t_link;
+typedef void (*t_free_func)(void *);
 
 /**
  * t_track - Estructura de seguimiento de conexiones. lista para eliminar
@@ -119,7 +53,6 @@ typedef struct s_args
 	void **s_ref;
 } t_args;
 
-
 /**
  * t_backup - Estructura de backup.
  * @id: ID del backup.
@@ -139,17 +72,18 @@ typedef struct s_backup
 	struct s_track		*tracker;
 } t_backup;
 
-
 /**
  * t_mt - Estructura Principal.
  * @id: Identificador único del nodo.
  * @key: Clave del nodo.
  * @data: Puntero genérico a los datos del nodo.
- * @aux: Nodo auxiliar.
- * @links: Puntero genérico para conexiones.
- * @backup: Estructura de backup.
- * @cords: Puntero a coordenadas del nodo (opcional).
- * @next: Siguiente nodo en la lista.
+ * @addon: Puntero genérico a datos adicionales del nodo.
+ * @data_free: Función para liberar los datos del nodo.
+ * @addon_free: Función para liberar los datos adicionales del nodo.
+ * @next: Puntero al siguiente nodo en la lista.
+ * @prev: Puntero al nodo anterior en la lista.
+ * @pointer: Puntero a un nodo relacionado (opcional).
+ * @backup: Puntero a la estructura de backup asociada al nodo.
  */
 
 typedef struct s_mt
@@ -157,14 +91,14 @@ typedef struct s_mt
     int					id;
     char				*key;
     void				*data;
-	void				(*free)(void *);
-    struct s_mt			*aux;
-    void				*links;
+	void				*addon;
+	t_free_func			data_free;
+	t_free_func			addon_free;
+	
+	struct s_mt			*next;
+	struct s_mt 		*prev;
+	struct s_mt			*pointer;
     struct s_backup		*backup;
-    struct s_cords		*cords;
-    struct s_mt 		*next;
-	bool				status;
-	int					type;
 }				t_mt;
 
 

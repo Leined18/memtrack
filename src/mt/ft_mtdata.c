@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_offset_sub.c                                    :+:      :+:    :+:   */
+/*   ft_mtdata.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:28:57 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 16:29:07 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/02 11:38:42 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/02 12:01:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-/**
- * ft_offset_sub - Resta dos estructuras de offset.
- * @a: Primer offset.
- * @b: Segundo offset.
- * 
- * Devuelve un nuevo offset que es la resta de a y b.
- */
-
-t_offset	ft_offset_sub(t_offset a, t_offset b)
+void	*ft_mtget_data(t_mt *mt)
 {
-	t_offset	offset;
-
-	offset.direction = a.direction - b.direction;
-	offset.elevation = a.elevation - b.elevation;
-	offset.distance = a.distance - b.distance;
-	return (offset);
+    if (!mt)
+        return (NULL);
+    return (mt->data);
 }
+
+void	(*ft_mtget_data_free(t_mt *mt))(void *)
+{
+    if (!mt)
+        return (NULL);
+    return (mt->data_free);
+}
+
+void    ft_mtset_data(t_mt *mt, void *data, t_free_func free_func)
+{
+    if (!mt)
+        return;
+    
+    mt->data = data;
+    mt->data_free = free_func;
+    if (data && free_func)
+        mt->data_free(data);
+}
+

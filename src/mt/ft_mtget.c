@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cords_distance.c                                :+:      :+:    :+:   */
+/*   ft_mtget.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 17:09:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/14 17:10:15 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/02 15:01:51 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/02 15:16:01 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-/**
- * ft_cords_distance - Calcula la distancia entre dos coordenadas.
- * @a: Primera coordenada.
- * @b: Segunda coordenada.
- *
- * Devuelve la distancia entre las dos coordenadas.
- */
-
-float	ft_cords_distance(t_cords a, t_cords b)
+t_mt	*ft_mtget(t_mt *mt, const char *key)
 {
-	float	distance;
-
-	distance = sqrtf(powf(b.x - a.x, 2) + powf(b.y - a.y, 2) + powf(b.z - a.z, 2));
-	return (distance);
+    if (!mt || !key || ft_strlen(key) == 0)
+        return (NULL);
+    if (ft_strncmp(mt->key, key, ft_strlen(key)) == 0)
+        return (mt);
+    while (mt->next)
+    {
+        mt = mt->next;
+        if (ft_strncmp(mt->key, key, ft_strlen(key)) == 0)
+            return (mt);
+    }
+    return (NULL);
 }
