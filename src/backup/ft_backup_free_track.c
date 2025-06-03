@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backup_free_track.c                             :+:      :+:    :+:   */
+/*   ft_backup_freec_track.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,20 @@
 #include "mt.h"
 
 /**
- * ft_backup_free_track - Libera la memoria de un nodo de seguimiento del backup.
+ * ft_backup_freec_track - Libera la memoria de un nodo de seguimiento del backup.
  * @track: Puntero al nodo de seguimiento a liberar.
  *
  * Esta función libera la memoria ocupada por un nodo de seguimiento del backup
  * y sus datos asociados. Se asegura de liberar el nodo y sus campos clave.
  */
 
-void	ft_backup_free_track(t_track *track, bool free_node)
+void	ft_backup_freec_track(t_track *track, bool freec_node)
 {
     if (!track)
         return ;
     if (track->key)
-        free(track->key);
-    if (track->node && free_node)
+        free_null((void **)&track->key);
+    if (track->node && freec_node)
         ft_mtfree(track->node);
-    free(track);
+    freec(track);
 }

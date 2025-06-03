@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 15:24:51 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:33:25 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,18 @@ int	main(void)
 		return (1);
 	}
 	ft_mtnew("Node2");
-	backup = ft_backup_static(1, false, false);
+	backup = ft_backup_static(20, true, false);
 	ft_mtnew("Node3"); // Crear otro nodo para verificar el backup
-	ft_mtnew("Node4"); // Crear otro nodo para verificar el backup
-	ft_mtdelete("Node1"); // Eliminar el nodo Node1 del backup
-	ft_mtdelete("Node2"); // Eliminar el nodo Node2 del backup
-	ft_mtdelete("Node3"); // Eliminar el nodo Node3 del backup
-	ft_mtdelete("Node4"); // Eliminar el nodo Node4 del backup
+	ft_mtnew("Node4"); // Crear otro nodo para verificar el backup// Agregar un track para Node1
 	ft_mtnew("Node5"); // Crear un nuevo nodo para verificar el backup
+	backup = ft_backup_static(0, false, false);
 	printf("Backup item count: %zu\n", backup->item_count);
 	printf("Backup slot count: %zu\n", backup->slot_count);
+	printf("Backup tracker: %p\n", (void *)backup->tracker);
 	printf("Backup slots: %p\n", (void *)backup->slots);
+	ft_backup_static(0, false, true); // Limpiar el backup estático
+	printf("Backup cleared: %d\n", freec(NULL));
+	
 	
 	return (0);
 }

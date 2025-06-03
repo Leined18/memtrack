@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_new_track.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:41:27 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/19 12:54:42 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:53:55 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_track *ft_backup_new_track(const char *key, t_mt *node)
         return (NULL);
     track->key = ft_strdup(key);
     if (!track->key)
-        return (free(track), NULL);
+        return (freec(track), NULL);
     track->node = node;
     track->next = NULL;
     return (track);

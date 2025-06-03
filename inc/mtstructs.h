@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mtstructs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 14:13:39 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:10:05 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # include "mt.h"
 
-typedef void (*t_free_func)(void *);
+typedef void (*t_freec_func)(void *);
 
 /**
  * t_track - Estructura de seguimiento de conexiones. lista para eliminar
@@ -92,8 +92,8 @@ typedef struct s_mt
     char				*key;
     void				*data;
 	void				*addon;
-	t_free_func			data_free;
-	t_free_func			addon_free;
+	t_freec_func			data_free;
+	t_freec_func			addon_free;
 	
 	struct s_mt			*next;
 	struct s_mt 		*prev;

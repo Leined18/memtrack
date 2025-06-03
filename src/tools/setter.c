@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:47:21 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 10:24:32 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:53:55 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int  setter(int (*s_function)(t_args *args), void **s_ref, const char *str, ...)
     result = s_function(&args_ref);
     i = 0;
     while (args[i])
-        free(args[i++]);
-    free(args);
+        freec(args[i++]);
+    freec(args);
     return (va_end(ap), result);
 }

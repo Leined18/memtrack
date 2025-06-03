@@ -20,13 +20,12 @@
  * elementos. Se asegura de liberar todos los slots y el tracker asociado.
  */
 
-void	ft_backup_clear(t_backup **backup)
+int	ft_backup_clear(t_backup **backup)
 {
 	if (!backup || !*backup)
-		return ;
+		return (0);
+	ft_backup_clear_tracks(&(*backup)->tracker);
 	if ((*backup)->slots)
 		free_null((void **)&(*backup)->slots);
-	ft_backup_clear_tracks(&(*backup)->tracker);
-	free(*backup);
-	*backup = NULL;
+	return (free_null((void **)backup));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 12:38:59 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:42:41 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_mt	*ft_mtnew(const char *key)
 		return (NULL);
 	node->key = ft_strdup(key);
 	if (!node->key)
-		return (free(node), NULL);
+		return (freec(node), NULL);
 	backup_temp = ft_backup_static(0, false, false); // Obtiene el backup estático
 	if (!backup_temp)
-		return (free(node->key), free(node), NULL);
-	ft_backup_add(backup_temp, node);
+		return (freec(node->key), freec(node), NULL);
+	ft_backup_add(&backup_temp, node);
 	return (node);
 }

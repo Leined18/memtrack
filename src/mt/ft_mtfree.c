@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                      :+:      :+:    :+:   */
+/*   ft_freec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,20 +12,20 @@
 
 #include "mt.h"
 
-static void	free_element(void **element, void (*free_func)(void *))
+static void	free_element(void **element, void (*freec_func)(void *))
 {
 	if (element && *element)
 	{
-		if (free_func)
-			free_func(*element);
+		if (freec_func)
+			freec_func(*element);
 		else
-			free(*element);
+			free_null(element);
 		*element = NULL;
 	}
 }
 
 /**
- * ft_free - Libera la memoria de un nodo t_mt.
+ * ft_freec - Libera la memoria de un nodo t_mt.
  * @mt: Puntero al nodo a liberar.
  *
  * Esta función libera la memoria ocupada por el nodo t_mt y sus elementos
@@ -42,9 +42,9 @@ void	ft_mtfree(void *mt)
 	if (!mt)
 		return ;
 	node = (t_mt *)mt;
-	backup = ft_backup_static(0, false, false);
-	if (backup && node->backup)
+	if (node->backup)
 	{
+		backup = ft_backup_static(0, false, false);
 		ft_backup_remove(&backup, node, true);
 		return ;
 	}
@@ -54,5 +54,5 @@ void	ft_mtfree(void *mt)
 		free_element((void **)&node->data, node->data_free);
 	if (node->addon)
 		free_element((void **)&node->addon, node->addon_free);
-	free(node);
+	freec(node);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_mem.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:06:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 11:08:10 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:53:55 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void set_mem(void **ptr, void *ptr2)
     if (*ptr)
     {
         if (*ptr)
-            free(*ptr);
+            freec(*ptr);
     }
     *ptr = ptr2;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_static.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:09:49 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 13:45:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:51:34 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ sin new, solo limpia y retorna nulo.
 t_backup *ft_backup_static(size_t slot_count, bool new, bool clear)
 {
     static t_backup *backup = NULL;
-
+    
     if (backup && !new && !clear && (slot_count == backup->slot_count || !slot_count))
         return (backup); // Retorna el backup existente si no se solicita una nueva creación ni limpieza
     if (!backup && slot_count > 0 && new && !clear)
@@ -38,6 +38,9 @@ t_backup *ft_backup_static(size_t slot_count, bool new, bool clear)
     else if (backup && clear && !new) // si solo se solicita limpieza
         return (ft_backup_clear(&backup), NULL);
     else if (backup && !clear && new && slot_count > 0)
-        return (ft_backup_slot_update(&backup, slot_count), backup);
+    {
+        ft_backup_slot_update(&backup, slot_count); // Actualiza el número de ranuras del backup existente
+        return (backup);
+    }
     return (backup);
 }

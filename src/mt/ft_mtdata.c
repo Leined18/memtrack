@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdata.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:38:42 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 12:01:54 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:57:26 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	(*ft_mtget_data_free(t_mt *mt))(void *)
     return (mt->data_free);
 }
 
-void    ft_mtset_data(t_mt *mt, void *data, t_free_func free_func)
+void    ft_mtset_data(t_mt *mt, void *data, t_freec_func freec_func)
 {
     if (!mt)
         return;
     
     mt->data = data;
-    mt->data_free = free_func;
-    if (data && free_func)
+    mt->data_free = freec_func;
+    if (data && freec_func)
         mt->data_free(data);
 }
 

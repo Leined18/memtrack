@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:26:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/21 10:10:07 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:53:55 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void *constructor(void *(*c_function)(t_args *args), const char *str, ...)
     result = c_function(&args_ref);
     i = 0;
     while (tokens[i])
-        free(tokens[i++]);
-    free(tokens);
+        freec(tokens[i++]);
+    freec(tokens);
     return (va_end(ap), result);
 }
 
