@@ -6,13 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:36:32 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 11:44:23 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:40:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-int	ft_mtget_id(t_mt *mt)
+int 	ft_mtget_id(t_mt *mt)
 {
     if (!mt)
         return (-1);

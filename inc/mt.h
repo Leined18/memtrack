@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/04 00:15:43 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 12:00:00 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 // ==================== Memory Management ====================
 
 void			ft_mtfree(void *mt);
-int             ft_mtremove(t_mt **head, t_mt *target, bool freec_node);
+int             ft_mtremove(t_mt **head, t_mt *target, bool free_node);
 void			ft_mtdelete(const char *key);
 void			ft_mtclear(t_mt **lst);
 t_mt			*ft_mtnew(const char *key);
@@ -81,7 +81,7 @@ int				ft_mtadd_back(t_mt **node, t_mt *new_node);
 t_backup		*ft_backup_static(size_t slot_count, bool new, bool clear);
 void			ft_backup_add(t_backup **backup, t_mt *node);
 int 			ft_backup_clear(t_backup **backup);
-void			ft_backup_remove(t_backup **backup, t_mt *node, bool freec_target);
+void			ft_backup_remove(t_backup **backup, t_mt *node, bool free_target);
 
 t_backup		*ft_backup_new(size_t slot_count);
 void			ft_backup_add_slot(t_backup *backup, t_mt *node);
@@ -90,16 +90,16 @@ size_t          ft_hash_str(const char *str);
 t_mt			*ft_backup_get(t_backup *backup, const char *key);
 
 // ==================== Backup Slot Functions ====================
-void			ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool freec_slot);
+void			ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool free_slot);
 void            ft_backup_slot_update(t_backup **backup, size_t new_slot_count);
 t_mt            **ft_backup_new_slots(size_t slot_count);
 
 
 // ==================== Track Functions ====================
 void			ft_backup_clear_tracks(t_track **tracks);
-void			ft_backup_remove_track(t_track **tracker, t_track *node, bool freec_target, bool freec_node);
+void			ft_backup_remove_track(t_track **tracker, t_track *node, bool free_target, bool free_node);
 void			ft_backup_add_track(t_backup **backup, t_track *track);
-void			ft_backup_freec_track(t_track *track, bool freec_node);
+void			ft_backup_free_track(t_track *track, bool free_node);
 t_track			*ft_backup_new_track(const char *key, t_mt *node);
 t_track         *ft_backup_get_track(t_track *track, const char *key);
 
@@ -114,44 +114,52 @@ t_track         *ft_backup_get_track(t_track *track, const char *key);
 
 // ==================== Compare Functions ====================
 
-int				ft_mtkeycmp(const t_mt *mt1, const char *key);
+int					ft_mtkeycmp(const t_mt *mt1, const char *key);
 
 // ==================== Search Functions ====================
 
-t_mt             *ft_mtget(t_mt *node, const char *key);
+
+t_mt				*ft_mtfind(t_mt **head, t_mt *mt);
 
 // ==================== Navigation Functions ====================
-t_mt			*ft_mtlast(t_mt **node, bool move);
+t_mt				*ft_mtlast(t_mt **node, bool move);
 
 
 // ==================== Manipulation Functions ====================
 
 // ===================== Getter Functions ====================
-char			*ft_mtget_key(t_mt *mt);
-int				ft_mtget_id(t_mt *mt);
-void			*ft_mtget_data(t_mt *mt);
-void			(*ft_mtget_data_free(t_mt *mt))(void *);
-void			*ft_mtget_addon(t_mt *mt);
-void			(*ft_mtget_addon_free(t_mt *mt))(void *);
+t_mt				*ft_mtget(const char *key);
+
+char			    *ft_mtget_key(t_mt *mt);
+int					ft_mtget_id(t_mt *mt);
+void			    *ft_mtget_data(t_mt *mt);
+void			    *ft_mtget_data_free(t_mt *mt);
+void			    *ft_mtget_addon(t_mt *mt);
+void			    *ft_mtget_addon_free(t_mt *mt);
 
 
 // ==================== Setter Functions ====================
 
+int                 ft_mtset(const char *key, void *data, void (*set_func)(struct s_mt *, void *));
+
 void			    ft_mtset_key(t_mt *mt, const char *key);
 void				ft_mtset_id(t_mt *mt, int id);
-void				ft_mtset_data(t_mt *mt, void *data, t_freec_func freec_func);
-void				ft_mtset_addon(t_mt *mt, void *addon, t_freec_func freec_func);
+void				ft_mtset_data(t_mt *mt, void *data);
+void				ft_mtset_data_free(t_mt *mt, void *data_free);
+
+void				ft_mtset_addon(t_mt *mt, void *addon);
+void				ft_mtset_addon_free(t_mt *mt, void *addon_free);
 
 
-int				setter(int (*s_function)(t_args *args), void **s_ref,
+int					setter(int (*s_function)(t_args *args), void **s_ref,
                      const char *str, ...);
-int				set_data(t_args *args);
-int				set_mt(t_args *args);
+int					set_data(t_args *args);
+int					set_mt(t_args *args);
 
 // ==================== Constructor Functions ====================
-void			*constructor(void *(*c_function)(t_args *args), const char *str, ...);
-void            *c_data(t_args *args);
-void            *c_mt(t_args *args);
+void				*constructor(void *(*c_function)(t_args *args), const char *str, ...);
+void            	*c_data(t_args *args);
+void            	*c_mt(t_args *args);
 
 // ==================== utils ====================
 

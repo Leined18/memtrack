@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 23:42:41 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 11:33:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 /**
  * ft_mtnew - Crea un nuevo nodo de tipo t_mt.
  * @key: Clave del nodo.
+ * @backup: Puntero a la estructura de backup donde se agregará el nodo.
+ * si existe un backup, se agrega el nodo a la lista de seguimiento del backup.
  */
 
 
 t_mt	*ft_mtnew(const char *key)
 {
 	t_mt		*node;
-	t_backup	*backup_temp;
+	t_backup	*backup;
 	
 	if (!key)
 		return (NULL);
@@ -30,10 +32,9 @@ t_mt	*ft_mtnew(const char *key)
 		return (NULL);
 	node->key = ft_strdup(key);
 	if (!node->key)
-		return (freec(node), NULL);
-	backup_temp = ft_backup_static(0, false, false); // Obtiene el backup estático
-	if (!backup_temp)
-		return (freec(node->key), freec(node), NULL);
-	ft_backup_add(&backup_temp, node);
+		return (free(node), NULL);
+	backup = ft_backup_static(0, false, false);
+	if (backup)
+		ft_backup_add(&backup, node);
 	return (node);
 }

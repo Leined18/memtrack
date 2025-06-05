@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_slot_update.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:02:20 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 23:23:19 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_backup_slot_update(t_backup **backup, size_t new_slot_count)
 	old_slots = (*backup)->slots;
 	old_count = (*backup)->slot_count;
 	all_nodes = ft_collect_all_nodes(old_slots, old_count);
-	freec(old_slots);
+	free(old_slots);
 	(*backup)->slots = ft_calloc(new_slot_count, sizeof(t_mt *));
 	if (!(*backup)->slots)
 	{

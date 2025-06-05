@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtdata.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:38:42 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 21:57:26 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 11:06:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,27 @@ void	*ft_mtget_data(t_mt *mt)
     return (mt->data);
 }
 
-void	(*ft_mtget_data_free(t_mt *mt))(void *)
+void	*ft_mtget_data_free(t_mt *mt)
 {
     if (!mt)
         return (NULL);
     return (mt->data_free);
 }
 
-void    ft_mtset_data(t_mt *mt, void *data, t_freec_func freec_func)
+void    ft_mtset_data(t_mt *mt, void *data)
 {
     if (!mt)
         return;
     
+    if (mt->data_free && mt->data)
+        mt->data_free(mt->data);
     mt->data = data;
-    mt->data_free = freec_func;
-    if (data && freec_func)
-        mt->data_free(data);
+}
+
+void    ft_mtset_data_free(t_mt *mt, void *data_free)
+{
+    if (!mt)
+        return;
+    mt->data_free = data_free;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_get_track.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:22:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/04 00:23:38 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:30:03 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ t_track	*ft_backup_get_track(t_track *track, const char *key)
     cur = track;
     while (cur)
     {
-        if (ft_mtkeycmp(cur->node, key) == 0 ||
-        (cur->key &&
-        ft_strncmp(cur->key, key, ft_strlen(cur->key)) == 0))
+        if (ft_strequ(cur->node->key, key))
             return (cur); // Retorna el nodo encontrado
         cur = cur->next; // Avanza al siguiente nodo
     }

@@ -6,23 +6,34 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:01:51 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/02 15:16:01 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:59:53 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-t_mt	*ft_mtget(t_mt *mt, const char *key)
+/**
+ * ft_mtget - Obtiene un nodo de la lista enlazada por su clave.
+ * @key: Clave del nodo a buscar.
+ * Retorna el nodo encontrado o NULL si no se encuentra.
+ */
+
+t_mt	*ft_mtget(const char *key)
 {
-    if (!mt || !key || ft_strlen(key) == 0)
+    t_mt		*node;
+    t_backup	*backup;
+    
+    if (!key || !*key)
         return (NULL);
-    if (ft_strncmp(mt->key, key, ft_strlen(key)) == 0)
-        return (mt);
-    while (mt->next)
+    backup = ft_backup_static(0, false, false);
+    if (!backup || !backup->slots)
+        return (NULL);
+    node = backup->slots[ft_hash_str(key) % backup->slot_count];
+    while (node)
     {
-        mt = mt->next;
-        if (ft_strncmp(mt->key, key, ft_strlen(key)) == 0)
-            return (mt);
+        if (ft_strequ(node->key, key))
+            return (node);
+        node = node->next;
     }
     return (NULL);
 }

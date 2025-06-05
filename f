@@ -16,7 +16,7 @@ t_mt  *ft_build_line(t_mt **start, t_cords origin, t_offset offset, t_backup **b
     {
 		key = ft_itoa(idx);
         t_mt *node = ft_mtnew2(key, NULL, backup);
-		freec(key);
+		free(key);
         if (!node)
            break;
         pos = ft_calc_cords_3d(pos, step);

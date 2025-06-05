@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_get.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:23:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/04 00:02:29 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:21:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,12 @@ size_t    ft_hash_str(const char *str)
 
 t_mt	*ft_backup_get(t_backup *backup, const char *key)
 {
-	size_t	index;
-	t_mt	*cur;
 	t_mt 	*found;
 	t_track *track;
 
 	if (!backup || !key)
 		return (NULL);
-	cur = NULL;
-	index = ft_hash_str(key) % backup->slot_count;
-	if (backup->slots)
-		cur = backup->slots[index];
-	found = ft_mtget(cur, key);
+	found = ft_mtget(key);
 	if (!found)
 	{
 		track = ft_backup_get_track(backup->tracker, key);

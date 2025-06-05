@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtremove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:30:43 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 22:34:53 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:33:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,22 @@
  * return: if the node was removed successfully, otherwise returns 0.
  */
 
-int	ft_mtremove(t_mt **head, t_mt *target, bool freec)
+int	ft_mtremove(t_mt **head, t_mt *target, bool free)
 {
 	t_mt *current;
 	if (!head || !*head || !target)
-		return 0;
-	current = *head;
-	while (current && current != target)
-		current = current->next; // Busca el nodo objetivo
+		return (0);
+	current = ft_mtfind(head, target); // Busca el nodo en la lista
 	if (!current)
-		return 0; // Si no se encuentra el nodo, retorna 0
+		return (0); // Si no se encuentra el nodo, retorna 0
 	if (current->prev)
 		current->prev->next = current->next; // Desconecta el nodo de la lista
 	else
 		*head = current->next; // Si es el primer nodo, actualiza el head
 	if (current->next)
 		current->next->prev = current->prev; 
-	if (freec)
-		ft_mtfree(current); // Libera el nodo si freec es verdadero
+	if (free)
+		ft_mtfree(current); // Libera el nodo si free es verdadero
 	else
 	{
 		target->next = NULL; // Desconecta el nodo sin liberarlo

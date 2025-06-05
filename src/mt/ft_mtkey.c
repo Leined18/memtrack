@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mtkey.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/04 00:35:58 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mtset_key(t_mt *mt, const char *key)
         return;
     
     if (mt->key)
-        freec(mt->key);
+        free(mt->key);
     mt->key = ft_strdup(key);
 }
 

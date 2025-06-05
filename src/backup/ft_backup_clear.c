@@ -27,5 +27,5 @@ int	ft_backup_clear(t_backup **backup)
 	ft_backup_clear_tracks(&(*backup)->tracker);
 	if ((*backup)->slots)
 		free_null((void **)&(*backup)->slots);
-	return (free_null((void **)backup));
+	return (free_null((void **)backup), 1);
 }

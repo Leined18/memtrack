@@ -3,45 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 14:48:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 23:33:25 by daniel           ###   ########.fr       */
+/*   Created: 2025/06/05 11:13:24 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/05 12:01:30 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
+#include <stdio.h>
 
-int	main(void)
+// === FUNCIONES DE PRUEBA ===
+
+void print_list(t_mt *head)
 {
-	t_backup	*backup;
+    printf("Lista:");
+    while (head)
+    {
+        printf(" [%s]", ft_mtget_key(head));
+        head = head->next;
+    }
+    printf("\n");
+}
 
-	backup = ft_backup_static(10, true, false); // Crear un backup estático con 10 ranuras
-	if (!backup)
-	{
-		ft_putstr_fd("Error al crear el backup estático\n", 2);
-		return (1);
-	}
-	t_mt	*node1 = ft_mtnew("Node1");
-	if (!node1)
-	{
-		ft_putstr_fd("Error al crear el nodo Node1\n", 2);
-		ft_backup_clear(&backup);
-		return (1);
-	}
-	ft_mtnew("Node2");
-	backup = ft_backup_static(20, true, false);
-	ft_mtnew("Node3"); // Crear otro nodo para verificar el backup
-	ft_mtnew("Node4"); // Crear otro nodo para verificar el backup// Agregar un track para Node1
-	ft_mtnew("Node5"); // Crear un nuevo nodo para verificar el backup
-	backup = ft_backup_static(0, false, false);
-	printf("Backup item count: %zu\n", backup->item_count);
-	printf("Backup slot count: %zu\n", backup->slot_count);
-	printf("Backup tracker: %p\n", (void *)backup->tracker);
-	printf("Backup slots: %p\n", (void *)backup->slots);
-	ft_backup_static(0, false, true); // Limpiar el backup estático
-	printf("Backup cleared: %d\n", freec(NULL));
-	
-	
-	return (0);
+void test_creacion()
+{
+    printf("\n=== TEST CREACION ===\n");
+    t_mt *a = ft_mtnew("uno");
+    t_mt *b = ft_mtnew("dos");
+    t_mt *c = ft_mtnew("tres");
+
+    ft_mtadd_back(&a, b);
+    ft_mtadd_back(&a, c);
+
+    print_list(a);
+    ft_mtclear(&a);
+}
+
+void test_eliminacion()
+{
+    printf("\n=== TEST ELIMINACION ===\n");
+    t_mt *a = ft_mtnew("A");
+    t_mt *b = ft_mtnew("B");
+    t_mt *c = ft_mtnew("C");
+    t_mt *d = ft_mtnew("D");
+
+    ft_mtadd_back(&a, b);
+    ft_mtadd_back(&a, c);
+    ft_mtadd_back(&a, d);
+    print_list(a);
+
+    // Eliminar nodo del medio
+    ft_mtremove(&a, c, true);
+    print_list(a);
+
+    // Eliminar cabeza
+    ft_mtremove(&a, a, true);
+    print_list(a);
+
+    ft_mtclear(&a);
+}
+
+void test_backup()
+{
+    printf("\n=== TEST BACKUP ===\n");
+    t_backup *backup = ft_backup_new(4);
+
+    t_mt *x = ft_mtnew("x");
+    t_mt *y = ft_mtnew("y");
+
+	ft_backup_add(&backup, x);
+	ft_backup_add(&backup, y);
+
+
+
+    t_mt *found = ft_backup_get(backup, "x");
+    if (found)
+        printf("Encontrado: %s\n", ft_mtget_key(found));
+    else
+        printf("No se encontró 'x'\n");
+
+    ft_backup_clear(&backup);
+}
+
+void test_get_set()
+{
+	ft_backup_static(1, true, false); // Inicializa el backup estático
+    printf("\n=== TEST GET/SET ===\n");
+    t_mt *node = ft_mtnew("nodo"); // se añade un nodo al backup estático
+
+    ft_mtset_id(node, 42);
+	ft_mtset_data(node, "datos de prueba");
+    printf("ID: %d\n", ft_mtget(node->key)->id);
+	printf("data: %s", (char *)ft_mtget(node->key)->data); // obtiene el nodo del backup pasado
+
+    ft_mtfree(node);
+	ft_backup_static(0, false, true); // Limpia el backup estático
+}
+
+int main(void)
+{
+    test_creacion();
+    test_eliminacion();
+    test_backup();
+    test_get_set();
+    return 0;
 }

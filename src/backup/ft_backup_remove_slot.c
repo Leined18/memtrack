@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_remove_slot.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:53:06 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 22:54:38 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
  * ft_backup_remove_slot - Elimina una ranura del backup.
  * @backup: Doble puntero a la estructura de backup.
  * @slot: Puntero a la ranura a eliminar.
- * @freec_slot: Booleano que indica si se debe liberar la memoria de la ranura.
+ * @free_slot: Booleano que indica si se debe liberar la memoria de la ranura.
  *
  * Esta función elimina una ranura del backup y libera su memoria.
  * Se asegura de eliminar la ranura de la lista de ranuras y liberar su memoria.
  */
 
  
-void	ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool freec_slot)
+void	ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool free_slot)
 {
     size_t	i;
 
@@ -32,7 +32,7 @@ void	ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool freec_slot)
     i = 0;
     while (i < (*backup)->slot_count)
     {
-        if (ft_mtremove(&(*backup)->slots[i], slot, freec_slot))
+        if (ft_mtremove(&(*backup)->slots[i], slot, free_slot))
             return ;
         i++;
     }
