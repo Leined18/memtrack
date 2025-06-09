@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 12:00:00 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:08:47 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void			ft_mtfree(void *mt);
 int             ft_mtremove(t_mt **head, t_mt *target, bool free_node);
 void			ft_mtdelete(const char *key);
 void			ft_mtclear(t_mt **lst);
-t_mt			*ft_mtnew(const char *key);
+t_mt			*ft_mtnew(const char *key, const char *id);
 
 // ==================== Count Functions ====================
 
@@ -76,33 +76,52 @@ int				ft_mtadd_back(t_mt **node, t_mt *new_node);
 
 // ==================== Backup Functions =======================
 
-
-// 
-t_backup		*ft_backup_static(size_t slot_count, bool new, bool clear);
-void			ft_backup_add(t_backup **backup, t_mt *node);
-int 			ft_backup_clear(t_backup **backup);
-void			ft_backup_remove(t_backup **backup, t_mt *node, bool free_target);
-
-t_backup		*ft_backup_new(size_t slot_count);
-void			ft_backup_add_slot(t_backup *backup, t_mt *node);
 size_t			ft_hash(t_mt *key);
 size_t          ft_hash_str(const char *str);
-t_mt			*ft_backup_get(t_backup *backup, const char *key);
+
+// 
+t_backup		*ft_backup_new(size_t slot_count);
+t_backup		*ft_backup_static(size_t slot_count, bool new, bool clear);
+
+void			ft_backup_add(t_backup **backup, t_mt *node);
+void			ft_backup_add_track(t_backup **backup, t_track *track);
+void			ft_backup_add_slot(t_backup **backup, t_track *node);
+
+int 			ft_backup_clear(t_backup **backup);
+void			ft_backup_remove(t_backup **backup, t_track *node, bool free_target);
+void            ft_backup_delete(t_backup **backup, const char *key);
+
+
+t_track         *ft_backup_search(t_backup *backup, const char *key);
+
 
 // ==================== Backup Slot Functions ====================
-void			ft_backup_remove_slot(t_backup **backup, t_mt *slot, bool free_slot);
+
+int 			ft_backup_remove_slot(t_backup **backup, t_track *slot, bool free_slot);
 void            ft_backup_slot_update(t_backup **backup, size_t new_slot_count);
-t_mt            **ft_backup_new_slots(size_t slot_count);
+t_track         **ft_backup_new_slots(size_t slot_count);
+
+
+// ==================== Slot Functions ====================
+
+void            ft_slot_clear(t_track **slots, size_t slot_count, bool free_data);
+t_track         *ft_slot_search(t_track **slots, size_t slot_count, const char *key);
+t_track         *ft_slot_find(t_track **slots, size_t slot_count, t_track *target);
+int            ft_slot_remove(t_track **slots, size_t slot_count, t_track *target, bool free_target);
+t_track         **ft_slot_new(size_t slot_count);
+void            ft_slot_add_top(t_track **slots, size_t slot_count, t_track *node);
+
 
 
 // ==================== Track Functions ====================
-void			ft_backup_clear_tracks(t_track **tracks);
-void			ft_backup_remove_track(t_track **tracker, t_track *node, bool free_target, bool free_node);
-void			ft_backup_add_track(t_backup **backup, t_track *track);
-void			ft_backup_free_track(t_track *track, bool free_node);
-t_track			*ft_backup_new_track(const char *key, t_mt *node);
-t_track         *ft_backup_get_track(t_track *track, const char *key);
 
+t_track		    *ft_track_find(t_track *tracks, t_track *target);
+t_track			*ft_track_new(const char *group_id, const char *node_id, t_mt *node);
+void			ft_track_clear(t_track **tracks, bool free_data);
+void            ft_track_free(t_track **track, bool free_node);
+int             ft_track_add_back(t_track **node, t_track *new_node);
+t_track         *ft_track_search(t_track *track, const char *key);
+int 			ft_track_remove(t_track **tracker, t_track *node, bool free_node);
 
 
 // ==================== Filter Functions ====================
@@ -118,8 +137,9 @@ int					ft_mtkeycmp(const t_mt *mt1, const char *key);
 
 // ==================== Search Functions ====================
 
-
-t_mt				*ft_mtfind(t_mt **head, t_mt *mt);
+t_mt				*ft_mtsearch(t_mt *head, const char *key);
+t_mt				*ft_mtfind(t_mt *head, t_mt *mt);
+t_mt                *ft_mtget(const char *key);
 
 // ==================== Navigation Functions ====================
 t_mt				*ft_mtlast(t_mt **node, bool move);
@@ -128,10 +148,9 @@ t_mt				*ft_mtlast(t_mt **node, bool move);
 // ==================== Manipulation Functions ====================
 
 // ===================== Getter Functions ====================
-t_mt				*ft_mtget(const char *key);
 
 char			    *ft_mtget_key(t_mt *mt);
-int					ft_mtget_id(t_mt *mt);
+void                *ft_mtget_id(t_mt *mt);
 void			    *ft_mtget_data(t_mt *mt);
 void			    *ft_mtget_data_free(t_mt *mt);
 void			    *ft_mtget_addon(t_mt *mt);
@@ -142,8 +161,8 @@ void			    *ft_mtget_addon_free(t_mt *mt);
 
 int                 ft_mtset(const char *key, void *data, void (*set_func)(struct s_mt *, void *));
 
-void			    ft_mtset_key(t_mt *mt, const char *key);
-void				ft_mtset_id(t_mt *mt, int id);
+void			    ft_mtset_key(t_mt *mt, void *key);
+void				ft_mtset_id(t_mt *mt, void *id);
 void				ft_mtset_data(t_mt *mt, void *data);
 void				ft_mtset_data_free(t_mt *mt, void *data_free);
 

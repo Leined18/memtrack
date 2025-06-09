@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtkey.c                                         :+:      :+:    :+:   */
+/*   ft_slot_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:04:13 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 16:09:45 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 18:11:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-char	*ft_mtget_key(t_mt *mt)
+void ft_slot_clear(t_track **slots, size_t slot_count, bool free_data)
 {
-    if (!mt)
-        return (NULL);
-    return (mt->key);
-}
+    size_t i;
 
-void	ft_mtset_key(t_mt *mt, void *key)
-{
-    if (!mt || !key)
+    if (!slots || slot_count == 0)
         return;
-    
-    if (mt->key)
-        free(mt->key);
-    mt->key = ft_strdup(key);
-}
-
-int     ft_mtkeycmp(const t_mt *mt1, const char *key)
-{
-    if (!mt1 || !mt1->key || !key)
-        return (0);
-    return (ft_strncmp(mt1->key, key, ft_strlen(mt1->key)) == 0);
+    i = 0;
+    while (i < slot_count)
+    {
+        t_track *current = slots[i];
+        ft_track_clear(&current, free_data); // Limpia el slot actual
+        slots[i] = NULL; // Limpia el slot
+        i++;
+    }
+    free(slots); // Libera la memoria de los slots
 }

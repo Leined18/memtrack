@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_backup_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/03 23:47:54 by daniel           ###   ########.fr       */
+/*   Updated: 2025/06/09 20:03:57 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@
  */
 
 void	ft_backup_add(t_backup **backup, t_mt *node)
-{
-	t_mt 	*new_node;
+{	
+	t_track *group;
 	t_track *track;
 	
 	if (!backup || !*backup || !node)
 		return ;
-	node->backup = *backup;
-	new_node = node;
-	track = ft_backup_new_track(node->key, new_node);
-	if (!track)
+	if (!node->key || !node->id)
 		return ;
-	ft_backup_add_track(backup, track);
-	ft_backup_add_slot(*backup, new_node);
+	track = ft_track_new(node->key, node->id, node);
+	group = ft_track_search((*backup)->tracker, node->key);
+	if (group)
+		ft_mtadd_back(&group->node, node);
+	else 
+		ft_backup_add_track(backup, track);
+	ft_backup_add_slot(backup, track);
 	(*backup)->item_count++;
 }

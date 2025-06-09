@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtget.c                                         :+:      :+:    :+:   */
+/*   ft_track_search.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 17:09:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:11:12 by danpalac         ###   ########.fr       */
+/*   Created: 2025/05/19 13:22:45 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 16:03:14 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_mtget - Obtiene un nodo de la lista enlazada por su clave.
+ * ft_backup_search_track - Obtiene un nodo de la lista de seguimiento del backup.
+ * @track: Puntero a la lista de seguimiento del backup.
  * @key: Clave del nodo a buscar.
  * 
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_mt	*ft_mtget(const char *key)
+t_track	*ft_track_search(t_track *track, const char *key)
 {
-    t_backup	*backup;
-    t_mt		*node;
-
-    if (!key || ft_strlen(key) == 0)
+    t_track    *cur;
+    
+    if (!track || !key)
         return (NULL);
-    backup = ft_backup_static(0, false, false); // Obtiene el backup estático
-    if (!backup)
-        return (NULL);
-    node = ft_backup_search(backup, key)->node; // Busca el nodo en el backup
-    if (!node)
-        return (NULL);
-    return (node); // Retorna el nodo encontrado
+    cur = track;
+    while (cur)
+    {
+        while (cur && cur->key && ft_strequ(cur->key, key))
+            return (cur);
+        cur = cur->next;
+    }
+    return (NULL);
 }
+
+   

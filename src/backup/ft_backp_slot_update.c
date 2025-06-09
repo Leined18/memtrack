@@ -6,17 +6,17 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:02:20 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:23:51 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-static t_list	*ft_collect_all_nodes(t_mt **slots, size_t count)
+static t_list	*ft_collect_all_nodes(t_track **slots, size_t count)
 {
 	t_list	*all_nodes;
-	t_mt	*curr;
-	t_mt	*next;
+	t_track	*curr;
+	t_track	*next;
 	size_t	i;
 
 	all_nodes = NULL;
@@ -39,13 +39,13 @@ static t_list	*ft_collect_all_nodes(t_mt **slots, size_t count)
 static void	ft_rehash_all_nodes(t_backup *backup, t_list *all_nodes)
 {
 	t_list	*node;
-	t_mt	*item;
+	t_track	*item;
 	size_t	index;
 
 	node = all_nodes;
 	while (node)
 	{
-		item = (t_mt *)node->content;
+		item = (t_track *)node->content;
 		index = ft_hash_str(item->key) % backup->slot_count;
 		item->next = backup->slots[index];
 		backup->slots[index] = item;
@@ -56,7 +56,7 @@ static void	ft_rehash_all_nodes(t_backup *backup, t_list *all_nodes)
 void	ft_backup_slot_update(t_backup **backup, size_t new_slot_count)
 {
 	t_list	*all_nodes;
-	t_mt	**old_slots;
+	t_track	**old_slots;
 	size_t	old_count;
 
 	if (!backup || !*backup || new_slot_count == 0)
@@ -65,7 +65,7 @@ void	ft_backup_slot_update(t_backup **backup, size_t new_slot_count)
 	old_count = (*backup)->slot_count;
 	all_nodes = ft_collect_all_nodes(old_slots, old_count);
 	free(old_slots);
-	(*backup)->slots = ft_calloc(new_slot_count, sizeof(t_mt *));
+	(*backup)->slots = ft_calloc(new_slot_count, sizeof(t_track *));
 	if (!(*backup)->slots)
 	{
 		ft_lstclear(&all_nodes, NULL);

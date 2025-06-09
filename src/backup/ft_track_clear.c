@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backup_clear_tracks.c                           :+:      :+:    :+:   */
+/*   ft_track_clear.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,32 +13,32 @@
 #include "mt.h"
 
 /**
- * ft_backup_clear_tracks - Libera la memoria de la lista de seguimiento del backup.
+ * ft_track_clear - Libera la memoria de la lista de seguimiento del backup.
  * @tracks: Doble puntero a la lista de seguimiento del backup.
  *
  * Esta función libera la memoria ocupada por la lista de seguimiento del backup
  * y sus nodos. Se asegura de liberar todos los nodos de seguimiento y sus datos.
  */
 
-void	ft_backup_clear_tracks(t_track **tracks)
+void	ft_track_clear(t_track **tracks, bool free_data)
 {
     t_track	*cur;
     t_track	*next;
-    t_mt *node;
+    t_mt    *node;
 
     if (!tracks || !*tracks)
         return ;
     cur = *tracks;
     while (cur)
     {
-        next = cur->next;
-        node = cur->node;
-        ft_backup_remove_track(tracks, cur, true, false);
-        if (node)
+        if (cur->node && free_data)
         {
-            node->backup = NULL; // Desvincula el nodo del backup
-            ft_mtfree(node); // Libera el nodo mt asociado
+            node = cur->node;
+            cur->node = NULL;
+            ft_mtclear(&node);
         }
+        next = cur->next;
+        ft_track_free(&cur, false);
         cur = next;
     }
     *tracks = NULL;

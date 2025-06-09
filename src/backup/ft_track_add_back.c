@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtkey.c                                         :+:      :+:    :+:   */
+/*   ft_track_add_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:04:13 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 15:29:01 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 15:29:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-char	*ft_mtget_key(t_mt *mt)
+int	ft_track_add_back(t_track **node, t_track *new_node)
 {
-    if (!mt)
-        return (NULL);
-    return (mt->key);
-}
+    t_track	*current;
 
-void	ft_mtset_key(t_mt *mt, void *key)
-{
-    if (!mt || !key)
-        return;
-    
-    if (mt->key)
-        free(mt->key);
-    mt->key = ft_strdup(key);
-}
-
-int     ft_mtkeycmp(const t_mt *mt1, const char *key)
-{
-    if (!mt1 || !mt1->key || !key)
+    if (!node || !new_node)
         return (0);
-    return (ft_strncmp(mt1->key, key, ft_strlen(mt1->key)) == 0);
+    if (!*node)
+    {
+        *node = new_node;
+        return (1);
+    }
+    current = *node;
+    while (current->next)
+        current = current->next;
+    current->next = new_node;
+    return (1);
 }

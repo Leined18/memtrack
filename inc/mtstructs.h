@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:39:44 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:00:32 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef void (*t_free_func)(void *);
 
 typedef struct s_track
 {
-	char 				*key;           // Clave del nodo
-	struct s_mt			*node;          // Nodo conectado
-	struct s_track		*next;         // Siguiente conexión (lista enlazada)
-	time_t 				timestamp;      // Marca de tiempo de la conexión
-	int 				priority;       // Prioridad de la conexión
-	int 				backup_id;      // ID del backup
+	char 				*group_id; // ID del grupo al que pertenece el track
+	char 				*id;
+	struct s_mt			*node;
+	struct s_track		*next;
+	struct s_track		*top;
+	struct s_track		*pointer;	
 } t_track;
 
 /**
@@ -66,7 +66,7 @@ typedef struct s_args
 typedef struct s_backup
 {
 	int 				id;
-	struct s_mt			**slots;
+	struct s_track		**slots;
 	size_t				slot_count;
 	size_t				item_count;
 	struct s_track		*tracker;
@@ -88,7 +88,7 @@ typedef struct s_backup
 
 typedef struct s_mt
 {
-    int					id;
+    char				*id;
     char				*key;
     void				*data;
 	void				*addon;

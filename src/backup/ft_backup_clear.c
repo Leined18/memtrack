@@ -24,8 +24,9 @@ int	ft_backup_clear(t_backup **backup)
 {
 	if (!backup || !*backup)
 		return (0);
-	ft_backup_clear_tracks(&(*backup)->tracker);
 	if ((*backup)->slots)
-		free_null((void **)&(*backup)->slots);
+		ft_slot_clear((*backup)->slots, (*backup)->slot_count, false);
+	if ((*backup)->tracker)
+		ft_track_clear(&(*backup)->tracker, true);
 	return (free_null((void **)backup), 1);
 }

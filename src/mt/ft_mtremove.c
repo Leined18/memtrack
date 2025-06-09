@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:30:43 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:33:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:05:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_mtremove(t_mt **head, t_mt *target, bool free)
 	t_mt *current;
 	if (!head || !*head || !target)
 		return (0);
-	current = ft_mtfind(head, target); // Busca el nodo en la lista
+	current = ft_mtfind(*head, target); // Busca el nodo en la lista
 	if (!current)
 		return (0); // Si no se encuentra el nodo, retorna 0
 	if (current->prev)

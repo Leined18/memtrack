@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtget.c                                         :+:      :+:    :+:   */
+/*   ft_mtsearch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 17:09:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:11:12 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/02 15:01:51 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 17:08:54 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_mtget - Obtiene un nodo de la lista enlazada por su clave.
+ * ft_mtsearch - Obtiene un nodo de la lista enlazada por su clave.
  * @key: Clave del nodo a buscar.
- * 
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_mt	*ft_mtget(const char *key)
+t_mt	*ft_mtsearch(t_mt *head, const char *key)
 {
-    t_backup	*backup;
-    t_mt		*node;
+    t_mt	*current;
 
-    if (!key || ft_strlen(key) == 0)
-        return (NULL);
-    backup = ft_backup_static(0, false, false); // Obtiene el backup estático
-    if (!backup)
-        return (NULL);
-    node = ft_backup_search(backup, key)->node; // Busca el nodo en el backup
-    if (!node)
-        return (NULL);
-    return (node); // Retorna el nodo encontrado
+    if (!head || !key)
+        return (NULL); // Retorna NULL si no hay cabeza o clave
+    current = head;
+    while (current)
+    {
+        if (ft_strequ(current->key, key))
+            return (current); // Retorna el nodo encontrado
+        current = current->next; // Avanza al siguiente nodo
+    }
+    return (NULL);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniel <daniel@student.42.fr>              +#+  +:+       +#+         #
+#    By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:34:27 by danpalac          #+#    #+#              #
-#    Updated: 2025/06/03 22:19:35 by daniel           ###   ########.fr        #
+#    Updated: 2025/06/09 18:09:56 by danpalac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ LIBFT			:= $(LIBFT_DIR)$(LIBFT_LIB)
 #==========COMMANDS============================================================#
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS		:= -Wall -Wextra -Werror -g3 -fsanitize=address
 RM			:= rm -rf
 AR			:= ar rcs
 LIB			:= ranlib

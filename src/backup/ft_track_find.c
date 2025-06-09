@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backup_get_track.c                              :+:      :+:    :+:   */
+/*   ft_track_find.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 13:22:45 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:30:03 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 16:16:17 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 16:16:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_backup_get_track - Obtiene un nodo de la lista de seguimiento del backup.
- * @track: Puntero a la lista de seguimiento del backup.
- * @key: Clave del nodo a buscar.
- * 
+ * ft_track_find - Busca un nodo en la lista de seguimiento por su clave.
+ * @track: Puntero a la lista de seguimiento.
+ * @target: Puntero al nodo a buscar.
+ *
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_track	*ft_backup_get_track(t_track *track, const char *key)
+ 
+t_track	*ft_track_find(t_track *track, t_track *target)
 {
-    t_track    *cur;
-    
-    if (!track || !key)
-        return (NULL); // Retorna NULL si no hay seguimiento o clave
+    t_track	*cur;
+
+    if (!track || !target || !target->key)
+        return (NULL);
     cur = track;
     while (cur)
     {
-        if (ft_strequ(cur->node->key, key))
-            return (cur); // Retorna el nodo encontrado
-        cur = cur->next; // Avanza al siguiente nodo
+        if (track == target)
+            return (cur); // Retorna el nodo si es el mismo
+        cur = cur->next;
     }
-    return (NULL);
+    return (NULL); // Retorna NULL si no se encuentra el nodo
 }
-
-   

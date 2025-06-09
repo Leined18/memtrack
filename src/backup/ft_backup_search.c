@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backup_get.c                                    :+:      :+:    :+:   */
+/*   ft_backup_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:23:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:21:38 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 16:13:56 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,25 @@ size_t    ft_hash_str(const char *str)
 
 
 /**
- * ft_backup_get - Obtiene un nodo de la lista de seguimiento del backup.
+ * ft_backup_search - Obtiene un nodo de la lista de seguimiento del backup.
  * @backup: Doble puntero a la estructura de backup.
  * @key: Clave del nodo a buscar.
  * 
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_mt	*ft_backup_get(t_backup *backup, const char *key)
+t_track *ft_backup_search(t_backup *backup, const char *key)
 {
-	t_mt 	*found;
-	t_track *track;
-
+	t_track *found;
+    
 	if (!backup || !key)
 		return (NULL);
-	found = ft_mtget(key);
-	if (!found)
-	{
-		track = ft_backup_get_track(backup->tracker, key);
-		if (track)
-			found = track->node;
-	}
+	found = ft_track_search(backup->tracker, key);
+    if (!found)
+    {
+        found = ft_slot_search(backup->slots, backup->slot_count, key);
+        if (!found)
+            return (NULL); // Retorna NULL si no se encuentra el nodo
+    }
 	return (found);
 }

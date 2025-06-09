@@ -37,19 +37,20 @@ static void	free_element(void **element, void (*free_func)(void *))
 void	ft_mtfree(void *mt)
 {
 	t_mt	*node;
-	t_backup	*backup;
 
 	if (!mt)
 		return ;
 	node = (t_mt *)mt;
 	if (node->backup)
 	{
-		backup = ft_backup_static(0, false, false);
-		ft_backup_remove(&backup, node, true);
+		node->backup = NULL;
+		ft_backup_delete(&node->backup, node->id);
 		return ;
 	}
 	if (node->key)
 		free_element((void **)&node->key, NULL);
+	if (node->id)
+		free_element((void **)&node->id, NULL);
 	if (node->data && node->data_free)
 		free_element((void **)&node->data, node->data_free);
 	if (node->addon && node->addon_free)

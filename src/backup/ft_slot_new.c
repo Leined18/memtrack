@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtkey.c                                         :+:      :+:    :+:   */
+/*   ft_slot_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:04:13 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 16:07:58 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 16:08:04 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-char	*ft_mtget_key(t_mt *mt)
+/**
+ * ft_slot_new - Crea un nuevo slot.
+ * @slot_count: Número de slots en el backup.
+ *
+ */
+
+t_track	**ft_slot_new(size_t slot_count)
 {
-    if (!mt)
-        return (NULL);
-    return (mt->key);
+	t_track	**slots;
+
+	slots = ft_calloc(slot_count, sizeof(t_track *));
+	if (!slots)
+		return (NULL);
+	return (slots);
 }
 
-void	ft_mtset_key(t_mt *mt, void *key)
-{
-    if (!mt || !key)
-        return;
-    
-    if (mt->key)
-        free(mt->key);
-    mt->key = ft_strdup(key);
-}
-
-int     ft_mtkeycmp(const t_mt *mt1, const char *key)
-{
-    if (!mt1 || !mt1->key || !key)
-        return (0);
-    return (ft_strncmp(mt1->key, key, ft_strlen(mt1->key)) == 0);
-}

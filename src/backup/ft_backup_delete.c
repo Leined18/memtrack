@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtkey.c                                         :+:      :+:    :+:   */
+/*   ft_backup_delete.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 11:36:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:04:13 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 16:57:08 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 17:07:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-char	*ft_mtget_key(t_mt *mt)
+void	ft_backup_delete(t_backup **backup, const char *key)
 {
-    if (!mt)
-        return (NULL);
-    return (mt->key);
-}
-
-void	ft_mtset_key(t_mt *mt, void *key)
-{
-    if (!mt || !key)
-        return;
+    t_track *target;
     
-    if (mt->key)
-        free(mt->key);
-    mt->key = ft_strdup(key);
-}
-
-int     ft_mtkeycmp(const t_mt *mt1, const char *key)
-{
-    if (!mt1 || !mt1->key || !key)
-        return (0);
-    return (ft_strncmp(mt1->key, key, ft_strlen(mt1->key)) == 0);
+    if (!backup || !*backup || !key || ft_strlen(key) == 0)
+        return ;
+    target = ft_backup_search(*backup, key);
+    ft_backup_remove(backup, target, true);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:28:23 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/05 10:18:40 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:59:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,11 @@
  * su memoria. Se asegura de eliminar el nodo de la lista y liberar su memoria.
  */
 
-void	ft_backup_remove(t_backup **backup, t_mt *target, bool free_target)
+void	ft_backup_remove(t_backup **backup, t_track *target, bool free_target)
 {
-    const char	*key;
-    t_track    *tmp_track;
-
-	if (!backup || !target->key)
+	if (!backup || !target)
 		return ;
-	target = ft_backup_get(*backup, target->key);
-    if (!target)
+    if (!ft_slot_remove((*backup)->slots, (*backup)->slot_count, target, free_target))
         return ;
-    key = target->key;
-	if (free_target)
-		target->backup = NULL;
-    tmp_track = ft_backup_get_track((*backup)->tracker, key);
-	ft_backup_remove_slot(backup, target, false);
-    ft_backup_remove_track(&(*backup)->tracker, tmp_track,
-        true, free_target);
     (*backup)->item_count--;
 }
