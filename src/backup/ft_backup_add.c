@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 20:03:57 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:41:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@
 
 void	ft_backup_add(t_backup **backup, t_mt *node)
 {	
-	t_track *group;
-	t_track *track;
+	t_group *group;
 	
 	if (!backup || !*backup || !node)
 		return ;
-	if (!node->key || !node->id)
+	if (!node->group_id || !node->id)
 		return ;
-	track = ft_track_new(node->key, node->id, node);
-	group = ft_track_search((*backup)->tracker, node->key);
-	if (group)
-		ft_mtadd_back(&group->node, node);
-	else 
-		ft_backup_add_track(backup, track);
-	ft_backup_add_slot(backup, track);
+	group = ft_group_search((*backup)->groups, node->group_id);
+	if (!group)
+	{
+		group = ft_group_new(node->group_id);
+		if (!group)
+			return; // Si no se puede crear el grupo, salimos
+		ft_group_add_back(&(*backup)->groups, group);
+	}
+	ft_group_add_mt(&group, node);
+	ft_backup_add_slot_mt(backup, node);
 	(*backup)->item_count++;
 }

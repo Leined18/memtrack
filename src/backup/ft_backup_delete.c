@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:57:08 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:07:17 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:51:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_backup_delete(t_backup **backup, const char *key)
 {
-    t_track *target;
+    t_mt *target;
     
     if (!backup || !*backup || !key || ft_strlen(key) == 0)
         return ;
-    target = ft_backup_search(*backup, key);
+    target = ft_backup_search(backup, key);
     ft_backup_remove(backup, target, true);
 }

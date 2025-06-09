@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_slot_find.c                                     :+:      :+:    :+:   */
+/*   ft_slot_search_mt.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 16:17:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:31:23 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 22:08:54 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 22:12:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
 /**
- * ft_slot_find - Busca un nodo en los slots del backup.
- * @slots: Puntero a la lista de slots.
- * @slot_count: Número de slots.
- * @target: Puntero al nodo a buscar.
+ * ft_slot_search_mt - Busca un nodo en los slots por su clave.
+ * @slots: Doble puntero a la lista de slots.
+ * @slot_count: Número de slots en la lista.
+ * @key: Clave del nodo a buscar.
  *
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_slot	*ft_slot_find(t_slot **slots, size_t slot_count, t_slot *target)
+t_mt	*ft_slot_search_mt(t_slot **slots, size_t slot_count, const char *key)
 {
     size_t	i;
-    t_slot	*cur;
+    t_slot	*slot;
+    t_slot	*found;
 
-    if (!slots || slot_count == 0 || !target)
+    if (!slots || slot_count == 0 || !key)
         return (NULL);
     i = 0;
     while (i < slot_count)
     {
-        cur = slots[i];
-        while (cur)
+        slot = slots[i];
+        while (slot)
         {
-            if (cur == target)
-                return (cur); // Retorna el nodo si es el mismo
-            cur = cur->top; // Avanza al siguiente nodo en el slot
+            found = ft_slot_search(slot, key);
+            if (found)
+                return (found->node); // Retorna el nodo encontrado
+            slot = slot->top; // Avanza al siguiente nodo en el slot
         }
         i++;
     }

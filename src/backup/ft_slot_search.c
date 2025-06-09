@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_slot_search.c                                      :+:      :+:    :+:   */
+/*   ft_slot_search.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 16:05:18 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 16:06:25 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 20:14:57 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 23:00:33 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /**
  * ft_slot_search - Busca un slot en la lista de slots por su clave.
- * @slot: Puntero al primer nodo de la lista de slots.
+ * @slots: Doble puntero a la lista de slots.
+ * @slot_count: Número de slots en la lista.
  * @key: Clave del slot a buscar.
  *
  * Retorna el slot encontrado o NULL si no se encuentra.
@@ -22,14 +23,17 @@
 
 t_slot	*ft_slot_search(t_slot *slot, const char *key)
 {
+    t_slot	*found;
+
+    
     if (!slot || !key)
-        return (NULL);
-    while (slot)
+        return (NULL); // Retorna NULL si el slot o la clave son NULL
+    found = slot; // Comienza desde el primer nodo del slot
+    while (found)
     {
-        if (ft_strequ(slot->id, key) ||
-        (slot->node && ft_strequ(slot->node->id, key)))
-            return (slot); // Retorna inmediatamente el slot encontrado
-        slot = slot->top; // Avanza al siguiente nodo en el slot
+        if (ft_strequ(found->id, key))
+            return (found); // Retorna inmediatamente el slot encontrado
+        found = found->top; // Avanza al siguiente nodo en el slot
     }
-    return (NULL);
+    return (NULL); // Retorna el slot encontrado o NULL si no se encuentra
 }

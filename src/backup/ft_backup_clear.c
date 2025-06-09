@@ -26,7 +26,7 @@ int	ft_backup_clear(t_backup **backup)
 		return (0);
 	if ((*backup)->slots)
 		ft_slot_clear((*backup)->slots, (*backup)->slot_count, false);
-	if ((*backup)->tracker)
-		ft_track_clear(&(*backup)->tracker, true);
+	if ((*backup)->groups)
+		ft_group_clear(&(*backup)->groups, true);
 	return (free_null((void **)backup), 1);
 }

@@ -39,23 +39,25 @@ size_t    ft_hash_str(const char *str)
 /**
  * ft_backup_search - Obtiene un nodo de la lista de seguimiento del backup.
  * @backup: Doble puntero a la estructura de backup.
- * @key: Clave del nodo a buscar.
+ * @id: Clave del nodo a buscar.
  * 
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
-t_track *ft_backup_search(t_backup *backup, const char *key)
+t_mt *ft_backup_search(t_backup **backup, const char *id)
 {
-	t_track *found;
-    
-	if (!backup || !key)
-		return (NULL);
-	found = ft_track_search(backup->tracker, key);
-    if (!found)
-    {
-        found = ft_slot_search(backup->slots, backup->slot_count, key);
-        if (!found)
-            return (NULL); // Retorna NULL si no se encuentra el nodo
-    }
-	return (found);
+
+    t_mt *found;
+
+
+    if (!backup || !*backup || !id || ft_strlen(id) == 0)
+        return (NULL);
+    found = NULL;
+    found = ft_slot_search_mt((*backup)->slots, (*backup)->slot_count, id);
+    if (found)
+        return (found);
+    found = ft_group_search_mt((*backup)->groups, id);
+    if (found)
+        return (found);
+    return (NULL);
 }

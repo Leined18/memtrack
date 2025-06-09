@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_track_free.c                                    :+:      :+:    :+:   */
+/*   ft_group_add_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 15:36:14 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:01:11 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 20:33:16 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 21:54:37 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_track_free(t_track **track, bool free_node)
+void	ft_group_add_back(t_group **groups, t_group *new_group)
 {
-	t_track	*current;
-
-	if (!track || !*track)
-		return ;
-	current = *track;
-	if (current->group_id)
-		free(current->group_id);
-	if (current->id)
-        free(current->id);
-	if (current->node && free_node)
-		ft_mtfree(current->node);
-	free(current);
-	*track = NULL;
+    t_group *current;
+    
+    if (!groups  || !new_group)
+        return ;
+    if (!*groups)
+    {
+        *groups = new_group;
+        return ;
+    }
+    current = *groups;
+    while (current->next)
+        current = current->next; // Avanza al siguiente grupo
+    current->next = new_group; // Agrega el nuevo grupo al final de la lista
 }

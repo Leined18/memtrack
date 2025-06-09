@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:16:17 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 16:16:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:11:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_track	*ft_track_find(t_track *track, t_track *target)
 {
     t_track	*cur;
 
-    if (!track || !target || !target->key)
+    if (!track || !target)
         return (NULL);
     cur = track;
     while (cur)

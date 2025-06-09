@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:13:24 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:50:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 23:05:50 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void test_backup()
 	ft_backup_add(&backup, y);
 
 	
-    t_mt *found = ft_backup_search(backup, "x")->node;
+    t_mt *found = ft_backup_search(&backup, "x");
     if (found)
         printf("Encontrado: %s\n", (char *)ft_mtget_id(found));
     else
@@ -102,19 +102,19 @@ void test_search_set()
 
 	ft_mtdelete(node2->id); // Elimina el nodo con clave "nodos"
     node2 = NULL; // Asigna NULL a node2 para evitar uso posterior
-    ft_mtset_id(node, "42"); // Establece el ID del nodo
+    ft_mtset("nodo_001", "41", ft_mtset_id); // Establece el ID del nodo
 	ft_mtset_data(node, "datos de prueba");
-    printf("ID: %s\n",ft_mtget(node->key)->id);
-	printf("data: %s", (char *)ft_mtget(node->key)->data); // obtiene el nodo del backup pasado
-	printf("data: %s", (char *)ft_mtget("nodos")->data); // obtiene el nodo del backup pasado
+    printf("ID: %s\n", ft_mtget("41")->id);
+	printf("data: %s\n", (char *)ft_mtget(node->id)->data); // obtiene el nodo del backup pasado
+	printf("data: %s\n", (char *)ft_mtget("nodos")->data); // obtiene el nodo del backup pasado
 	ft_mtset_id(node3, "44"); // Establece el ID del nodo
-	printf("ID: %s\n",ft_mtget(node3->key)->id);
+	printf("ID: %s\n",ft_mtget(node3->id)->id);
 	ft_mtset_data(node3, "datos de prueba 3");
-	printf("data: %s", (char *)ft_mtget(node3->key)->data); // obtiene el nodo del backup pasado
+	printf("data: %s\n", (char *)ft_mtget(node3->id)->data); // obtiene el nodo del backup pasado
 	ft_mtset_id(node4, "45"); // Establece el ID del nodo
-	printf("ID: %s\n",ft_mtget(node4->key)->id);
+	printf("ID: %s\n",ft_mtget(node4->id)->id);
 	ft_mtset_data(node4, "datos de prueba 4");
-	printf("data: %s", (char *)ft_mtget(node4->key)->data); // obtiene el nodo del backup pasado
+	printf("data: %s\n", (char *)ft_mtget(node4->id)->data); // obtiene el nodo del backup pasado
 	
 	// Limpia el backup estático
 

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_track_free.c                                    :+:      :+:    :+:   */
+/*   ft_group_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 15:36:14 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:01:11 by danpalac         ###   ########.fr       */
+/*   Created: 2025/06/09 20:32:04 by danpalac          #+#    #+#             */
+/*   Updated: 2025/06/09 21:34:36 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-void	ft_track_free(t_track **track, bool free_node)
+t_group	*ft_group_new(const char *group_id)
 {
-	t_track	*current;
+    t_group    *new_group;
 
-	if (!track || !*track)
-		return ;
-	current = *track;
-	if (current->group_id)
-		free(current->group_id);
-	if (current->id)
-        free(current->id);
-	if (current->node && free_node)
-		ft_mtfree(current->node);
-	free(current);
-	*track = NULL;
+    if (!group_id)
+        return (NULL);
+    new_group = ft_calloc(1, sizeof(t_group));
+    if (!new_group)
+        return (NULL);
+    new_group->id = ft_strdup(group_id);
+    if (!new_group->id)
+    {
+        free(new_group);
+        return (NULL);
+    }
+    return (new_group);
 }

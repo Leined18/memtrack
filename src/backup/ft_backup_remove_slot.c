@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:53:06 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 19:37:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:28:49 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  */
 
  
-int ft_backup_remove_slot(t_backup **backup, t_track *slot, bool free_slot)
+int ft_backup_remove_slot(t_backup **backup, t_slot *slot, bool free_slot)
 {
     size_t	i;
 
@@ -32,8 +32,7 @@ int ft_backup_remove_slot(t_backup **backup, t_track *slot, bool free_slot)
     i = 0;
     while (i < (*backup)->slot_count)
     {
-        if (ft_track_remove(&(*backup)->slots[i], slot, free_slot))
-            return (1);
+        ft_slot_remove(&(*backup)->slots[i],(*backup)->slot_count, slot, free_slot);
         i++;
     }
     return (0);

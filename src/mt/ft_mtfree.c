@@ -47,8 +47,8 @@ void	ft_mtfree(void *mt)
 		ft_backup_delete(&node->backup, node->id);
 		return ;
 	}
-	if (node->key)
-		free_element((void **)&node->key, NULL);
+	if (node->group_id)
+		free_element((void **)&node->group_id, NULL);
 	if (node->id)
 		free_element((void **)&node->id, NULL);
 	if (node->data && node->data_free)

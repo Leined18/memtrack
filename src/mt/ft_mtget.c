@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 17:09:12 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:11:12 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:49:02 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_mt	*ft_mtget(const char *key)
     backup = ft_backup_static(0, false, false); // Obtiene el backup estático
     if (!backup)
         return (NULL);
-    node = ft_backup_search(backup, key)->node; // Busca el nodo en el backup
+    node = ft_backup_search(&backup, key); // Busca el nodo en el backup
     if (!node)
         return (NULL);
     return (node); // Retorna el nodo encontrado

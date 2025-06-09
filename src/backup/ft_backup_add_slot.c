@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:33:58 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 20:07:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:52:01 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ size_t		ft_hash(t_mt *node)
 	size_t		hash;
 	size_t		i;
 
-	if (!node || !node->key)
+	if (!node || !node->id)
 		return (0);
 	hash = 0;
 	i = 0;
-	while (node->key[i])
+	while (node->id[i])
 	{
-		hash += node->key[i];
+		hash += node->id[i];
 		i++;
 	}
 	return (hash);
@@ -44,23 +44,14 @@ size_t		ft_hash(t_mt *node)
  * 
  */
 
-void	ft_backup_add_slot(t_backup **backup, t_track *node)
+void	ft_backup_add_slot(t_backup **backup, t_slot *slot)
 {
-    size_t		index;
 	t_backup	*backup_tmp;
 
-	if (!backup || !*backup || !node || !node->group_id || !node->id)
+	if (!backup || !*backup || !slot)
 		return ;
-	index = 0;
 	backup_tmp = *backup;
-    index = ft_hash_str(node->id) % backup_tmp->slot_count;
-    if (index >= backup_tmp->slot_count)
-        index = backup_tmp->slot_count - 1;
     if (backup_tmp->slots)
-    {
-		backup_tmp->slots[index] = node;
-		node->top = backup_tmp->slots[index];
-		
-	}
+		ft_slot_hash_add(backup_tmp->slots, backup_tmp->slot_count, slot);
 }
     

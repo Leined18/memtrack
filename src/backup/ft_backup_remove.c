@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:28:23 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 18:59:13 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:57:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * su memoria. Se asegura de eliminar el nodo de la lista y liberar su memoria.
  */
 
-void	ft_backup_remove(t_backup **backup, t_track *target, bool free_target)
+void	ft_backup_remove(t_backup **backup, t_mt *target, bool free_target)
 {
 	if (!backup || !target)
 		return ;

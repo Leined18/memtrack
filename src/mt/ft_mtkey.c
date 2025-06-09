@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtkey.c                                         :+:      :+:    :+:   */
+/*   ft_mtgroup_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,26 @@
 
 #include "mt.h"
 
-char	*ft_mtget_key(t_mt *mt)
+char	*ft_mtget_group_id(t_mt *mt)
 {
     if (!mt)
         return (NULL);
-    return (mt->key);
+    return (mt->group_id);
 }
 
-void	ft_mtset_key(t_mt *mt, void *key)
+void	ft_mtset_group_id(t_mt *mt, void *group_id)
 {
-    if (!mt || !key)
+    if (!mt || !group_id)
         return;
     
-    if (mt->key)
-        free(mt->key);
-    mt->key = ft_strdup(key);
+    if (mt->group_id)
+        free(mt->group_id);
+    mt->group_id = ft_strdup(group_id);
 }
 
-int     ft_mtkeycmp(const t_mt *mt1, const char *key)
+int     ft_mtgroup_id_cmp(const t_mt *mt1, const char *group_id)
 {
-    if (!mt1 || !mt1->key || !key)
+    if (!mt1 || !mt1->group_id || !group_id)
         return (0);
-    return (ft_strncmp(mt1->key, key, ft_strlen(mt1->key)) == 0);
+    return (ft_strncmp(mt1->group_id, group_id, ft_strlen(mt1->group_id)) == 0);
 }

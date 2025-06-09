@@ -29,8 +29,10 @@ t_track	*ft_track_search(t_track *track, const char *key)
     cur = track;
     while (cur)
     {
-        while (cur && cur->key && ft_strequ(cur->key, key))
-            return (cur);
+        if (cur->group_id && ft_strequ(cur->group_id, key))
+            return (cur); // Retorna el nodo si la clave coincide
+        else if (cur->id && ft_strequ(cur->id, key))
+            return (cur); // Retorna el nodo si la ID coincide
         cur = cur->next;
     }
     return (NULL);

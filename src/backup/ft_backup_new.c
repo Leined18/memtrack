@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:37:27 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:15:44 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:15:21 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_backup	*ft_backup_new(size_t slot_count)
 	if (!backup)
 		return (NULL);
 	if (slot_count > 0)
-		backup->slots = ft_slot_new(slot_count);
+		backup->slots = ft_slot_array_new(slot_count);
 	if (!backup->slots)
 		return (backup);
 	backup->slot_count = slot_count;
