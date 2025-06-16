@@ -7,10 +7,10 @@ t_mt  *ft_build_line(t_mt **start, t_cords origin, t_offset offset, t_backup **b
 	int idx;
 	char *key;
 	
-	step = ft_offset_new(offset.direction, offset.elevation, 1.0f);
+	step = ft_offset_new(direction, elevation, 1.0f);
     pos = origin;
     current = *start;
-    count = (int)(offset.distance);
+    count = (int)(distance);
 	idx = 0;
     while (count > 0)
     {

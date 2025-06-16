@@ -6,13 +6,13 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:27:36 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 22:19:49 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:05:55 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-int ft_slot_remove(t_slot **slots, size_t slot_count, t_slot *target, bool free_target)
+int ft_slot_remove(t_slot **slots, size_t slot_count, t_mt *target, bool free_target)
 {
     size_t	i;
 
@@ -24,7 +24,7 @@ int ft_slot_remove(t_slot **slots, size_t slot_count, t_slot *target, bool free_
         t_slot *cur = slots[i];
         while (cur)
         {
-            if (cur == target) // Verifica si el nodo actual es el mismo que el objetivo
+            if (cur->node == target) // Verifica si el nodo actual es el mismo que el objetivo
             {
                 if (free_target)
                 {

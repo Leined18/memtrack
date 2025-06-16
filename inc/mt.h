@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:22:38 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/16 09:52:22 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:05:22 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			ft_backup_add_track(t_backup **backup, t_track *track);
 void			ft_backup_add_slot(t_backup **backup, t_slot *slot);
 
 int 			ft_backup_clear(t_backup **backup);
-void			ft_backup_remove(t_backup **backup, t_mt *node, bool free_target);
+void			ft_backup_remove(t_backup **backup, t_mt *target, bool free_target);
 void            ft_backup_delete(t_backup **backup, const char *key);
 
 
@@ -98,7 +98,7 @@ t_mt         *ft_backup_search(t_backup **backup, const char *key);
 
 // ==================== Backup Slot Functions ====================
 
-int 			ft_backup_remove_slot(t_backup **backup, t_slot *slot, bool free_slot);
+int 			ft_backup_remove_slot(t_backup **backup, t_mt *target, bool free_slot);
 void            ft_backup_slot_update(t_backup **backup, size_t new_slot_count);
 void            ft_backup_add_slot_mt(t_backup **backup, t_mt *node);
 
@@ -108,7 +108,7 @@ void            ft_backup_add_slot_mt(t_backup **backup, t_mt *node);
 void            ft_slot_clear(t_slot **slots, size_t slot_count, bool free_data);
 t_slot         *ft_slot_search(t_slot *slot, const char *key);
 t_slot         *ft_slot_find(t_slot **slots, size_t slot_count, t_slot *target);
-int            ft_slot_remove(t_slot **slots, size_t slot_count, t_slot *target, bool free_target);
+int            ft_slot_remove(t_slot **slots, size_t slot_count, t_mt *target, bool free_target);
 t_slot         **ft_slot_array_new(size_t slot_count);
 void            ft_slot_add_botton(t_slot **slots, t_slot *new_slot);
 t_slot         *ft_slot_new(const char *id, const char *group_id, t_mt *node);
