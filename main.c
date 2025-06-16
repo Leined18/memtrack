@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:13:24 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 23:05:50 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/06/16 10:05:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,15 @@ void test_search_set()
 	t_mt *node2 = ft_mtnew("nodos", "nodo_002"); // se añade otro nodo al backup estático
 	t_mt *node3 = ft_mtnew("nodos", "nodo_003"); // se añade otro nodo al backup estático
 	t_mt *node4 = ft_mtnew("nodos", "nodo_004"); // se añade otro nodo al backup estático
-
+    ft_mtnew("sprites_player", "sp_001"); // se añade un nodo con clave "nodos" al backup estático
+    ft_mtnew("sprites_player", "sp_002"); // se añade un nodo con clave "nodos" al backup estático
+    ft_mtnew("sprites_player", "sp_003"); // se añade un nodo con clave "nodos" al backup estático
+    ft_mtget("sp_001")->data = "Sprite 1"; // Asigna datos al nodo con clave "sp_001"
+    ft_mtget("sp_002")->data = "Sprite 2"; // Asigna datos al nodo con clave "sp_002"
+    ft_mtget("sp_003")->data = "Sprite 3"; // Asigna datos al nodo con clave "sp_003"
 	ft_mtdelete(node2->id); // Elimina el nodo con clave "nodos"
     node2 = NULL; // Asigna NULL a node2 para evitar uso posterior
+
     ft_mtset("nodo_001", "41", ft_mtset_id); // Establece el ID del nodo
 	ft_mtset_data(node, "datos de prueba");
     printf("ID: %s\n", ft_mtget("41")->id);
