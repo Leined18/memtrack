@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 21:18:30 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:55:18 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:43:35 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
  * exista y que el nodo no esté ya presente en el grupo.
  */
 
-int ft_group_add_mt(t_group **group, t_mt *node)
+int	ft_group_add_mt(t_group **group, t_mt *node)
 {
-    t_track *track;
+	t_track	*track;
 
-    if (!group || !*group || !node || !node->group_id || !node->id)
-        return (0); // Retorna 0 si los parámetros son inválidos
-    track = ft_track_new(node->group_id, node->id, node);
-    if (!track)
-        return (0); // Retorna 0 si los parámetros son inválidos
-    ft_track_add_back(&(*group)->head, track);
-    (*group)->track_count++;
-    return (1); // Retorna 1 si el nodo se agregó correctamente al grupo
+	if (!group || !*group || !node || !node->group_id || !node->id)
+		return (0);
+	track = ft_track_new(node->group_id, node->id, node);
+	if (!track)
+		return (0);
+	ft_track_add_back(&(*group)->head, track);
+	(*group)->track_count++;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:16:17 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 20:11:35 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:38:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,18 @@
  * Retorna el nodo encontrado o NULL si no se encuentra.
  */
 
- 
 t_track	*ft_track_find(t_track *track, t_track *target)
 {
-    t_track	*cur;
+	t_track	*cur;
 
-    if (!track || !target)
-        return (NULL);
-    cur = track;
-    while (cur)
-    {
-        if (track == target)
-            return (cur); // Retorna el nodo si es el mismo
-        cur = cur->next;
-    }
-    return (NULL); // Retorna NULL si no se encuentra el nodo
+	if (!track || !target)
+		return (NULL);
+	cur = track;
+	while (cur)
+	{
+		if (track == target)
+			return (cur);
+		cur = cur->next;
+	}
+	return (NULL);
 }

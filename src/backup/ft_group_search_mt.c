@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:07:07 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 22:11:53 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:42:38 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@
 
 t_mt	*ft_group_search_mt(t_group *groups, const char *id)
 {
-    t_group	*group;
-    t_track	*found;
+	t_group	*group;
+	t_track	*found;
 
-    if (!groups || !id || ft_strlen(id) == 0)
-        return (NULL); // Retorna NULL si no hay grupos o ID
-    group = groups;
-    while (group)
-    {
-        found = ft_track_search(group->head, id); // Busca en el tracker del grupo
-        if (found)
-            return (found->node); // Retorna el nodo encontrado si existe
-        group = group->next; // Avanza al siguiente grupo
-    }
-    return (NULL); // Retorna NULL si no se encuentra el grupo
+	if (!groups || !id || ft_strlen(id) == 0)
+		return (NULL);
+	group = groups;
+	while (group)
+	{
+		found = ft_track_search(group->head, id);
+		if (found)
+			return (found->node);
+		group = group->next;
+	}
+	return (NULL);
 }

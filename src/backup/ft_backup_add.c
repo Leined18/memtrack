@@ -6,24 +6,23 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:48:25 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 22:41:02 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:47:17 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mt.h"
 
-
 /**
  * ft_backup_add - Agrega un nodo a la lista de seguimiento del backup.
  * @backup: Doble puntero a la estructura de backup.
  * @node: Puntero al nodo a agregar.
- * 
+ *
  */
 
 void	ft_backup_add(t_backup **backup, t_mt *node)
-{	
-	t_group *group;
-	
+{
+	t_group	*group;
+
 	if (!backup || !*backup || !node)
 		return ;
 	if (!node->group_id || !node->id)
@@ -33,7 +32,7 @@ void	ft_backup_add(t_backup **backup, t_mt *node)
 	{
 		group = ft_group_new(node->group_id);
 		if (!group)
-			return; // Si no se puede crear el grupo, salimos
+			return ;
 		ft_group_add_back(&(*backup)->groups, group);
 	}
 	ft_group_add_mt(&group, node);

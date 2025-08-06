@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:30:43 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 17:05:15 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:31:13 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,25 @@
 
 int	ft_mtremove(t_mt **head, t_mt *target, bool free)
 {
-	t_mt *current;
+	t_mt	*current;
+
 	if (!head || !*head || !target)
 		return (0);
-	current = ft_mtfind(*head, target); // Busca el nodo en la lista
+	current = ft_mtfind(*head, target);
 	if (!current)
-		return (0); // Si no se encuentra el nodo, retorna 0
+		return (0);
 	if (current->prev)
-		current->prev->next = current->next; // Desconecta el nodo de la lista
+		current->prev->next = current->next;
 	else
-		*head = current->next; // Si es el primer nodo, actualiza el head
+		*head = current->next;
 	if (current->next)
-		current->next->prev = current->prev; 
+		current->next->prev = current->prev;
 	if (free)
-		ft_mtfree(current); // Libera el nodo si free es verdadero
+		ft_mtfree(current);
 	else
 	{
-		target->next = NULL; // Desconecta el nodo sin liberarlo
+		target->next = NULL;
 		target->prev = NULL;
 	}
-	return (1); // Retorna 1 si el nodo fue eliminado correctamente
+	return (1);
 }

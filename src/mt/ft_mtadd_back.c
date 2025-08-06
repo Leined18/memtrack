@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mtadd_back.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/06 10:35:57 by danpalac          #+#    #+#             */
+/*   Updated: 2025/08/06 10:35:58 by danpalac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mt.h"
 
 /**
@@ -10,6 +22,7 @@
  *   0 si el nodo fue añadido correctamente.
  *  -1 si hay error (punteros nulos o ciclo detectado).
  */
+
 int	ft_mtadd_back(t_mt **head, t_mt *new_node)
 {
 	t_mt	*current;
@@ -23,12 +36,12 @@ int	ft_mtadd_back(t_mt **head, t_mt *new_node)
 		current = *head;
 		while (current->next)
 		{
-			if (current == new_node) // evita ciclos o reinserciones
+			if (current == new_node)
 				return (-1);
 			current = current->next;
 		}
 		current->next = new_node;
-		new_node->prev = current; // establecer enlace doble si se usa
+		new_node->prev = current;
 	}
 	return (0);
 }

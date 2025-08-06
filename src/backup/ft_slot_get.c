@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_slot_search.c                                      :+:      :+:    :+:   */
+/*   ft_slot_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 16:05:18 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 16:06:25 by danpalac         ###   ########.fr       */
+/*   Created: 2025/08/06 10:41:22 by danpalac          #+#    #+#             */
+/*   Updated: 2025/08/06 10:41:27 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 t_slot	*ft_slot_search(t_slot *slot, const char *key)
 {
-    if (!slot || !key)
-        return (NULL);
-    while (slot)
-    {
-        if (ft_strequ(slot->id, key) ||
-        (slot->node && ft_strequ(slot->node->id, key)))
-            return (slot); // Retorna inmediatamente el slot encontrado
-        slot = slot->top; // Avanza al siguiente nodo en el slot
-    }
-    return (NULL);
+	if (!slot || !key)
+		return (NULL);
+	while (slot)
+	{
+		if (ft_strequ(slot->id, key) || (slot->node && ft_strequ(slot->node->id,
+					key)))
+			return (slot);
+		slot = slot->top;
+	}
+	return (NULL);
 }

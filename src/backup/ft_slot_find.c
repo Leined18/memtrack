@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:17:56 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:31:23 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:41:40 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@
 
 t_slot	*ft_slot_find(t_slot **slots, size_t slot_count, t_slot *target)
 {
-    size_t	i;
-    t_slot	*cur;
+	size_t	i;
+	t_slot	*cur;
 
-    if (!slots || slot_count == 0 || !target)
-        return (NULL);
-    i = 0;
-    while (i < slot_count)
-    {
-        cur = slots[i];
-        while (cur)
-        {
-            if (cur == target)
-                return (cur); // Retorna el nodo si es el mismo
-            cur = cur->top; // Avanza al siguiente nodo en el slot
-        }
-        i++;
-    }
-    return (NULL); // Retorna NULL si no se encuentra el nodo
+	if (!slots || slot_count == 0 || !target)
+		return (NULL);
+	i = 0;
+	while (i < slot_count)
+	{
+		cur = slots[i];
+		while (cur)
+		{
+			if (cur == target)
+				return (cur);
+			cur = cur->top;
+		}
+		i++;
+	}
+	return (NULL);
 }

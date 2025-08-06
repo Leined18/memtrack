@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:20:05 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 21:48:56 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:31:15 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
  * si existe un backup, se agrega el nodo a la lista de seguimiento del backup.
  */
 
-
 t_mt	*ft_mtnew(const char *group_id, const char *id)
 {
 	t_mt		*node;
 	t_backup	*backup;
-	
+
 	if (!group_id)
 		return (NULL);
 	node = ft_calloc(1, sizeof(t_mt));

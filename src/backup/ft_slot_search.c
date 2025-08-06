@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:14:57 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 23:00:33 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:36:44 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,16 @@
 
 t_slot	*ft_slot_search(t_slot *slot, const char *key)
 {
-    t_slot	*found;
+	t_slot	*found;
 
-    
-    if (!slot || !key)
-        return (NULL); // Retorna NULL si el slot o la clave son NULL
-    found = slot; // Comienza desde el primer nodo del slot
-    while (found)
-    {
-        if (ft_strequ(found->id, key))
-            return (found); // Retorna inmediatamente el slot encontrado
-        found = found->top; // Avanza al siguiente nodo en el slot
-    }
-    return (NULL); // Retorna el slot encontrado o NULL si no se encuentra
+	if (!slot || !key)
+		return (NULL);
+	found = slot;
+	while (found)
+	{
+		if (ft_strequ(found->id, key))
+			return (found);
+		found = found->top;
+	}
+	return (NULL);
 }

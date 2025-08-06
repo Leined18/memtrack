@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:00:48 by danpalac          #+#    #+#             */
-/*   Updated: 2025/05/20 12:13:48 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:31:19 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @move: Indica si se debe mover el puntero al último nodo.
  *
  * Esta función recorre la lista enlazada de nodos y devuelve el último nodo.
-*/
+ */
 
 t_mt	*ft_mtlast(t_mt **node, bool move)
 {

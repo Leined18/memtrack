@@ -6,7 +6,7 @@
 /*   By: danpalac <danpalac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:39 by danpalac          #+#    #+#             */
-/*   Updated: 2025/06/09 22:41:45 by danpalac         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:47:06 by danpalac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 
 void	ft_backup_add_slot_mt(t_backup **backup, t_mt *node)
 {
-    t_slot *slot;
+	t_slot	*slot;
 
-    if (!backup || !*backup || !node)
-        return ;
-    if (!node->group_id || !node->id)
-        return ;
-    slot = ft_slot_hash_search((*backup)->slots, (*backup)->slot_count, node->id);
-    if (slot)
-        return ; // Si el nodo ya está presente, no hacemos nada
-    ft_backup_add_slot(backup, ft_slot_new(node->id, node->group_id, node));
-}  
+	if (!backup || !*backup || !node)
+		return ;
+	if (!node->group_id || !node->id)
+		return ;
+	slot = ft_slot_hash_search((*backup)->slots, (*backup)->slot_count,
+			node->id);
+	if (slot)
+		return ;
+	ft_backup_add_slot(backup, ft_slot_new(node->id, node->group_id, node));
+}
